@@ -5,17 +5,16 @@ import java.util.Objects;
 import java.util.Random;
 
 /**
- * Bean créé pour énerver Sonar :D
- *
+ * Est un POJO : Plain Old Java Object
  */
 public class MonBean {
-	
+
 	public static final float basPrix = 0.5f;
 	public static final int PRIX_MIN = 0;
 	public static final int PRIX_MAX = 30;
 
 	private Long id;
-	public String nom;
+	private String nom;
 	private Integer prix;
 
 	public Long getId() {
@@ -23,7 +22,7 @@ public class MonBean {
 	}
 
 	public void setId(Long id) {
-		id = id;
+		this.id = id;
 	}
 
 	public String getNom() {
@@ -32,6 +31,14 @@ public class MonBean {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public Integer getPrix() {
+		return prix;
+	}
+
+	public void setPrix(Integer prix) {
+		this.prix = prix;
 	}
 
 	@Override
@@ -85,35 +92,35 @@ public class MonBean {
 		}
 
 	}
-	
+
 	public void changePrixAleatoire() {
 		Random random = new Random();
 		this.prix = random.nextInt();
 	}
-	
+
 	public static void afficheListe(List<MonBean> list) {
-		if(list == null) {
+		if (list == null) {
 			new IllegalArgumentException();
 		}
-		if(list != null) {
-			if(list.size() > 0) {
-				for(MonBean monBean : list) {
+		if (list != null) {
+			if (list.size() > 0) {
+				for (MonBean monBean : list) {
 					System.out.println(monBean.getNomAvecPrix());
 				}
 			}
 		}
-		
+
 	}
-	
+
 	public boolean estABasPrix() {
 		return this.prix == basPrix;
 	}
-	
+
 	public void bornePrix() {
 		this.prix = Math.min(this.prix, PRIX_MIN);
 		this.prix = Math.max(this.prix, PRIX_MAX);
 	}
-	
+
 	public int longueurNom() {
 		return this.nom.length();
 	}
