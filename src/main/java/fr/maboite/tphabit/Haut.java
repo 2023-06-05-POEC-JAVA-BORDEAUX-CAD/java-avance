@@ -12,6 +12,6 @@ public class Haut implements Vetement {
     }
 
     public void affiche() {
-        System.out.println("Haut.affiche()");
+        System.out.println("Haut [nom=" + nom + "]");
     }
 }
