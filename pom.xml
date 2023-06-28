@@ -9,7 +9,8 @@
 	<name>Java avancé en POE !</name>
 	<description>Un projet vraiment très très bien !</description>
 	<properties>
-		<!-- Ici sont définies des properties (variables) utilisables par Maven ou 
+		<!-- Ici sont définies des properties (variables) utilisables par Maven
+		ou 
 		ses plugins -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -22,12 +23,14 @@
 		<sonar.language>java</sonar.language>
 	</properties>
 	<build>
-		<!-- Ici sont définis les plugins : les différentes 'petites mains' de Maven 
+		<!-- Ici sont définis les plugins : les différentes 'petites mains' de
+		Maven 
 		et leur configuration. Chaque plugin offre différentes possibilités -->
 		<plugins>
 			<plugin>
 				<!-- Ce plugin de base sert à compiler du code (Java par défaut) -->
-				<!-- Ici on le configure pour forcer la version du code source et 
+				<!-- Ici on le configure pour forcer la version du code source
+				et 
 				la version du code cible -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -58,7 +61,8 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<!-- Ce plugin de base sert faire des releases : versions livrables 
+				<!-- Ce plugin de base sert faire des releases : versions
+				livrables 
 				et dont le contenu ne change pas -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
@@ -105,8 +109,10 @@
 		</plugins>
 	</build>
 	<profiles>
-		<!-- Un profile est un profil d'éxécution. Il sert à paramétrer des modules
-		d'une façon ou d'une autre : exemple : livraison d'une version SNAPSHOT, ou livraison 
+		<!-- Un profile est un profil d'éxécution. Il sert à paramétrer des
+		modules
+		d'une façon ou d'une autre : exemple : livraison d'une version SNAPSHOT, ou
+		livraison 
 		d'une version de production -->
 		<profile>
 			<id>release</id>
@@ -137,21 +143,24 @@
 		</profile>
 	</profiles>
 	<dependencies>
-		<!-- Ici sont référencées toutes les dépendances dont a besoin votre projet pour fonctionner -->
+		<!-- Ici sont référencées toutes les dépendances dont a besoin votre
+		projet pour fonctionner -->
 		<!-- les logs -->
 		<dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
-        </dependency>
-        <!-- La couverture de tests -->
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+		<!-- La couverture de tests -->
 		<dependency>
 			<groupId>org.jacoco</groupId>
 			<artifactId>jacoco-maven-plugin</artifactId>
 			<version>0.8.6</version>
 		</dependency>
-		<!-- Cette dépendance est provided : nous en avons besoin pour la compilation.
-			En effet, nous faisons parfois référence à la classe HttpServlet que cette dépendance
+		<!-- Cette dépendance est provided : nous en avons besoin pour la
+		compilation.
+			En effet, nous faisons parfois référence à la classe HttpServlet que cette
+		dépendance
 			contient.  
 		    Mais au final, ce sera Tomcat qui la fournira en tant que serveur.-->
 		<dependency>
@@ -185,6 +194,13 @@
 			<artifactId>derbyclient</artifactId>
 			<version>10.15.2.0</version>
 			<scope>compile</scope>
+		</dependency><!--
+		https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.15.2</version>
 		</dependency>
+
 	</dependencies>
 </project>

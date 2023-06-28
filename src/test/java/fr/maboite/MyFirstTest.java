@@ -7,10 +7,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class MyFirstTest {
 
 	@BeforeAll
-	public static void beforeAll() {
+	public static void beforeAll() throws JsonProcessingException {
 		System.out.println("before all");
 	}
 
