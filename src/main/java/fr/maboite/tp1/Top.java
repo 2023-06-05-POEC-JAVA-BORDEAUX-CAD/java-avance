@@ -5,9 +5,9 @@ public class Top implements ICloth {
 	String name;
 	
 	@Override
-	public void display() {
+	public String getDescription() {
 		// TODO Auto-generated method stub
-		System.out.println(this.name);
+		return "designation : " + this.name;
 	}
 
 	public String getName() {

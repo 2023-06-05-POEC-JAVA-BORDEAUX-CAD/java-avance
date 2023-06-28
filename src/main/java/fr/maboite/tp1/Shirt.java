@@ -2,12 +2,15 @@ package fr.maboite.tp1;
 
 public class Shirt extends Top{
 
+	private final String type = "Trousers";
+
 	public Shirt() {}
 
 	@Override
-	public void display() {
+	public String getDescription() {
 		// TODO Auto-generated method stub
-		super.display();
+		String describ = super.getDescription();
+		return describ + "\ntype : " + this.type;
 	}
 
 	@Override
@@ -23,5 +26,7 @@ public class Shirt extends Top{
 	}
 	
 	
-	
+	public String getType() {
+		return type;
+	}
 }

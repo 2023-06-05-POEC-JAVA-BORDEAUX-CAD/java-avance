@@ -2,12 +2,15 @@ package fr.maboite.tp1;
 
 public class Skirt extends Bottom{
 
+	private final String type = "Skirt";
+	
 	public Skirt() {}
 
 	@Override
-	public void display() {
+	public String getDescription() {
 		// TODO Auto-generated method stub
-		super.display();
+		String describ = super.getDescription();
+		return describ + "\ntype : " + this.type;
 	}
 
 	@Override
@@ -32,6 +35,10 @@ public class Skirt extends Bottom{
 	public void setBotLenght(Boolean isShort) {
 		// TODO Auto-generated method stub
 		super.setBotLenght(isShort);
+	}
+
+	public String getType() {
+		return type;
 	}
 
 	

@@ -11,7 +11,9 @@ public class Client {
 	
 	
 	public void speak() {
-		System.out.println("Je porte un haut de type : " + this.top.getName() + " et un bas de type : " + this.bottom.getName());
+		String bottomDescrib = "Mon bas est le suivant : \n" + this.bottom.getDescription();
+		String topDescrib = "Mon haut est le suivant : \n" + this.top.getDescription();
+		System.out.println(topDescrib +"\n\n"+ bottomDescrib); 
 	}
 
 	public String getName() {

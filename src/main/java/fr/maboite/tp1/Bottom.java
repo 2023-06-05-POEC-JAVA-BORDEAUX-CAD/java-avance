@@ -6,11 +6,10 @@ public class Bottom implements ICloth {
 	Boolean isShort;
 	
 	@Override
-	public void display() {
+	public String getDescription() {
 		// TODO Auto-generated method stub
-		System.out.println(this.name);
-		System.out.println(this.isShort);
-
+		String isShortString = isShort? "Oui": "non";;
+		return "designation : " + this.name + "\nBas court : " + isShortString;
 	}
 
 	public String getName() {
