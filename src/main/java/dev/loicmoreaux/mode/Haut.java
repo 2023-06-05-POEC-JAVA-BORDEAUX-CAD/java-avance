@@ -12,7 +12,6 @@ public class Haut implements Vetement {
 	public Haut() {	}
 	
 	public Haut(String nom) {
-		super();
 		this.nom = nom;
 	}
 
@@ -33,7 +32,7 @@ public class Haut implements Vetement {
 	@Override
 	public void affiche() {
 		// TODO Auto-generated method stub
-		
+		System.out.println("Je suis un haut");
 	}
 	
 }
