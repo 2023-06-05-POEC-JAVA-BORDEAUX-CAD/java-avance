@@ -20,7 +20,6 @@ public class JsonMaker {
 		JsonMaker jsonMaker = new JsonMaker();
 		String json = new ObjectMapper().writeValueAsString(jsonMaker.getList());
 		System.out.println(json);
-
 	}
 
 	public List<MonBean> getList() {
