@@ -4,7 +4,7 @@ public class MyNewClassWithMultiThread {
 
 	public static void main(String[] args) {
 		
-		MyNewThread nt = new MyNewThread();
+		MyNewThread nt = new MyNewThread("sec thread");
 		nt.start();
 		
 		MyNewThreadRunnable ntr = new MyNewThreadRunnable();
