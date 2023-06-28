@@ -9,8 +9,13 @@ public class Haut implements Vetement {
 	/*
 	 * Constructor
 	 */
-	public Haut() {}
+	public Haut() {	}
 	
+	public Haut(String nom) {
+		super();
+		this.nom = nom;
+	}
+
 	/*
 	 * Getters
 	 */
