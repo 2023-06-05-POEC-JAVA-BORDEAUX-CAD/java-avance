@@ -1,10 +1,10 @@
 package fr.maboite.tphabit;
 
 public class Client {
-    String nom;
-    String prenom;
-    Haut haut;
-    Bas bas;
+    private String nom;
+    private String prenom;
+    private Haut haut;
+    private Bas bas;
 
     public String getNom() {
         return nom;
@@ -39,6 +39,8 @@ public class Client {
     }
 
     public void parle() {
-        System.out.println("Le client parle (" + this.nom + ")");
+        System.out.println("Client [nom=" + nom + ", prenom=" + prenom + "]");
+        haut.affiche();
+        bas.affiche();
     }
 }
