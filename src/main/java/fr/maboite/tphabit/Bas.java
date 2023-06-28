@@ -1,8 +1,8 @@
 package fr.maboite.tphabit;
 
 public class Bas implements Vetement {
-    String nom;
-    Boolean longueur;
+    private String nom;
+    private Boolean longueur;
 
     public String getNom() {
         return nom;
