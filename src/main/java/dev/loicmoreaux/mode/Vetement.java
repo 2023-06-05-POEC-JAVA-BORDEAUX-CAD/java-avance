@@ -2,6 +2,5 @@ package dev.loicmoreaux.mode;
 
 public interface Vetement {
 	
-	void affiche();
-
+	public void affiche();
 }
