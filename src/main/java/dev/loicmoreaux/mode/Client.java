@@ -34,4 +34,12 @@ public class Client {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
+	
+	/*
+	 * Methods
+	 */
+	public void parle() {
+		System.out.println("Nom du client : " + this.getNom());
+		System.out.println("Prénom du client : " + this.getPrenom());
+	}
 }
