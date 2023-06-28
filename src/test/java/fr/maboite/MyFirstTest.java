@@ -24,8 +24,17 @@ public class MyFirstTest {
 		int expectedValue = 4;
 		int computedValue = 2 + 2;
 		assertEquals(expectedValue, computedValue);
+		
 	}
+	
+	
 
+	public void testAutre() {
+		int expectedValue = 4;
+		int computedValue = 2 + 2;
+		assertEquals(expectedValue, computedValue);
+		
+	}
 	@Test
 	@Disabled
 	public void testFailure() {
