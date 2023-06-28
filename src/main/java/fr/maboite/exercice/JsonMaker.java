@@ -3,6 +3,9 @@ package fr.maboite.exercice;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import fr.maboite.MonBean;
 
 public class JsonMaker {
@@ -10,9 +13,13 @@ public class JsonMaker {
 	/**
 	 * Doit afficher sur la console la version JSON de getList()
 	 * @param args
+	 * @throws JsonProcessingException 
+	 * 
 	 */
-	public static void main(String[] args)  {
+	public static void main(String[] args) throws JsonProcessingException  {
 		JsonMaker jsonMaker = new JsonMaker();
+		String json = new ObjectMapper().writeValueAsString(jsonMaker.getList());
+		System.out.println(json);
 	}
 	
 	public List<MonBean> getList(){
