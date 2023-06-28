@@ -32,7 +32,7 @@ public class Haut implements Vetement {
 	@Override
 	public void affiche() {
 		// TODO Auto-generated method stub
-		System.out.println("Je suis un haut");
+		System.out.println("Description du haut : " + this.getNom());
 	}
 	
 }

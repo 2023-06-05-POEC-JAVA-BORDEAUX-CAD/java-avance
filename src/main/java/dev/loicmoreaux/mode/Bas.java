@@ -39,7 +39,7 @@ public class Bas implements Vetement{
 	@Override
 	public void affiche() {
 		// TODO Auto-generated method stub
-		System.out.println("Je suis un Bas");
+		System.out.println("Description du bas : " + this.getNom() + ", longueur : " + this.getLongueur() + "cm");
 		
 	}
 	
