@@ -39,6 +39,7 @@ public class Bas implements Vetement{
 	@Override
 	public void affiche() {
 		// TODO Auto-generated method stub
+		System.out.println("Je suis un Bas");
 		
 	}
 	
