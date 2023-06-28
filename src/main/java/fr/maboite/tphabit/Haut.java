@@ -1,7 +1,7 @@
 package fr.maboite.tphabit;
 
 public class Haut implements Vetement {
-    String nom;
+    private String nom;
 
     public String getNom() {
         return nom;
