@@ -2,9 +2,12 @@ package fr.maboite;
 
 public class Factorial {
 
-	public Integer compute(int i) {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer compute(int number) {
+		if (number == 0 || number == 1) {
+            return 1;
+        } else {
+            return number * compute(number - 1);
+        }
 	}
 
 }
