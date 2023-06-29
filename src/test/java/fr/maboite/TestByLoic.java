@@ -5,9 +5,32 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class TestByLoic {
+	@BeforeEach
+	public void methodBeforeEach() {
+		System.out.println("-- BeforeEach");
+	}
+	
+	@AfterEach
+	public void methodAfterEach() {
+		System.out.println("   AfterEach --");
+	}
+	
+	@BeforeAll
+	public static void methodBeforeAll() {
+		System.out.println("-- BeforeAll --");
+	}
+	
+	@AfterAll
+	public static void methodAfterAll() {
+		System.out.println("-- AfterAll --");
+	}
 	
 	@Test
 	public void testSuccess(){
