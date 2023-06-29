@@ -14,6 +14,17 @@ public class Client {
 		ht.affiche();
 		bs.affiche();
 	}
+	
+
+	public Client(Haut haut, Bas bas) {
+		super();
+		this.haut = haut;
+		this.bas = bas;
+	}
+
+
+	public Client() {
+	}
 
 	public String getNom() {
 		return this.nom;
@@ -23,7 +34,7 @@ public class Client {
 
 		return this.prenom;
 	}
-	
+
 	public void setHaut(Haut haut) {
 		this.haut = haut;
 	}
@@ -35,7 +46,7 @@ public class Client {
 	public Bas getBas() {
 		return this.bas;
 	}
-	
+
 	public Haut getHaut() {
 		return this.haut;
 	}
