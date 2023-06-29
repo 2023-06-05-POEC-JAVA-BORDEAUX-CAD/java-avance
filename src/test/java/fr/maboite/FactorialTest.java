@@ -47,5 +47,11 @@ public class FactorialTest {
 		Factorial factorial = new Factorial();
 		Assertions.assertEquals(479_001_600, factorial.compute(12));
 	}
+	
+	@Test
+	public void testCalculateStringSum() {
+		Factorial factorial = new Factorial();
+		Assertions.assertEquals(3, factorial.countWords("Je, suis, Simon"));
+	}
 
 }
