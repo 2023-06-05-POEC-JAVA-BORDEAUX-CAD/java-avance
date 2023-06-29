@@ -20,7 +20,10 @@ public class JsonMaker {
 		JsonMaker jsonMaker = new JsonMaker();
 		String json = new ObjectMapper().writeValueAsString(jsonMaker.getList());
 		System.out.println(json);
-
+		
+		while(true) {
+			System.out.println(10 / jsonMaker.getNumber());
+		}
 	}
 
 	public List<MonBean> getList() {
@@ -38,6 +41,22 @@ public class JsonMaker {
 
 		return list;
 
+	}
+	
+	
+	/**
+	 * Renvoie un nombre entre un et 10
+	 * @return
+	 */
+	private int getNumber() {
+		//
+		int i = 0;
+		while(i < 12) {
+			i++;
+		}
+		System.out.println("lkjklj");
+		
+		return (int) (Math.random() * 10) + 1;
 	}
 
 }
