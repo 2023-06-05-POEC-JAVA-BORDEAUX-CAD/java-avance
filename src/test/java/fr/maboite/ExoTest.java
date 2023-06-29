@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
@@ -65,5 +66,13 @@ public class ExoTest {
         VoidClass t1 = new VoidClass();
         VoidClass t2 = t1;
         assertSame(t1, t2); // check ref
+    }
+
+    @Test
+    public void toujoursThrows() {
+        assertThrows(ArithmeticException.class, () -> {
+            int x = 2 / 0;
+            System.out.println("        x: " + x);
+        });
     }
 }
