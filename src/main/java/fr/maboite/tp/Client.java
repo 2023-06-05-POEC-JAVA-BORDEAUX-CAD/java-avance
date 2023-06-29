@@ -52,13 +52,3 @@ public class Client {
 	}
 	
 }
-
-public class Heritage {
-    public static void main(String[] args) {
-        Client client1 = new Client("Dufour", "Géraldine", "Tshirt", "Jupe");
-        
-        
-        
-        client1.parle();
-    }
-}

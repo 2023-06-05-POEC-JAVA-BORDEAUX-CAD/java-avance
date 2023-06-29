@@ -6,10 +6,5 @@ public class TestJoinThread extends Thread{
 		
 		TestJoinRunnable testJoinRunnable = new TestJoinRunnable();
 		Thread testJoinThread = new Thread(testJoinRunnable);
-		
-		testJoinThread.start();
-		testJoinThread.join();
-		
-		System.out.println(testJoinRunnable.getX());
 	}
 }
