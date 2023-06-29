@@ -1,0 +1,20 @@
+package fr.maboite.TP;
+
+public class Haut implements Vetement{
+	
+	private String nom;
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	@Override
+	public void affiche() {
+		System.out.println("Nom du haut : " + nom);
+	}
+
+}
