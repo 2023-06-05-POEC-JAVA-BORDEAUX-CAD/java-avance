@@ -9,11 +9,11 @@ public class ModeApp {
 		bottom.setBotLenght(true);
 		Tshirt tshirt = new Tshirt();
 		tshirt.setName("tshirt");
-		
+
 		client.setTop(tshirt);
 		client.setBottom(bottom);
-		
+
 		client.speak();
 	}
-	
+
 }

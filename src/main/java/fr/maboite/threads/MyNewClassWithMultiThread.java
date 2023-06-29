@@ -37,7 +37,6 @@ public class MyNewClassWithMultiThread {
 		trts3.start();
 		trts3.join();
 		System.out.println(rts3.getRes());
-		
 	}
 	
 }
