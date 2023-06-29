@@ -1,5 +1,8 @@
 package fr.maboite;
 
+/**
+ * Calcule des aires ...
+ */
 public class CalculateurAire {
 	
 	/**
@@ -18,8 +21,32 @@ public class CalculateurAire {
 	 * @param b
 	 * @return
 	 */
-	public int aireRectangle(int longueurCoteA, int longueurCoteB) {
+	public double aireRectangle(double longueurCoteA, double longueurCoteB) {
 		return longueurCoteA * longueurCoteB;
+	}
+	
+	/**
+	 * Retourne l'aire d'un cercle de rayon r
+	 * @param r
+	 * @throws IllegalArgumentException si r est négatif
+	 * @return
+	 */
+	public double aireCercle(double rayon) {
+		if(rayon < 0) {
+			throw new IllegalArgumentException("Impossible de calculer l'aire d'un cercle dont le rayon est négatif");
+		}
+		
+		return Math.PI * rayon * rayon;
+	}
+
+	/**
+	 * Retourne l'aire d'un triangle rectanble de base b et de hauteur h
+	 * @param i
+	 * @param j
+	 * @return
+	 */
+	public double aireTriangleRectangle(double base, double hauteur) {
+		return (base * hauteur)/2 ;
 	}
 
 }
