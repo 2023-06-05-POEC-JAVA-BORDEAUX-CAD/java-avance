@@ -6,33 +6,44 @@ import org.junit.jupiter.api.Test;
 public class MonTest {
 	
 	@Test
-	public void methodeErreur()
-	{
-		//Arrange
-		int a = 1;
-		int b = 2;
-		
-		//Act
-		int somme = a*b;
+	public void methodeAssertTrue(){
 		
 		//Assert
-		Assertions.assertEquals(3,somme);
+		Assertions.assertTrue(false);
 	}
 	
+	
 	@Test
-	public void methodeBien()
-	{
+	public void assertAssertFalse(){
 		
-		//Arrange
-		int a = 1;
-		int b = 2;
-				
-		//Act
-		int somme = a+b;
-				
 		//Assert
-		Assertions.assertEquals(3,somme);
+		Assertions.assertFalse(false);
 		
 	}
+	
+	
+	@Test
+	public void methodeAssertEquals(){
+		
+		//Arrange
+		String expected = "Hello";
+		String actual = new String("Hello");
+
+		//Assert
+		Assertions.assertEquals(expected,actual);	
+	}
+	
+	
+	@Test
+	public void methodeAssertSame(){
+		
+		//Arrange
+		String expected = "Hello";
+		String actual = new String("Hello");;
+				
+		//Assert
+		Assertions.assertSame(expected,actual);
+	}
+	
 
 }
