@@ -31,16 +31,16 @@ public class AreaCalcTest {
 	
 	@Test
 	public void assertsame() {
-		AreaCalculator ac = new AreaCalculator();
-		AreaCalculator ac2 = ac;
+		String a = new String("Hello");
+		String b = new String("Hello");
 		
-		assertSame(ac, ac2);
+		assertSame(a, b);
 	}
 	
 	
 	@Test void assertEqualsClass() {
-		AreaCalculator ac = new AreaCalculator();
-		AreaCalculator ac2 = ac;
-		assertEquals(ac, ac2);
+		String a = new String("Hello");
+		String b = new String("Hello");
+		assertEquals(a, b);
 	}
 }
