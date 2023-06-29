@@ -3,6 +3,17 @@ package fr.maboite.exercice;
 import org.junit.jupiter.api.*;
 
 public class ExerciceJUnit1 {
+	
+	@BeforeAll
+	public static void addBeforeAll() {
+		System.out.println("BeforeAll lancé");
+	}
+	
+	@BeforeEach
+	public void addBeforeEach() {
+		System.out.println("BeforeEach lancé");
+	}
+	
 	// assertEquals permet de comparer les deux paramètres pour vérifier qu’ils sont égaux
 	@Test
 	public void testSuccess() {
@@ -39,7 +50,26 @@ public class ExerciceJUnit1 {
 
 	// assertSame permet de vérifier que les deux objets passés en paramètre sont en fait le même objet
 	@Test
-	public void testFailure3() {
-		Assertions.assertSame(13, "13");
+	public void testSameSuccess() {
+		String s1 = "Hello";
+		String s2 = "Hello";
+		Assertions.assertSame(s1, s2);
+	}
+	
+	@Test
+	public void testSameFailure() {
+		String s1 = new String("Hello");
+		String s2 = new String("Hello");
+		Assertions.assertSame(s1, s2);
+	}
+	
+	@AfterEach
+	public void addAfterEach() {
+		System.out.println("AfterEach lancé");
+	}
+	
+	@AfterAll
+	public static void addAfterAll() {
+		System.out.println("AfterAll lancé");
 	}
 }
