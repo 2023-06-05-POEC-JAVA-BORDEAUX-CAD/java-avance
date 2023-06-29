@@ -20,7 +20,7 @@ public class TestByLoic {
 	}
 	
 	@Test
-	public void testassertFalseSuccess(){
+	public void testAssertFalseSuccess(){
 		assertFalse(false);;
 	}
 	
@@ -33,7 +33,7 @@ public class TestByLoic {
 	
 	@Test
 	public void testSameSucess() {
-		// test l'égalité des références des objets
+		// test si deux objets font référence au même objet en mémoire
 		String reference = new String("it's a Trap!");
 		String valueToTest = reference;
 		assertSame(reference, valueToTest);
@@ -41,7 +41,7 @@ public class TestByLoic {
 	
 	@Test
 	public void testSameFail() {
-		// test l'égalité des références des objets
+		// test si deux objets font référence au même objet en mémoire
 		String reference = new String("it's a Trap!");
 		String valueToTest = new String("it's a Trap!");
 		assertSame(reference, valueToTest);
