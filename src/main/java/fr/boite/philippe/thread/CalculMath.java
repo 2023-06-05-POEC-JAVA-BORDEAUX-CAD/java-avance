@@ -15,7 +15,10 @@ public class CalculMath {
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		System.out.println("Calcul long est lance");
-		
+		/*
+		 * 
+		 * 
+		 */
 		CalculMathRunnable calculMathRunnable = new CalculMathRunnable();
 		calculMathRunnable.setA(20);
 		calculMathRunnable.setB(15);
