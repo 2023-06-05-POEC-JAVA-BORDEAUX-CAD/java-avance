@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import fr.maboite.tests.*;
 
 
@@ -49,6 +50,20 @@ public class AreaCalcTest {
 		Integer expectedValue = ac.calcSquareArea(5);
 		int computedValue = 5*5;
 		assertEquals(expectedValue, computedValue);
+	}
+	
+	@Test
+	public void circle_aera() {
+		Double expectedValue = 3.14*5.2*2;
+		Double computedValue = ac.calcCircleAera(5.2);
+		assertEquals(expectedValue, computedValue, 0.1);
+		
+	}
+	
+	@Test
+	public void circle_aera_exception() {
+		assertThrows(IllegalArgumentException.class, ()-> ac.calcCircleAera(-1.0));
+		
 	}
 
 	@Test
