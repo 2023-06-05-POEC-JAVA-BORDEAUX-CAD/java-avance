@@ -35,10 +35,19 @@ public class AppServlet extends HttpServlet {
             
             String catId = request.getParameter("cat-id");
             if (catId != null && catId.length() > 0) {
-                Catdao catdao = new Catdao();
-                Cat cat = catdao.getcat(catId);
-                out.println("<p>" + cat + "<p>");
-            } else out.println("<p>Erreur Cat sans Cat :(</p>");
+                CatDAO catdao = new CatDAO();
+                Cat cat = catdao.getCat(Integer.valueOf(catId));
+                if(cat != null) {
+                	PojoToJson catJson = new PojoToJson();
+                    out.println("<p>" + catJson.toJson(cat) + "<p>");
+                } else {
+                	response.setStatus(404);
+                	out.println("<p>Erreur Cat sans Cat :(</p>");
+                }
+                
+                
+            } else out.println("<p>Entrez un cat-id dans la barre d'adresse</p>");
+            
             
             out.println("</body></html>");
         }
