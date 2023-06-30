@@ -8,7 +8,7 @@ public class Factorial {
 		
 		for(i=1;i<=input;i++){    
 		      fact=fact*i;    
-		  }    
+		  }
 		
 		return fact;
 	}
