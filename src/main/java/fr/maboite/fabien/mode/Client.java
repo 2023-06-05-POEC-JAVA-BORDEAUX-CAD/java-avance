@@ -1,6 +1,7 @@
 package fr.maboite.fabien;
 
 public class Client {
+	
 	private String nom;
 	private String prenom;
 	public Client(String string, String string2, Haut haut1, Bas bas1) {

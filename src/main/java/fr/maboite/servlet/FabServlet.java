@@ -9,8 +9,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(name="Fab", displayName="Welcome Fab", urlPatterns = "/welcome", loadOnStartup = 1)
-public class WelcomeServlet extends HttpServlet {
+@WebServlet(name="Fab's Welcome page", displayName="Welcome People", urlPatterns = "/fab", loadOnStartup = 1)
+public class FabServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -23,10 +23,11 @@ public class WelcomeServlet extends HttpServlet {
         response.setBufferSize(8192);
         try (PrintWriter out = response.getWriter()) {
             out.println("<html>"
-                    + "<head><title>Générée par une servlet</title></head>");
+                    + "<head><title>Générée par Fabolo</title></head>");
             out.println("<body  bgcolor=\"#ffffff\">"
-                    + "<h2>Quelle belle page générée dynamiquement !!!</h2>"
-                    + "<h2>Quelle belle page générée dynamiquement !!!</h2>");
+            		+ "<h1>BOUM, je teste ce que ça donne !!!</h1>"
+            		+ "<h2>Coucou, je teste ce que ça donne !!!</h2>"
+            		+ "<h2>C'est gavé cool</h2>");
             
             String username = request.getParameter("username");
             if (username != null && username.length() > 0) {
@@ -45,7 +46,7 @@ public class WelcomeServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		System.out.println("Init terminé");
+		System.out.println("Init Fab terminé");
 	}
     
     
