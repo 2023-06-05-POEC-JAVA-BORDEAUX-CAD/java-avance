@@ -35,21 +35,3 @@ abstract class Bas implements Vetement {
 		System.out.println("Habillé en bas");
 	}	
 }
-
-class Pantalon extends Bas {
-	public Pantalon(String nom, Integer longueur) {
-		super(nom, longueur);
-	}
-}
-
-class Jupe extends Bas {
-	public Jupe(String nom, Integer longueur) {
-		super(nom, longueur);
-	}
-}
-
-class Short extends Bas {
-	public Short(String nom, Integer longueur) {
-		super(nom, longueur);
-	}
-}

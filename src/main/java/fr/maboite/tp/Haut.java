@@ -24,15 +24,3 @@ abstract class Haut implements Vetement {
 		System.out.println("Habillé en haut");
 	}	
 }
-
-class Tshirt extends Haut {
-	public Tshirt(String nom) {
-		super(nom);
-	}
-}
-
-class Chemise extends Haut {
-	public Chemise(String nom) {
-		super(nom);
-	}
-}
