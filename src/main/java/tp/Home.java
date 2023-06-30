@@ -9,8 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-// Map<String, String> langues = new HashMap<>();
-// https://docs.oracle.com/javase/8/docs/api/java/util/Map.html
+
 
 @WebServlet(name = "Accueil", displayName = "Accueil du TP", urlPatterns = "/", loadOnStartup = 1)
 public class Home extends HttpServlet {
@@ -39,9 +38,9 @@ public class Home extends HttpServlet {
 			return;
 		}
 
-		response.setContentType("application/json");
+		response.setContentType("application/json"); // pour indiquer au Nav qu'on lui envoie du Json
 		try (PrintWriter out = response.getWriter()) {
-			out.println(PojoToJson.toJson(pojo));
+			out.println(PojoToJson.toJson(pojo));  // affichage sur le Nav en format Json
 		}
 	}
 }
