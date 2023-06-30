@@ -19,21 +19,21 @@ public class PojoServlet extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
 
-        response.setContentType("text/html");
+        response.setContentType("application/json");
         response.setBufferSize(8192);
-        try (PrintWriter out = response.getWriter()) {
-            out.println("<html>"
-                    + "<head><title>Générée par une servlet</title></head>");
-            out.println("<body  bgcolor=\"#ffffff\">"
-                    + "<h2>Quelle belle page générée dynamiquement !!!</h2>");
-            
+        try (PrintWriter out = response.getWriter()) {            
             String id = request.getParameter("id");
             Integer id_pojo = Integer.parseInt("id");
             if (id_pojo != null) {
+                PojoDao pojoDao = new PojoDao();
+                Pojo test = pojoDao.getPojo(id_pojo);
                 Pojo pojo = new Pojo();
                 pojo.setId(id_pojo);
+                pojo.setPojo(test.getPojo());
+                PojoToJson pojoToJson = new PojoToJson();
+                String printPojo = pojoToJson.toJson(pojo);
+                out.println(printPojo);
             }
-            out.println("</body></html>");
         }
     }
 
