@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "Accueil", displayName = "Accueil du TP", urlPatterns = "/", loadOnStartup = 1)
 public class Home extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 	private PojoDao dao = new PojoDao();
 
 	@Override
