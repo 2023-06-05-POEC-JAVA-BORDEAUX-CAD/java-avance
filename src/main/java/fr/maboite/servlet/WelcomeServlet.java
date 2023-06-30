@@ -10,10 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(name="Welcome", 
-	displayName="Welcome Servlet", 
-	urlPatterns = "/welcome", 
-	loadOnStartup = 1)
+@WebServlet(name="Welcome1", displayName="Welcome Servlet1", urlPatterns = "/welcome", loadOnStartup = 1)
 public class WelcomeServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
