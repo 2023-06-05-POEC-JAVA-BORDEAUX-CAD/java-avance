@@ -3,16 +3,14 @@
  */
 package fr.boite.vetement.philippe;
 
-/**
- * 
- */
+
 public class Bas implements Vetement {
 
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public void affiche() {
+		
 
 	}
 
