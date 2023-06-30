@@ -1,6 +1,6 @@
 package fr.maboite.fabien;
 
-public class MonThread extends Thread {
+public class ThreadMain {
 
     public void run() {
         // j'execute le code ??
@@ -9,10 +9,15 @@ public class MonThread extends Thread {
 
     public static void main(String[] args) {
         // Création et démarrage d'une instance de MonThread
-        MonThread monThread = new MonThread();
+    	Thread monThread = new Thread();
         monThread.start();
 
+        MonThreadAfficheAutre t= new MonThreadAfficheAutre();     
+        Thread y =new Thread(t);
+        y.start();
         // Le reste du code dans la méthode main continue à s'exécuter
         System.out.println("Le thread principal toujours en cours.");
+        
+ 
     }
 }
