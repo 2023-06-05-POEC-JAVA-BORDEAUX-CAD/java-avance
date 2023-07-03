@@ -3,7 +3,15 @@ package fr.groupe2.webserver;
 import java.util.HashMap;
 import java.util.Map;
 
+import jakarta.ejb.Singleton;
+//import jakarta.ejb.Stateless;
+import jakarta.inject.Inject;
+
+@Singleton
 public class CatDAO {
+	
+	@Inject
+	private Dog dog;
 
     private Map<Integer, Cat> cats = new HashMap<>();
 
@@ -17,5 +25,9 @@ public class CatDAO {
     public Cat getCat(Integer id){
 
         return cats.get(id);
+    }
+    
+    public String getDogName() {
+    	return dog.getName();
     }
 }
