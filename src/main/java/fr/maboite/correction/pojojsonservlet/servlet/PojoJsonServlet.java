@@ -18,7 +18,10 @@ import jakarta.servlet.http.HttpServletResponse;
  * JSON une instance de POJO avec l'id XXX, ou une réponse 404 si aucune n'est
  * trouvée.
  */
-@WebServlet(name = "PojoJson", displayName = "Pojo to JSON Servlet", urlPatterns = "/pojo", loadOnStartup = 1)
+@WebServlet(name = "PojoJson", 
+displayName = "Pojo to JSON Servlet", 
+urlPatterns = "/pojo", 
+loadOnStartup = 1)
 public class PojoJsonServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

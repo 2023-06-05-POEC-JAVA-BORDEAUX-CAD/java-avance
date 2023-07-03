@@ -38,7 +38,6 @@ public class PojoDao {
 
 	public Pojo getPojo(Integer id) {
 		return this.pojos.get(id);
-		
 	}
 	
 }
