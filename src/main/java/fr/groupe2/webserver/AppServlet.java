@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import java.io.PrintWriter;
 
- 
+import com.google.inject.Inject;
 
 import jakarta.servlet.ServletException;
 
@@ -19,105 +19,89 @@ import jakarta.servlet.http.HttpServletRequest;
 
 import jakarta.servlet.http.HttpServletResponse;
 
- 
-
-@WebServlet(name="Cat", displayName="Cat Servlet", urlPatterns = "/cat", loadOnStartup = 1)
+@WebServlet(name = "Cat", displayName = "Cat Servlet", urlPatterns = "/cat", loadOnStartup = 1)
 
 public class AppServlet extends HttpServlet {
 
-    
+	private static final long serialVersionUID = 1L;
 
-    private static final long serialVersionUID = 1L;
+	@Inject
+	private CatDAO catDAO;
 
- 
-    @Override
+	@Override
+	public void doGet(HttpServletRequest request,
 
-    public void doGet(HttpServletRequest request,
+			HttpServletResponse response)
 
-            HttpServletResponse response)
+			throws ServletException, IOException {
 
-            throws ServletException, IOException {
+		response.setContentType("text/html");
+		if (catDAO != null) {
+			System.out.println("philippe");
+		}
+		System.out.println("cat");
+		response.setBufferSize(8192);
 
- 
+		try (PrintWriter out = response.getWriter()) {
 
-        response.setContentType("text/html");
+			out.println("<html>"
 
-        response.setBufferSize(8192);
+					+ "<head><title>Hello Cat !</title>"
 
-        try (PrintWriter out = response.getWriter()) {
+					+ "<style>"
 
-            out.println("<html>"
+					+ "*{margin: 0; padding: 0;}"
 
-                    + "<head><title>Hello Cat !</title>"
+					+ "body{background-color: #333; color: #fff;text-align:center;font-family:sans-serif;}"
 
-                    + "<style>"
+					+ "h1{margin: auto; font-size: 50px;}"
 
-                    + "*{margin: 0; padding: 0;}"
+					+ "</style>"
 
-                    + "body{background-color: #333; color: #fff;text-align:center;font-family:sans-serif;}"
+					+ "</head>");
 
-                    + "h1{margin: auto; font-size: 50px;}"
+			out.println("<body>");
 
-                    + "</style>"
+			out.println("<h1>Cat</h1>");
 
-                    + "</head>");
+			String catId = request.getParameter("cat-id");
 
-            out.println("<body>");
+			if (catId != null && catId.length() > 0) {
 
-            out.println("<h1>Cat</h1>");
+				CatDAO catdao = new CatDAO();
 
-            
+				Cat cat = catdao.getCat(Integer.valueOf(catId));
 
-            String catId = request.getParameter("cat-id");
+				if (cat != null) {
 
-            if (catId != null && catId.length() > 0) {
+					PojoToJson catJson = new PojoToJson();
 
-                CatDAO catdao = new CatDAO();
+					out.println("<p>" + catJson.toJson(cat) + "<p>");
 
-                Cat cat = catdao.getCat(Integer.valueOf(catId));
+				} else {
 
-                if(cat != null) {
+					response.setStatus(404);
 
-                	PojoToJson catJson = new PojoToJson();
+					out.println("<p>Erreur Cat sans Cat :(</p>");
 
-                    out.println("<p>" + catJson.toJson(cat) + "<p>");
+				}
 
-                } else {
+			} else
+				out.println("<p>Entrez un cat-id dans la barre d'adresse</p>");
 
-                    response.setStatus(404);
+			out.println("</body></html>");
 
-                    out.println("<p>Erreur Cat sans Cat :(</p>");
+		}
 
-                }
+	}
 
-             
+	@Override
+	public void init() throws ServletException {
 
-                
+		super.init();
 
-            } else out.println("<p>Entrez un cat-id dans la barre d'adresse</p>");
+		System.out.println("Init Cat Servlet ok");
 
-            
-
-            
-
-            out.println("</body></html>");
-
-        }
-
-    }
-
- 
-
-    @Override
-
-    public void init() throws ServletException {
-
-        super.init();
-
-        System.out.println("Init Cat Servlet ok");
-
-    }
+	}
 
 }
-
- 

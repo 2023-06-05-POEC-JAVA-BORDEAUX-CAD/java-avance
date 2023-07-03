@@ -7,8 +7,8 @@ package fr.groupe2.webserver;
  * 
  */
 public class Cat {
-    String name;
-    Integer id;
+  private String name;
+  private Integer id;
     
     public Cat() {}
     

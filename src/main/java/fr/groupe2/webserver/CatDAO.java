@@ -6,10 +6,14 @@ package fr.groupe2.webserver;
 import java.util.HashMap;
 import java.util.Map;
 
+import jakarta.ejb.Singleton;
+import jakarta.ejb.Stateless;
+
 
 /**
  * 
  */
+@Singleton
 public class CatDAO {
 	 private Map<Integer, Cat> catMap;
 	
