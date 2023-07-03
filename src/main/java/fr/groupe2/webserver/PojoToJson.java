@@ -6,8 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class PojoToJson {
 
 	public String toJson(Cat cat) throws JsonProcessingException {
-		String json = new ObjectMapper().writeValueAsString(cat);
-		return json;
+		return new ObjectMapper().writeValueAsString(cat);
+		
 	}
 
 }
