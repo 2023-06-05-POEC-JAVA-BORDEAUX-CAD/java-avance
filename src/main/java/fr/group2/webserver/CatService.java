@@ -11,6 +11,8 @@ public class CatService {
 	
 	
 	public Cat getCat(Integer id) {
+		
+		
 		return catDAO.getCat(id);
 	}
 	
