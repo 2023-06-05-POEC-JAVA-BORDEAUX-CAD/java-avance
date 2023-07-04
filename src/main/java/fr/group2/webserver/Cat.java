@@ -1,5 +1,8 @@
 package fr.group2.webserver;
 
+import jakarta.annotation.ManagedBean;
+
+
 public class Cat {
 	String name;
 	Integer id;

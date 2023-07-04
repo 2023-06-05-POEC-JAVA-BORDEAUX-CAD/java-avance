@@ -2,6 +2,8 @@ package fr.group2.webserver;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,6 +14,12 @@ import jakarta.servlet.http.HttpServletResponse;
 public class AppServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	
+	@Inject
+	private CatDAO catdao;
+	
+	@Inject
+	private PojoToJson catJson;
 
 	@Override
 	public void doGet(HttpServletRequest request,HttpServletResponse response)
@@ -36,11 +44,8 @@ public class AppServlet extends HttpServlet {
 			String catId = request.getParameter("cat-id");
 			
 			if (catId != null && catId.length() > 0) {
-
-				CatDAO catdao = new CatDAO();
 				Cat cat = catdao.getCat(Integer.valueOf(catId));
 				if (cat != null) {
-					PojoToJson catJson = new PojoToJson();
 					out.println("<p>" + catJson.toJson(cat) + "<p>");
 				} else {
 					response.setStatus(404);
