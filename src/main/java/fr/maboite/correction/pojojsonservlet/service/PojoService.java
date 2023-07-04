@@ -9,7 +9,10 @@ import org.omg.Security.DayOfTheWeek;
 import fr.maboite.correction.pojojsonservlet.dao.PojoDaoInterface;
 import fr.maboite.correction.pojojsonservlet.pojo.Pojo;
 import jakarta.ejb.Stateless;
+import jakarta.enterprise.inject.Default;
 import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import jakarta.inject.Qualifier;
 
 @Stateless
 public class PojoService {

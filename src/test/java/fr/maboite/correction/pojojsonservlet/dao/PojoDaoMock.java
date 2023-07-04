@@ -6,7 +6,6 @@ import jakarta.ejb.Stateless;
 /**
  * Mock du Pojo Dao
  */
-@Stateless
 public class PojoDaoMock implements PojoDaoInterface {
 
 	@Override
