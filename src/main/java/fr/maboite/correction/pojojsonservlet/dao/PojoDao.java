@@ -4,13 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import fr.maboite.correction.pojojsonservlet.pojo.Pojo;
+import jakarta.ejb.Stateless;
 
 /**
  * Data Access Object: classe permettant 
  * d'accéder en lecture ou écriture au référentiel 
  * de données des Pojos (ici, une simple Map)
  */
-public class PojoDao {
+@Stateless
+public class PojoDao implements PojoDaoInterface {
 	
 	private Map<Integer, Pojo> pojos = new HashMap<>();
 	
@@ -34,9 +36,9 @@ public class PojoDao {
 		this.pojos.put(pojo3.getId(), pojo3);
 	}
 
+	@Override
 	public Pojo getPojo(Integer id) {
 		return this.pojos.get(id);
-		
 	}
 	
 }

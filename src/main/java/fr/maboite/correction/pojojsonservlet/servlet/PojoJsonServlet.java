@@ -3,9 +3,10 @@ package fr.maboite.correction.pojojsonservlet.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import fr.maboite.correction.pojojsonservlet.dao.PojoDao;
 import fr.maboite.correction.pojojsonservlet.json.PojoToJson;
 import fr.maboite.correction.pojojsonservlet.pojo.Pojo;
+import fr.maboite.correction.pojojsonservlet.service.PojoService;
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,14 +14,22 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet agissant quand une requête /pojo?id=XXX
- * doit être traitée. Renvoie en JSON une instance de POJO
- * avec l'id XXX, ou une réponse 404 si aucune n'est trouvée.
+ * Servlet agissant quand une requête /pojo?id=XXX doit être traitée. Renvoie en
+ * JSON une instance de POJO avec l'id XXX, ou une réponse 404 si aucune n'est
+ * trouvée.
  */
-@WebServlet(name = "PojoJson", displayName = "Pojo to JSON Servlet", urlPatterns = "/pojo", loadOnStartup = 1)
+@WebServlet(name = "PojoJson", 
+displayName = "Pojo to JSON Servlet", 
+urlPatterns = "/pojo", 
+loadOnStartup = 1)
 public class PojoJsonServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+
+	@Inject
+	private PojoService pojoService;
+
+	private PojoToJson pojoToJson = new PojoToJson();
 
 	@Override
 	public void doGet(HttpServletRequest request,
@@ -34,10 +43,8 @@ public class PojoJsonServlet extends HttpServlet {
 		if (idParameter != null && idParameter.length() > 0) {
 			try {
 				Integer id = Integer.parseInt(idParameter);
-				PojoDao pojoDao = new PojoDao();
-				Pojo pojo = pojoDao.getPojo(id);
+				Pojo pojo = pojoService.get(id);
 				if (pojo != null) {
-					PojoToJson pojoToJson = new PojoToJson();
 					try (PrintWriter out = response.getWriter()) {
 						out.print(pojoToJson.toJson(pojo));
 						return;
