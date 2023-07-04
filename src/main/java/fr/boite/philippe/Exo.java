@@ -11,46 +11,62 @@ public class Exo {
 	/**
 	 * @param args
 	 */
-	
+
 	public static void main(String[] args) {
+
+		for (Day moment : Day.values()) {
+			if (!moment.equals(Day.MIDI)) {
+				System.out.println("nous sommes actuellement le " + moment.name().toLowerCase()
+						+ " il est actuellement " + moment.getHour() + " h");
+			}
+		}
+		/*
+		 * Day moment = Day.MATIN; System.out.println(moment.name());
+		 * 
+		 * moment = Day.SOIR; // System.out.println(moment.name());
+		 * System.out.println("nous sommes actuellement le " +
+		 * moment.name().toLowerCase() + " il est actuellement " + moment.getHour()
+		 * +" h");
+		 */
+
 		Apple a = new Apple();
 		a.taste();
 		a.miam();
 		PineApple pen = new PineApple();
 		pen.taste();
 		pen.miam();
-	}
-	
-	/*public static void main(String[] args) {
-		
-		Player player1 = new Player();
-		System.out.println("la vie de player1 : " + player1.getHealth());
-		
-		Player player2 = new Player();
-		System.out.println(player2.getName("hassan", 25.5, 3000.6));
-		
-		Player player3 = new Player();
-		System.out.println(player3.getName("yann", 40.5, 100.2));
-		
-		
-	}*/
-	
-	
-	
-	/* public static void main(String[] args) {
-		sentMessage("test");
-		sentMessage("fromage");
-	}
-	private static void sentMessage(String message) {
-		System.out.println("c'est un message :" + message);
-	} */
-	
-	
-	/*public static void main(String[] args) {
-		for (int i = 1; i <= 10; i++) {
-			System.out.println(i);
+
+		if (!(a instanceof PeelFruit)) {
+			System.out.println("ce fruit n'implemente pas l'interface PeelFruit");
 		}
-	}*/
+	}
+
+	/*
+	 * public static void main(String[] args) {
+	 * 
+	 * Player player1 = new Player(); System.out.println("la vie de player1 : " +
+	 * player1.getHealth());
+	 * 
+	 * Player player2 = new Player(); System.out.println(player2.getName("hassan",
+	 * 25.5, 3000.6));
+	 * 
+	 * Player player3 = new Player(); System.out.println(player3.getName("yann",
+	 * 40.5, 100.2));
+	 * 
+	 * 
+	 * }
+	 */
+
+	/*
+	 * public static void main(String[] args) { sentMessage("test");
+	 * sentMessage("fromage"); } private static void sentMessage(String message) {
+	 * System.out.println("c'est un message :" + message); }
+	 */
+
+	/*
+	 * public static void main(String[] args) { for (int i = 1; i <= 10; i++) {
+	 * System.out.println(i); } }
+	 */
 
 	/*
 	 * public static void main(String[] args) { String pseudo = "philippe"; String[]

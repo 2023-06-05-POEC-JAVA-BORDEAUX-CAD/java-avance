@@ -1,6 +1,11 @@
 package fr.boite.philippe;
 
-public class PineApple extends Fruit {
+public class PineApple extends Fruit implements PeelFruit {
+	private boolean peeled = false;
+	
+	public PineApple() {
+		super("ananas");
+	}
 
 	@Override
 	public void taste() {
@@ -19,6 +24,18 @@ public class PineApple extends Fruit {
 	public boolean hasSend() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public boolean isPeeled() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public String getSkinType() {
+		// TODO Auto-generated method stub
+		return "piquante";
 	}
 
 }

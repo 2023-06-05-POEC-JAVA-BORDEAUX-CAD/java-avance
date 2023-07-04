@@ -1,26 +1,23 @@
 package fr.boite.philippe;
 
-public class Apple extends Fruit implements PeelFruit{
+public class Kiwi extends Fruit implements PeelFruit {
 
-	public Apple() {
-		super("pomme");
+	public Kiwi(String name) {
+		super(name);
+		// TODO Auto-generated constructor stub
 	}
-	
-	
+
 	@Override
 	public void taste() {
 		// TODO Auto-generated method stub
-		System.out.println("la pomme à un gout sucré");
-		// accer super class
-		
-		super.miam();
-		
+		System.out.println("le gout est plutot sucré");
+
 	}
 
 	@Override
 	public int getSize() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 1;
 	}
 
 	@Override
@@ -29,21 +26,16 @@ public class Apple extends Fruit implements PeelFruit{
 		return false;
 	}
 
-
 	@Override
 	public boolean isPeeled() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
-
 
 	@Override
 	public String getSkinType() {
 		// TODO Auto-generated method stub
-		return "lisse";
+		return "doux";
 	}
-
-	
-	
 
 }
