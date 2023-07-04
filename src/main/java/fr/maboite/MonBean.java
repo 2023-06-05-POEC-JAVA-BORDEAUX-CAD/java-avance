@@ -64,7 +64,7 @@ public class MonBean {
 		switch (monEnum) {
 		case VALEUR_A:
 			System.out.println("Valeur A");
-			VALEUR_B: System.out.println("Valeur B");
+		case VALEUR_B : System.out.println("Valeur B");
 			break;
 		default:
 			System.out.println("Defaut");

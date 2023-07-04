@@ -1,11 +1,5 @@
 package fr.maboite.correction.pojojsonservlet.service;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.util.Objects;
-
-import org.omg.Security.DayOfTheWeek;
-
 import fr.maboite.correction.pojojsonservlet.dao.PojoDaoInterface;
 import fr.maboite.correction.pojojsonservlet.pojo.Pojo;
 import jakarta.ejb.Stateless;

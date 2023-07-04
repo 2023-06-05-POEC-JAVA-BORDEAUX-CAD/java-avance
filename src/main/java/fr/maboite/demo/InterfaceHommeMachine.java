@@ -11,7 +11,7 @@ public class InterfaceHommeMachine {
 		//...
 		
 		//Si on appuie sur R comme 'répare'
-		ReparateurOrdiDeDorian reparateur = ReparateurOrdiDeDorian.getMonInstance();
+		// ReparateurOrdiDeDorian reparateur = ReparateurOrdiDeDorian.getMonInstance();
 		
 		
 	}

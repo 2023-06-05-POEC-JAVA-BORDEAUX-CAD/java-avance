@@ -3,8 +3,8 @@ package fr.maboite.demo;
 public class Voiture {
 
 	private static int compteurVoitures;
-	private float niveauEssence;
-	private String nom;
+	//private float niveauEssence;
+	//private String nom;
 	
 	/**
 	 * Remplit le réservoir ...
@@ -19,7 +19,7 @@ public class Voiture {
 		//....
 		
 		
-		niveauEssence = 12;
+		//niveauEssence = 12;
 		
 		
 	}

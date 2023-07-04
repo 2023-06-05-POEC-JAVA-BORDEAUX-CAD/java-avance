@@ -28,11 +28,11 @@ public class Horoscope {
 	public void cleanHoroscope() {
 		if (this.horoscopes.size() == 7) {
 			// this.horoscopes.clear();
-			for (String sentenceString : this.horoscopes.values()) {
-				sentenceString = null;
+			//for (String sentenceString : this.horoscopes.values()) {
+				//sentenceString = null;
 			}
 		}
-	}
+	
 
 	public static void main(String[] args) {
 		System.out.println("Appuyer sur une touche pour démarrer la génération");
@@ -45,6 +45,7 @@ public class Horoscope {
 				date = date.plusDays(1);
 			}
 		}
-	}
+	}}
 
-}
+
+

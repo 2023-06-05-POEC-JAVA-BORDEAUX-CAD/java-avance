@@ -9,7 +9,7 @@ import org.locationtech.jts.geom.Triangle;
  */
 public class Calculator {
 	public double calculePlusGrandeLongueur(int x1, int y1, int x2, int y2, int x3, int y3) {
-		int i = 3;
+		//int i = 3;
 		Triangle t = new Triangle(new Coordinate(x1, y1), new Coordinate(x2, y2), new Coordinate(x3, y3));
 		return t.longestSideLength();
 	}
