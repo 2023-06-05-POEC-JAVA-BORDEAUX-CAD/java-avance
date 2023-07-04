@@ -1,7 +1,7 @@
 package fr.maboite.correction.pojojsonservlet.service;
 
 import fr.maboite.correction.pojojsonservlet.dao.PojoDaoInterface;
-import fr.maboite.correction.pojojsonservlet.pojo.Pojo;
+import fr.maboite.correction.pojojsonservlet.pojo.Pojo2;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
@@ -17,13 +17,13 @@ public class PojoService {
 		this.pojoDaoInterfaceImplementation = pojoDao;
 	}
 
-	public void save(Pojo pojo) {
+	public void save(Pojo2 pojo) {
 		// ... ne fait rien
 	}
 
-	public Pojo get(Integer id) {
+	public Pojo2 get(Integer id) {
 		
-		Pojo pojo = pojoDaoInterfaceImplementation.getPojo(id);
+		Pojo2 pojo = pojoDaoInterfaceImplementation.getPojo(id);
 		if (pojo == null) {
 			return null;
 		}

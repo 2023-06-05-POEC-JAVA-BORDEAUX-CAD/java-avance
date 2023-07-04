@@ -5,7 +5,7 @@ package fr.maboite.correction.pojojsonservlet.pojo;
  * CLasse avec un constructeur sans argument, et 
  * un getter et un setter par attribut de la classe.
  */
-public class Pojo {
+public class Pojo2 {
 
 	private Integer id;
 

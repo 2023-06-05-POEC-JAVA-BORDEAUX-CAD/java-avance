@@ -3,8 +3,8 @@ package fr.maboite.correction.pojojsonservlet.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import fr.maboite.correction.pojojsonservlet.json.PojoToJson;
-import fr.maboite.correction.pojojsonservlet.pojo.Pojo;
+import fr.maboite.correction.pojojsonservlet.json.PojoToJson2;
+import fr.maboite.correction.pojojsonservlet.pojo.Pojo2;
 import fr.maboite.correction.pojojsonservlet.service.PojoService;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
@@ -29,7 +29,7 @@ public class PojoJsonServlet extends HttpServlet {
 	@Inject
 	private PojoService pojoService;
 
-	private PojoToJson pojoToJson = new PojoToJson();
+	private PojoToJson2 pojoToJson = new PojoToJson2();
 
 	@Override
 	public void doGet(HttpServletRequest request,
@@ -43,7 +43,7 @@ public class PojoJsonServlet extends HttpServlet {
 		if (idParameter != null && idParameter.length() > 0) {
 			try {
 				Integer id = Integer.parseInt(idParameter);
-				Pojo pojo = pojoService.get(id);
+				Pojo2 pojo = pojoService.get(id);
 				if (pojo != null) {
 					try (PrintWriter out = response.getWriter()) {
 						out.print(pojoToJson.toJson(pojo));

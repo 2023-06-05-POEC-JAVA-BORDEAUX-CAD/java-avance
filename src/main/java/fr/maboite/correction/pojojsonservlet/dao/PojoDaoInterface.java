@@ -1,9 +1,9 @@
 package fr.maboite.correction.pojojsonservlet.dao;
 
-import fr.maboite.correction.pojojsonservlet.pojo.Pojo;
+import fr.maboite.correction.pojojsonservlet.pojo.Pojo2;
 
 public interface PojoDaoInterface {
 
-	Pojo getPojo(Integer id);
+	Pojo2 getPojo(Integer id);
 
 }

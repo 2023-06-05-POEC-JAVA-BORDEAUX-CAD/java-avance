@@ -3,7 +3,7 @@ package fr.maboite.correction.pojojsonservlet.dao;
 import java.util.HashMap;
 import java.util.Map;
 
-import fr.maboite.correction.pojojsonservlet.pojo.Pojo;
+import fr.maboite.correction.pojojsonservlet.pojo.Pojo2;
 import jakarta.ejb.Stateless;
 
 /**
@@ -12,24 +12,24 @@ import jakarta.ejb.Stateless;
  * de données des Pojos (ici, une simple Map)
  */
 @Stateless
-public class PojoDao implements PojoDaoInterface {
+public class PojoDao2 implements PojoDaoInterface {
 	
-	private Map<Integer, Pojo> pojos = new HashMap<>();
+	private Map<Integer, Pojo2> pojos = new HashMap<>();
 	
-	public PojoDao() {
-		Pojo pojo1 = new Pojo();
+	public PojoDao2() {
+		Pojo2 pojo1 = new Pojo2();
 		pojo1.setId(1);
 		pojo1.setName("Hey!");
 		pojo1.setValid(Boolean.TRUE);
 		this.pojos.put(pojo1.getId(), pojo1);
 		
-		Pojo pojo2 = new Pojo();
+		Pojo2 pojo2 = new Pojo2();
 		pojo2.setId(2);
 		pojo2.setName("Hé bien!");
 		pojo1.setValid(Boolean.FALSE);
 		this.pojos.put(pojo2.getId(), pojo2);
 
-		Pojo pojo3 = new Pojo();
+		Pojo2 pojo3 = new Pojo2();
 		pojo3.setId(3);
 		pojo3.setName("Voilà un POJO");
 		pojo1.setValid(Boolean.TRUE);
@@ -37,7 +37,7 @@ public class PojoDao implements PojoDaoInterface {
 	}
 
 	@Override
-	public Pojo getPojo(Integer id) {
+	public Pojo2 getPojo(Integer id) {
 		return this.pojos.get(id);
 	}
 	
