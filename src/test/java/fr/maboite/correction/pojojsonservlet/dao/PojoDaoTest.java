@@ -12,7 +12,7 @@ import jakarta.ejb.EJB;
 public class PojoDaoTest {
 
 	@EJB
-	private PojoDao pojoDao;
+	private PojoDaoInterface pojoDao;
 
 	@org.apache.openejb.testing.Module
 	public EjbJar beans() {

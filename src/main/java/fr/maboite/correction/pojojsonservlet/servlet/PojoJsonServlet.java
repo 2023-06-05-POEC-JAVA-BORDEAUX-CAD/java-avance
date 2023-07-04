@@ -3,9 +3,9 @@ package fr.maboite.correction.pojojsonservlet.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import fr.maboite.correction.pojojsonservlet.dao.PojoDao;
 import fr.maboite.correction.pojojsonservlet.json.PojoToJson;
 import fr.maboite.correction.pojojsonservlet.pojo.Pojo;
+import fr.maboite.correction.pojojsonservlet.service.PojoService;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -27,7 +27,7 @@ public class PojoJsonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private PojoDao pojoDao;
+	private PojoService pojoService;
 
 	private PojoToJson pojoToJson = new PojoToJson();
 
@@ -43,7 +43,7 @@ public class PojoJsonServlet extends HttpServlet {
 		if (idParameter != null && idParameter.length() > 0) {
 			try {
 				Integer id = Integer.parseInt(idParameter);
-				Pojo pojo = pojoDao.getPojo(id);
+				Pojo pojo = pojoService.get(id);
 				if (pojo != null) {
 					try (PrintWriter out = response.getWriter()) {
 						out.print(pojoToJson.toJson(pojo));
