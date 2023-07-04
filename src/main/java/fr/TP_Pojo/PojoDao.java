@@ -1,8 +1,13 @@
 package fr.TP_Pojo;
 
 import java.util.Map;
+
+import jakarta.ejb.Singleton;
+import jakarta.ejb.Stateless;
+
 import java.util.HashMap;
 
+@Singleton
 public class PojoDao {
 
 	private Map<Integer, Pojo> pojoMap;
