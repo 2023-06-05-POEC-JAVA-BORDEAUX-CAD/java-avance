@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import fr.maboite.correction.pojojsonservlet.dao.PojoDaoMock;
 
-public class PojoServiceTest {
+public class PojoServiceTestAvecMock {
 	
 	@Test
 	public void testGet() {
