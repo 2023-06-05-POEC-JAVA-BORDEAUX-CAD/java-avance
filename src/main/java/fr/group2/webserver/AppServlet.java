@@ -16,7 +16,7 @@ public class AppServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private CatDAO catdao;
+	private CatService catService;
 	
 	@Inject
 	private PojoToJson catJson;
@@ -44,7 +44,7 @@ public class AppServlet extends HttpServlet {
 			String catId = request.getParameter("cat-id");
 			
 			if (catId != null && catId.length() > 0) {
-				Cat cat = catdao.getCat(Integer.valueOf(catId));
+				Cat cat = catService.getCat(Integer.valueOf(catId));
 				if (cat != null) {
 					out.println("<p>" + catJson.toJson(cat) + "<p>");
 				} else {
