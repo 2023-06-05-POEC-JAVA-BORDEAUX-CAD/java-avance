@@ -52,6 +52,7 @@ public class TestPremier {
 
 		// Assert
 		Assertions.assertEquals(aireTriRec, aire);
+	
 
 	}
 

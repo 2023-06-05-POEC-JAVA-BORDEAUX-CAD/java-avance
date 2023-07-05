@@ -9,12 +9,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(name="Welcome",
-			displayName="Welcome Servlet",
-			urlPatterns = "/welcome", 
+@WebServlet(name="Exoservlet",
+			displayName="Exercice Servlet",
+			urlPatterns = "/ExoServ", 
 			loadOnStartup = 1)
 
-public class WelcomeServlet extends HttpServlet {
+public class GabServlet2 extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -29,7 +29,7 @@ public class WelcomeServlet extends HttpServlet {
             out.println("<html>"
                     + "<head><title>Générée par une servlet</title></head>");
             out.println("<body  bgcolor=\"#ffffff\">"
-                    + "<h2>Quelle belle page générée dynamiquement !!!</h2>");
+                    + "<h2> hiou hiou !!!</h2>");
             
             String username = request.getParameter("username");
             if (username != null && username.length() > 0) {
@@ -48,7 +48,7 @@ public class WelcomeServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		System.out.println("Init terminé");
+		System.out.println("Init terminé pour la gab servet");
 	}
     
     

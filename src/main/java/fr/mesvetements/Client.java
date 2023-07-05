@@ -8,12 +8,14 @@ public class Client {
 	private Bas bas;
 
 	Haut ht = new Haut();
-	Bas bs = new Bas();
+	IVetement bs = new Bas();
 
 	public void parle() {
 		ht.affiche();
 		bs.affiche();
 	}
+	
+	
 	
 
 	public Client(Haut haut, Bas bas) {
