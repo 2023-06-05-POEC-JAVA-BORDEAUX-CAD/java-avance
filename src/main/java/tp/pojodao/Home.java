@@ -1,4 +1,4 @@
-package tp;
+package tp.pojodao;
 
 import java.io.IOException;
 import java.io.PrintWriter;
