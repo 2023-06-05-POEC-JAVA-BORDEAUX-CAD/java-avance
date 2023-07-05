@@ -2,6 +2,8 @@ package tp.projetfilrouge.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
 
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
@@ -10,7 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import tp.projetfilrouge.service.OrderService;
-import tpdate.service.DateService;
+import tp.projetfilrouge.pojo.Order;
 
 @WebServlet(name = "TPPFROS", displayName = "TP PFR Orders Servlet", urlPatterns = "/TPPFR/orders", loadOnStartup = 1)
 public class OrderServlet extends HttpServlet {
@@ -32,32 +34,27 @@ public class OrderServlet extends HttpServlet {
 		String orderId = request.getParameter("id");
 
 		if (orderId == null) {
-			out.println("id" + orderId + ": votre commande n'existe pas. Voici la liste des commandes existantes");
-			// List<Order>
-			// récup getAll > pour afficher la liste de toutes les commandes
-			//+ convertir en ToJson
-			//afficher en Static println
+			List<Order> order;
+			try {
+				order = orderService.getAll();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				out.println("error when order has been getted");
+				return;
+			}
+			String JsonOrder = OrderService.toJson(order);
+			out.println(JsonOrder);
+
 		} else {
 			try {
 				Integer idInt = Integer.parseInt(orderId);
-				out.println("La liste des commandes" + idInt);
+				Order order = orderService.getById(idInt);
+				String JsonOrder = OrderService.toJson(order);
+				out.println(JsonOrder);
 			} catch (Exception e) {
-				out.println("chaine invalide");
+				out.println("order not found");
 			}
 		}
-
-		// parseint
-		// try
-		// catch
-
-		// ajout
-
-		// récup id dans l'URL
-
-		// si ID==ok alors conversion de id en Integer puis récup de la commande dans
-		// OrderService
-		// sinon !=ok alors récupération de toutes les commandes avec OrderService
-		// affichage de la ou des commandes récupéré au format Json
 
 	}
 }
