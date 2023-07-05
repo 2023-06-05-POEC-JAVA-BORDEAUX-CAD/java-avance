@@ -3,6 +3,10 @@
  */
 package fr.boite.philippe;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
 /**
  * 
  */
@@ -11,15 +15,34 @@ public class Exo {
 	/**
 	 * @param args
 	 */
-
 	public static void main(String[] args) {
+		
+	}
+	
+	/* public static void main(String[] args) {
+		Map<String, Integer> ages = new HashMap<>();
+		ages.put("Philippe ", 42);
+		ages.put("Jad ", 8);
+		ages.put("Yann ", 4);
+		System.out.println(ages.toString());
+		
+		for(Entry<String, Integer> element : ages.entrySet()) {
+			System.out.println("la clé est : " + element.getKey() + " , son age : " + element.getValue());
+		}
+		
+	}*/
+	
+	
+	
+	/* public static void main(String[] args) {
 
 		for (Day moment : Day.values()) {
 			if (!moment.equals(Day.MIDI)) {
 				System.out.println("nous sommes actuellement le " + moment.name().toLowerCase()
 						+ " il est actuellement " + moment.getHour() + " h");
 			}
-		}
+		}*/ 
+	
 		/*
 		 * Day moment = Day.MATIN; System.out.println(moment.name());
 		 * 
@@ -28,8 +51,10 @@ public class Exo {
 		 * moment.name().toLowerCase() + " il est actuellement " + moment.getHour()
 		 * +" h");
 		 */
+	
+	
 
-		Apple a = new Apple();
+		/* Apple a = new Apple();
 		a.taste();
 		a.miam();
 		PineApple pen = new PineApple();
@@ -39,7 +64,8 @@ public class Exo {
 		if (!(a instanceof PeelFruit)) {
 			System.out.println("ce fruit n'implemente pas l'interface PeelFruit");
 		}
-	}
+	} */
+	
 
 	/*
 	 * public static void main(String[] args) {
