@@ -2,11 +2,11 @@ package fr.groupe2.tpcrm.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import fr.groupe2.tpcrm.service.OrderService;
 import jakarta.inject.Inject;
@@ -37,6 +37,17 @@ public class OrderServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try (PrintWriter out = response.getWriter()) {
+			out.println("<html>"
+                    + "<head><title>Order Servlet</title>"
+                    + "<style>"
+                    + "*{margin: 0; padding: 0;}"
+                    + "body{background-color: #333; color: #fff;text-align:center;font-family:sans-serif;}"
+                    + "h1{margin: auto; font-size: 50px;}"
+                    + "</style>"
+                    + "</head>");
+            out.println("<body>");
+            out.println("<h1>Orders</h1>");			
+			
 			String id = request.getParameter("id");
 			if (id != null) {
 				try {
@@ -62,6 +73,14 @@ public class OrderServlet extends HttpServlet {
 					out.println("<p class=\"error\">Erreur 404</p>");
 				}
 			}
+			
+			out.println("</body></html>");
 		}
+	}
+	
+	@Override
+	public void init() throws ServletException {
+		super.init();
+		System.out.println("Init Order Servlet");
 	}
 }

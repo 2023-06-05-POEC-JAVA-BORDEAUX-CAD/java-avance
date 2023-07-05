@@ -3,11 +3,11 @@ package fr.groupe2.tpcrm.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import fr.groupe2.tpcrm.service.ClientService;
 import jakarta.inject.Inject;
@@ -18,7 +18,7 @@ import jakarta.inject.Inject;
 @WebServlet(
 		name="Client",
 		displayName="Client Servlet",
-		urlPatterns="/clients",
+		urlPatterns ="/clients",
 		loadOnStartup=1)
 public class ClientServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -42,6 +42,16 @@ public class ClientServlet extends HttpServlet {
 		response.setContentType("text/html");
 		
 		try(PrintWriter out = response.getWriter()){
+			out.println("<html>"
+                    + "<head><title>Client Servlet</title>"
+                    + "<style>"
+                    + "*{margin: 0; padding: 0;}"
+                    + "body{background-color: #333; color: #fff;text-align:center;font-family:sans-serif;}"
+                    + "h1{margin: auto; font-size: 50px;}"
+                    + "</style>"
+                    + "</head>");
+            out.println("<body>");
+            out.println("<h1>Clients</h1>");	
 		
 			String id = request.getParameter("id");
 			if(id != null) {
@@ -70,6 +80,14 @@ public class ClientServlet extends HttpServlet {
 				}
 				
 			}
+			
+			out.println("</body></html>");
 		}	
+	}
+	
+	@Override
+	public void init() throws ServletException {
+		super.init();
+		System.out.println("Init Client Servlet");
 	}
 }
