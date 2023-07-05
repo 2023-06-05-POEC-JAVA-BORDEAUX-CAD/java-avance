@@ -1,4 +1,4 @@
-package tpdate.service;
+package tp.date.service;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
