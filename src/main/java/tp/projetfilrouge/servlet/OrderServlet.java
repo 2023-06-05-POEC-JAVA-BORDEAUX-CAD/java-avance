@@ -33,7 +33,10 @@ public class OrderServlet extends HttpServlet {
 
 		if (orderId == null) {
 			out.println("id" + orderId + ": votre commande n'existe pas. Voici la liste des commandes existantes");
-
+			// List<Order>
+			// récup getAll > pour afficher la liste de toutes les commandes
+			//+ convertir en ToJson
+			//afficher en Static println
 		} else {
 			try {
 				Integer idInt = Integer.parseInt(orderId);
