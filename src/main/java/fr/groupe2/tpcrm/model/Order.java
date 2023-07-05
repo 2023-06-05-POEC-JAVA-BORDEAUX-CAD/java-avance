@@ -4,16 +4,18 @@ public class Order {
 	private Integer id;
 	private String type_presta;
 	private String designation;
+	private Integer client_id;
 	private Integer nb_days;
 	private Integer unit_price;
 	private Integer state;
 
-	public Order(Integer id, String type_presta, String designation, Integer nb_days, Integer unit_price,
+	public Order(Integer id, String type_presta, String designation, Integer client_id,Integer nb_days, Integer unit_price,
 			Integer state) {
 		super();
 		this.id = id;
 		this.type_presta = type_presta;
 		this.designation = designation;
+		this.client_id = client_id;
 		this.nb_days = nb_days;
 		this.unit_price = unit_price;
 		this.state = state;
@@ -37,6 +39,14 @@ public class Order {
 
 	public void setDesignation(String designation) {
 		this.designation = designation;
+	}
+
+	public Integer getClient_id() {
+		return client_id;
+	}
+
+	public void setClient_id(Integer client_id) {
+		this.client_id = client_id;
 	}
 
 	public Integer getNb_days() {

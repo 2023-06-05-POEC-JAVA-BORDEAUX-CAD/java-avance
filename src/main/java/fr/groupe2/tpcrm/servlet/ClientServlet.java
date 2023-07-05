@@ -59,6 +59,7 @@ public class ClientServlet extends HttpServlet {
 					Integer intId = Integer.parseInt(id);
 					
 					String clientToString = clientService.getClientByIdToString(intId);
+					
 					if(clientToString != null) {
 						out.println("<p>" + clientToString + "</p>");
 					} else {
