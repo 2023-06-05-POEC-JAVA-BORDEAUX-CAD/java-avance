@@ -1,4 +1,4 @@
-package tp;
+package tp.pojodao;
 
 import java.util.ArrayList;
 import java.util.List;
