@@ -2,6 +2,8 @@ package tpdate.service;
 
 import jakarta.ejb.EJB;
 import junit.framework.Assert;
+import tp.date.service.DateService;
+
 import org.junit.jupiter.api.Test;
 import org.apache.openejb.jee.EjbJar;
 import org.apache.openejb.jee.StatelessBean;

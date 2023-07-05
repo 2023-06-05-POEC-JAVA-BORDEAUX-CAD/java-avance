@@ -16,7 +16,6 @@ public class DatabaseService {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Connection database = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
