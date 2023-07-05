@@ -11,10 +11,10 @@ import fr.maboite.correction.pojojsonservlet.pojo.Pojo;
 import jakarta.ejb.EJB;
 
 @RunWithApplicationComposer
-public class PojoServiceTestAvecJeeCdi {
+public class PojoServiceAvecJeeCdiTest {
 
 	@EJB
-	private PojoServiceInterface pojoService;
+	private PojoService pojoService;
 
 	@org.apache.openejb.testing.Module
 	public EjbJar beans() {
