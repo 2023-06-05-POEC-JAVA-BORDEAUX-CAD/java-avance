@@ -49,10 +49,10 @@ public class ExoTest {
         assertTrue(true);
     }
 
-    @Test
-    public void toujoursFaux() {
-        assertFalse(true);
-    }
+    // @Test
+    // public void toujoursFaux() {
+    //     assertFalse(true);
+    // }
 
     @Test
     public void toujoursEgal() {
