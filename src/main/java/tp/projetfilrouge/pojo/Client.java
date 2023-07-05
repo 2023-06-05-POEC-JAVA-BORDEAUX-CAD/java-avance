@@ -1,4 +1,4 @@
-package tp.projetfilrouge;
+package tp.projetfilrouge.pojo;
 
 public class Client {
 	Integer id;
