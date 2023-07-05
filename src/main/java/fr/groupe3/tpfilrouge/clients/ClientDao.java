@@ -1,10 +1,17 @@
 package fr.groupe3.tpfilrouge.clients;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
+import jakarta.ejb.Stateless;
+
+@Stateless
 public class ClientDao {
 
+	// ensemble d'objet come une List
 	private Map<Integer, Client> clients = new HashMap<>();
 
 	public ClientDao() {
@@ -22,6 +29,7 @@ public class ClientDao {
 		Fabrice.setCountry("France");
 		Fabrice.setState(0);
 
+		// Fabrice qu'on vient de creer on l ajoute à notre Map clients
 		this.clients.put(Fabrice.getId(), Fabrice);
 
 		Client Julien = new Client();
@@ -43,6 +51,12 @@ public class ClientDao {
 
 	public Client getClient(Integer id) {
 		return this.clients.get(id);
+	}
+
+	public Map<Integer, Client> getAllClient() {
+
+		return clients;
+
 	}
 
 }
