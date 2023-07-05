@@ -13,8 +13,8 @@ public class ThreadMain {
         monThread.start();
 
         MonThreadAfficheAutre t= new MonThreadAfficheAutre();     
-        Thread y =new Thread(t);
-        y.start();
+//        Thread y =new Thread(t);
+//        y.start();
         // Le reste du code dans la méthode main continue à s'exécuter
         System.out.println("Le thread principal toujours en cours.");
         

@@ -140,6 +140,11 @@
 		<!-- Ici sont référencées toutes les dépendances dont a besoin votre projet pour fonctionner -->
 		<!-- les logs -->
 		<dependency>
+			<groupId>org.apache.tomee</groupId>
+			<artifactId>openejb-junit5</artifactId>
+			<version>9.1.0</version>
+		</dependency>
+		<dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.2.3</version>
