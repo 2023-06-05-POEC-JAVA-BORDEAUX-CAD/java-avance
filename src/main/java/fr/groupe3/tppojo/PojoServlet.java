@@ -1,4 +1,4 @@
-package fr.TP_Pojo;
+package fr.groupe3.tppojo;
 
 import java.io.IOException;
 import java.io.PrintWriter;

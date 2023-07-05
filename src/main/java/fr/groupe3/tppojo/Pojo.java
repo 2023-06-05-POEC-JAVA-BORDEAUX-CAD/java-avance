@@ -1,4 +1,4 @@
-package fr.TP_Pojo;
+package fr.groupe3.tppojo;
 
 public class Pojo {
 	private Integer id;

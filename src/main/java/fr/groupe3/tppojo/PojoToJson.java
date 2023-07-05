@@ -1,4 +1,4 @@
-package fr.TP_Pojo;
+package fr.groupe3.tppojo;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
