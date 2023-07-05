@@ -3,12 +3,14 @@ package fr.groupe3.tpfilrouge.clients;
 import java.util.HashMap;
 import java.util.Map;
 
+import fr.maboite.correction.pojojsonservlet.pojo.Pojo;
+
 public class ClientDao {
 
 	private Map<Integer, Client> clients = new HashMap<>();
-	
+
 	public ClientDao() {
-		
+
 		Client Fabrice = new Client();
 		Fabrice.setId(1); // on initialise
 		Fabrice.setCompanyName("Capgemini");
@@ -21,10 +23,9 @@ public class ClientDao {
 		Fabrice.setCity("Nantes");
 		Fabrice.setCountry("France");
 		Fabrice.setState(0);
-			
+
 		this.clients.put(Fabrice.getId(), Fabrice);
-		
-		
+
 		Client Julien = new Client();
 		Julien.setId(1); // on initialise
 		Julien.setCompanyName("M2i Formation");
@@ -37,10 +38,13 @@ public class ClientDao {
 		Julien.setCity("Paris");
 		Julien.setCountry("France");
 		Julien.setState(1);
-			
+
 		this.clients.put(Julien.getId(), Julien);
-	
-		
+
 	}
-	
+
+	public Client getClient(Integer id) {
+		return this.clients.get(id);
+	}
+
 }
