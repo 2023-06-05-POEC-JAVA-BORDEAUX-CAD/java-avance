@@ -37,7 +37,6 @@ public class ClientServlet extends HttpServlet {
 		String idRecup = request.getParameter("id");
 
 		if (idRecup == null) {
-			out.println("id client " + idRecup + " = client inexistant");
 
 			// Recup de tous les clients dans une liste
 
@@ -61,7 +60,14 @@ public class ClientServlet extends HttpServlet {
 		{
 			try {
 				Integer idInt = Integer.parseInt(idRecup);
-				out.println("liste des clients : " + idRecup);
+				Client cli = client.getById(idInt);
+				if (cli == null) {
+					out.println("cet Id n\'est attribué a aucun client");
+				} else {
+					String JsonClient = ClientService.toJson(cli);
+					out.println(JsonClient);
+				}
+
 			} catch (Exception e) {
 				out.println("chaine invalide, id n\'est pas un nombre");
 			}

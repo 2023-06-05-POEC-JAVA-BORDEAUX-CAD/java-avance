@@ -15,9 +15,26 @@ public class ClientService extends DatabaseService {
 		super();
 	}
 
-	public Client getById(Integer id) {
+	public Client getById(Integer id) throws SQLException {
 		// SELECT * FROM `pfr`.`clients` WHERE `pfr`.`clients`.`id` = 1
-		return new Client();
+		Client client = new Client();
+		ResultSet result = db.executeQuery("SELECT * FROM `pfr`.`clients` WHERE `pfr`.`clients`.`id` = " + id);
+		if (result.next()) {
+			client.setId(result.getInt("id"));
+			client.setCompanyName(result.getString("company_name"));
+			client.setFirstName(result.getString("first_name"));
+			client.setLastName(result.getString("last_name"));
+			client.setEmail(result.getString("email"));
+			client.setPhone(result.getInt("phone"));
+			client.setAdress(result.getString("address"));
+			client.setZipCode(result.getString("zip_code"));
+			client.setCity(result.getString("city"));
+			client.setCountry(result.getString("country"));
+			client.setState(result.getInt("state"));
+			return client;
+		} else {
+			return null;
+		}
 	}
 
 	public List<Client> getAll() throws SQLException {
@@ -43,8 +60,10 @@ public class ClientService extends DatabaseService {
 		return clients;
 	}
 
-	public static String toJson(Client client) {
-		return "{}";
+	public static String toJson(Client client) throws JsonProcessingException {
+		ObjectMapper Jackson = new ObjectMapper();
+		String JacksonClient = Jackson.writeValueAsString(client);
+		return JacksonClient;
 	}
 
 	public static String toJson(List<Client> clients) throws JsonProcessingException {
