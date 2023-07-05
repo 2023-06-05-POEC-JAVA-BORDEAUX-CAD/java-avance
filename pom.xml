@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.entreprise</groupId>
 	<artifactId>poe-java-av-jdbc</artifactId>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>Java avancé en POE !</name>
 	<description>Un projet vraiment très très bien !</description>
