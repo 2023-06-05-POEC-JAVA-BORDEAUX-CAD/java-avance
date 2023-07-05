@@ -1,14 +1,15 @@
-package tpdate.servlet;
+package tp.date.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import jakarta.inject.Inject;
-import tpdate.service.DateService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import tp.date.service.DateService;
 
 @WebServlet(name = "jour-ferie", displayName = "TP Jour ferie Servlet", urlPatterns = "/jour-ferie-result", loadOnStartup = 1)
 public class DateServlet extends HttpServlet {
