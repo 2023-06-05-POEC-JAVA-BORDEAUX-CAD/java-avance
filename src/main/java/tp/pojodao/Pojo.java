@@ -1,4 +1,4 @@
-package tp;
+package tp.pojodao;
 
 // {"name": "name here"}
 public class Pojo {
