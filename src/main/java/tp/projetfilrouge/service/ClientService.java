@@ -7,11 +7,11 @@ import tp.projetfilrouge.pojo.Client;
 
 @Stateless
 public class ClientService {
-	public static Client getById(Integer id) {
+	public Client getById(Integer id) {
 		return new Client();
 	}
 
-	public static List<Client> getAll() {
+	public List<Client> getAll() {
 		List<Client> clients = new ArrayList<Client>();
 		clients.add(new Client());
 		clients.add(new Client());
