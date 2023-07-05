@@ -7,11 +7,11 @@ import tp.projetfilrouge.pojo.Order;
 
 @Stateless
 public class OrderService {
-	public static Order getById(Integer id) {
+	public Order getById(Integer id) {
 		return new Order();
 	}
 
-	public static List<Order> getAll() {
+	public List<Order> getAll() {
 		List<Order> orders = new ArrayList<Order>();
 		orders.add(new Order());
 		orders.add(new Order());
