@@ -5,8 +5,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import jakarta.ejb.Stateless;
 import java.sql.SQLException;
-
-import tp.projetfilrouge.pojo.Client;
 import tp.projetfilrouge.pojo.Order;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
