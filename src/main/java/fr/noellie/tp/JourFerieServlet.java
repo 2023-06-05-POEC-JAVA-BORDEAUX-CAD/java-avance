@@ -53,6 +53,28 @@ public class JourFerieServlet extends HttpServlet {
 	}
 
 	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String j = request.getParameter("j");
+		Integer jour = Integer.parseInt(j);
+
+		String m = request.getParameter("m");
+		Integer mois = Integer.parseInt(m);
+
+		String a = request.getParameter("a");
+		Integer annee = Integer.parseInt(a);
+
+//        String nom = request.getParameter("nom");
+//        request.setAttribute("nom", nom);
+
+		request.setAttribute("jour", jour);
+		request.setAttribute("mois", mois);
+		request.setAttribute("annee", annee);
+
+		this.getServletContext().getRequestDispatcher("/WEB-INF/date.jsp").forward(request, response);
+	}
+
+	@Override
 	public String getServletInfo() {
 		return "La servlet indiquant si la date indiquée est en week-end ou en semaine.";
 
