@@ -16,8 +16,9 @@ public class Client {
 	public Client() {
 	}
 
-	public Client(String companyName, String firstName, String lastName, String email, Integer phone, String adress,
+	public Client(Integer id, String companyName, String firstName, String lastName, String email, Integer phone, String adress,
 			String zipCode, String city, String country, Integer state) {
+		this.id = id;
 		this.companyName = companyName;
 		this.firstName = firstName;
 		this.lastName = lastName;
