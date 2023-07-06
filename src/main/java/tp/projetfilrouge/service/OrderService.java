@@ -34,7 +34,6 @@ public class OrderService extends DatabaseService {
 			System.out.println("pas de commande");
 			return null;
 		}
-
 	}
 
 	public List<Order> getAll() throws SQLException {
