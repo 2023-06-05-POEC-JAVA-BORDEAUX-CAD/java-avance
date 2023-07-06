@@ -5,9 +5,9 @@ import jakarta.inject.Named;
 
 @Named
 @RequestScoped
-public class MonPremierFaceBean {
+public class ClientFaceBean {
 	
-	 private String message = "Ce message vient du controller MonPremierFaceBean";
+	 private String message = "Ce message vient du controller ClientFaceBean";
 	 
 	 public String getMessage() {
 		 return message;

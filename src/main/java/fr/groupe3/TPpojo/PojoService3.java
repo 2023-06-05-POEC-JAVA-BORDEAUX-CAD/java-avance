@@ -4,10 +4,10 @@ import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
 @Stateless
-public class PojoService {
+public class PojoService3 {
 
-//	@Inject
-	private PojoDao pojoDao;
+	@Inject
+	private PojoDao3 pojoDao;
 
 	public Pojo getPojo(Integer id) {
 		return pojoDao.getPojo(id);

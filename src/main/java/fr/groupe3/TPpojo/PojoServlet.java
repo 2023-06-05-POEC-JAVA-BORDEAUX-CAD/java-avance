@@ -15,8 +15,8 @@ public class PojoServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
-//	@Inject
-	private PojoDao pojoDao;
+	@Inject
+	private PojoDao3 pojoDao;
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
