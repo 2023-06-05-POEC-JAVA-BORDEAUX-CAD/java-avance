@@ -12,14 +12,16 @@
 </h:head>
 <h:body>
 	<div class="main">
-		<h1>Salut !</h1>
-		<div>Ça va ? Oui</div>
-			
+		<h1>Mon premier FaceBean</h1>
+					
 		<p>#{premierFaceBean.getMessage()}</p>
 		<p>#{premierFaceBean.otherMessage()}</p>
+		<p>La valeur de mon booléen est : <strong>#{premierFaceBean.isMyBoolean()}</strong></p>
+		<p>La valeur de mon integer est : <strong>#{premierFaceBean.getMyInteger()}</strong></p>
 		
 		<h2>Heure Locale</h2>
 		<p>#{premierFaceBean.getLocaleTime()}</p>
+		
 	</div>
 </h:body>
 </html>
