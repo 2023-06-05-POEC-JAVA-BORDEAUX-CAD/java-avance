@@ -26,7 +26,7 @@ public class PojoJsonServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-//	@EJB
+	@EJB
 	private PojoService pojoService;
 
 	private PojoToJson pojoToJson = new PojoToJson();

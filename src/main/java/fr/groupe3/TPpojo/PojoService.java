@@ -3,7 +3,7 @@ package fr.groupe3.TPpojo;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
-//@Stateless
+@Stateless
 public class PojoService {
 
 //	@Inject

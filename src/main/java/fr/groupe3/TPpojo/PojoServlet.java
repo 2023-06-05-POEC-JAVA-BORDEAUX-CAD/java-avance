@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "Pojo", displayName = "Pojo Servlet", urlPatterns = "/pojo", loadOnStartup = 1)
+@WebServlet(name = "Pojo", displayName = "Pojo Servlet", urlPatterns = "/pojoTP", loadOnStartup = 1)
 public class PojoServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
