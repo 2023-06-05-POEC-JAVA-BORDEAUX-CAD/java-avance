@@ -1,25 +1,40 @@
 package dev.loicmoreaux.jsf.controller;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
 @Named
-@RequestScoped
-public class PremierFaceBean {
+@SessionScoped
+public class ClientFaceBean implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static final String MESSAGE = "Un message qui provient d'une classe Java !";
+	private String name = "Client";
 	private boolean myBoolean = true;
-	private Integer myInteger = 13;
+	private Integer myInteger = 39;
+	private Integer counter = 0;
 	
-	public PremierFaceBean() {}
+	public ClientFaceBean() {}
 
 	public String getMessage() {
 		return MESSAGE;
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public boolean isMyBoolean() {
 		return myBoolean;
 	}
@@ -36,6 +51,14 @@ public class PremierFaceBean {
 		this.myInteger = myInteger;
 	}
 
+	public Integer getCounter() {
+		return counter;
+	}
+
+	public void setCounter(Integer counter) {
+		this.counter = counter;
+	}
+
 	public String otherMessage() {
 		return "Un autre message";
 	}
@@ -43,5 +66,15 @@ public class PremierFaceBean {
 	public String getDateTimeLocale() {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE d MMMM yyyy HH:mm:ss", Locale.FRANCE);
 		return LocalDateTime.now().format(formatter);
+	}
+	
+	public String createNew() {
+		this.counter++;
+		return "client-view";
+	}
+	
+	public String goIndex() {
+		this.counter++;
+		return "page1";
 	}
 }

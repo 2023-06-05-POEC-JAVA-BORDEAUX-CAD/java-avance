@@ -1,6 +1,6 @@
 @charset "UTF-8";
 :root{
-	font-size: 200%;
+	font-size: 150%;
 }
 
 *{
@@ -23,4 +23,26 @@ body{
 	/*border: solid 1px #fff;*/
 	border-radius: 0.5rem;
 	box-shadow: 0px 0px 10px #fff;
+}
+
+div{
+	margin-bottom: 1rem;
+}
+
+.button{
+	display: inline-block;
+	background-color: #fff;
+	color: #333;
+	cursor: pointer;
+	padding:0.5rem 1rem;
+	border-radius: 5px;
+	text-decoration: none;
+	margin-top: 2rem;
+	transition: all 0.4s;
+}
+
+.button:hover{
+	background-color: #333;
+	color: #fff;
+	outline: solid 1px #fff;
 }
