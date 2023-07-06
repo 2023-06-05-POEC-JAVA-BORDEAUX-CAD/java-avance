@@ -24,9 +24,9 @@ public class JsonMaker {
 		String json = new ObjectMapper().writeValueAsString(jsonMaker.getList());
 		System.out.println(json);
 		
-		while(true) {
-			System.out.println(10 / jsonMaker.getNumber());
-		}
+//		while(true) {
+//			System.out.println(10 / jsonMaker.getNumber());
+//		}
 
 
 	}

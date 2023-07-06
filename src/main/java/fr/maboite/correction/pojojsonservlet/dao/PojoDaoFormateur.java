@@ -5,18 +5,21 @@ import java.util.Map;
 
 import fr.maboite.correction.pojojsonservlet.pojo.Pojo;
 import jakarta.ejb.Stateless;
+import jakarta.inject.Named;
 
 /**
  * Data Access Object: classe permettant 
  * d'accéder en lecture ou écriture au référentiel 
  * de données des Pojos (ici, une simple Map)
  */
+
 @Stateless
-public class PojoDao {
+public class PojoDaoFormateur {
+	
 	
 	private Map<Integer, Pojo> pojos = new HashMap<>();
 	
-	public PojoDao() {
+	public PojoDaoFormateur() {
 		Pojo pojo1 = new Pojo();
 		pojo1.setId(1);
 		pojo1.setName("Hey!");

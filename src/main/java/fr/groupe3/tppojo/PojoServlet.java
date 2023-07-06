@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "Pojo", displayName = "Pojo Servlet", urlPatterns = "/pojo", loadOnStartup = 1)
+@WebServlet(name = "Pojo3", displayName = "Pojo3 Servlet", urlPatterns = "/pojo3", loadOnStartup = 1)
 public class PojoServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -24,7 +24,7 @@ public class PojoServlet extends HttpServlet {
 		Integer id_pojo = Integer.parseInt(id);
 
 		if (id_pojo != null) {
-			PojoDao pojoDao = new PojoDao();
+			PojoDao3 pojoDao = new PojoDao3();
 			Pojo test = pojoDao.getPojo(id_pojo);
 			PojoToJson pojoToJson = new PojoToJson();
 			String printPojo = pojoToJson.toJson(test);

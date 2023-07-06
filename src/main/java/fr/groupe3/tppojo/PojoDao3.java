@@ -3,11 +3,12 @@ package fr.groupe3.tppojo;
 import java.util.Map;
 import java.util.HashMap;
 
-public class PojoDao {
+
+public class PojoDao3 {
 
 	private Map<Integer, Pojo> pojoMap;
 
-	public PojoDao() {
+	public PojoDao3() {
 		pojoMap = new HashMap<>();
 		pojoMap.put(1, new Pojo(1, "Pojo 1"));
 		pojoMap.put(2, new Pojo(2, "Pojo 2"));
