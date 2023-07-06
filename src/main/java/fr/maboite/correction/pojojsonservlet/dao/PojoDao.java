@@ -12,7 +12,7 @@ import jakarta.ejb.Stateless;
  * de données des Pojos (ici, une simple Map)
  */
 @Stateless
-public class PojoDao implements PojoDaoInterface {
+public class PojoDao {
 	
 	private Map<Integer, Pojo> pojos = new HashMap<>();
 	
@@ -36,7 +36,6 @@ public class PojoDao implements PojoDaoInterface {
 		this.pojos.put(pojo3.getId(), pojo3);
 	}
 
-	@Override
 	public Pojo getPojo(Integer id) {
 		return this.pojos.get(id);
 	}

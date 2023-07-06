@@ -1,7 +1,6 @@
 package fr.maboite.correction.pojojsonservlet.dao;
 
 import org.apache.openejb.jee.EjbJar;
-import org.apache.openejb.jee.StatefulBean;
 import org.apache.openejb.jee.StatelessBean;
 import org.apache.openejb.junit5.RunWithApplicationComposer;
 import org.junit.jupiter.api.Assertions;
@@ -14,7 +13,7 @@ import jakarta.ejb.EJB;
 public class PojoDaoTest {
 
 	@EJB
-	private PojoDaoInterface pojoDao;
+	private PojoDao pojoDao;
 
 	@org.apache.openejb.testing.Module
 	public EjbJar beans() {
@@ -24,7 +23,7 @@ public class PojoDaoTest {
 	}
 
 	@Test
-	public void test1() throws Exception {
+	public void testGetById() throws Exception {
 		Pojo pojo = pojoDao.getPojo(1);
 		Assertions.assertNotNull(pojo);
 		Assertions.assertEquals("Hey!", pojo.getName());
