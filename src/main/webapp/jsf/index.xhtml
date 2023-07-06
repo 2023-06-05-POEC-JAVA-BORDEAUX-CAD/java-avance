@@ -9,6 +9,11 @@
 </h:head>
 <h:body>
 	<div>#{indexController.message}</div>
+	<h:form>
+		<h:commandLink action="${indexController.createNew}">
+			<h:outputLabel value="#{indexController.count==0 ? 'Pair' : 'Impair'}" />
+		</h:commandLink>
+	</h:form>
 </h:body>
 
 </html>
