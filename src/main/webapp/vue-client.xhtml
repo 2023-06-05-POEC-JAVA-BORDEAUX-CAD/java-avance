@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" data-theme="dark">
+
+<h:head>
+	<!-- JSF remplace h:head par <head> et ajoute des caractéristiques à cette balise -->
+	<link rel="stylesheet" href="css/minstyle.io.css" />
+</h:head>
+<h:body>
+	<div>Voulez vous acheter une serviette?</div>
+	<div>Qui etes vous monsieur!?</div>
+	<div>#{clientFaceBean.message}</div>
+	<div>#{clientFaceBean.booleanValue}</div>
+	<div>#{clientFaceBean.integerValue}</div>
+	<div>#{clientFaceBean.localDateValue}</div>
+	
+</h:body>
+</html>
