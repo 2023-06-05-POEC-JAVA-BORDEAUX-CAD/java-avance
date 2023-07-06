@@ -7,21 +7,21 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import fr.groupe3.TPpojo.Pojo;
-import fr.groupe3.TPpojo.PojoDao;
-import fr.groupe3.TPpojo.PojoService;
+import fr.groupe3.TPpojo.PojoDao3;
+import fr.groupe3.TPpojo.PojoService3;
 import jakarta.ejb.EJB;
 
 @RunWithApplicationComposer
 public class PojoDaoTest {
 	
 	@EJB
-	private PojoDao pojoDao;
+	private PojoDao3 pojoDao;
 	
 	@org.apache.openejb.testing.Module
 	public EjbJar beans() {
 		EjbJar ejbJar = new EjbJar("my-beans");
-		ejbJar.addEnterpriseBean(new StatelessBean(PojoDao.class));
-		ejbJar.addEnterpriseBean(new StatelessBean(PojoService.class));
+		ejbJar.addEnterpriseBean(new StatelessBean(PojoDao3.class));
+		ejbJar.addEnterpriseBean(new StatelessBean(PojoService3.class));
 		return ejbJar;
 	}
 	
