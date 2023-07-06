@@ -1,5 +1,9 @@
 package dev.loicmoreaux.jsf.controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
 
@@ -14,5 +18,10 @@ public class PremierFaceBean {
 	
 	public String otherMessage() {
 		return "Un autre message";
+	}
+	
+	public String getLocaleTime() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE d MMMM yyyy HH:mm", Locale.FRANCE);
+		return LocalDateTime.now().format(formatter);
 	}
 }
