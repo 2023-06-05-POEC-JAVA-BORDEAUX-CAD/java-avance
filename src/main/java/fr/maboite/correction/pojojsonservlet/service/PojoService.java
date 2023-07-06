@@ -1,7 +1,7 @@
 package fr.maboite.correction.pojojsonservlet.service;
 
-import fr.maboite.correction.pojojsonservlet.dao.PojoDaoInterface;
-import fr.maboite.correction.pojojsonservlet.pojo.Pojo2;
+import fr.maboite.correction.pojojsonservlet.dao.PojoDao;
+import fr.maboite.correction.pojojsonservlet.pojo.Pojo;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
@@ -11,10 +11,10 @@ public class PojoService {
 	private static final String NOM_INTERDIT = "dangereux";
 
 	@Inject
-	private PojoDaoInterface pojoDaoInterfaceImplementation;
+	private PojoDao pojoDao;
 
-	public void setPojoDao(PojoDaoInterface pojoDao) {
-		this.pojoDaoInterfaceImplementation = pojoDao;
+	public void setPojoDao(PojoDao pojoDao) {
+		this.pojoDao = pojoDao;
 	}
 
 	public void save(Pojo2 pojo) {
@@ -23,7 +23,7 @@ public class PojoService {
 
 	public Pojo2 get(Integer id) {
 		
-		Pojo2 pojo = pojoDaoInterfaceImplementation.getPojo(id);
+		Pojo pojo = pojoDao.getPojo(id);
 		if (pojo == null) {
 			return null;
 		}

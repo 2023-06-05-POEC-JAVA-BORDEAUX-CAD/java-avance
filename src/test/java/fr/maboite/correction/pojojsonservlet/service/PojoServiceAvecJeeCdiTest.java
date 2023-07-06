@@ -6,12 +6,13 @@ import org.apache.openejb.junit5.RunWithApplicationComposer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import fr.maboite.correction.pojojsonservlet.dao.PojoDao2;
+import fr.maboite.correction.pojojsonservlet.dao.PojoDao;
+import fr.maboite.correction.pojojsonservlet.pojo.Pojo;
 import fr.maboite.correction.pojojsonservlet.pojo.Pojo2;
 import jakarta.ejb.EJB;
 
 @RunWithApplicationComposer
-public class PojoServiceTestAvecJeeCdi {
+public class PojoServiceAvecJeeCdiTest {
 
 	@EJB
 	private PojoService pojoService;
