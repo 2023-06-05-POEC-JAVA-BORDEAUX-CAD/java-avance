@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import fr.maboite.correction.pojojsonservlet.dao.PojoDao;
-import fr.maboite.correction.pojojsonservlet.pojo.Pojo;
 import fr.maboite.correction.pojojsonservlet.pojo.Pojo2;
 import jakarta.ejb.EJB;
 
@@ -20,7 +19,7 @@ public class PojoServiceAvecJeeCdiTest {
 	@org.apache.openejb.testing.Module
 	public EjbJar beans() {
 		EjbJar ejbJar = new EjbJar("my-beans");
-		ejbJar.addEnterpriseBean(new StatelessBean(PojoDao2.class));
+		ejbJar.addEnterpriseBean(new StatelessBean(PojoDao.class));
 		ejbJar.addEnterpriseBean(new StatelessBean(PojoService.class));
 		return ejbJar;
 	}

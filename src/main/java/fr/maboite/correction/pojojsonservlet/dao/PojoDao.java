@@ -3,7 +3,6 @@ package fr.maboite.correction.pojojsonservlet.dao;
 import java.util.HashMap;
 import java.util.Map;
 
-import fr.TP_Pojo.Pojo;
 import fr.maboite.correction.pojojsonservlet.pojo.Pojo2;
 import jakarta.ejb.Stateless;
 
@@ -37,7 +36,7 @@ public class PojoDao {
 		this.pojos.put(pojo3.getId(), pojo3);
 	}
 
-	public Pojo getPojo(Integer id) {
+	public Pojo2 getPojo(Integer id) {
 		return this.pojos.get(id);
 	}
 	

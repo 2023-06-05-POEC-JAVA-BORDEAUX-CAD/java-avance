@@ -16,11 +16,8 @@ public class StagiaireMain {
 		
 		System.out.println(Stagiaire.getNombreDeStagiairesCrees());
 		
-		PisteAtterissage e1 = PisteAtterissage.INSTANCE;
-		
-		
-		
-		
+		//PisteAtterissage e1 = PisteAtterissage.INSTANCE;
+				
 
 	}
 	
