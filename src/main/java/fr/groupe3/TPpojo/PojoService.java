@@ -3,10 +3,10 @@ package fr.groupe3.TPpojo;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
-@Stateless
+//@Stateless
 public class PojoService {
 
-	@Inject
+//	@Inject
 	private PojoDao pojoDao;
 
 	public Pojo getPojo(Integer id) {

@@ -5,12 +5,12 @@ import fr.maboite.correction.pojojsonservlet.pojo.Pojo;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
-@Stateless
+//@Stateless
 public class PojoService {
 
 	private static final String NOM_INTERDIT = "dangereux";
 
-	@Inject
+//	@Inject
 	private PojoDao pojoDao;
 
 	public void setPojoDao(PojoDao pojoDao) {

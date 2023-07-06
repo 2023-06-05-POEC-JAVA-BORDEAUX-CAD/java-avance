@@ -6,7 +6,7 @@ import jakarta.ejb.Stateless;
 
 import java.util.HashMap;
 
-@Stateless
+//@Stateless
 public class PojoDao {
 
 	private Map<Integer, Pojo> pojoMap;

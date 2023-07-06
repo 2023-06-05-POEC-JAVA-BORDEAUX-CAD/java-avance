@@ -11,7 +11,7 @@ import jakarta.ejb.Stateless;
  * d'accéder en lecture ou écriture au référentiel 
  * de données des Pojos (ici, une simple Map)
  */
-@Stateless
+//@Stateless
 public class PojoDao {
 	
 	private Map<Integer, Pojo> pojos = new HashMap<>();

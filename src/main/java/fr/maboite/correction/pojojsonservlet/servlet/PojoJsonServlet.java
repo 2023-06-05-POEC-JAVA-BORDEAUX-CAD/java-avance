@@ -7,9 +7,6 @@ import fr.maboite.correction.pojojsonservlet.json.PojoToJson;
 import fr.maboite.correction.pojojsonservlet.pojo.Pojo;
 import fr.maboite.correction.pojojsonservlet.service.PojoService;
 import jakarta.ejb.EJB;
-import jakarta.enterprise.inject.Any;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -29,7 +26,7 @@ public class PojoJsonServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	@EJB
+//	@EJB
 	private PojoService pojoService;
 
 	private PojoToJson pojoToJson = new PojoToJson();
