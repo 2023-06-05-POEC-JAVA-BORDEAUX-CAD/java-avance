@@ -143,10 +143,20 @@
 			<version>0.8.6</version>
 		</dependency>
 
-		<!-- Cette dépendance est provided : nous en avons besoin pour la compilation. 
-			En effet, nous faisons parfois référence à la classe HttpServlet que cette 
-			dépendance contient. Mais au final, ce sera Tomcat qui la fournira en tant 
-			que serveur. -->
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+   			 <groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.15.2</version>
+		</dependency>
+
+		
+		<!-- Cette dépendance est provided : nous en avons besoin pour la compilation.
+			En effet, nous faisons parfois référence à la classe HttpServlet que cette dépendance
+			contient.  
+		    Mais au final, ce sera Tomcat qui la fournira en tant que serveur.-->
+
 
 		<dependency>
 			<groupId>jakarta.platform</groupId>
