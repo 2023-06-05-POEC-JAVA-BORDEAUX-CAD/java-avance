@@ -2,6 +2,7 @@ package fr.maboite.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,7 +10,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
 @WebServlet(name="Fab", displayName="Welcome Fab", urlPatterns = "/welcome", loadOnStartup = 1)
+=======
+@WebServlet(name="Welcome", 
+	displayName="Welcome Servlet", 
+	urlPatterns = "/welcome", 
+	loadOnStartup = 1)
+>>>>>>> main
 public class WelcomeServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -18,6 +26,12 @@ public class WelcomeServlet extends HttpServlet {
     public void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
+		
+		Enumeration<String> headerNames = request.getHeaderNames();
+		while(headerNames.hasMoreElements()) {
+			System.out.println(headerNames.nextElement());
+		}
+		
 
         response.setContentType("text/html");
         response.setBufferSize(8192);
@@ -30,7 +44,7 @@ public class WelcomeServlet extends HttpServlet {
             
             String username = request.getParameter("username");
             if (username != null && username.length() > 0) {
-                out.println("Vous êtes : "+ username);
+                out.println("Vous êtes : " + username);
             }
             out.println("</body></html>");
         }
