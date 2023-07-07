@@ -1,5 +1,7 @@
 package dev.loicmoreaux.tpjsf.controllers;
 
+import dev.loicmoreaux.tpjsf.model.Client;
+
 public class ClientFormBean {
 	/*
 	 * Attributes of Client
@@ -126,5 +128,12 @@ public class ClientFormBean {
 
 	public void setState(boolean state) {
 		this.state = state;
+	}
+	
+	public Client toClient() {
+		Client newClient = new Client();
+		newClient.setId(id);
+		newClient.setCompany_name(company_name);
+		return newClient;
 	}
 }
