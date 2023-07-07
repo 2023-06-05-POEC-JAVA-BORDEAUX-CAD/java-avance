@@ -1,43 +1,30 @@
 package fr.mesvetements;
 
-public class Bas implements IVetement {
-	
+public class Bas implements Vetement{
+
 	private String nom;
-	private Boolean longueur;
 	
-	
-	public Bas () {};
-	
-	public Bas(String nom, Boolean longueur) {
-		super();
+	private boolean longueur;
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public boolean isLongueur() {
+		return longueur;
+	}
+
+	public void setLongueur(boolean longueur) {
 		this.longueur = longueur;
 	}
 
 	@Override
-	 public void affiche() {
-		System.out.println(nom);
-	}
-	
-	
-	public String getNom() {
-		
-		return this.nom;
-	}
-	
-	public  Boolean getLongueur()
-	{
-		return this.longueur;
-	}
-	
-	
-	public void setNom( String nom) {
-		this.nom=nom;
-	}
-	
-	public void setLongueur(Boolean longueur) {
-		
-		this.longueur=longueur;
+	public void affiche() {
+		System.out.println("Un bas : " + nom + " " + (longueur? "long": "court"));
 	}
 
 }

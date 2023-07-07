@@ -1,30 +1,19 @@
 package fr.mesvetements;
+public class Haut implements Vetement {
 
-public class Haut implements IVetement {
-	
 	private String nom;
-	
-	public Haut() {}
-	
-	
-	public Haut(String nom) {
-		super();
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
-
+	@Override
 	public void affiche() {
-		System.out.println(nom);
-	}
-	
-	
-	public String getNom() {
-		
-		return this.nom;
-	}
-	
-	public void set (String nom) {
-		 this.nom=nom;
+		System.out.println("un haut : " + nom);
 	}
 
 }

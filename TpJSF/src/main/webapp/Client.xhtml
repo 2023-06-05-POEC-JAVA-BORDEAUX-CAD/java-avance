@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" data-theme="dark">
+
+<!-- metadata permet de lier prem-page à client -->
+<f:metadata>
+	<f:viewParam name="id" value="#{clientFaceBean.loadId}" />
+	<f:viewAction action="#{clientFaceBean.onLoad}" />
+</f:metadata>
+
+<h:head>
+	<!-- JSF remplace h:head par <head> et ajoute des caractéristiques à cette balise -->
+	<link rel="stylesheet" href="css/minstyle.io.css" />
+</h:head>
+<h:body>
+	<div>c est le detail client</div>
+
+	
+	<div>numero client:#{clientFaceBean.loadId}</div>
+	<div>id de la compagnie:#{clientFaceBean.loadId}</div>
+	<div>nom de la compagnie:#{clientFaceBean.loadId}</div>
+
+
+
+</h:body>
+</html>

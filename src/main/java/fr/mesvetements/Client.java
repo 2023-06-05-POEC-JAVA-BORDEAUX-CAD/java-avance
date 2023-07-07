@@ -2,64 +2,99 @@ package fr.mesvetements;
 
 public class Client {
 
-	private String nom;
 	private String prenom;
+	private String nom;
 	private Haut haut;
 	private Bas bas;
 
-	Haut ht = new Haut();
-	IVetement bs = new Bas();
-
-	public void parle() {
-		ht.affiche();
-		bs.affiche();
-	}
-	
-	
-	
-
-	public Client(Haut haut, Bas bas) {
-		super();
-		this.haut = haut;
-		this.bas = bas;
+	public String getPrenom() {
+		return prenom;
 	}
 
-
-	public Client() {
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
 	}
 
 	public String getNom() {
-		return this.nom;
+		return nom;
 	}
 
-	public String getPrenom() {
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
-		return this.prenom;
+	public Haut getHaut() {
+		return haut;
 	}
 
 	public void setHaut(Haut haut) {
 		this.haut = haut;
 	}
 
+	public Bas getBas() {
+		return bas;
+	}
+
 	public void setBas(Bas bas) {
 		this.bas = bas;
 	}
+	
+	public  void parle() {
+		System.out.println("Je m'appelle " + this.prenom  + " " + this.nom );
+		System.out.println("Je porte : ");
+		if(this.haut!= null) {
+			this.haut.affiche();
+		}
+		if(this.bas!= null) {
+			this.bas.affiche();
+		}
+		
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		
+		
+		Client jose = new Client();
+		jose.setPrenom("José");
+		jose.setNom("Pas");
+		Tshirt tshirtSteven = new Tshirt("Steven Seagall");
+		tshirtSteven.setNom("T shirt blanc");
+		jose.setHaut(tshirtSteven);
+		Short superShort = new Short();
+		superShort.setNom("super short");
+		jose.setBas(superShort);
+		jose.parle();
+		
+		System.out.println("\r\n");
 
-	public Bas getBas() {
-		return this.bas;
+		Client sarah = new Client();
+		sarah.setPrenom("Sarah");
+		sarah.setNom("Croche");
+		Chemise chemiseAPois = new Chemise(Motif.A_POIS);
+		chemiseAPois.setNom("Chemise rouge");
+		sarah.setHaut(chemiseAPois);
+		Jupe jupeClassique = new Jupe();
+		jupeClassique.setNom("jupe classique");
+		sarah.setBas(jupeClassique);
+		sarah.parle();
+		
+		System.out.println("\r\n");
+
+
+		Client manon = new Client();
+		manon.setPrenom("Manon");
+		manon.setNom("Mahoui");
+		Tshirt tshirtNoir = new Tshirt("Chuck Norris");
+		tshirtNoir.setNom("T shirt noir");
+		manon.setHaut(tshirtNoir);
+		Pantalon pantalonNoir = new Pantalon();
+		pantalonNoir.setNom("pantalon noir");
+		manon.setBas(pantalonNoir);
+		manon.parle();
 	}
 
-	public Haut getHaut() {
-		return this.haut;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-
-	}
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
+	
 
 }
