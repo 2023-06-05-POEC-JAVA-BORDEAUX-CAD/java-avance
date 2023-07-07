@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" data-theme="dark">
+
+<f:metadata>
+	<f:viewParam name="id" value="#{messageFaceBean.loadId}" />
+	<f:viewAction action="#{messageFaceBean.onLoad}" />
+</f:metadata>
+
+<h:head>
+	<link rel="stylesheet" href="css/minstyle.io.css" />
+</h:head>
+
+<h:body>
+	<div>Salut Philippe!</div>
+	<br />
+
+	<div>j'affiche le message avec l'id : #{messageFaceBean.loadId}</div>
+
+	<h:form prependId="false">
+		<h2>Messages</h2>
+		<p>
+			<label for="id">Id :</label> <br />
+			<h:inputText id="id" type="text" placeholder="id"
+				value="#{messageFaceBean.message.id}" required="true" title="id" />
+		</p>
+		<p>
+			<label for="name">Value :</label> <br />
+			<h:inputText id="value" type="text" placeholder="value"
+				value="#{messageFaceBean.message.value}" required="true"
+				title="Value" />
+		</p>
+		<p>
+			<h:commandButton value="Sauvegarder" action="#{messageFaceBean.save}" />
+		</p>
+	</h:form>
+</h:body>
+
+</html>

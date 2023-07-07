@@ -1,19 +1,19 @@
 package fr.TpSolo;
-import javax.inject.Inject;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.ejb.Stateless;
+import jakarta.inject.Inject;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-/**
- * 
- */
+//@WebServlet(name ="jour-ferie", displayName = "Tp Solo jour ferie servlet", urlPatterns ="jour-ferie-result", loadOnStartup = 1)
 
-//@WebServlet("/jour-ferie")
+//@Stateless
 public class SoloServlet extends HttpServlet {
 	
+	private static final long serialVersionUID = 1L;
 
 	 @Inject
 	    private SoloService soloService;

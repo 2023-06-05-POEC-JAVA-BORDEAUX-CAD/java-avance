@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" data-theme="dark">
+<f:metadata>
+	<f:viewParam name="id" value="#{ClientFaceBeanTp.loadId}" />
+	<f:viewAction action="#{clientFaceBeanTp.onLoad}" />
+</f:metadata>
+
+
+<h:head>
+	<link rel="stylesheet" href="css/minstyle.io.css" />
+	<title>Tp jsf Client</title>
+</h:head>
+
+<h:body>
+	<div>Salut Philippe!</div>
+	<br />
+	<h:form prependId="false">
+		<h2>Messages</h2>
+		<p>
+			<label for="clientId">Id :</label> <br />
+			<h:inputText id="clientId" type="text" placeholder="id"
+				value="#{clientFaceBeanTp.clientId}" required="true" title="id" />
+		</p>
+		<p>
+			<label for="companyName">Value :</label> <br />
+			<h:inputText id="companyName" type="text" placeholder="value"
+				value="#{clientFormBeanTp.companyName}" required="true" title="Value" />
+		</p>
+		<p>
+			<h:commandButton value="Save" action="#{clientFaceBeanTp.save}" />
+		</p>
+	</h:form>
+</h:body>
+
+</html>

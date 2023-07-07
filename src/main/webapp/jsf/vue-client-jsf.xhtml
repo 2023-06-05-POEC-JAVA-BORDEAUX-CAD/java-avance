@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" data-theme="dark">
+
+<h:head>
+	<!-- JSF remplace h:head par <head> et ajoute des caractéristiques à cette balise -->
+	<link rel="stylesheet" href="css/minstyle.io.css" />
+</h:head>
+<h:body>
+	<div>Salut Philippe!</div>
+	<div>Comment ça va ? #{clientFaceBean.message}</div>
+	<div>mon prenom est : #{clientFaceBean.name}</div>
+	<div>j'ai : #{clientFaceBean.age} ans</div>
+	<div>active : #{clientFaceBean.active} </div>
+	<div>count : #{clientFaceBean.count} </div>
+	<div>birthDate : #{clientFaceBean.birthDate} </div>
+	<div>
+		<h:link value="Go to message avec id 5" outcome="message">
+			<f:param name="id" value="5" />
+		</h:link>
+	</div>
+</h:body>
+</html>
