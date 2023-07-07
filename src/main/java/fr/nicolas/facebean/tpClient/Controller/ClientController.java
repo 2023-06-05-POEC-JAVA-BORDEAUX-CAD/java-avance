@@ -19,6 +19,7 @@ public class ClientController {
 	
 	private String id;
 	private String errMessage;
+	private String saveMessage;
 	
 	public Client getClientById(Integer id) {
 		return this.clientService.getClient(id);
@@ -50,6 +51,7 @@ public class ClientController {
 	
 	
 	public String save() {
+		this.saveMessage = "Client sauvegardé";
 		return "client";
 	}
 
@@ -68,6 +70,14 @@ public class ClientController {
 
 	public void setErrMessage(String errMessage) {
 		this.errMessage = errMessage;
+	}
+
+	public String getSaveMessage() {
+		return saveMessage;
+	}
+
+	public void setSaveMessage(String saveMessage) {
+		this.saveMessage = saveMessage;
 	}
 	
 	
