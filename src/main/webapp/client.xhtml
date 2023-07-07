@@ -11,22 +11,19 @@
 	<f:viewAction action="#{clientFaceBean.onLoad}" />
 </f:metadata>
 
-<h:head>
-	<!-- JSF remplace h:head par <head> et ajoute des caractéristiques à cette balise -->
-	<link rel="stylesheet" href="css/minstyle.io.css" />
-</h:head>
 
 <h:head>
+	<link rel="stylesheet" href="css/minstyle.io.css" />
 	<title>Vue Client, je croise les doigts</title>
 </h:head>
 <h:body>
 	<h1>Message Tip top du ClientFaceBean :</h1>
 
-	<h2>Quel est ton nom : #{clientFaceBean.loadId}</h2>
+	<h2>Le nom du client est : #{clientFaceBean.loadId}</h2>
 
 
 	<h3>
-		Nombre de clics :
+		Nombre de clics : No more data !! :)
 
 	</h3>
 
