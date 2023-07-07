@@ -1,11 +1,11 @@
-package fr.groupe2.tpcrm.service;
+package dev.loicmoreaux.tpjsf.service;
 
 import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.groupe2.tpcrm.dao.ClientDAO;
-import fr.groupe2.tpcrm.model.Client;
+import dev.loicmoreaux.tpjsf.dao.ClientDAO;
+import dev.loicmoreaux.tpjsf.model.Client;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
@@ -29,6 +29,14 @@ public class ClientService {
 		Map<Integer, Client> clients = this.clientDAO.getClients();
 		if(clients == null || clients.isEmpty()) return null;
 		return objectMapper.writeValueAsString(clients);
+	}
+	
+	public Client getClientById(Integer id) {
+		return clientDAO.getClientById(id);
+	}
+	
+	public void addClient(Client newClient) {
+		 clientDAO.addClient(newClient);
 	}
 
 }

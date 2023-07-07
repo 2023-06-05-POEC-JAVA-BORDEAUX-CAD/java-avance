@@ -1,4 +1,4 @@
-package fr.groupe2.tpcrm.model;
+package dev.loicmoreaux.tpjsf.model;
 
 public class Client {
 	private Integer id;

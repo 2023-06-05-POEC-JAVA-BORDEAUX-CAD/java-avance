@@ -1,8 +1,8 @@
-package fr.groupe2.tpcrm.dao;
+package dev.loicmoreaux.tpjsf.dao;
 import java.util.HashMap;
 import java.util.Map;
 
-import fr.groupe2.tpcrm.model.Client;
+import dev.loicmoreaux.tpjsf.model.Client;
 import jakarta.ejb.Stateless;
 
 @Stateless
@@ -20,6 +20,11 @@ public class ClientDAO {
 	
 	public Map<Integer, Client> getClients(){
 		return this.clients;
+	}
+	
+	public void addClient(Client newClient) {
+		this.clients.put(newClient.getId(), newClient);
+		//return "ajout du Client";
 	}
 
 }

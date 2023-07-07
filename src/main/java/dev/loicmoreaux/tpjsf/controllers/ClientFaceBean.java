@@ -1,6 +1,9 @@
 package dev.loicmoreaux.tpjsf.controllers;
 
+
+import dev.loicmoreaux.tpjsf.service.ClientService;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 @Named
@@ -10,6 +13,10 @@ public class ClientFaceBean {
 	 * Attributes
 	 */
 	private ClientFormBean client = new ClientFormBean();
+	
+	@Inject
+	private ClientService clientService;
+	
 	/*
 	 * Constructor
 	 */
@@ -30,6 +37,7 @@ public class ClientFaceBean {
 	 * Methods
 	 */
 	public String save() {
+		
 		System.out.println("sauvegarde du client");
 		return null;
 	}
