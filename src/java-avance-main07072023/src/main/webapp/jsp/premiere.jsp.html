@@ -1,0 +1,15 @@
+<%@ page language="java" contentType="text/html"%>
+<%@ page import="java.text.*,java.util.*" %>
+<%@ page import="fr.maboite.Factorial" %>
+<html>
+<head>
+<title>Date JSP</title>
+</head>
+<% String message = "Salut !"; 
+   Factorial factorial = new Factorial();
+   message = "La factorielle de 3 vaut : " + factorial.compute(3) ;%>
+<body>
+<h1>Voilà une bien belle page générée par une JSP !!!!Je vais afficher <%= message %> </h1>
+<span> Ceci est un span </span>
+</body>
+</html>
