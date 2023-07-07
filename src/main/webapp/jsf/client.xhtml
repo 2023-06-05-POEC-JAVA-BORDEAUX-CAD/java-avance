@@ -20,17 +20,69 @@
 	<div>Salut Philippe!</div>
 	<br />
 	<h:form prependId="false">
-		<h2>Messages</h2>
+		<h2>Clients</h2>
 		<p>
 			<label for="clientId">Id :</label> <br />
 			<h:inputText id="clientId" type="text" placeholder="id"
-				value="#{clientFaceBeanTp.clientId}" required="true" title="id" />
+				value="#{clientFaceBeanTp.client.clientId}" required="true"
+				title="id" />
 		</p>
 		<p>
-			<label for="companyName">Value :</label> <br />
+			<label for="companyName">companyName :</label> <br />
 			<h:inputText id="companyName" type="text" placeholder="value"
-				value="#{clientFormBeanTp.companyName}" required="true" title="Value" />
+				value="#{clientFaceBeanTp.client.companyName}" required="true"
+				title="Value" />
 		</p>
+		
+		<p>
+			<label for="firstName">FirstName :</label> <br />
+			<h:inputText id="firstName" type="text" placeholder="value"
+				value="#{clientFaceBeanTp.client.firstName}" required="true"
+				title="Value" />
+		</p>
+
+		<p>
+			<label for="lastName">LastName :</label> <br />
+			<h:inputText id="lastName" type="text" placeholder="value"
+				value="#{clientFaceBeanTp.client.lastName}" required="true"
+				title="Value" />
+		</p>
+
+<p>
+			<label for="email">Email :</label> <br />
+			<h:inputText id="email" type="text" placeholder="value"
+				value="#{clientFaceBeanTp.client.email}" required="true"
+				title="Value" />
+		</p>
+		
+		<p>
+			<label for="address">Address :</label> <br />
+			<h:inputText id="address" type="text" placeholder="value"
+				value="#{clientFaceBeanTp.client.address}" required="true"
+				title="Value" />
+		</p>
+		
+			<p>
+			<label for="zipCode">zipCode :</label> <br />
+			<h:inputText id="zipCode" type="text" placeholder="value"
+				value="#{clientFaceBeanTp.client.zipCode}" required="true"
+				title="Value" />
+		</p>
+		
+			<p>
+			<label for="country">Country :</label> <br />
+			<h:inputText id="country" type="text" placeholder="value"
+				value="#{clientFaceBeanTp.client.country}" required="true"
+				title="Value" />
+		</p>
+		
+			<p>
+			<label for="clientState">clientState :</label> <br />
+			<h:inputText id="clientState" type="text" placeholder="value"
+				value="#{clientFaceBeanTp.client.clientState}" required="true"
+				title="Value" />
+		</p>
+
 		<p>
 			<h:commandButton value="Save" action="#{clientFaceBeanTp.save}" />
 		</p>

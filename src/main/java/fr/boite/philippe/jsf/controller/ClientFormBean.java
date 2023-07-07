@@ -9,8 +9,13 @@ public class ClientFormBean {
 
 	private Integer clientId;
 	private String companyName;
-	private Integer age;
-	private boolean active;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String address;
+	private String zipCode;
+	private String country;
+	private Integer clientState;
 		
 	public Integer getClientId() {
 		return clientId;
@@ -28,20 +33,62 @@ public class ClientFormBean {
 		this.companyName = companyName;
 	}
 
-	public Integer getAge() {
-		return age;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setAge(Integer age) {
-		this.age = age;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public boolean isActive() {
-		return active;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setActive(boolean active) {
-		this.active = active;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getZipCode() {
+		return zipCode;
+	}
+
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public Integer getClientState() {
+		return clientState;
+	}
+
+	public void setClientState(Integer clientState) {
+		this.clientState = clientState;
+	}
+
+	
 
 }
