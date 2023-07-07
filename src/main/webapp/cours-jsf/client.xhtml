@@ -5,6 +5,10 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" data-theme="dark">
+<f:metadata>
+	<f:viewParam name="id" value="#{clientFaceBean.loadId}" />
+	<f:viewAction action="#{clientFaceBean.onLoad}" />
+</f:metadata>
 
 <h:head>
 	<!-- JSF remplace h:head par <head> et ajoute des caractéristiques à cette balise -->
@@ -13,8 +17,8 @@
 <h:body>
 	<div>Salut !</div>
 	<div>Hey!</div>
-	<div>#{clientBean.message}</div>
-	
-	
+	<div> la vue des clients</div>
+	<div>j'affiche le client avc id: #{clientFaceBean.loadId}</div>
+
 </h:body>
 </html>
