@@ -9,7 +9,7 @@ import java.sql.*;
 @Stateless
 public class DataBaseManager {
 
-	final String USE_DB="use messenger";
+	final String USE_DB="use clients";
 	final String PASSWORD="Ovbt9,yvzdMjollnir";
 	final String LOGIN ="root";
 	
@@ -21,7 +21,7 @@ public class DataBaseManager {
 			 Class.forName("com.mysql.cj.jdbc.Driver");
 			 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306?useSSL=false", LOGIN, PASSWORD);
 			 Statement stmt = conn.createStatement();
-			 stmt.executeUpdate("use db");
+			 stmt.executeUpdate(USE_DB);
 			 stmt.executeUpdate(sql);
 			 conn.close();
 		} 
@@ -35,12 +35,12 @@ public class DataBaseManager {
 		ResultSet res = null;
         
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+        	
             Statement stmt = conn.createStatement();
-            stmt.executeUpdate("use db");
+            stmt.executeUpdate(USE_DB);
             res = stmt.executeQuery(sql);
         }
-        catch (ClassNotFoundException | SQLException e){
+        catch (SQLException e){
             System.out.println(e);
         }
     

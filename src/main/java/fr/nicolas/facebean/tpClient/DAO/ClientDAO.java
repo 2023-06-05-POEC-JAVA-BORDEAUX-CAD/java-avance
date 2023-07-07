@@ -14,19 +14,18 @@ import fr.nicolas.facebean.tpClient.Entity.Client;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
-
 @Stateless
 public class ClientDAO {
 
 	
 	private Map<Integer, Client> clients = new HashMap<>();
 
-	final String USE_DB="use messenger";
+	final String USE_DB="use clients";
 	final String PASSWORD="Ovbt9,yvzdMjollnir";
 	final String LOGIN ="root";
 
-//	@Inject
-//	private DataBaseManager dbm;
+	@Inject
+	private DataBaseManager dbm;
 	
 	
 	public ClientDAO() {
@@ -40,8 +39,8 @@ public class ClientDAO {
 	
 	public Map<Integer, Client> getClients() {
 		
-		return clients;
-		
+		return this.clients;
+
 //		List<Client> clients = new ArrayList<>();
 //		
 //		try {
@@ -65,14 +64,41 @@ public class ClientDAO {
 	
 	
 	public Client getClientById(Integer id) {
-		return this.clients.get(id);
+//		return this.clients.get(id);
+		Client client = new Client();
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306?useSSL=false", "root", "Ovbt9,yvzdMjollnir");
+			ResultSet res = dbm.getDatas("SELECT * FROM client WHERE id="+id+"", conn);
+						
+			if (!res.next()) {
+				client = null;
+			} else {
+				do {
+					client.setId(res.getInt("id"));
+	                client.setFirstName(res.getString("first_name"));
+	                client.setLastName(res.getString("last_name"));
+	                client.setCompanyName(res.getString("company_name"));
+				} while(res.next());
+			}
+			conn.close();
+		} catch(SQLException e) {
+			System.out.println( "sql error" + " " + e.getMessage());
+			client = null;
+		} catch(ClassNotFoundException e) {
+			System.out.println("Error class not found error" + " " + e.getMessage());
+		}
+		
+		return client;
+		
+		
 	}
 	
 	public void insertClient(Client client) {
-//		String sql = "INSERT INTO client (first_name, last_name, company_name)"
-//				+ "VALUES"
-//				+ "('"+ client.getFirstName() +"', '"+ client.getLastName() +"', '" + client.getCompanyName() +"')";
-//		dbm.insert(sql);
+		String sql = "INSERT INTO client (first_name, last_name, company_name)"
+				+ "VALUES"
+				+ "('"+ client.getFirstName() +"', '"+ client.getLastName() +"', '" + client.getCompanyName() +"')";
+		dbm.insert(sql);
 	}
 	
 	

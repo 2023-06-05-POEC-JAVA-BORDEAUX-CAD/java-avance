@@ -25,10 +25,6 @@ public class ClientService {
 		return clientDAO.getClientById(id);
 	}
 	
-	public Client getDummyClient() {
-		return clientDAO.getClientById(1);
-	}
-	
 	public void save(Client client) {
 		clientDAO.insertClient(client);
 	}

@@ -29,6 +29,7 @@ public class ClientController {
 		try {
 			Integer id = Integer.valueOf(this.id);
 			Client cli = this.getClientById(id);
+			this.clientDTO.setId(cli.getId());
 			this.clientDTO.setFirstName(cli.getFirstName());
 			this.clientDTO.setLastName(cli.getLastName());
 			this.clientDTO.setCompanyName(cli.getCompanyName());
@@ -36,7 +37,7 @@ public class ClientController {
 		catch(NumberFormatException e) {
 			
 		}
-		catch(NullPointerException e) {
+		catch(NullPointerException |IllegalStateException e) {
 			this.errMessage = "Client invalide avec cet id : " + this.id +"";
 		}
 	}
@@ -51,6 +52,12 @@ public class ClientController {
 	
 	
 	public String save() {
+		
+		Client cli = new Client();
+		cli.setFirstName(this.clientDTO.getFirstName());
+		cli.setLastName(this.clientDTO.getLastName());
+		cli.setCompanyName(this.clientDTO.getCompanyName());
+		this.clientService.save(cli);
 		this.saveMessage = "Client sauvegardé";
 		return "client";
 	}
