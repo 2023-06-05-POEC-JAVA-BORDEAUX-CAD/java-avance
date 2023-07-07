@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" data-theme="dark">
+<f:metadata>
+	<f:viewParam name="id" value="#{messageFaceBean.loadId}" />
+	<f:viewAction action="#{messageFaceBean.onLoad}" />
+</f:metadata>
+<h:head>
+	<!-- JSF remplace h:head par <head> et ajoute des caractéristiques à cette balise -->
+	<link rel="stylesheet" href="css/minstyle.io.css" />
+</h:head>
+<h:body>
+	<div>Ceci est ma vue message</div>
+	<div>J'affiche le message avec l'id #{messageFaceBean.message.id}</div>
+	<div>Message : #{messageFaceBean.message.value}</div>
+	<h:form prependId="false"> <!-- Création d’un formulaire JSF -->
+		<h2>Messages</h2>
+		<p>
+			<label for="id">Id :</label> <br />
+			<h:inputText id="id" type="text" placeholder="id"
+				value="#{messageFaceBean.message.id}" required="required" title="id" />
+			<!-- utilisation de champs input. Le mapping se fait grâce à value -->
+		</p>
+		<p>
+			<label for="value">Value :</label> <br />
+			<h:inputText id="value" type="text" placeholder="value"
+				value="#{messageFaceBean.message.value}" required="required"
+				title="Value" />
+		</p>
+		<p>
+			<h:commandButton value="Sauvegarder" action="#{messageFaceBean.save}" />
+			<!-- Appel à save pour sauvegarder le formulaire -->
+		</p>
+	</h:form>
+</h:body>
+</html>

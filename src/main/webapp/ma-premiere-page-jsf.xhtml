@@ -5,14 +5,32 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" data-theme="dark">
-
 <h:head>
 	<!-- JSF remplace h:head par <head> et ajoute des caractéristiques à cette balise -->
 	<link rel="stylesheet" href="css/minstyle.io.css" />
 </h:head>
 <h:body>
+	<div>#{msg.welcome}</div>
 	<div>Salut !</div>
-	<div>Ça va ? Oui </div>
+	<div>Ça va ? Oui</div>
 	<div>#{monPremierFaceBean.getMessage()}</div>
+
+	<h:form>
+		<h:commandLink action="${messageFaceBean.createNew}">
+			Mon message
+		</h:commandLink>
+		<!-- va déclencher l’action createNew et ouvrir la vue renvoyée par cette méthode -->
+	</h:form>
+
+	<h:form>
+		<h:commandLink action="${clientFaceBean.createNew}">
+			Mon client
+		</h:commandLink>
+		<!-- va déclencher l’action createNew et ouvrir la vue renvoyée par cette méthode -->
+	</h:form>
+
+	<h:link value="Aller à mon client avec l'id 2" outcome="client">
+		<f:param name="id" value="2" />
+	</h:link>
 </h:body>
 </html>
