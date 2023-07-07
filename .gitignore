@@ -16,3 +16,4 @@ buildNumber.properties
 *.threads
 .project
 .classpath
+apache-tomee-9.1.0-webprofile/
