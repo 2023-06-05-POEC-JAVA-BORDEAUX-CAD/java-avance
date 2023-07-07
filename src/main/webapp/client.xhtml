@@ -6,6 +6,10 @@
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" data-theme="dark"
 >
+<f:metadata>
+	<f:viewParam name="id" value="#{clientFaceBean.loadId}" />
+	<f:viewAction action="#{clientFaceBean.onLoad}" />
+</f:metadata>
 <h:head>
 	<!-- JSF remplace h:head par <head> et ajoute des caractéristiques à cette balise -->
 	<title>Client View</title>
@@ -34,6 +38,10 @@
 		<div>
 			<p>#{clientFaceBean.getCounter()}</p>
 		</div>
+		
+		<h3>Params</h3>
+		
+		<p>Id : <strong>#{clientFaceBean.displayLoadId()}</strong></p>
 		
 		<h:form>
 			<h:commandLink action="${clientFaceBean.goIndex}" class="button">

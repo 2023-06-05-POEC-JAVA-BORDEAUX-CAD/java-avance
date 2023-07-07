@@ -20,6 +20,7 @@ public class ClientFaceBean implements Serializable {
 	private boolean myBoolean = true;
 	private Integer myInteger = 39;
 	private Integer counter = 0;
+	private String loadId;
 	
 	public ClientFaceBean() {}
 
@@ -59,6 +60,14 @@ public class ClientFaceBean implements Serializable {
 		this.counter = counter;
 	}
 
+	public String getLoadId() {
+		return loadId;
+	}
+
+	public void setLoadId(String loadId) {
+		this.loadId = loadId;
+	}
+
 	public String otherMessage() {
 		return "Un autre message";
 	}
@@ -70,11 +79,20 @@ public class ClientFaceBean implements Serializable {
 	
 	public String createNew() {
 		this.counter++;
-		return "client-view";
+		return "client";
 	}
 	
 	public String goIndex() {
 		this.counter++;
 		return "page1";
+	}
+	
+	public void onLoad() {
+		System.out.println("l'id passé est : " + this.displayLoadId());
+	}
+	
+	public String displayLoadId() {
+		if(this.getLoadId() == null || this.getLoadId().isEmpty()) return "paramètre absent";
+		return this.getLoadId();
 	}
 }
