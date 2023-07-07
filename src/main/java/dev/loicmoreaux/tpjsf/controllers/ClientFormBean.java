@@ -1,6 +1,9 @@
 package dev.loicmoreaux.tpjsf.controllers;
 
 public class ClientFormBean {
+	/*
+	 * Attributes of Client
+	 */
 	private Integer id;
 	private String company_name;
 	private String first_name;
@@ -13,6 +16,9 @@ public class ClientFormBean {
 	private String country;
 	private boolean state;
 	
+	/*
+	 * Constructors
+	 */
 	public ClientFormBean() {};
 	
 	public ClientFormBean(Integer id, String company_name, String first_name, String last_name, String email,
@@ -30,7 +36,10 @@ public class ClientFormBean {
 		this.country = country;
 		this.state = state;
 	}
-
+	
+	/*
+	 * Getters and Setters
+	 */
 	public Integer getId() {
 		return id;
 	}

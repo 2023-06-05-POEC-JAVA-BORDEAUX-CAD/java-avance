@@ -20,9 +20,10 @@
 				<label for="id" >Id :</label>
 				<h:inputText
 					id="id"
-					type="number"
+					type="text"
 					placeholder="Entrer un id"
-					value=""
+					value="#{clientFaceBean.client.id}"
+					
 				/>
 			</div>
 			<div class="form-group">
@@ -31,10 +32,10 @@
 					id="company_name"
 					type="text"
 					placeholder="Entrer le nom de l'entreprise"
-					value=""
+					value="#{clientFaceBean.client.company_name}"
 				/>
 			</div>
-			<!-- <h:commandButton value="Sauvegarder" action="" class="button"/>  -->
+			<h:commandButton value="Sauvegarder" action="#{clientFaceBean.save}" class="button"/>
 		</h:form>		
 	</main>
 </h:body>
