@@ -13,10 +13,10 @@ public class ClientServiceJsf {
 	}
 
 	
-	public ClientFormBean load(Integer clientId) {
+	public ClientFormBean load(String clientId) {
 		ClientFormBean client = new ClientFormBean();
 		client.setId(clientId);
-		client.setCompannyName("la valeur de :" + clientId);
+		client.setCompanyName("la valeur de :" + clientId);
 		return client;
 	}
 
