@@ -5,8 +5,8 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" data-theme="dark">
 
 <f:metadata>
-	<f:viewParam name="id" value="#{clientFaceBean.loadId}" />
-	<f:viewAction action="#{clientFaceBean.onLoad}" />
+	<f:viewParam name="id" value="#{clientFaceBean2.loadId}" />
+	<f:viewAction action="#{clientFaceBean2.onLoad}" />
 </f:metadata>
 
 <h:head>
@@ -34,14 +34,14 @@
 	</style>
 </h:head>
 <h:body>
-	<h1>Client #{clientFaceBean.loadId}</h1>
+	<h1>Client #{clientFaceBean2.loadId}</h1>
 	<h:form>
 		<label for="id">Id :
 			<h:inputText
 				id="id"
 				type="text"
 				placeholder="id"
-				value="#{clientFaceBean.client.id}"
+				value="#{clientFaceBean2.client.id}"
 				required="required"
 				title="id" />
 		</label>
@@ -50,7 +50,7 @@
 				id="companyName"
 				type="text"
 				placeholder="companyName"
-				value="#{clientFaceBean.client.companyName}"
+				value="#{clientFaceBean2.client.companyName}"
 				required="required"
 				title="companyName" />
 		</label>
@@ -59,7 +59,7 @@
 				id="firstName"
 				type="text"
 				placeholder="firstName"
-				value="#{clientFaceBean.client.firstName}"
+				value="#{clientFaceBean2.client.firstName}"
 				required="required"
 				title="firstName" />
 		</label>
@@ -68,7 +68,7 @@
 				id="lastName"
 				type="text"
 				placeholder="lastName"
-				value="#{clientFaceBean.client.lastName}"
+				value="#{clientFaceBean2.client.lastName}"
 				required="required"
 				title="Lastname" />
 		</label>
@@ -77,7 +77,7 @@
 				id="email"
 				type="text"
 				placeholder="email"
-				value="#{clientFaceBean.client.email}"
+				value="#{clientFaceBean2.client.email}"
 				required="required"
 				title="email" />
 		</label>
@@ -86,7 +86,7 @@
 				id="phone"
 				type="text"
 				placeholder="phone"
-				value="#{clientFaceBean.client.phone}"
+				value="#{clientFaceBean2.client.phone}"
 				required="required"
 				title="phone" />
 		</label>
@@ -95,7 +95,7 @@
 				id="adress"
 				type="text"
 				placeholder="adress"
-				value="#{clientFaceBean.client.adress}"
+				value="#{clientFaceBean2.client.adress}"
 				required="required"
 				title="adress" />
 		</label>
@@ -104,7 +104,7 @@
 				id="zipCode"
 				type="text"
 				placeholder="zipCode"
-				value="#{clientFaceBean.client.zipCode}"
+				value="#{clientFaceBean2.client.zipCode}"
 				required="required"
 				title="zipCode" />
 		</label>
@@ -113,7 +113,7 @@
 				id="city"
 				type="text"
 				placeholder="city"
-				value="#{clientFaceBean.client.city}"
+				value="#{clientFaceBean2.client.city}"
 				required="required"
 				title="city" />
 		</label>
@@ -122,7 +122,7 @@
 				id="country"
 				type="text"
 				placeholder="country"
-				value="#{clientFaceBean.client.country}"
+				value="#{clientFaceBean2.client.country}"
 				required="required"
 				title="country" />
 		</label>
@@ -131,11 +131,11 @@
 				id="state"
 				type="text"
 				placeholder="state"
-				value="#{clientFaceBean.client.state}"
+				value="#{clientFaceBean2.client.state}"
 				required="required"
 				title="state" />
 		</label>
-		<h:commandButton value="Sauvegarder" action="#{clientFaceBean.save}" />
+		<h:commandButton value="Sauvegarder" action="#{clientFaceBean2.save}" />
 	</h:form>
 </h:body>
 

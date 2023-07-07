@@ -7,7 +7,7 @@ import jakarta.enterprise.context.RequestScoped;
 
 @Named
 @RequestScoped
-public class ClientFaceBean {
+public class ClientFaceBean2 {
 	private String loadId;
 	private Client client = new Client();
 
