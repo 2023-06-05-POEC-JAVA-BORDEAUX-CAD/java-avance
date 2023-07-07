@@ -22,6 +22,8 @@ public class ClientFaceBean implements Serializable {
 	private Integer counter = 0;
 	private String loadId;
 	
+	private MessageFormBean messageForm = new MessageFormBean();
+	
 	public ClientFaceBean() {}
 
 	public String getMessage() {
@@ -68,6 +70,14 @@ public class ClientFaceBean implements Serializable {
 		this.loadId = loadId;
 	}
 
+	public MessageFormBean getMessageForm() {
+		return messageForm;
+	}
+
+	public void setMessageForm(MessageFormBean messageForm) {
+		this.messageForm = messageForm;
+	}
+
 	public String otherMessage() {
 		return "Un autre message";
 	}
@@ -94,5 +104,9 @@ public class ClientFaceBean implements Serializable {
 	public String displayLoadId() {
 		if(this.getLoadId() == null || this.getLoadId().isEmpty()) return "paramètre absent";
 		return this.getLoadId();
+	}
+	
+	public void save() {
+		System.out.println("Save Ok");
 	}
 }

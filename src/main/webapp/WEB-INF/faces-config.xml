@@ -4,11 +4,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
 	<application>
+		<!-- Ensemble des locales que le programme "connait" -->
 		<locale-config>
 			<default-locale>en</default-locale>
 			<supported-locale>fr</supported-locale>
 			<supported-locale>de</supported-locale>
 		</locale-config>
+		<!-- Les fichiers qui ont les bons messages selon la locale -->
 		<resource-bundle>
 			<base-name>fr.maboite.bundle.Messages</base-name>
 			<var>msg</var>

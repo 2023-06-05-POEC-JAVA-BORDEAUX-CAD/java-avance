@@ -9,25 +9,52 @@
 <h:head>
 	<!-- JSF remplace h:head par <head> et ajoute des caractéristiques à cette balise -->
 	<title>Page 1</title>
-	<link rel="stylesheet" href="cours/jsf/css/style.css" />
+	<link rel="stylesheet" href="assets/style.css" />
 </h:head>
 <h:body>
-	<div class="main">
+	<main>
 		<h1>Page 1</h1>
-		
+
+		<h2>Formulaire</h2>					
 		<div>
-			<h:form>
-				<h:commandLink action="${clientFaceBean.createNew}" class="button">
-					Allez à la page client
-				</h:commandLink>
+			<h:form class="form">
+				<div class="form-group">
+					<label for="id" >Id :</label>
+					<h:inputText
+						id="id"
+						type="text"
+						placeholder="Entrer un id"
+						value="#{clientFaceBean.messageForm.id}"
+					/>
+				</div>
+				<div class="form-group">
+					<label for="value" >Valeur :</label>
+					<h:inputText
+						id="value"
+						type="text"
+						placeholder="Entrer une valeur"
+						value="#{clientFaceBean.messageForm.value}"
+					/>
+				</div>
+				<h:commandButton value="Sauvegarder" action="#{clientFaceBean.save}" class="button"/>
 			</h:form>
 		</div>
 		
+		<h2>Command Link</h2>
+		<div>
+			<h:form class="form">		
+				<h:commandLink action="${clientFaceBean.createNew}" class="button">
+					Allez à la page client
+				</h:commandLink>			
+			</h:form>
+		</div>
+		
+		<h2>Link</h2>
 		<div>
 			<h:link value="Un Link qui passe un id" outcome="client" class="button">
 				<f:param name="id" value="3" />
 			</h:link>
 		</div>		
-	</div>
+	</main>
 </h:body>
 </html>
