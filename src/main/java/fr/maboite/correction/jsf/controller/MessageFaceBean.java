@@ -1,6 +1,8 @@
 package fr.maboite.correction.jsf.controller;
 
+import fr.maboite.correction.jsf.service.MessageService;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 @Named
@@ -10,6 +12,19 @@ public class MessageFaceBean {
 	private int compteur;
 
 	private String loadId;
+
+	private MessageFormBean message = new MessageFormBean();
+	
+	@Inject
+	private MessageService messageService;
+
+	public MessageFormBean getMessage() {
+		return message;
+	}
+
+	public void setMessage(MessageFormBean message) {
+		this.message = message;
+	}
 
 	public String getLoadId() {
 		return loadId;
@@ -24,10 +39,16 @@ public class MessageFaceBean {
 		System.out.println("Quelqu'un a appuyé sur ce bouton " + compteur + " fois");
 		return "message";
 	}
-	
+
 	public void onLoad() {
-		System.out.println("Je suis en train de charger la vue");
-		System.out.println("Je charge le message avec l'id: " + loadId);
+		System.out.println("Je vais demander au service de charger le message avec l'id " + loadId);
+		this.message = this.messageService.load(this.loadId);
+	}
+	
+	public String save() { 
+		System.out.println("Je sauvegarde message");
+		this.messageService.save(message);
+		return "message";
 	}
 
 }

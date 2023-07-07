@@ -16,5 +16,22 @@
 <h:body>
 	<div>La vue des messages</div>
 	<div>J'affiche le message avec l'id : #{messageFaceBean.loadId}</div>
+	<h:form prependId="false"> 
+            <h2>Messages</h2>
+		<p>
+			<label for="id">Id : </label> <br />
+			<h:inputText id="id" type="text" placeholder="id"
+				value="#{messageFaceBean.message.id}" required="required" title="id" />
+		</p>
+		<p>
+			<label for="value">Value :</label> <br />
+			<h:inputText id="value" type="text" placeholder="value"
+				value="#{messageFaceBean.message.value}" required="required"
+				title="Value" />
+		</p>
+		<p>
+			<h:commandButton value="Sauvegarder" action="#{messageFaceBean.save}" />
+		</p>
+	</h:form>
 </h:body>
 </html>
