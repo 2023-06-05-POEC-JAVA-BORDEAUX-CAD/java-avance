@@ -15,11 +15,16 @@ public class CommandeFaceBean {
    private Integer numero = 15;
    private Boolean paye = true;
    private String date;
+   private String loadId;
 
 public String createNew() {
 //..opérations Java ici
 System.out.println("commande");
 return "commande";
+}
+
+public void onLoad() {  
+  System.out.println(loadId);
 }
    
    public String getMessage() {
@@ -33,7 +38,9 @@ return "commande";
    public Boolean getPaye() {
      return paye;
    }
-
+   public String getLoadId() {
+     return loadId;
+   }
    public String getDate() {
       date = LocalDate.now().toString();
       return date;
@@ -54,4 +61,7 @@ return "commande";
    public void setPaye(Boolean paye) {
      this.paye = paye;
    }
-}
+   public void setLoadId(String loadId) {
+     this.loadId = loadId;
+   }
+  }

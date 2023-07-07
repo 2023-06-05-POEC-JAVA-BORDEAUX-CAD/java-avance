@@ -9,6 +9,10 @@
   xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
   data-theme="dark"
 >
+	<f:metadata>
+    <f:viewParam name="id" value="#{commandeFaceBean.loadId}" />
+    <f:viewAction action="#{commandeFaceBean.onLoad}" />
+  	</f:metadata>
   <h:head>
     <!-- JSF remplace h:head par <head> et ajoute des caractéristiques à cette balise -->
     <link rel="stylesheet" href="css/minstyle.io.css" />
@@ -18,5 +22,6 @@
     <div>Le numéro de Commande : #{commandeFaceBean.numero}</div>
     <div>La commande est elle payée : #{commandeFaceBean.paye}</div>
     <div>La date de la commande : #{commandeFaceBean.date}</div>
+    <div>J'affiche l'id : #{commandeFaceBean.loadId}</div>
   </h:body>
 </html>
