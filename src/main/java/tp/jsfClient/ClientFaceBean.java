@@ -12,7 +12,7 @@ public class ClientFaceBean {
 	private Client client = new Client();
 
 	@Inject
-	private ClientService beanClientService;
+	private ClientFBService beanClientService;
 
 	public String getLoadId() {
 		return loadId;
@@ -30,11 +30,11 @@ public class ClientFaceBean {
 		this.client = client;
 	}
 
-	public ClientService getBeanClientService() {
+	public ClientFBService getBeanClientService() {
 		return beanClientService;
 	}
 
-	public void setBeanClientService(ClientService beanClientService) {
+	public void setBeanClientService(ClientFBService beanClientService) {
 		this.beanClientService = beanClientService;
 	}
 
