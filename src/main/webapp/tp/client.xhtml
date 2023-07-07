@@ -11,17 +11,130 @@
 
 <h:head>
 	<title>Coucou (2)</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			font-size: 14px;
+		}
+		input[type="submit"] {
+			display: block;
+			margin: 0 auto;
+			margin-top: 18px;
+		}
+		label {
+			display: flex;
+			margin: 6px auto;
+			max-width: 300px;
+			align-content: center;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: space-between;
+			align-items: center;
+		}
+	</style>
 </h:head>
 <h:body>
 	<h1>Client #{clientFaceBean.loadId}</h1>
 	<h:form>
-		<label for="id">Id : </label>
-		<h:inputText id="id" type="text" placeholder="id" value="#{clientFaceBean.client.id}" required="required"
-			title="id" />
-		<label for="lastName">Last name :</label>
-		<h:inputText id="lastName" type="text" placeholder="lastName" value="#{clientFaceBean.client.lastName}"
-			required="required" title="Last name" />
-
+		<label for="id">Id :
+			<h:inputText
+				id="id"
+				type="text"
+				placeholder="id"
+				value="#{clientFaceBean.client.id}"
+				required="required"
+				title="id" />
+		</label>
+		<label for="companyName">Company name :
+			<h:inputText
+				id="companyName"
+				type="text"
+				placeholder="companyName"
+				value="#{clientFaceBean.client.companyName}"
+				required="required"
+				title="companyName" />
+		</label>
+		<label for="firstName">First name :
+			<h:inputText
+				id="firstName"
+				type="text"
+				placeholder="firstName"
+				value="#{clientFaceBean.client.firstName}"
+				required="required"
+				title="firstName" />
+		</label>
+		<label for="lastName">Last name :
+			<h:inputText
+				id="lastName"
+				type="text"
+				placeholder="lastName"
+				value="#{clientFaceBean.client.lastName}"
+				required="required"
+				title="Lastname" />
+		</label>
+		<label for="email">Email :
+			<h:inputText
+				id="email"
+				type="text"
+				placeholder="email"
+				value="#{clientFaceBean.client.email}"
+				required="required"
+				title="email" />
+		</label>
+		<label for="phone">Phone :
+			<h:inputText
+				id="phone"
+				type="text"
+				placeholder="phone"
+				value="#{clientFaceBean.client.phone}"
+				required="required"
+				title="phone" />
+		</label>
+		<label for="adress">Adresse :
+			<h:inputText
+				id="adress"
+				type="text"
+				placeholder="adress"
+				value="#{clientFaceBean.client.adress}"
+				required="required"
+				title="adress" />
+		</label>
+		<label for="zipCode">ZIP Code :
+			<h:inputText
+				id="zipCode"
+				type="text"
+				placeholder="zipCode"
+				value="#{clientFaceBean.client.zipCode}"
+				required="required"
+				title="zipCode" />
+		</label>
+		<label for="city">Ville :
+			<h:inputText
+				id="city"
+				type="text"
+				placeholder="city"
+				value="#{clientFaceBean.client.city}"
+				required="required"
+				title="city" />
+		</label>
+		<label for="country">Kinder (country) :
+			<h:inputText
+				id="country"
+				type="text"
+				placeholder="country"
+				value="#{clientFaceBean.client.country}"
+				required="required"
+				title="country" />
+		</label>
+		<label for="state">Status :
+			<h:inputText
+				id="state"
+				type="text"
+				placeholder="state"
+				value="#{clientFaceBean.client.state}"
+				required="required"
+				title="state" />
+		</label>
 		<h:commandButton value="Sauvegarder" action="#{clientFaceBean.save}" />
 	</h:form>
 </h:body>
