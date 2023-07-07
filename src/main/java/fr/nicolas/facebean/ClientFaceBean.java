@@ -14,6 +14,7 @@ public class ClientFaceBean {
 	private Boolean hasCart;
 	private Integer cartAmount;
 	private LocalDate lasdateTimeCart;
+	private String id;
 	
 	public ClientFaceBean() {
 		this.name = "Robert Barathéon";
@@ -54,5 +55,16 @@ public class ClientFaceBean {
 		this.lasdateTimeCart = lasdateTimeCart;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	public void onLoad() {
+		System.out.println(this.getId());
+	}
 	
 }

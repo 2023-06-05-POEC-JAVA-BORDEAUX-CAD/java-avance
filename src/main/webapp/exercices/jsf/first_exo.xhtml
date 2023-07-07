@@ -15,17 +15,24 @@
      </style>
 </h:head>
 <h:body >
-	<div>Salut !</div>
-	<div>T-V-A bien ?</div>
+	<!-- msg.welcome est une vartiable déterminée dans le fichier Message.properties dans les ressources -->
+	<div>#{msg.welcome}</div>
+	
+	
 	<h:form id="msgForm">
 	    <h:messages styleClass="errorBlock" />
 	    <br/>
-	    Message: 
-	    <h:inputText id="message" required="true" name="message"  requiredMessage="La saisie du message est obligatoire !" />
+	    <label for="message">Message:</label><br/>  
+	    <h:inputText id="message" 
+	    			required="true" 
+	    			name="message"
+	    			value="#{messenger.message.message}"  
+	    			requiredMessage="La saisie du message est obligatoire !" />
 	    <br/>
 	    <h:commandButton action="#{messenger.processForm()}" value="Envoyer message" />
 	</h:form>
-	<div id="message">#{messenger.message}</div>
+	<div id="message">#{messenger.message.message}</div>
+	
 	
 	<h:form>
 		<h:commandLink action="${messenger.goToClient}">
@@ -40,5 +47,8 @@
 	</h:form>
 	<div id="message">#{cart.productsNumber}</div>
 	
+	<h:link value="Aller vers les clients" outcome="client">
+		<f:param name="id" value="3"/>
+	</h:link>
 </h:body>
 </html>
