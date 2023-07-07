@@ -15,11 +15,12 @@
 </h:head>
 <h:body>
 	<div>Ceci est la vue du client :</div>
-	<div>J'affiche le client n °#{clientFaceBean.client.id} avec son
-		message : #{clientFaceBean.getMessage()} -
-		#{clientFaceBean.getLocalDate()}</div>
+	
+	<div>J'affiche le client n °#{clientFaceBean.loadId} avec son
+		message : #{clientFaceBean.getMessage()}</div>
 
 	<ul>
+		<li>Id : #{clientFaceBean.client.id}</li>
 		<li>Company Name : #{clientFaceBean.client.companyName}</li>
 		<li>Name : #{clientFaceBean.client.firstName}
 			#{clientFaceBean.client.lastName}</li>
