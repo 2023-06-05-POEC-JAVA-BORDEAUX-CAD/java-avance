@@ -10,6 +10,7 @@ public class Factorial {
         }
 	}
 	
+	
 	public static int countWords(String input) {
         int count = 0;
         // Parcours de chaque caractère dans la chaîne

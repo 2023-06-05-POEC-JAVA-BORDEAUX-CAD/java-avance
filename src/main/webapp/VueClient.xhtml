@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" data-theme="dark">
+
+<f:metadata>
+		<f:viewParam name="id" value="${clientFaceBean.id}" />
+		<f:viewAction action="${clientFaceBean.onLoad}" />
+</f:metadata>
+
+<h:head>
+	<!-- JSF remplace h:head par <head> et ajoute des caractéristiques à cette balise -->
+	<link rel="stylesheet" href="css/minstyle.io.css" />
+</h:head>
+
+<h:body>
+	<div>Salut !</div>
+	<div>Vous etes : #{clientFaceBean.prenom} #{clientFaceBean.nom}</div>
+	<div>Vous avez : #{clientFaceBean.age} ans.</div>
+	<div>Vous etes majeur : #{clientFaceBean.majeur} </div>
+	<div>Id : #{clientFaceBean.id} </div>
+</h:body>
+</html>
