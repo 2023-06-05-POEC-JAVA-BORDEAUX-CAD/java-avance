@@ -1,4 +1,4 @@
-package dev.loicmoreaux.jsf.controller;
+package dev.loicmoreaux.coursjsf.controller;
 
 public class MessageFormBean {
 	private String id;

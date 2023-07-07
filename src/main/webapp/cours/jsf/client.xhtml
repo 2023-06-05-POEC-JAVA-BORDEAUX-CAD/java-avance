@@ -7,8 +7,8 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" data-theme="dark"
 >
 <f:metadata>
-	<f:viewParam name="id" value="#{clientFaceBean.loadId}" />
-	<f:viewAction action="#{clientFaceBean.onLoad}" />
+	<f:viewParam name="id" value="#{theClientFaceBean.loadId}" />
+	<f:viewAction action="#{theClientFaceBean.onLoad}" />
 </f:metadata>
 <h:head>
 	<!-- JSF remplace h:head par <head> et ajoute des caractéristiques à cette balise -->
@@ -21,30 +21,30 @@
 		
 		<div>
 			<p>#{clientFaceBean.getMessage()}</p>
-			<p>Le nom du Client est : <strong>#{clientFaceBean.name}</strong></p>
-			<p>Client régulier : <strong>#{clientFaceBean.isMyBoolean()}</strong></p>
-			<p>Age : <strong>#{clientFaceBean.getMyInteger()}</strong></p>
+			<p>Le nom du Client est : <strong>#{theClientFaceBean.name}</strong></p>
+			<p>Client régulier : <strong>#{theClientFaceBean.isMyBoolean()}</strong></p>
+			<p>Age : <strong>#{theClientFaceBean.getMyInteger()}</strong></p>
 		</div>			
 		
 		
 		<h2>Heure Locale</h2>
 		
 		<div>
-			<p>#{clientFaceBean.getDateTimeLocale()}</p>
+			<p>#{theClientFaceBean.getDateTimeLocale()}</p>
 		</div>
 		
 		<h2>Compteur de clics</h2>
 		
 		<div>
-			<p>#{clientFaceBean.getCounter()}</p>
+			<p>#{theClientFaceBean.getCounter()}</p>
 		</div>
 		
 		<h3>Params</h3>
 		
-		<p>Id : <strong>#{clientFaceBean.displayLoadId()}</strong></p>
+		<p>Id : <strong>#{theClientFaceBean.displayLoadId()}</strong></p>
 		
 		<h:form>
-			<h:commandLink action="${clientFaceBean.goIndex}" class="button">
+			<h:commandLink action="${theClientFaceBean.goIndex}" class="button">
 				Allez à la page client
 			</h:commandLink>
 		</h:form>

@@ -1,4 +1,4 @@
-package dev.loicmoreaux.jsf.controller;
+package dev.loicmoreaux.coursjsf.controller;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -10,7 +10,7 @@ import jakarta.inject.Named;
 
 @Named
 @SessionScoped
-public class ClientFaceBean implements Serializable {
+public class TheClientFaceBean implements Serializable {
 	/**
 	 * 
 	 */
@@ -24,7 +24,7 @@ public class ClientFaceBean implements Serializable {
 	
 	private MessageFormBean messageForm = new MessageFormBean();
 	
-	public ClientFaceBean() {}
+	public TheClientFaceBean() {}
 
 	public String getMessage() {
 		return MESSAGE;

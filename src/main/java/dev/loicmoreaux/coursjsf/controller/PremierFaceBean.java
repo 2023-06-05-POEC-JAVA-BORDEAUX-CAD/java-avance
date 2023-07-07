@@ -1,4 +1,4 @@
-package dev.loicmoreaux.jsf.controller;
+package dev.loicmoreaux.coursjsf.controller;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
