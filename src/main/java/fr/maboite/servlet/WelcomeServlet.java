@@ -10,14 +10,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-<<<<<<< HEAD
-@WebServlet(name="Fab", displayName="Welcome Fab", urlPatterns = "/welcome", loadOnStartup = 1)
-=======
+
+
 @WebServlet(name="Welcome", 
 	displayName="Welcome Servlet", 
 	urlPatterns = "/welcome", 
 	loadOnStartup = 1)
->>>>>>> main
+
 public class WelcomeServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
