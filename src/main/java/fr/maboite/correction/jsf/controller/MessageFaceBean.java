@@ -48,7 +48,7 @@ public class MessageFaceBean {
 	public String save() { 
 		System.out.println("Je sauvegarde message");
 		this.messageService.save(message);
-		return "message";
+		return null;
 	}
 
 }

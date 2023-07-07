@@ -12,7 +12,6 @@ public class MessageService {
 		System.out.println("Je sauvegarde le message");
 		System.out.println("id: " + message.getId());
 		System.out.println("value: " + message.getValue());
-		
 	}
 
 	public MessageFormBean load(String loadId) {
