@@ -1,21 +1,16 @@
 package tp.projetfilrouge.servlet;
 
+import java.util.List;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import tp.projetfilrouge.pojo.Client;
 import jakarta.inject.Inject;
+import tp.projetfilrouge.pojo.Client;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.annotation.WebServlet;
+import tp.projetfilrouge.service.ClientService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import tp.projetfilrouge.service.ClientService;
 
 @WebServlet(name = "TPPFRCS", displayName = "TP PFR Clients Servlet", urlPatterns = "/TPPFR/clients", loadOnStartup = 1)
 public class ClientServlet extends HttpServlet {
