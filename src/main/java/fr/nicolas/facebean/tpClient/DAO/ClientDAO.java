@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLSyntaxErrorException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -28,38 +29,39 @@ public class ClientDAO {
 	private DataBaseManager dbm;
 	
 	
-	public ClientDAO() {
-		this.clients.put(1, new Client(1, "Nicolas", "Duquesne", "word company"));
-		this.clients.put(2, new Client(1, "Albert", "Duquesne", "word company"));
-		this.clients.put(3, new Client(2, "Luc", "Duquesne", "word company"));
-		this.clients.put(4, new Client(3, "Marc", "Duquesne", "word company"));
-	}
 
-	
-	
-	public Map<Integer, Client> getClients() {
+	public List<Client> getClients() {
+
+		List<Client> clients = new ArrayList<>();
 		
-		return this.clients;
-
-//		List<Client> clients = new ArrayList<>();
-//		
-//		try {
-//			
-//			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306?useSSL=false", LOGIN, PASSWORD);
-//			ResultSet res = dbm.getDatas("SELECT * FROM ARTICLE", conn);
-//			while(res.next()) {
-//				Client client = new Client();
-//                client.setId(res.getInt("id"));
-//                client.setFirstName(res.getString("first_name"));
-//                client.setLastName(res.getString("last_name"));
-//                client.setCompanyName(res.getString("company_name"));
-//                clients.add(client);
-//            }
-//		} catch(SQLException e) {
-//			System.out.println(e.getMessage());
-//		}
-//		
-//		return clients;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306?useSSL=false", LOGIN, PASSWORD);
+			ResultSet res = dbm.getDatas("SELECT * FROM CLIENT", conn);
+			if(!res.next()) {
+				clients =null;
+			} else {
+				do {
+					Client client = new Client();
+	                client.setId(res.getInt("id"));
+	                client.setFirstName(res.getString("first_name"));
+	                client.setLastName(res.getString("last_name"));
+	                client.setCompanyName(res.getString("company_name"));
+	                clients.add(client);
+				} while(res.next());
+			}
+			conn.close();
+		} catch(SQLException e) {
+			System.out.println("sql error in DAO layer : " + e.getMessage());
+			clients = null;
+		}catch(ClassNotFoundException e) {
+			System.out.println("Error class not found error in DAO layer : " + e.getMessage());
+		} catch(NullPointerException e) {
+			System.out.println("Error null object in DAO layer : " + e.getMessage());
+			clients = null;
+		}
+		
+		return clients;
 	}
 	
 	
@@ -69,7 +71,7 @@ public class ClientDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306?useSSL=false", "root", "Ovbt9,yvzdMjollnir");
-			ResultSet res = dbm.getDatas("SELECT * FROM client WHERE id="+id+"", conn);
+			ResultSet res = dbm.getDatas("SELECT * FROM CLIENT WHERE id="+id+"", conn);
 						
 			if (!res.next()) {
 				client = null;
@@ -83,10 +85,13 @@ public class ClientDAO {
 			}
 			conn.close();
 		} catch(SQLException e) {
-			System.out.println( "sql error" + " " + e.getMessage());
+			System.out.println( "sql error in DAO layer : " + e.getMessage());
 			client = null;
 		} catch(ClassNotFoundException e) {
-			System.out.println("Error class not found error" + " " + e.getMessage());
+			System.out.println("Error class not found error in DAO layer : " + e.getMessage());
+		} catch(NullPointerException e) {
+			System.out.println("Error null object in DAO layer : " + e.getMessage());
+			clients = null;
 		}
 		
 		return client;
@@ -95,7 +100,7 @@ public class ClientDAO {
 	}
 	
 	public void insertClient(Client client) {
-		String sql = "INSERT INTO client (first_name, last_name, company_name)"
+		String sql = "INSERT INTO CLIENT (first_name, last_name, company_name)"
 				+ "VALUES"
 				+ "('"+ client.getFirstName() +"', '"+ client.getLastName() +"', '" + client.getCompanyName() +"')";
 		dbm.insert(sql);

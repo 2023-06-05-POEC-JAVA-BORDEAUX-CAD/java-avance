@@ -41,7 +41,8 @@ public class DataBaseManager {
             res = stmt.executeQuery(sql);
         }
         catch (SQLException e){
-            System.out.println(e);
+            System.out.println("sql error in data base layer : " + e.getMessage());
+            res = null;
         }
     
         return res;

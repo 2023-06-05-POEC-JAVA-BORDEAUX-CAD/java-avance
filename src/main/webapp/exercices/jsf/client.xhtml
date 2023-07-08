@@ -46,11 +46,20 @@
 	</h:form>
 
 	<h2>Résultat formulaire</h2>
-	<p>#{clientController.errMessage}</p>
 	<p>#{clientController.saveMessage}</p>
 	<div>#{clientController.clientDTO.getFirstName()}</div>
 	<div>#{clientController.clientDTO.getLastName()}</div>
 	<div>#{clientController.clientDTO.getCompanyName()}</div>
+	
+	<h2>Liste des clients</h2>
+	
+	<ui:repeat value="#{clientController.clients}" var="client">
+            <b>#{client.firstName}, #{client.lastName}, #{client.companyName}</b> <br/>
+    </ui:repeat>
+	
+
+	<h2>Error messages</h2>
+	<p>#{clientController.errMessage}</p>
 	
 </h:body>
 </html>

@@ -15,7 +15,7 @@ public class ClientService {
 	
 	public ClientService() {}
 
-	public Map<Integer, Client> getClients() {
+	public List<Client> getClients() {
 		
 		return clientDAO.getClients();
 	}
