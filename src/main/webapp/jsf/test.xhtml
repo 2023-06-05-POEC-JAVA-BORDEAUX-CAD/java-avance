@@ -9,7 +9,6 @@
   xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
   data-theme="dark"
 >
-  
   <h:head>
     <!-- JSF remplace h:head par <head> et ajoute des caractéristiques à cette balise -->
     <link rel="stylesheet" href="css/minstyle.io.css" />
@@ -23,7 +22,9 @@
       <h:commandLink action="${commandeFaceBean.createNew}">
         Cliquez ici
       </h:commandLink>
+      <h:commandLink action="${ordersFaceBean.sauvegarde}">
+        Rajoute une ligne dans la BDD.
+      </h:commandLink>
     </h:form>
-    
   </h:body>
 </html>
