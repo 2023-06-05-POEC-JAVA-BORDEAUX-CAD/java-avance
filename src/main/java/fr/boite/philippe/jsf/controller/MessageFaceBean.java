@@ -1,6 +1,9 @@
 package fr.boite.philippe.jsf.controller;
 
+import fr.boite.philippe.OrderJpa;
+import fr.boite.philippe.OrderJpaDao;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 @Named
@@ -10,6 +13,7 @@ public class MessageFaceBean {
 	private String loadId;
 
 	private MessageFormBean message = new MessageFormBean();
+
 
 	public String createNew() {
 		compteur++;
@@ -44,4 +48,5 @@ public class MessageFaceBean {
 	public void setMessage(MessageFormBean message) {
 		this.message = message;
 	}
+	
 }
