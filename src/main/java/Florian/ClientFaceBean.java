@@ -1,5 +1,7 @@
 package Florian;
 
+import Florian.TP_entity.OrderEntity;
+import Florian.TP_entity.OrdersEntityDao;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -10,6 +12,19 @@ public class ClientFaceBean {
 
 	@Inject
 	private ClientService clientService;
+	
+	@Inject
+	private OrdersEntityDao ordersEntityDao;
+
+	private OrderEntity order;
+
+	public OrderEntity getOrder() {
+		return order;
+	}
+
+	public void setOrder(OrderEntity order) {
+		this.order = order;
+	}
 
 	// Attribut
 	private Integer loadId;
@@ -54,5 +69,10 @@ public class ClientFaceBean {
 		System.out.println("j'affiche le client avec l'id :" + loadId);
 		this.clientService.save(client);
 		return null;
+	}
+	
+	public String sauvegarde() {
+		ordersEntityDao.save(order);
+		return "Sauvegarde réussie";
 	}
 }
