@@ -13,7 +13,7 @@ public class AppController {
 	@Inject
 	private OrderDao ordDao;
 
-	public void saveClient() {
+	public String saveClient() {
 		ClientModel client = new ClientModel();
 		client.setCompanyName("COMP NAME");
 		client.setFirstName("TestName");
@@ -26,14 +26,16 @@ public class AppController {
 		client.setCountry("FRANCE");
 		client.setState(0);
 		cliDao.save(client);
+		return "end";
 	}
 
-	public void saveOrder() {
+	public String saveOrder() {
 		OrderModel order = new OrderModel();
 		order.setTypePresta("Test");
 		order.setDesignation("Petit test");
 		order.setClientId(1); // not nullable
 		ordDao.save(order);
+		return "end";
 	}
 
 }
