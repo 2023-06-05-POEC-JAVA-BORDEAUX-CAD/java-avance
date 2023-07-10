@@ -36,5 +36,5 @@ public class Pojo {
 	public void setValid(Boolean valid) {
 		this.valid = valid;
 	}
-
+	
 }

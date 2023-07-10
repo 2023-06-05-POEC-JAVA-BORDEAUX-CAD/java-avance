@@ -14,6 +14,8 @@ public class PojoJpa {
 
 	private String nom;
 
+	private String adresse;
+	
 	public Long getId() {
 		return id;
 	}
@@ -28,6 +30,14 @@ public class PojoJpa {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public String getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
 	}
 
 }
