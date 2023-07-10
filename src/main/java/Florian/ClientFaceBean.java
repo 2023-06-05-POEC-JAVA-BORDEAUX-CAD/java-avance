@@ -66,8 +66,8 @@ public class ClientFaceBean {
 		OrderEntity order = new OrderEntity();
 		order.setTypePresta("Formation");
 		order.setDesignation("test");
-		order.setClientId(62);
-		ordersEntityDao.save(order);
-		return "Sauvegarde réussie";
+		order.setClientId(1);
+		this.ordersEntityDao.save(order);
+		return null;
 	}
 }
