@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" data-theme="dark">
+<f:metadata>
+	<f:viewParam name="id" value="#{clientFaceBean.loadId}" />
+	<f:viewAction action="#{clientFaceBean.onLoad}" />
+</f:metadata>
+
+<h:head>
+	<!-- JSF remplace h:head par <head> et ajoute des caractéristiques à cette balise -->
+	<link rel="stylesheet" href="css/minstyle.io.css" />
+</h:head>
+<h:body>
+	
+	<div> la vue des clients</div>
+	<div>j'affiche le client avc id: #{clientFaceBean.loadId}</div>
+	<h:form prependID="false">
+			<h2>Clients</h2>
+			
+		<p>
+			<label for="id">Id :</label> <br/>
+			<h:inputText id="id" type="text" placeholder="id"
+				value="#{clientFaceBean.client.id}" required="required"
+				title="id"/>
+		</p>		
+		<p>
+			<label for="companyName">CompanyName :</label> <br/>
+			<h:inputText id="companyName" type="text" placeholder="companyName"
+				value="#{clientFaceBean.client.companyName}" required="required"
+				title="CompanyName"/>
+		</p>	
+		<p>
+			<label for="firstName">FirstName :</label> <br/>
+			<h:inputText id="FirstName" type="text" placeholder="firstName"
+				value="#{clientFaceBean.client.firstName}" required="required"
+				title="FirstName"/>
+		</p>
+		<p>
+			<label for="lastName">LastName :</label> <br/>
+			<h:inputText id="LastName" type="text" placeholder="LastName"
+				value="#{clientFaceBean.client.lastName}" required="required"
+				title="LastName"/>
+		</p>	
+		<p>
+			<label for="email">Email :</label> <br/>
+			<h:inputText id="Email" type="text" placeholder="email"
+				value="#{clientFaceBean.client.email}" required="required"
+				title="Email"/>
+		</p>	
+		<p>
+			<label for="phone">Phone :</label> <br/>
+			<h:inputText id="phone" type="text" placeholder="phone"
+				value="#{clientFaceBean.client.phone}" required="required"
+				title="Phone"/>
+		</p>	
+		
+		<p>
+			<label for="adress">Adress :</label> <br/>
+			<h:inputText id="adress" type="text" placeholder="adress"
+				value="#{clientFaceBean.client.adress}" required="required"
+				title="Adress"/>
+		</p>	
+		<p>
+			<label for="zipCode">ZipCode :</label> <br/>
+			<h:inputText id="zipCode" type="text" placeholder="zipCode"
+				value="#{clientFaceBean.client.zipCode}" required="required"
+				title="ZipCode"/>
+		</p>	
+		<p>
+			<label for="city">City :</label> <br/>
+			<h:inputText id="city" type="text" placeholder="city"
+				value="#{clientFaceBean.client.city}" required="required"
+				title="City"/>
+		</p>	
+		<p>
+			<label for="country">Country :</label> <br/>
+			<h:inputText id="country" type="text" placeholder="country"
+				value="#{clientFaceBean.client.country}" required="required"
+				title="Country"/>
+		</p>		
+		<p>
+			<label for="state">State :</label> <br/>
+			<h:inputText id="state" type="text" placeholder="state"
+				value="#{clientFaceBean.client.state}" required="required"
+				title="State"/>
+		</p>	
+		
+		<p>
+			<h:commandButton value="Sauvegarder" action="#{clientFaceBean.save}" />
+		</p>
+	</h:form>
+
+</h:body>
+</html>
