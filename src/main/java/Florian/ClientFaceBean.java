@@ -16,15 +16,6 @@ public class ClientFaceBean {
 	@Inject
 	private OrdersEntityDao ordersEntityDao;
 
-	private OrderEntity order;
-
-	public OrderEntity getOrder() {
-		return order;
-	}
-
-	public void setOrder(OrderEntity order) {
-		this.order = order;
-	}
 
 	// Attribut
 	private Integer loadId;
@@ -72,6 +63,11 @@ public class ClientFaceBean {
 	}
 	
 	public String sauvegarde() {
+		OrderEntity order = new OrderEntity();
+		order.setId(45);
+		order.setTypePresta("Formation");
+		order.setDesignation("test");
+		order.setClientId(62);
 		ordersEntityDao.save(order);
 		return "Sauvegarde réussie";
 	}
