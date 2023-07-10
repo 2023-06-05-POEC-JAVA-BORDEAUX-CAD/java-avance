@@ -7,8 +7,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.databind.util.Annotations;
-
 /**
  * Utilise @BeforeAll , @BeforeEach ...
  * pour ajouter des comportements avant chaque test (et après avec
