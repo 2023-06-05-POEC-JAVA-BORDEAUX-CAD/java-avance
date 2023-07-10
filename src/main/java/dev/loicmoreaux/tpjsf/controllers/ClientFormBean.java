@@ -134,6 +134,15 @@ public class ClientFormBean {
 		Client newClient = new Client();
 		newClient.setId(id);
 		newClient.setCompany_name(company_name);
+		newClient.setFirst_name(first_name);
+		newClient.setLast_name(last_name);
+		newClient.setEmail(email);
+		newClient.setPhone(phone);
+		newClient.setAddress(address);
+		newClient.setZip_code(zip_code);
+		newClient.setCity(city);
+		newClient.setCountry(country);
+		newClient.setState(state);
 		return newClient;
 	}
 }

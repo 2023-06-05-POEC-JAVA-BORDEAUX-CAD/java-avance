@@ -8,27 +8,18 @@
 >
 
 <h:head>
-	<title>Client</title>
+	<title>Order</title>
 	<link rel="stylesheet" href="assets/style-tpjsf.css" />
 </h:head>
 <h:body>
 	<main>
-		<h1>Client</h1>				
+		<h1>Order</h1>				
 		
 		<h:form class="form">
 			<div class="form-group">
-				<label for="id" >Id :</label>
+				<label for="typePresta" >Type Prestation :</label>
 				<h:inputText
-					id="id"
-					type="number"
-					placeholder="Entrer un id"
-					value="#{clientFaceBean.client.id}"
-				/>
-			</div>
-			<div class="form-group">
-				<label for="company_name" >Nom de l'entreprise :</label>
-				<h:inputText
-					id="company_name"
+					id="typePresta"
 					type="text"
 					placeholder="Entrer le nom de l'entreprise"
 					value="#{clientFaceBean.client.company_name}"
