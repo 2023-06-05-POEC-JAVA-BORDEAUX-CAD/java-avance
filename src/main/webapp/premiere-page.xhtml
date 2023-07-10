@@ -17,6 +17,13 @@
 
 
 <br> </br>
+<div> Section Order</div>
+		<div>
+		<h:link value="page order" outcome="order">
+			<f:param name="id" value="1" />
+		</h:link>
+	</div>
+<br> </br>
 <div> Section Messages</div>
 	<h:form>
 		<h:commandLink action="${messageFaceBean.createNew}">
@@ -38,8 +45,8 @@
 			Cliquez ici pour créer un client
 		</h:commandLink>
 	</h:form>
-	
-		<div>
+
+	<div>
 		<h:link value="Aller au client avec l'id 2" outcome="client">
 			<f:param name="id" value="2" />
 		</h:link>
