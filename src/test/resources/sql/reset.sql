@@ -29,11 +29,14 @@ CREATE TABLE `orders` (
   CONSTRAINT `fk_orders_clients` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `clients` 
-(`id`, `company_name`, `first_name`, `last_name`, `email`, `phone`, `address`, `zip_code`, `city`, `country`, `state`) 
-VALUES
-(7, 'Capgemini', 'Fabrice', 'Martin', 'martin@mail.com', '0656858433', 'ABC', 'XYZ', 'Nantes', 'France', 0);
-
+INSERT INTO `clients` (`id`, `company_name`, `first_name`, `last_name`, `email`, `phone`, `address`, `zip_code`, `city`, `country`, `state`) VALUES
+(1, 'Capgemini', 'Fabrice', 'Martin', 'martin@mail.com', '0656858433', 'ABC', 'XYZ', 'Nantes', 'France', 0);
+INSERT INTO `clients` (`id`, `company_name`, `first_name`, `last_name`, `email`, `phone`, `address`, `zip_code`, `city`, `country`, `state`) VALUES
+(2, 'M2I Formation', 'Julien', 'Lamard', 'lamard@mail.com', '0611223344', 'ABC', 'XYZ', 'Paris', 'France', 1);
+INSERT INTO `clients` (`id`, `company_name`, `first_name`, `last_name`, `email`, `phone`, `address`, `zip_code`, `city`, `country`, `state`) VALUES
+(3, 'Sogeti', 'Martin', 'Matin', 'matin2@mail.com', '0656858433', 'ABC', 'XYZ', 'Nantes', 'France', 0);
+INSERT INTO `clients` (`id`, `company_name`, `first_name`, `last_name`, `email`, `phone`, `address`, `zip_code`, `city`, `country`, `state`) VALUES
+(4, 'Atos', 'Floran', 'Martin', 'martin3@mail.com', '0656858433', 'ABC', 'XYZ', 'Nantes', 'France', 0);
 
 INSERT INTO `orders` (`id`, `type_presta`, `designation`, `client_id`, `nb_days`, `unit_price`, `state`) VALUES
 (1, 'Formation', 'Angular init', 2, 3, 1200, 0);

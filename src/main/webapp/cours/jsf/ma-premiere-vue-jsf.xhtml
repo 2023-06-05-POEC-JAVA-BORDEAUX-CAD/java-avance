@@ -14,12 +14,21 @@
 	<div>Ça va ? #{monPremierFaceBean.coucou}</div>
 	<div>Section messages</div>
 	<h:form>
-		<h:commandLink action="${messageFaceBean.createNew}">
+		<div>
+			<h:commandLink action="${messageFaceBean.createNew}">
 			Cliquez ici pour créer un message
 		</h:commandLink>
-		<h:commandLink action="${monPremierFaceBean.sauvegarde}">
+		</div>
+		<div>
+		<h:commandLink action="${monPremierFaceBean.sauvegardePojo}">
 			Cliquez ici pour créer un POJO avec JPA
 		</h:commandLink>
+		</div>
+		<div>
+			<h:commandLink action="${monPremierFaceBean.sauvegardeOrder}">
+			Cliquez ici pour créer un Order avec JPA
+		</h:commandLink>
+		</div>
 	</h:form>
 
 	<div>
@@ -27,7 +36,7 @@
 			<f:param name="id" value="3" />
 		</h:link>
 	</div>
-	
+
 	<div>Section clients</div>
 	<h:form>
 		<h:commandLink action="${clientFaceBean.createNew}">
