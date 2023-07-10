@@ -13,25 +13,24 @@ public class OrderEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Integer id;
+	private Integer id;
 	
 	@Column(name = "type_presta", length = 40, nullable = false)
-	String typePresta;
+	private String typePresta;
 	
 	@Column(length = 90, nullable = false)
-	String designation;
+	private String designation;
 	
 	@Column(name = "client_id", nullable = false)
-	Integer clientId;
+	private Integer clientId;
 	
 	@Column(name = "nb_days")
-	Integer nbDays;
+	private Integer nbDays;
 	
 	@Column(name = "unit_price")
-	Integer unitPrice;
+	private Integer unitPrice;
 	
-	@Column
-	Integer state;
+	private Integer state;
 	
 	
 	// Getters Setters

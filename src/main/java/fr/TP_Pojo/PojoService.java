@@ -8,6 +8,6 @@ public class PojoService {
 	private PojoDao pojoDao;
     
 	public Pojo getPojo(Integer id) {
-		return pojoMap.get(id);
+		return null;
 	}
 }

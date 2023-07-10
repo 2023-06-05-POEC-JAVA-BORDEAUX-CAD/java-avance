@@ -64,7 +64,6 @@ public class ClientFaceBean {
 	
 	public String sauvegarde() {
 		OrderEntity order = new OrderEntity();
-		order.setId(45);
 		order.setTypePresta("Formation");
 		order.setDesignation("test");
 		order.setClientId(62);
