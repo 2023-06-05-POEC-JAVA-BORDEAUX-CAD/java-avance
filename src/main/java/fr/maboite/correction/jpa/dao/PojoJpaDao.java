@@ -13,14 +13,14 @@ import jakarta.persistence.PersistenceContext;
 @Stateless
 public class PojoJpaDao {
 	
-	@PersistenceContext
+	@PersistenceContext // on inject objet entitymanager
 	protected EntityManager entityManager;
 
-	public void test() {
-		System.out.println(entityManager);
-	}
+//	public void test() {
+//		System.out.println(entityManager);
+//	}
 	
-	public void save(PojoJpa pojoJpa) {
+	public void save(PojoJpa pojoJpa) {  // charge cet entité en BDD
 		this.entityManager.merge(pojoJpa);
 	}
 	

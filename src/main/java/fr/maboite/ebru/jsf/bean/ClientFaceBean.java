@@ -1,8 +1,12 @@
 package fr.maboite.ebru.jsf.bean;
 
+import fr.maboite.ebru.jpa.entity.OrderDao;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+
+
+import fr.maboite.ebru.jpa.entity.OrderJPA;
 
 @Named
 @RequestScoped
@@ -11,10 +15,12 @@ public class ClientFaceBean {
 	private String loadId;
 
 	private ClientFormBean client = new ClientFormBean();
-	
+
 	@Inject
 	private ClientsServiceJsf clientService;
-	
+
+	@Inject
+	private OrderDao orderDao;
 
 	public ClientFormBean getClient() {
 		return client;
@@ -50,6 +56,17 @@ public class ClientFaceBean {
 		System.out.println("je sauvegarde client");
 		this.clientService.save(client);
 		return null;
+
+	}
+
+	public void sauvegarde() {
+		
+		OrderJPA orderJPA = new OrderJPA();
+		orderJPA.setType("Formation");
+		orderJPA.setDesignation("Angular init");
+		orderJPA.setClient_id(2);
+		orderDao.save(orderJPA);
+		
 
 	}
 

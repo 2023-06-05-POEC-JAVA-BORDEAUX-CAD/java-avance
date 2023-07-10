@@ -8,7 +8,7 @@ import jakarta.inject.Named;
  */
 @Named
 @RequestScoped
-public class ClientFaceBean {
+public class ClientFBean {
 
 	private String id;
 
