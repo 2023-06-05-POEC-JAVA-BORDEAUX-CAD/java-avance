@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" data-theme="dark">
+
+<h:head>
+	<!-- JSF remplace h:head par <head> et ajoute des caractéristiques à cette balise -->
+	<link rel="stylesheet" href="css/minstyle.io.css" />
+</h:head>
+
+<!-- ************************************************************** -->	
+
+<h:body>
+	<div>#{msg.welcome}</div>
+	<div>Ça va ? Oui #{clientFaceBean2.nom}</div> <!--  instance appelée : donc miniscule //miniscule car l'attribut est appelé -->
+	<div>#{clientFaceBean2.age}</div>
+	<div>#{clientFaceBean2.ville}</div>
+	<p>Je suis un paragraphe paragraphe</p>
+	
+<!-- ************************************************************** -->	
+			
+<h:form>
+		<h:command Link action="${clientFaceBean2.createNew}">
+			<h:link value="Go to client" outcome="client">
+				<f:param name="id" value="3" />
+			</h:link>
+		</h:command Link>
+</h:form>
+	
+<!-- ************************************************************** -->	
+	
+
+	
+<!-- ************************************************************** -->	
+
+	<ul>
+		<li>a</li>
+		<li>b</li>
+		<li>c</li>
+	</ul>
+
+	<ol>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+	</ol>
+
+<!-- ************************************************************** -->	
+
+</h:body>
+
+<!-- ************************************************************** -->	
+
+</html>
