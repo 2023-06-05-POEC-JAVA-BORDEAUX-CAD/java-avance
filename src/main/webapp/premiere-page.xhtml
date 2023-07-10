@@ -16,15 +16,17 @@
 	<div>Salut !</div>
 
 
-<br> </br>
-<div> Section Order</div>
+	<br> </br>
+	<div>Section Order</div>
+	<h:form>
 		<div>
-		<h:link value="page order" outcome="order">
-			<f:param name="id" value="1" />
-		</h:link>
-	</div>
-<br> </br>
-<div> Section Messages</div>
+			<h:commandLink action="${monPremierFaceBean.sauvegardeOrder}">
+			Cliquez ici pour créer un Order avec JPA
+		</h:commandLink>
+		</div>
+	</h:form>
+	<br> </br>
+	<div>Section Messages</div>
 	<h:form>
 		<h:commandLink action="${messageFaceBean.createNew}">
 			Cliquez ici pour créer un message
@@ -36,10 +38,10 @@
 			<f:param name="id" value="3" />
 		</h:link>
 	</div>
-	
+
 	<br> </br>
-	
-	<div> Section Clients</div>
+
+	<div>Section Clients</div>
 	<h:form>
 		<h:commandLink action="${clientFaceBean.createNew}">
 			Cliquez ici pour créer un client

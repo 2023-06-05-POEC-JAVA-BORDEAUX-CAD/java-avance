@@ -1,5 +1,6 @@
 package fr.maboite.fabien.tpjsf.jpamodel;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -7,36 +8,44 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table (name= "orders")
+@Table(name = "orders")
 
 public class Order {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String type_presta;
+	
+	@Column(name = "type_presta")
+	private String typePresta;
+	
 	private String designation;
-	private Integer client_id;
-	private Integer nb_days;
-	private Integer unit_price;
+	
+	@Column(name = "client_id")
+	private Integer clientId;
+	
+	@Column(name = "nb_days")
+	private Integer nbDays;
+	
+	@Column(name = "unit_price")
+	private Integer unitPrice;
+
 	private Byte state;
-	
-	
-	
+
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
-		this.id = id; 
+		this.id = id;
 	}
 
 	public String getType_presta() {
-		return type_presta;
+		return typePresta;
 	}
 
 	public void setType_presta(String type_presta) {
-		this.type_presta = type_presta;
+		this.typePresta = type_presta;
 	}
 
 	public String getDesignation() {
@@ -48,27 +57,27 @@ public class Order {
 	}
 
 	public Integer getClient_id() {
-		return client_id;
+		return clientId;
 	}
 
 	public void setClient_id(Integer client_id) {
-		this.client_id = client_id;
+		this.clientId = client_id;
 	}
 
 	public Integer getNb_days() {
-		return nb_days;
+		return nbDays;
 	}
 
 	public void setNb_days(Integer nb_days) {
-		this.nb_days = nb_days;
+		this.nbDays = nb_days;
 	}
 
 	public Integer getUnit_price() {
-		return unit_price;
+		return unitPrice;
 	}
 
 	public void setUnit_price(Integer unit_price) {
-		this.unit_price = unit_price;
+		this.unitPrice = unit_price;
 	}
 
 	public Byte getState() {
@@ -78,6 +87,4 @@ public class Order {
 	public void setState(Byte state) {
 		this.state = state;
 	}
-
-	
 }

@@ -11,7 +11,7 @@ public class OrderDao {
 	@PersistenceContext
 	protected EntityManager entityManager;
 
-	public void save(Order orders) {
-		this.entityManager.merge(orders);
+	public void save(Order order) {
+		this.entityManager.merge(order);
 	}
 }
