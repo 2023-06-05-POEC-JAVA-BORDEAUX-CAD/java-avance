@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 // Map<String, String> langues = new HashMap<>();
 // https://docs.oracle.com/javase/8/docs/api/java/util/Map.html
 
-@WebServlet(name = "Accueil", displayName = "Accueil du TP", urlPatterns = "/", loadOnStartup = 1)
+@WebServlet(name = "Accueil", displayName = "Accueil du TP", urlPatterns = "/tp/pojo", loadOnStartup = 1)
 public class Home extends HttpServlet {
 	private PojoDao dao = new PojoDao();
 
