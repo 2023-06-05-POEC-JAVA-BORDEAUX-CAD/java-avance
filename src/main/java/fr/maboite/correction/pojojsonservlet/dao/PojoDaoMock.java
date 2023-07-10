@@ -7,9 +7,9 @@ import jakarta.ejb.Stateless;
  * Mock du Pojo Dao
  */
 @Stateless
-public class PojoDaoMock implements PojoDaoInterface {
+public class PojoDaoMock /*implements PojoDaoInterface*/ {
 
-	@Override
+	/*@Override*/
 	public Pojo getPojo(Integer id) {
 		return new Pojo();
 	}

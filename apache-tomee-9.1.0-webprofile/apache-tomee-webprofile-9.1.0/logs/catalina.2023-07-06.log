@@ -1,0 +1,151 @@
+06-Jul-2023 13:32:02.667 INFO [main] java.lang.reflect.Method.invoke Nom version serveur :              Apache Tomcat (TomEE)/10.0.27 (9.1.0)
+06-Jul-2023 13:32:02.669 INFO [main] java.lang.reflect.Method.invoke Serveur compilé :                  Oct 3 2022 14:18:31 UTC
+06-Jul-2023 13:32:02.669 INFO [main] java.lang.reflect.Method.invoke Version du serveur :               10.0.27.0
+06-Jul-2023 13:32:02.670 INFO [main] java.lang.reflect.Method.invoke Nom de l'OS :                      Windows 11
+06-Jul-2023 13:32:02.670 INFO [main] java.lang.reflect.Method.invoke Version OS :                       10.0
+06-Jul-2023 13:32:02.671 INFO [main] java.lang.reflect.Method.invoke Architecture :                     amd64
+06-Jul-2023 13:32:02.671 INFO [main] java.lang.reflect.Method.invoke Java Home :                        C:\Program Files\Java\jdk-20
+06-Jul-2023 13:32:02.672 INFO [main] java.lang.reflect.Method.invoke Version JVM :                      20.0.1+9-29
+06-Jul-2023 13:32:02.672 INFO [main] java.lang.reflect.Method.invoke Fournisseur de la JVM :            Oracle Corporation
+06-Jul-2023 13:32:02.673 INFO [main] java.lang.reflect.Method.invoke CATALINA_BASE :                    C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0
+06-Jul-2023 13:32:02.673 INFO [main] java.lang.reflect.Method.invoke CATALINA_HOME :                    C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0
+06-Jul-2023 13:32:02.700 INFO [main] java.lang.reflect.Method.invoke Argument de la ligne de commande : --add-opens=java.base/java.lang=ALL-UNNAMED
+06-Jul-2023 13:32:02.700 INFO [main] java.lang.reflect.Method.invoke Argument de la ligne de commande : --add-opens=java.base/java.io=ALL-UNNAMED
+06-Jul-2023 13:32:02.700 INFO [main] java.lang.reflect.Method.invoke Argument de la ligne de commande : --add-opens=java.base/java.util=ALL-UNNAMED
+06-Jul-2023 13:32:02.700 INFO [main] java.lang.reflect.Method.invoke Argument de la ligne de commande : --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+06-Jul-2023 13:32:02.700 INFO [main] java.lang.reflect.Method.invoke Argument de la ligne de commande : --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+06-Jul-2023 13:32:02.700 INFO [main] java.lang.reflect.Method.invoke Argument de la ligne de commande : -Djava.util.logging.config.file=C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\conf\logging.properties
+06-Jul-2023 13:32:02.700 INFO [main] java.lang.reflect.Method.invoke Argument de la ligne de commande : -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+06-Jul-2023 13:32:02.700 INFO [main] java.lang.reflect.Method.invoke Argument de la ligne de commande : -javaagent:C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\lib\openejb-javaagent.jar
+06-Jul-2023 13:32:02.700 INFO [main] java.lang.reflect.Method.invoke Argument de la ligne de commande : -Djdk.tls.ephemeralDHKeySize=2048
+06-Jul-2023 13:32:02.701 INFO [main] java.lang.reflect.Method.invoke Argument de la ligne de commande : -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+06-Jul-2023 13:32:02.701 INFO [main] java.lang.reflect.Method.invoke Argument de la ligne de commande : -Dignore.endorsed.dirs=
+06-Jul-2023 13:32:02.701 INFO [main] java.lang.reflect.Method.invoke Argument de la ligne de commande : -Dcatalina.base=C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0
+06-Jul-2023 13:32:02.701 INFO [main] java.lang.reflect.Method.invoke Argument de la ligne de commande : -Dcatalina.home=C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0
+06-Jul-2023 13:32:02.701 INFO [main] java.lang.reflect.Method.invoke Argument de la ligne de commande : -Djava.io.tmpdir=C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\temp
+06-Jul-2023 13:32:02.716 INFO [main] java.lang.reflect.Method.invoke La librairie Apache Tomcat Native basée sur APR qui permet des performances optimales dans les environnements de production n'a pas été trouvée sur le java.library.path : [C:\Program Files\Java\jdk-20\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;"C:\Program Files\MySQL\MySQL Shell 8.0\lib\Python3.9\Lib\sqlite3;";"C:\Program Files\sqlite;C:\Program Files (x86)\Gpg4win\..\GnuPG\bin;C:\Users\chouc\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Python 3.10\Python 3.10 (64-bit).lnk;C:\Users\chouc\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Python 3.10;C:\Program Files\Google\Chrome\Application;C:\Program Files\SketchWow;C:\Users\chouc\AppData\Local\Programs\Microsoft VS Code;C:\Program Files\Git\cmd";C:\Users\chouc\AppData\Local\Programs\Microsoft VS Code;C:\Program Files\MySQL\MySQL Workbench 8.0;C:\ProgramData\Microsoft\Windows\Start Menu\Programs\MySQL;C:\ProgramData\Microsoft\Windows\Start Menu\Programs\MySQL\MySQL Server 8.0;C:\Program Files\PuTTY\;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Microsoft Office 15\ClientX64;notepad++.exe;C:\Program Files\Python311\python.exe;C:\Program Files\PowerShell\7\;C:\Program Files\nodejs\;C:\Program Files\Java\jdk-20\bin\;C:\Users\chouc\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\chouc\AppData\Local\Programs\Python\Python311\;C:\Users\chouc\AppData\Local\activestate\cache\bin;C:\Users\chouc\AppData\Local\ActiveState\StateTool\release\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\chouc\AppData\Local\Microsoft\WindowsApps;C:\Program Files\MySQL\MySQL Server 8.0\bin\;C:\Program Files\MySQL\MySQL Shell 8.0\bin;C:\Program Files\JetBrains\PyCharm Community Edition 2022.3.3\bin;;C:\Users\chouc\AppData\Local\GitHubDesktop\bin;C:\Program Files\Python311\python.exe;C:\Users\chouc\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\chouc\AppData\Roaming\npm;C:\Program Files\Git\git-cmd.exe;C:\Program Files\Git\git-bash.exe;C:\Program Files\Git;C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Apache NetBeans;C:\Program Files\apache-maven-3.9.2-bin\apache-maven-3.9.2\bin;;.]
+06-Jul-2023 13:32:03.253 INFO [main] java.lang.reflect.Method.invoke Initialisation du gestionnaire de protocole ["http-nio-8080"]
+06-Jul-2023 13:32:03.273 SEVERE [main] java.lang.reflect.Method.invoke Echec d'initialisation du composant [Connector[HTTP/1.1-8080]]
+	org.apache.catalina.LifecycleException: L'initialisation du gestionnaire de protocole a échoué
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1055)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:136)
+		at org.apache.catalina.core.StandardService.initInternal(StandardService.java:556)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:136)
+		at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:1045)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:136)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:747)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:769)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+		at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:305)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:475)
+	Caused by: java.net.BindException: Address already in use: bind
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:556)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:344)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:301)
+		at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:246)
+		at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:201)
+		at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1192)
+		at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:1205)
+		at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:583)
+		at org.apache.coyote.http11.AbstractHttp11Protocol.init(AbstractHttp11Protocol.java:79)
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1052)
+		... 11 more
+06-Jul-2023 13:32:03.694 INFO [main] org.apache.openejb.util.OptionsLog.info Using 'openejb.jdbc.datasource-creator=org.apache.tomee.jdbc.TomEEDataSourceCreator'
+06-Jul-2023 13:32:03.802 INFO [main] org.apache.openejb.OpenEJB$Instance.<init> ********************************************************************************
+06-Jul-2023 13:32:03.803 INFO [main] org.apache.openejb.OpenEJB$Instance.<init> OpenEJB http://tomee.apache.org/
+06-Jul-2023 13:32:03.803 INFO [main] org.apache.openejb.OpenEJB$Instance.<init> Startup: Thu Jul 06 13:32:03 CEST 2023
+06-Jul-2023 13:32:03.803 INFO [main] org.apache.openejb.OpenEJB$Instance.<init> Copyright 1999-2021 (C) Apache TomEE Project, All Rights Reserved.
+06-Jul-2023 13:32:03.803 INFO [main] org.apache.openejb.OpenEJB$Instance.<init> Version: 9.1.0
+06-Jul-2023 13:32:03.803 INFO [main] org.apache.openejb.OpenEJB$Instance.<init> Build date: 20230606
+06-Jul-2023 13:32:03.804 INFO [main] org.apache.openejb.OpenEJB$Instance.<init> Build time: 11:53
+06-Jul-2023 13:32:03.804 INFO [main] org.apache.openejb.OpenEJB$Instance.<init> ********************************************************************************
+06-Jul-2023 13:32:03.805 INFO [main] org.apache.openejb.OpenEJB$Instance.<init> openejb.home = C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0
+06-Jul-2023 13:32:03.805 INFO [main] org.apache.openejb.OpenEJB$Instance.<init> openejb.base = C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0
+06-Jul-2023 13:32:03.807 INFO [main] org.apache.openejb.cdi.CdiBuilder.initializeOWB Created new singletonService org.apache.openejb.cdi.ThreadSingletonServiceImpl@17d88132
+06-Jul-2023 13:32:03.809 INFO [main] org.apache.openejb.cdi.CdiBuilder.initializeOWB Succeeded in installing singleton service
+06-Jul-2023 13:32:03.845 INFO [main] org.apache.openejb.config.ConfigurationFactory.init TomEE configuration file is 'C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\conf\tomee.xml'
+06-Jul-2023 13:32:03.888 INFO [main] org.apache.openejb.config.ConfigurationFactory.configureService Configuring Service(id=Tomcat Security Service, type=SecurityService, provider-id=Tomcat Security Service)
+06-Jul-2023 13:32:03.891 INFO [main] org.apache.openejb.config.ConfigurationFactory.configureService Configuring Service(id=Default Transaction Manager, type=TransactionManager, provider-id=Default Transaction Manager)
+06-Jul-2023 13:32:03.895 INFO [main] org.apache.openejb.util.OptionsLog.info Using 'openejb.deployments.classpath=false'
+06-Jul-2023 13:32:03.897 INFO [main] org.apache.openejb.assembler.classic.Assembler.createRecipe Creating TransactionManager(id=Default Transaction Manager)
+06-Jul-2023 13:32:03.975 INFO [main] org.apache.openejb.assembler.classic.Assembler.createRecipe Creating SecurityService(id=Tomcat Security Service)
+06-Jul-2023 13:32:04.072 INFO [main] org.apache.openejb.server.ServiceManager.initServer Creating ServerService(id=cxf)
+06-Jul-2023 13:32:04.292 INFO [main] org.apache.openejb.server.ServiceManager.initServer Creating ServerService(id=cxf-rs)
+06-Jul-2023 13:32:04.331 INFO [main] org.apache.openejb.server.SimpleServiceManager.start   ** Bound Services **
+06-Jul-2023 13:32:04.331 INFO [main] org.apache.openejb.server.SimpleServiceManager.printRow   NAME                 IP              PORT  
+06-Jul-2023 13:32:04.332 INFO [main] org.apache.openejb.server.SimpleServiceManager.start -------
+06-Jul-2023 13:32:04.332 INFO [main] org.apache.openejb.server.SimpleServiceManager.start Ready!
+06-Jul-2023 13:32:04.332 INFO [main] java.lang.reflect.Method.invoke L'initialisation du serveur a pris [2017] millisecondes
+06-Jul-2023 13:32:04.375 INFO [main] org.apache.tomee.catalina.OpenEJBNamingContextListener.bindResource Importing a Tomcat Resource with id 'UserDatabase' of type 'org.apache.catalina.UserDatabase'.
+06-Jul-2023 13:32:04.376 INFO [main] org.apache.openejb.assembler.classic.Assembler.createRecipe Creating Resource(id=UserDatabase)
+06-Jul-2023 13:32:04.400 INFO [main] java.lang.reflect.Method.invoke Démarrage du service [Catalina]
+06-Jul-2023 13:32:04.400 INFO [main] java.lang.reflect.Method.invoke Démarrage du moteur de Servlets : [Apache Tomcat (TomEE)/10.0.27 (9.1.0)]
+06-Jul-2023 13:32:04.417 INFO [main] java.lang.reflect.Method.invoke Déploiement du répertoire d'application web [C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\docs]
+06-Jul-2023 13:32:04.430 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.init ------------------------- localhost -> /docs
+06-Jul-2023 13:32:04.678 INFO [main] org.apache.openejb.config.ConfigurationFactory.configureApplication Configuring enterprise application: C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\docs
+06-Jul-2023 13:32:04.740 INFO [main] org.apache.openejb.config.AppInfoBuilder.build Enterprise application "C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\docs" loaded.
+06-Jul-2023 13:32:04.876 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Assembling app: C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\docs
+06-Jul-2023 13:32:04.975 INFO [main] org.apache.openejb.assembler.classic.ValidatorBuilder.getConfig Ignoring XML Configuration for validator org.apache.bval.jsr.ConfigurationImpl
+06-Jul-2023 13:32:05.023 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Deployed Application(path=C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\docs)
+06-Jul-2023 13:32:05.193 INFO [main] org.apache.myfaces.ee.MyFacesContainerInitializer.onStartup Using org.apache.myfaces.ee.MyFacesContainerInitializer
+06-Jul-2023 13:32:05.284 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars Au moins un fichier JAR a été analysé pour trouver des TLDs mais il n'en contenait pas, le mode "debug" du journal peut être activé pour obtenir une liste complète de JAR scannés sans succès ; éviter d'analyser des JARs inutilement peut améliorer sensiblement le temps de démarrage et le temps de compilation des JSPs
+06-Jul-2023 13:32:05.439 INFO [main] java.lang.reflect.Method.invoke Le déploiement du répertoire [C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\docs] de l'application web s'est terminé en [1 021] ms
+06-Jul-2023 13:32:05.439 INFO [main] java.lang.reflect.Method.invoke Déploiement du répertoire d'application web [C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\host-manager]
+06-Jul-2023 13:32:05.443 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.init ------------------------- localhost -> /host-manager
+06-Jul-2023 13:32:05.499 INFO [main] org.apache.openejb.config.ConfigurationFactory.configureApplication Configuring enterprise application: C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\host-manager
+06-Jul-2023 13:32:05.513 INFO [main] org.apache.openejb.config.AppInfoBuilder.build Enterprise application "C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\host-manager" loaded.
+06-Jul-2023 13:32:05.514 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Assembling app: C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\host-manager
+06-Jul-2023 13:32:05.519 INFO [main] org.apache.openejb.assembler.classic.ValidatorBuilder.getConfig Ignoring XML Configuration for validator org.apache.bval.jsr.ConfigurationImpl
+06-Jul-2023 13:32:05.526 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.deployWebApps using context file C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\host-manager\META-INF\context.xml
+06-Jul-2023 13:32:05.526 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Deployed Application(path=C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\host-manager)
+06-Jul-2023 13:32:05.579 INFO [main] org.apache.myfaces.ee.MyFacesContainerInitializer.onStartup Using org.apache.myfaces.ee.MyFacesContainerInitializer
+06-Jul-2023 13:32:05.631 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars Au moins un fichier JAR a été analysé pour trouver des TLDs mais il n'en contenait pas, le mode "debug" du journal peut être activé pour obtenir une liste complète de JAR scannés sans succès ; éviter d'analyser des JARs inutilement peut améliorer sensiblement le temps de démarrage et le temps de compilation des JSPs
+06-Jul-2023 13:32:05.657 INFO [main] java.lang.reflect.Method.invoke Le déploiement du répertoire [C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\host-manager] de l'application web s'est terminé en [217] ms
+06-Jul-2023 13:32:05.658 INFO [main] java.lang.reflect.Method.invoke Déploiement du répertoire d'application web [C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\manager]
+06-Jul-2023 13:32:05.660 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.init ------------------------- localhost -> /manager
+06-Jul-2023 13:32:05.698 INFO [main] org.apache.openejb.config.ConfigurationFactory.configureApplication Configuring enterprise application: C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\manager
+06-Jul-2023 13:32:05.707 INFO [main] org.apache.openejb.config.AppInfoBuilder.build Enterprise application "C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\manager" loaded.
+06-Jul-2023 13:32:05.708 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Assembling app: C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\manager
+06-Jul-2023 13:32:05.713 INFO [main] org.apache.openejb.assembler.classic.ValidatorBuilder.getConfig Ignoring XML Configuration for validator org.apache.bval.jsr.ConfigurationImpl
+06-Jul-2023 13:32:05.718 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.deployWebApps using context file C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\manager\META-INF\context.xml
+06-Jul-2023 13:32:05.718 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Deployed Application(path=C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\manager)
+06-Jul-2023 13:32:05.757 INFO [main] org.apache.myfaces.ee.MyFacesContainerInitializer.onStartup Using org.apache.myfaces.ee.MyFacesContainerInitializer
+06-Jul-2023 13:32:05.794 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars Au moins un fichier JAR a été analysé pour trouver des TLDs mais il n'en contenait pas, le mode "debug" du journal peut être activé pour obtenir une liste complète de JAR scannés sans succès ; éviter d'analyser des JARs inutilement peut améliorer sensiblement le temps de démarrage et le temps de compilation des JSPs
+06-Jul-2023 13:32:05.807 INFO [main] java.lang.reflect.Method.invoke Le déploiement du répertoire [C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\manager] de l'application web s'est terminé en [150] ms
+06-Jul-2023 13:32:05.807 INFO [main] java.lang.reflect.Method.invoke Déploiement du répertoire d'application web [C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\ROOT]
+06-Jul-2023 13:32:05.808 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.init ------------------------- localhost -> /
+06-Jul-2023 13:32:05.833 INFO [main] org.apache.openejb.config.ConfigurationFactory.configureApplication Configuring enterprise application: C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\ROOT
+06-Jul-2023 13:32:05.838 INFO [main] org.apache.openejb.config.AppInfoBuilder.build Enterprise application "C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\ROOT" loaded.
+06-Jul-2023 13:32:05.839 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Assembling app: C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\ROOT
+06-Jul-2023 13:32:05.843 INFO [main] org.apache.openejb.assembler.classic.ValidatorBuilder.getConfig Ignoring XML Configuration for validator org.apache.bval.jsr.ConfigurationImpl
+06-Jul-2023 13:32:05.849 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Deployed Application(path=C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\ROOT)
+06-Jul-2023 13:32:05.878 INFO [main] org.apache.myfaces.ee.MyFacesContainerInitializer.onStartup Using org.apache.myfaces.ee.MyFacesContainerInitializer
+06-Jul-2023 13:32:05.899 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars Au moins un fichier JAR a été analysé pour trouver des TLDs mais il n'en contenait pas, le mode "debug" du journal peut être activé pour obtenir une liste complète de JAR scannés sans succès ; éviter d'analyser des JARs inutilement peut améliorer sensiblement le temps de démarrage et le temps de compilation des JSPs
+06-Jul-2023 13:32:05.910 INFO [main] java.lang.reflect.Method.invoke Le déploiement du répertoire [C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\ROOT] de l'application web s'est terminé en [102] ms
+06-Jul-2023 13:32:05.914 INFO [main] java.lang.reflect.Method.invoke Le démarrage du serveur a pris [1580] millisecondes
+06-Jul-2023 13:32:05.918 SEVERE [main] java.lang.reflect.Method.invoke Impossible de créer le sokcet d'arrêt du serveur à l'adresse [localhost] et au port [8005] (port de base [8005] et offset [0])
+	java.net.BindException: Address already in use: bind
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:556)
+		at java.base/sun.nio.ch.Net.bind(Net.java:545)
+		at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:629)
+		at java.base/java.net.ServerSocket.bind(ServerSocket.java:393)
+		at java.base/java.net.ServerSocket.<init>(ServerSocket.java:275)
+		at org.apache.catalina.core.StandardServer.await(StandardServer.java:580)
+		at org.apache.catalina.startup.Catalina.await(Catalina.java:887)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:833)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:345)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:476)
+06-Jul-2023 13:32:05.918 INFO [main] java.lang.reflect.Method.invoke Le gestionnaire de protocole ["http-nio-8080"] est mis en pause
+06-Jul-2023 13:32:05.919 INFO [main] java.lang.reflect.Method.invoke Arrêt du service [Catalina]
+06-Jul-2023 13:32:05.926 INFO [main] org.apache.openejb.assembler.classic.Assembler.destroyApplication Undeploying app: C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\docs
+06-Jul-2023 13:32:05.969 INFO [main] org.apache.openejb.assembler.classic.Assembler.destroyApplication Undeploying app: C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\host-manager
+06-Jul-2023 13:32:05.997 INFO [main] org.apache.openejb.assembler.classic.Assembler.destroyApplication Undeploying app: C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\manager
+06-Jul-2023 13:32:06.026 INFO [main] org.apache.openejb.assembler.classic.Assembler.destroyApplication Undeploying app: C:\Farid\workspacejava\poecjavaavance\java-avance\apache-tomee-9.1.0-webprofile\apache-tomee-webprofile-9.1.0\webapps\ROOT
+06-Jul-2023 13:32:06.051 INFO [main] org.apache.openejb.server.SimpleServiceManager.stop Stopping server services
+06-Jul-2023 13:32:06.069 INFO [main] java.lang.reflect.Method.invoke Arrêt du gestionnaire de protocole ["http-nio-8080"]
+06-Jul-2023 13:32:06.071 INFO [main] java.lang.reflect.Method.invoke Destruction du gestionnaire de protocole ["http-nio-8080"]

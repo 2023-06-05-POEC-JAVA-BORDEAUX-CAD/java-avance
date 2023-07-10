@@ -19,7 +19,7 @@ import jakarta.ejb.Stateless;
 
 
 @Stateless  											// L'annotation "@Stateless" est une annotation EJB qui spécifie que la classe ne conserve pas d'état entre les appels de méthode. 
-public class PojoDao implements PojoDaoInterface { 		// la classe PojoDao : fournit des méthodes pour accéder aux objets Pojo stockés dans une HashMap.
+public class PojoDao /*implements PojoDaoInterface*/ { 		// la classe PojoDao : fournit des méthodes pour accéder aux objets Pojo stockés dans une HashMap.
 													    // la classe PojoDao est un composant Stateless EJB (Enterprise JavaBean), une classe d'entreprise sans état.
 													    // De plus, la classe implémente l'interface PojoDaoInterface.
 	
@@ -57,7 +57,7 @@ public class PojoDao implements PojoDaoInterface { 		// la classe PojoDao : four
 		pojo1.setValid(Boolean.TRUE);
 		this.pojos.put(pojo3.getId(), pojo3);
 	}
-		@Override
+		/*@Override*/
 														// Cette méthode "getPojo" est une implémentation de la méthode définie dans l'interface PojoDaoInterface. 
 		public Pojo getPojo(Integer id) { 				// La méthode prend un id en paramètre, 
 		return this.pojos.get(id); 						// et renvoie le Pojo correspondant à cet ID à partir de la Map pojos en utilisant la méthode get.
