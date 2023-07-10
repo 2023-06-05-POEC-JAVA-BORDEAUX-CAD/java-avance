@@ -27,9 +27,9 @@ public class ClientModel {
 	private String email;
 
 	@Column(name = "phone")
-	private Integer phone;
+	private String phone;
 
-	@Column(name = "adress")
+	@Column(name = "address")
 	private String adress;
 
 	@Column(name = "zip_code")
@@ -87,11 +87,11 @@ public class ClientModel {
 		this.email = email;
 	}
 
-	public Integer getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Integer phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
