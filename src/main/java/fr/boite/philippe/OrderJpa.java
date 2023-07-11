@@ -17,13 +17,13 @@ public class OrderJpa {
 	private Integer id;
 	
 	@Column(name="type_presta")
-	private String type_presta;
+	private String typePresta;
 	
 	@Column(name="designation")
 	private String designation;
 	
 	@Column(name="client_id")
-	private Integer client_id;
+	private Integer clientId;
 
 	public Integer getId() {
 		return id;
@@ -33,12 +33,12 @@ public class OrderJpa {
 		this.id = id;
 	}
 
-	public String getType_presta() {
-		return type_presta;
+	public String getTypePresta() {
+		return typePresta;
 	}
 
-	public void setType_presta(String type_presta) {
-		this.type_presta = type_presta;
+	public void setTypePresta(String typePresta) {
+		this.typePresta = typePresta;
 	}
 
 	public String getDesignation() {
@@ -49,11 +49,13 @@ public class OrderJpa {
 		this.designation = designation;
 	}
 
-	public Integer getClient_id() {
-		return client_id;
+	public Integer getClientId() {
+		return clientId;
 	}
 
-	public void setClient_id(Integer client_id) {
-		this.client_id = client_id;
+	public void setClientId(Integer clientId) {
+		this.clientId = clientId;
 	}
+
+	
 }

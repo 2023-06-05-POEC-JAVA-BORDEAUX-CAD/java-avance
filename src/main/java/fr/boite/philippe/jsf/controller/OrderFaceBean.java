@@ -18,9 +18,9 @@ public class OrderFaceBean {
 
 	public void saveOrderJpa() {
 		OrderJpa orderJpa = new OrderJpa();
-		orderJpa.setType_presta("Formation1");
+		orderJpa.setTypePresta("Formation1");
 		orderJpa.setDesignation("rien");
-		orderJpa.setClient_id(1);
+		orderJpa.setClientId(1);
 		orderJpaDao.save(orderJpa);
 		OrderJpa savedOrderJpa = orderJpaService.save(orderJpa);
 		

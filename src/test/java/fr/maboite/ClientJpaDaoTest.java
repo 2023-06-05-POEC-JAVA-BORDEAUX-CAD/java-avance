@@ -9,20 +9,21 @@ import org.apache.openejb.junit5.RunWithApplicationComposer;
 import org.apache.openejb.testing.Configuration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import fr.boite.philippe.OrderJpa;
-import fr.boite.philippe.OrderJpaDao;
+
+import fr.boite.philippe.ClientJpa;
+import fr.boite.philippe.ClientJpaDao;
 import jakarta.ejb.EJB;
 
 @RunWithApplicationComposer
-public class OrderJpaDaoTest {
+public class ClientJpaDaoTest {
 
 	@EJB
-	private OrderJpaDao orderJpaDao;
+	private ClientJpaDao clientJpaDao;
 
 	@org.apache.openejb.testing.Module
 	public EjbJar beans() {
 		EjbJar ejbJar = new EjbJar("my-beans");
-		ejbJar.addEnterpriseBean(new StatelessBean(OrderJpaDao.class));
+		ejbJar.addEnterpriseBean(new StatelessBean(ClientJpaDao.class));
 		return ejbJar;
 	}
 	
@@ -31,7 +32,7 @@ public class OrderJpaDaoTest {
         PersistenceUnit unit = new PersistenceUnit("PersisterPU");
         unit.setJtaDataSource("jtaTestDataSource");
         unit.setNonJtaDataSource("jtaTestDataSourceUnManaged");
-        unit.addClass(OrderJpa.class);
+        unit.addClass(ClientJpa.class);
         unit.setProperty("openjpa.jdbc.SynchronizeMappings", "buildSchema(ForeignKeys=true)");
         unit.setProperty("openjpa.Log", "DefaultLevel=WARN,Runtime=INFO,Tool=INFO,SQL=TRACE");
         return unit;
@@ -52,15 +53,17 @@ public class OrderJpaDaoTest {
 	public void testSave() throws Exception {
 		
 		//Arrange
-		String typePresta = "Bonjour_Philippe";
+    	String last_name = "hassan";
+		//String email = "hassan.Philippe@yahoo.com";
 		
-		OrderJpa orderJpa = new OrderJpa();
-		orderJpa.setTypePresta(typePresta);
+		ClientJpa clientJpa = new ClientJpa();
+		clientJpa.setLastName(last_name);
+	//	clientJpa.setEmail(email);
 		
 		//Act
-		OrderJpa savedOrderJpa = this.orderJpaDao.save(orderJpa);
+		ClientJpa savedClientJpa = this.clientJpaDao.save(clientJpa);
 		
 		//Assert
-		Assertions.assertNotNull(savedOrderJpa);
+		Assertions.assertNotNull(savedClientJpa);
 	}
 }

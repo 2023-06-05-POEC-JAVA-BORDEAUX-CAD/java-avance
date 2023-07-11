@@ -2,8 +2,9 @@ package fr.boite.philippe.jsf.controller;
 
 import fr.boite.philippe.OrderJpa;
 import fr.boite.philippe.OrderJpaDao;
+import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
-
+@Stateless
 public class OrderJpaService {
 
 	@Inject
