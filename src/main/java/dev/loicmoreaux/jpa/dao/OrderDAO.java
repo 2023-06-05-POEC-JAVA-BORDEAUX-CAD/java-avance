@@ -18,4 +18,11 @@ public class OrderDAO {
 	public Order load(Integer id) {
 		return this.entityManager.find(Order.class, id);
 	}
+	
+	public void delete(Integer id) {
+		Order order = this.load(id);
+		if(order != null) {
+			this.entityManager.remove(order);
+		} 			
+	}
 }

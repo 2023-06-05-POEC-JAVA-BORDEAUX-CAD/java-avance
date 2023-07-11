@@ -1,7 +1,7 @@
 package dev.loicmoreaux.tpjsf.controllers;
 
-import dev.loicmoreaux.jpa.dao.OrderDAO;
 import dev.loicmoreaux.jpa.model.Order;
+import dev.loicmoreaux.jpa.service.OrderService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -12,7 +12,7 @@ public class OrderFaceBean {
 	private Order order = new Order();
 	
 	@Inject
-	private OrderDAO orderDao;
+	private OrderService orderService;
 	
 	/*
 	 * Constructor
@@ -28,7 +28,7 @@ public class OrderFaceBean {
 	};
 	
 	public void save() {
-		orderDao.save(order);
+		orderService.save(order);
 		System.out.println("sauvegarde de order dans la BDD");
 	}
 }
