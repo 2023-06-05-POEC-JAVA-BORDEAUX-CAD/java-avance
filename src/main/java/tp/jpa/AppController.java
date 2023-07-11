@@ -1,17 +1,17 @@
 package tp.jpa;
 
-import jakarta.enterprise.context.RequestScoped;
-import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import jakarta.inject.Inject;
+import jakarta.enterprise.context.RequestScoped;
 
 @Named
 @RequestScoped
 public class AppController {
 	@Inject
-	private ClientDao cliDao;
+	private ClientService cliService;
 
 	@Inject
-	private OrderDao ordDao;
+	private OrderService ordService;
 
 	public String saveClient() {
 		ClientModel client = new ClientModel();
@@ -25,7 +25,7 @@ public class AppController {
 		client.setCity("VilleTest");
 		client.setCountry("FRANCE");
 		client.setState(0);
-		cliDao.save(client);
+		cliService.save(client);
 		return "end";
 	}
 
@@ -34,7 +34,7 @@ public class AppController {
 		order.setTypePresta("Test");
 		order.setDesignation("Petit test");
 		order.setClientId(1); // not nullable
-		ordDao.save(order);
+		ordService.save(order);
 		return "end";
 	}
 
