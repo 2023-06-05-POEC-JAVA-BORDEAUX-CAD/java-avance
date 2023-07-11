@@ -1,4 +1,4 @@
-package dev.loicmoreaux.jpa;
+package dev.loicmoreaux.jpa.model;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;

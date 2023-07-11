@@ -1,7 +1,7 @@
 package dev.loicmoreaux.tpjsf.controllers;
 
-import dev.loicmoreaux.jpa.Order;
-import dev.loicmoreaux.jpa.OrderDAO;
+import dev.loicmoreaux.jpa.dao.OrderDAO;
+import dev.loicmoreaux.jpa.model.Order;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
