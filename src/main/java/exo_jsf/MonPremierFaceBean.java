@@ -16,6 +16,8 @@ public class MonPremierFaceBean {
 	private OrderDao orderDao;
 
 	private String message = "Ce message vient du contrôleur";
+	
+	
 
 	public String getMessage() {
 		return LocalDateTime.now().toString();

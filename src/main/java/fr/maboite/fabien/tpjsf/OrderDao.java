@@ -16,7 +16,7 @@ public class OrderDao {
 	 * @param order
 	 * @return
 	 */
-	public Order save(Order order) {
+	public Order save(Order order) { // charge cette entité en BDD
 		return this.entityManager.merge(order);
 	}
 
