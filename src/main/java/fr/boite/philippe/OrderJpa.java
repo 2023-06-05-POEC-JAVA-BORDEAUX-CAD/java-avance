@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Order")
+@Table(name="Orders")
 public class OrderJpa {
 	
 	@Id
@@ -17,13 +17,13 @@ public class OrderJpa {
 	private Integer id;
 	
 	@Column(name="type_presta")
-	private  String type_presta;
+	private String type_presta;
 	
 	@Column(name="designation")
-	private  String designation;
+	private String designation;
 	
 	@Column(name="client_id")
-	private  Integer client_id;
+	private Integer client_id;
 
 	public Integer getId() {
 		return id;
@@ -56,9 +56,4 @@ public class OrderJpa {
 	public void setClient_id(Integer client_id) {
 		this.client_id = client_id;
 	}
-	
-	
-
-
-
 }

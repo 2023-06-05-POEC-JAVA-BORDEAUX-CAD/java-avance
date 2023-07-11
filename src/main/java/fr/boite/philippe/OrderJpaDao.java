@@ -6,12 +6,15 @@ import jakarta.persistence.PersistenceContext;
 
 @Stateless
 public class OrderJpaDao {
-	
+
 	@PersistenceContext
 	protected EntityManager entityManager;
-	
-	public void save(OrderJpa orderJpa) {
-		this.entityManager.merge(orderJpa);
-	}
 
+	public OrderJpa save(OrderJpa orderJpa) {
+		return this.entityManager.merge(orderJpa);
+	}
+	
+	public OrderJpa load(Integer id) {
+		return this.entityManager.find(OrderJpa.class, id);
+	}
 }
