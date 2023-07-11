@@ -25,9 +25,7 @@
 				value="drop-and-create" / -->
 			<!--property name="javax.persistence.schema-generation.create-source" 
 				value="metadata-then-script" / -->
-			<!--property name="openjpa.Log" value="DefaultLevel=WARN,Runtime=INFO,Tool=INFO,SQL=TRACE" 
-				/ -->
-
+			<property name="openjpa.Log" value="DefaultLevel=WARN,Runtime=INFO,Tool=INFO,SQL=TRACE" />
 		</properties>
 	</persistence-unit>
 </persistence>
