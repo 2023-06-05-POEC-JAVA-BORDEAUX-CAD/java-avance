@@ -2,6 +2,8 @@ package Florian.TP_entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -10,31 +12,34 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "orders")
 public class OrderEntity {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "type_presta", length = 40, nullable = false)
-	private String typePresta;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "type_presta")
+	private OrderEnum typePresta;
 	
+	//@Column(name = "type_presta", length = 40, nullable = false)
+	//private String typePresta;	
+
 	@Column(length = 90, nullable = false)
 	private String designation;
-	
+
 	@Column(name = "client_id", nullable = false)
 	private Integer clientId;
-	
+
 	@Column(name = "nb_days")
 	private Integer nbDays;
-	
+
 	@Column(name = "unit_price")
 	private Integer unitPrice;
-	
+
 	private Integer state;
-	
-	
+
 	// Getters Setters
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -42,14 +47,22 @@ public class OrderEntity {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	public OrderEnum getTypePresta() {
+		return typePresta;
+	}
 
-	public String getTypePresta() {
+	public void setTypePresta(OrderEnum typePresta) {
+		this.typePresta = typePresta;
+	}
+	
+	/*public String getTypePresta() {
 		return typePresta;
 	}
 
 	public void setTypePresta(String typePresta) {
 		this.typePresta = typePresta;
-	}
+	}*/
 
 	public String getDesignation() {
 		return designation;
@@ -89,5 +102,5 @@ public class OrderEntity {
 
 	public void setState(Integer state) {
 		this.state = state;
-	}	
+	}
 }

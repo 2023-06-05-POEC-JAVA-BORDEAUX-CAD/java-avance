@@ -13,12 +13,21 @@
 <h:body>
 	<h1>Page d'acceuil</h1>
 	<h:form>
-		<h:commandLink action="${clientFaceBean.sauvegarde}">
+		<div>
+		<h:commandLink action="${clientFaceBean.sauvegardeOrder}">
 			Cliquez ici pour sauvegarder une nouvelle commande
 		</h:commandLink>
+		</div>
+		<div>
+		<h:commandLink action="${clientFaceBean.sauvegardeClient}">
+			Cliquez ici pour sauvegarder un nouveau client
+		</h:commandLink>
+		</div>
 	</h:form>
-	<h:link value="Afficher la vue-client en y changeant l'url et afficher l'id 3" outcome="vue-client">
-			<f:param name="id" value="3" />
+	<h:link
+		value="Afficher la vue-client en y changeant l'url et afficher l'id 3"
+		outcome="vue-client">
+		<f:param name="id" value="3" />
 	</h:link>
 </h:body>
 </html>
