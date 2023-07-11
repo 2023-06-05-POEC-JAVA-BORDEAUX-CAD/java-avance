@@ -10,7 +10,9 @@ import org.apache.openejb.testing.Configuration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import fr.maboite.fabien.tpjsf.jpadao.ClientDao;
 import fr.maboite.fabien.tpjsf.jpadao.OrderDao;
+import fr.maboite.fabien.tpjsf.jpamodel.Client;
 import fr.maboite.fabien.tpjsf.jpamodel.Order;
 import jakarta.ejb.EJB;
 
@@ -18,12 +20,12 @@ import jakarta.ejb.EJB;
 public class ClientDaoTest {
 
 	@EJB
-	private OrderDao orderDao;
+	private ClientDao clientDao;
 
 	@org.apache.openejb.testing.Module
 	public EjbJar beans() {
 		EjbJar ejbJar = new EjbJar("my-beans");
-		ejbJar.addEnterpriseBean(new StatelessBean(OrderDao.class));
+		ejbJar.addEnterpriseBean(new StatelessBean(ClientDao.class));
 		return ejbJar;
 	}
 	
@@ -58,6 +60,7 @@ public class ClientDaoTest {
 		//Act
 		Client savedClient = this.clientDao.save(client);
 		
+		
 		//Assert
 		Assertions.assertNotNull(savedClient);
 		Assertions.assertNotNull(savedClient.getId());
@@ -68,17 +71,17 @@ public class ClientDaoTest {
 	public void testSaveAndLoad() throws Exception {
 		
 		//Arrange
-		Order order = new Order();
-		order.setDesignation("super désignation");
-		Order savedOrder = this.orderDao.save(order);
+		Client client = new Client();
+		client.setCity("Bordeaux");
+		Client savedClient = this.clientDao.save(client);
 		
 		//Act
-		Order loadedOrder = this.orderDao.find(savedOrder.getId());
+		Client loadedClient = this.clientDao.find(savedClient.getId());
 		
 		//Assert
-		Assertions.assertNotNull(loadedOrder);
-		Assertions.assertEquals(savedOrder.getId(), loadedOrder.getId());
-		Assertions.assertEquals(savedOrder.getDesignation(), loadedOrder.getDesignation());
+		Assertions.assertNotNull(loadedClient);
+		Assertions.assertEquals(savedClient.getId(), loadedClient.getId());
+		Assertions.assertEquals(savedClient.getCity(), loadedClient.getCity());
 		
 	}
     
@@ -86,16 +89,16 @@ public class ClientDaoTest {
 	public void testSaveAndRemove() throws Exception {
 		
 		//Arrange
-		Order order = new Order();
-		order.setDesignation("super désignation");
-		Order savedOrder = this.orderDao.save(order);
+		Client client = new Client();
+		client.setCity("Bordeaux");
+		Client savedClient = this.clientDao.save(client);
 		
 		//Act
 		//this.orderDao.delete(savedOrder.getId());
 		
 		//Assert
-		Order loadedOrder = this.orderDao.find(savedOrder.getId());
-		Assertions.assertNull(loadedOrder);
+		Client loadedClient = this.clientDao.find(savedClient.getId());
+		Assertions.assertNull(loadedClient);
 	}
 	
 }
