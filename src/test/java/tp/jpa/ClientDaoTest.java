@@ -91,7 +91,7 @@ public class ClientDaoTest {
 		client.setState(0);
 		client = clidao.save(client);
 
-		ClientModel saved = clidao.load(1);
+		ClientModel saved = clidao.load(client.getId());
 
 		assertNotNull(client);
 		assertNotNull(saved);
