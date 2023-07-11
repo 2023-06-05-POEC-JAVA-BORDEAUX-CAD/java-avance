@@ -44,7 +44,7 @@ public class OrderJpaDaoTest {
         p.put("jtaTestDataSource.JdbcDriver", "org.h2.Driver");
         p.put("jtaTestDataSource.username", "test");
         p.put("jtaTestDataSource.password", "test");
-        p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:file:C:/dev/h2-data/formation-poe-java-2023-07-12");
+        p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:mem:tests");
         return p;
     }
     

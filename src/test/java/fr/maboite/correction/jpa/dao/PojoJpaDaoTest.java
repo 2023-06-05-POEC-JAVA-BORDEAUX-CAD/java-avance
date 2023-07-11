@@ -44,7 +44,8 @@ public class PojoJpaDaoTest {
         p.put("jtaTestDataSource.JdbcDriver", "org.h2.Driver");
         p.put("jtaTestDataSource.username", "test");
         p.put("jtaTestDataSource.password", "test");
-        p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:file:C:/dev/h2-data/formation-poe-java-2023-07-11");
+        p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:mem:tests");
+        //p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:file:C:/dev/h2-data/formation-poe-java-2023-07-11");
         return p;
     }
     
