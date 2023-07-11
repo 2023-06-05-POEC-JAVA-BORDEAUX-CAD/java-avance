@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 public class ClientJPA {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long Id;
 
 	@Column(name = "company_name")
 	private String companyName;
@@ -39,7 +39,7 @@ public class ClientJPA {
 	private Integer state;
 
 	public Long getId() {
-		return id;
+		return Id;
 	}
 
 	public String getCompanyName() {
@@ -83,7 +83,7 @@ public class ClientJPA {
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		Id = id;
 	}
 
 	public void setCompanyName(String companyName) {

@@ -1,5 +1,7 @@
 package fr.noellie.jsf.controller;
 
+import fr.noellie.jpa.dao.ClientJPADao;
+import fr.noellie.jpa.model.ClientJPA;
 import fr.noellie.jsf.service.ClientServiceTPJSF;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -17,6 +19,9 @@ public class ClientFaceBean {
 
 	@Inject
 	private ClientServiceTPJSF clientService;
+	
+	@Inject
+	private ClientJPADao clientJPADao;
 
 	public String getMessage() {
 		return messageClient;
@@ -52,5 +57,26 @@ public class ClientFaceBean {
 		System.out.println("Je sauvegarde le client n° " + client.getId());
 		this.clientService.save(client);
 		return "client";
+	}
+	
+	public void sauvegardeClientJPA() {
+		ClientJPA clientJPA = new ClientJPA();
+		clientJPA.setCompanyName("Sopra Steria");
+		clientJPA.setFirstName("Michel");
+		clientJPA.setLastName("Drücker");
+		clientJPA.setEmail("michel.drucker@mail.fr");
+		clientJPA.setPhone("06 06 06 06 06");
+		clientJPA.setAdress("123 Rue des Lilas");
+		clientJPA.setZipCode("75002");
+		clientJPA.setCity("Paris");
+		clientJPA.setCountry("France");
+		clientJPA.setState(0);
+		ClientJPA savedClient = clientJPADao.save(clientJPA);
+		
+		ClientJPA loadedClient = clientJPADao.load(savedClient.getId());
+		System.out.println("En base, j'ai un client dont l'entreprise est " 
+				+ loadedClient.getCompanyName()
+				+ " et dont le nom complet est "
+				+ loadedClient.getFirstName() + " " + loadedClient.getLastName());
 	}
 }
