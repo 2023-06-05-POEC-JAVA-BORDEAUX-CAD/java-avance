@@ -1,4 +1,4 @@
-package fr.maboite.fabien.tpjsf;
+package fr.maboite.fabien.tpjsf.jpadao;
 
 import fr.maboite.fabien.tpjsf.jpamodel.Order;
 import jakarta.ejb.Stateless;
@@ -11,7 +11,7 @@ public class OrderDao {
 	@PersistenceContext
 	protected EntityManager entityManager;
 	
-	public Order find (Integer id) {
+	public Order find (Long id) {
 		return this.entityManager.find(Order.class, id);
 	}
 

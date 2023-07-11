@@ -143,6 +143,7 @@
 			<groupId>org.apache.tomee</groupId>
 			<artifactId>openejb-junit5</artifactId>
 			<version>9.1.0</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
             <groupId>ch.qos.logback</groupId>
@@ -172,9 +173,15 @@
 			<version>1.18.0</version>
 		</dependency>
 		<!-- Test -->
-		<dependency>
+	<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.9.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
 			<version>5.9.1</version>
 			<scope>test</scope>
 		</dependency>

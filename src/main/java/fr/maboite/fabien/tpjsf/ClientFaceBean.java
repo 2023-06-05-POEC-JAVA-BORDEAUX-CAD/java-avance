@@ -1,24 +1,34 @@
-package exo_jsf;
+package fr.maboite.fabien.tpjsf;
 
 import java.time.LocalDateTime;
 
-import fr.maboite.fabien.tpjsf.jpamodel.Order;
 import fr.maboite.fabien.tpjsf.jpadao.ClientDao;
 import fr.maboite.fabien.tpjsf.jpadao.OrderDao;
 import fr.maboite.fabien.tpjsf.jpamodel.Client;
+import fr.maboite.fabien.tpjsf.jpamodel.Order;
+import fr.maboite.fabien.tpjsf.jpaservice.ClientService;
+import fr.maboite.fabien.tpjsf.jpaservice.OrderService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 @Named
 @RequestScoped
-public class MonPremierFaceBean {
+public class ClientFaceBean {
 
 	@Inject
 	private OrderDao orderDao;
-	private ClientDao clientDao;
 	
+	@Inject
+	private ClientDao clientDao;
 
+	@Inject
+	private ClientService clientService;
+	
+	@Inject 
+	private OrderService orderService;
+
+	
 	private String message = "Ce message vient du contrôleur";
 	
 	

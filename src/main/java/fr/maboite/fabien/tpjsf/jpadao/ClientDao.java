@@ -1,4 +1,4 @@
-package fr.maboite.fabien.tpjsf.dao;
+package fr.maboite.fabien.tpjsf.jpadao;
 
 import fr.maboite.fabien.tpjsf.jpamodel.Client;
 import jakarta.ejb.Stateless;
@@ -11,7 +11,7 @@ public class ClientDao {
 	@PersistenceContext
 	protected EntityManager entityManager;
 	
-	public Client find (Integer id) {
+	public Client find (Long id) {
 		return this.entityManager.find(Client.class, id);
 	}
 

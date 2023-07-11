@@ -1,12 +1,13 @@
-package fr.maboite.fabien.tpjsf.service;
+package fr.maboite.fabien.tpjsf.jpaservice;
 
-import fr.maboite.fabien.tpjsf.dao.ClientDao;
+import fr.maboite.fabien.tpjsf.jpadao.ClientDao;
 import fr.maboite.fabien.tpjsf.jpamodel.Client;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
 @Stateless
 public class ClientService {
+	
 	@Inject
 	private ClientDao clientDao;
 
@@ -16,7 +17,7 @@ public class ClientService {
 	 * @return
 	 */
 
-	public Client getOrderById(Integer id) {
+	public Client getOrderById(Long id) {
 		return this.clientDao.find(id);
 	}
 
@@ -30,9 +31,8 @@ public class ClientService {
 	 * @param id
 	 * @return
 	 */
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		Client clientToDelete = this.clientDao.find(id);
 		this.clientDao.delete(clientToDelete);
 	}
 }
-
