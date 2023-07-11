@@ -14,7 +14,7 @@ import jakarta.inject.Named;
 
 @Named
 @RequestScoped
-public class ClientFaceBean {
+public class ClientFaceBean2 {
 
 	@Inject
 	private OrderDao orderDao;
