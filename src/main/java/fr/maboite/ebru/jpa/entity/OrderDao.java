@@ -18,5 +18,10 @@ public class OrderDao {
 	public void save(OrderJPA orderJpa) { // charge cet entité en BDD
 		this.entityManager.merge(orderJpa);
 	}
+	
+	public OrderJPA load(Integer id) {
+		
+		return this.entityManager.find(OrderJPA.class, id);
+	}
 
 }
