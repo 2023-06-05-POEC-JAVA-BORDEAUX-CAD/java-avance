@@ -11,9 +11,9 @@ public class OrderJPAService {
 	private OrderJPADao orderJPADao;
 	
 	/**
-	 * Sauvegarde order, mais ne le modifie pas. Renvoie une instance
-	 * qui correspond à l'Order en base de données.
-	 * @param order
+	 * Sauvegarde orderJPA, mais ne le modifie pas. Renvoie une instance
+	 * qui correspond à l'OrderJPA en base de données.
+	 * @param orderJPA
 	 * @return
 	 */
 	public OrderJPA save(OrderJPA orderJPA) {
