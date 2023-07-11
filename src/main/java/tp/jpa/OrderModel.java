@@ -4,6 +4,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
@@ -11,28 +13,35 @@ import jakarta.persistence.GenerationType;
 @Table(name = "orders")
 public class OrderModel {
 	@Id
+	@Column(name = "id", nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(name = "type_presta")
+	@Column(name = "type_presta", nullable = false, length = 40)
 	private String typePresta;
 
-	@Column(name = "designation")
+	@Column(name = "designation", nullable = false, length = 90)
 	private String designation;
 
-	@Column(name = "client_id")
+	@Column(name = "client_id", nullable = false)
 	private Integer clientId;
 
-	@Column(name = "nb_days")
+	@Column(name = "nb_days", nullable = true)
 	private Integer nbDays;
 
-	@Column(name = "unit_price")
+	@Column(name = "unit_price", nullable = true)
 	private Integer unitPrice;
 
-	@Column(name = "state")
-	private Integer state;
+	@Enumerated(EnumType.ORDINAL)
+	@Column(name = "state", nullable = true)
+	private State state;
 
 	public OrderModel() {
+	}
+
+	public enum State {
+		ACTIVE,
+		INACTIVE
 	}
 
 	public Integer getId() {
@@ -83,11 +92,11 @@ public class OrderModel {
 		this.unitPrice = unitPrice;
 	}
 
-	public Integer getState() {
+	public State getState() {
 		return state;
 	}
 
-	public void setState(Integer state) {
+	public void setState(State state) {
 		this.state = state;
 	}
 }
