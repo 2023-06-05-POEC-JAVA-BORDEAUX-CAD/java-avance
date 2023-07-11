@@ -24,7 +24,6 @@ public class ClientJsfDAO {
 	
 	public void addClient(ClientJsf newClient) {
 		this.clients.put(newClient.getId(), newClient);
-		//return "ajout du Client";
 	}
 
 }

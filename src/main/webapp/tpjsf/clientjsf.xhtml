@@ -6,6 +6,10 @@
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" data-theme="dark"
 >
+<f:metadata>
+	<f:viewParam name="id" value="#{clientJsfFaceBean.id}" />
+	<f:viewAction action="#{clientJsfFaceBean.loadClient()}" />
+</f:metadata>
 
 <h:head>
 	<title>Client</title>
@@ -105,7 +109,20 @@
 			    </h:selectOneRadio>
 			</div>
 			<h:commandButton value="Sauvegarder" action="#{clientJsfFaceBean.save}" class="button"/>
-		</h:form>		
+		</h:form>
+		
+		<div class="div-link">
+			<h:link value="Charger un client" outcome="clientjsf" class="button">
+				<f:param name="id" value="1" />
+			</h:link>
+		</div>
+		
+		<section class="section-view">
+			<h2>Liste des clients</h2>
+			
+			<p>#{clientJsfFaceBean.getAllClients()}</p>
+		</section>
+				
 	</main>
 </h:body>
 </html>

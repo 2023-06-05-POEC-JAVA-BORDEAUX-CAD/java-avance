@@ -59,12 +59,3 @@ input, select{
 	padding: 0.2rem 0.5rem;
 	font-size: 1rem;
 }
-
-.section-view{
-	margin-top: 2rem;
-}
-
-.section-view p{
-	text-align: left;
-	word-wrap: break-word;
-}
