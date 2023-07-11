@@ -6,6 +6,7 @@ import jakarta.inject.Inject;
 
 @Stateless
 public class OrderService {
+
 	@Inject
 	private OrderDao orderDao;
 
@@ -14,9 +15,14 @@ public class OrderService {
 	 * @param order
 	 * @return
 	 */
-	public Order save(Order order) {
+
+	public Order getOrderById(Integer id) {
+		return this.orderDao.find(id);
+	}
+
+	public void save(Order order) {
 		System.out.println("Sauvegarde de : " + order);
-		return this.orderDao.save(order);
+		this.orderDao.save(order);
 	}
 
 	/**
@@ -24,16 +30,8 @@ public class OrderService {
 	 * @param id
 	 * @return
 	 */
-	public Order load(Long id) {
-		System.out.println("Chargement de order avec id : " + id);
-		Order order = this.orderDao.load(id);
-		if (order == null) {
-			System.out.println("aucun order trouvé");
-			;
-		} else {
-			System.out.println("La commande 'order' trouvée est : " + order);
-		}
-		return order;
-
+	public void deleteById(Integer id) {
+		Order orderToDelete = this.orderDao.find(id);
+		this.orderDao.delete(orderToDelete);
 	}
 }

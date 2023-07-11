@@ -10,6 +10,10 @@ public class OrderDao {
 
 	@PersistenceContext
 	protected EntityManager entityManager;
+	
+	public Order find (Integer id) {
+		return this.entityManager.find(Order.class, id);
+	}
 
 	/**
 	 * 
@@ -23,9 +27,16 @@ public class OrderDao {
 	/**
 	 * 
 	 * @param id
-	 * @return
 	 */
-	public Order load(Long id) {
-		return this.entityManager.find(Order.class, id);
+	public void delete(Long id) {
+		if (id!=null) {
+			return;
+		}
+		Order savedEntity = this.entityManager.find(Order.class, id);
+		if (savedEntity == null) {
+			return;
+		}
+		this.entityManager.remove(savedEntity);
 	}
+	
 }

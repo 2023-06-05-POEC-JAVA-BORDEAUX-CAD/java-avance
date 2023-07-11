@@ -9,13 +9,15 @@ import fr.maboite.fabien.TP.test.injectCDI.Pojo;
 import fr.maboite.fabien.TP.test.injectCDI.PojoDao;
 import fr.maboite.fabien.TP.test.injectCDI.PojoDaoInterface;
 import fr.maboite.fabien.TP.test.injectCDI.RunWithApplicationComposer;
+import fr.maboite.fabien.tpjsf.OrderDao;
+import fr.maboite.fabien.tpjsf.jpamodel.Order;
 import jakarta.ejb.EJB;
 
 @RunWithApplicationComposer
 public class OrderJpaDaoTest {
 
 	@EJB
-	private OrderDaoInterface orderDao;
+	private OrderDao orderDao;
 
 	@org.apache.openejb.testing.Module
 	public EjbJar beans() {
@@ -25,9 +27,19 @@ public class OrderJpaDaoTest {
 	}
 
 	@Test
-	public void test1() throws Exception {
-		Order order = orderDao.getOrder(1);
-		Assertions.assertNotNull(order);
+	public void testSave() throws Exception {
+		
+		// Arrange
+		String designatiion = "test nom de formation";
+		
+		Order order = new Order();
+		Order savedOrder = this.orderDao.save(order);
+		// ACT
+		
+		// Assert
+		Assertions.assertNotNull(savedOrder);
+		Assertions.assertNotNull(savedOrder.getId());
+		
 		Assertions.assertEquals("Hey!", order.getName());
 	}
 
