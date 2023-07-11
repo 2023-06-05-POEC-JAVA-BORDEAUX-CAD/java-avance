@@ -19,12 +19,17 @@ public class MonPremierFaceBean {
 		return message;
 	}
 
-	public void sauvegarde() {
+	public void sauvegardeOrderJPA() {
 		OrderJPA orderJPA = new OrderJPA();
-		orderJPA.setTypePresta("Formation");
-		orderJPA.setDesignation("Initiation Ruby");
+		orderJPA.setTypePresta("Coaching");
+		orderJPA.setDesignation("Git & GitHub");
 		orderJPA.setClientId(4);
-		orderJPADao.save(orderJPA);
+		OrderJPA savedOrder = orderJPADao.save(orderJPA);
+		
+		OrderJPA loadedOrder = orderJPADao.load(savedOrder.getId());
+		System.out.println("En base, j'ai un order dont la désignation vaut : " 
+				+ loadedOrder.getDesignation()
+				+ " pour l'id " + loadedOrder.getId());
 	}
 
 }

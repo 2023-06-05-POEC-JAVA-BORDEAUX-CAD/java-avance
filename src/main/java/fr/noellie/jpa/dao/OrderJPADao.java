@@ -11,8 +11,12 @@ public class OrderJPADao {
 	@PersistenceContext
 	protected EntityManager entityManager;
 
-	public void save(OrderJPA orderJPA) {
-		this.entityManager.merge(orderJPA);
+	public OrderJPA save(OrderJPA orderJPA) {
+		return this.entityManager.merge(orderJPA);
+	}
+	
+	public OrderJPA load(Long id) {
+		return this.entityManager.find(OrderJPA.class, id);
 	}
 
 }
