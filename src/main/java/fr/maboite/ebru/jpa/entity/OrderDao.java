@@ -1,6 +1,5 @@
 package fr.maboite.ebru.jpa.entity;
 
-
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -15,12 +14,12 @@ public class OrderDao {
 	@PersistenceContext // on inject objet entitymanager
 	protected EntityManager entityManager;
 
-	public void save(OrderJPA orderJpa) { // charge cet entité en BDD
-		this.entityManager.merge(orderJpa);
+	public OrderJPA save(OrderJPA orderJpa) { // charge cet entité en BDD
+		return this.entityManager.merge(orderJpa);
 	}
-	
+
 	public OrderJPA load(Integer id) {
-		
+
 		return this.entityManager.find(OrderJPA.class, id);
 	}
 
