@@ -3,6 +3,8 @@ package dev.loicmoreaux.jpa.model;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -34,8 +36,9 @@ public class OrderJpa {
 	private Float unitPrice = null;
 	
 	@Basic(optional = true)
-	private Integer state = null;
-	
+	@Enumerated(EnumType.ORDINAL)
+	private StateOrder state = null;
+	//private Integer state = null;
 	
 	/*
 	 * Getters and Setters
@@ -87,12 +90,20 @@ public class OrderJpa {
 	public void setUnitPrice(Float unitPrice) {
 		this.unitPrice = unitPrice;
 	}
+
+	public StateOrder getState() {
+		return state;
+	}
+
+	public void setState(StateOrder state) {
+		this.state = state;
+	}
 	
-	public Integer getState() {
+	/*public Integer getState() {
 		return state;
 	}
 	
 	public void setState(Integer state) {
 		this.state = state;
-	}
+	}*/
 }

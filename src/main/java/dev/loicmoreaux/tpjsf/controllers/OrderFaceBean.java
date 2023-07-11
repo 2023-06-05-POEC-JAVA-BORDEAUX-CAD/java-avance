@@ -31,4 +31,9 @@ public class OrderFaceBean {
 		orderService.save(order);
 		System.out.println("sauvegarde de order dans la BDD");
 	}
+	
+	public void load() {
+		String order = orderService.load(1).toString();
+		System.out.println(order);		
+	}
 }

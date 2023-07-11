@@ -5,7 +5,6 @@ import java.util.Map;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import dev.loicmoreaux.tpjsf.controllers.ClientFormBean;
 import dev.loicmoreaux.tpjsf.dao.ClientDAO;
 import dev.loicmoreaux.tpjsf.model.Client;
 import jakarta.ejb.Stateless;

@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import dev.loicmoreaux.jpa.dao.OrderJpaDAO;
 import dev.loicmoreaux.jpa.model.OrderJpa;
+import dev.loicmoreaux.jpa.model.StateOrder;
 import jakarta.ejb.EJB;
 
 
@@ -61,6 +62,7 @@ public class OrderJpaDAOTest {
 		order.setTypePresta(typePrestaOrder);
 		order.setDesignation(designationOrder);
 		order.setClientId(clientIdOrder);
+		order.setState(StateOrder.CONFIRMED);
 		
 		//Act
 		OrderJpa savedOrder = this.orderJpaDAO.save(order);

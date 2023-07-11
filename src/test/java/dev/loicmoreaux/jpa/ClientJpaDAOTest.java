@@ -44,7 +44,7 @@ public class ClientJpaDAOTest {
         p.put("jtaTestDataSource.JdbcDriver", "org.h2.Driver");
         p.put("jtaTestDataSource.username", "test");
         p.put("jtaTestDataSource.password", "test");
-        p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:file:D:/Dev Web/M2i/Java/testOrderDao");
+        p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:file:D:/Dev Web/M2i/Java/testClientDao");
         return p;
     }
     

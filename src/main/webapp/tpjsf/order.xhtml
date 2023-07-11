@@ -64,9 +64,9 @@
 			<div class="form-group">
 				<label for="state" >Statut :</label>
 				<h:selectOneMenu value="#{orderFaceBean.order.state}" >
-			        <f:selectItem itemValue="0" itemLabel="Canceled" />
-			        <f:selectItem itemValue="1" itemLabel="Option" />
-			        <f:selectItem itemValue="2" itemLabel="Confirmed" />
+			        <f:selectItem itemValue="#{dev.loicmoreaux.jpa.model.StateOrder.CANCELED}" itemLabel="Canceled" />
+			        <f:selectItem itemValue="#{dev.loicmoreaux.jpa.model.StateOrder.OPTION}" itemLabel="Option" />
+			        <f:selectItem itemValue="#{dev.loicmoreaux.jpa.model.StateOrder.CONFIRMED}" itemLabel="Confirmed" />
 			    </h:selectOneMenu>
 			</div>
 			<h:commandButton value="Sauvegarder" action="#{orderFaceBean.save}" class="button"/>
