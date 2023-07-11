@@ -8,7 +8,7 @@ import jakarta.persistence.PersistenceContext;
 
 /**
  * Data Access Object: classe permettant d'accéder en lecture ou écriture au
- * référentiel de données des Pojos (ici, une simple Map)
+ * référentiel de données des Pojos : ici, on se base sur JPA.
  */
 @Stateless
 public class OrderJpaDao {
@@ -16,10 +16,21 @@ public class OrderJpaDao {
 	@PersistenceContext
 	protected EntityManager entityManager;
 
-	public void save(Order order) {
-		this.entityManager.merge(order);
+	/**
+	 * Sauvegarde order, mais ne le modifie pas. Renvoie une instance
+	 * qui correspond à l'Order en base de données.
+	 * @param order
+	 * @return
+	 */
+	public Order save(Order order) {
+		return this.entityManager.merge(order);
 	}
-
+	
+	/**
+	 * Récupère un order par id
+	 * @param id
+	 * @return
+	 */
 	public Order load(Long id) {
 		return this.entityManager.find(Order.class, id);
 	}

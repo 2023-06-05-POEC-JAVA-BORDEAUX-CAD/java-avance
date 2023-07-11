@@ -2,10 +2,10 @@ package fr.maboite.correction.jsf.controller;
 
 import java.time.LocalDateTime;
 
-import fr.maboite.correction.jpa.dao.OrderJpaDao;
 import fr.maboite.correction.jpa.dao.PojoJpaDao;
 import fr.maboite.correction.jpa.model.Order;
 import fr.maboite.correction.jpa.model.PojoJpa;
+import fr.maboite.correction.jpa.service.OrderService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -18,7 +18,7 @@ public class MonPremierFaceBean {
 	private PojoJpaDao pojoJpaDao;
 	
 	@Inject
-	private OrderJpaDao orderJpaDao;
+	private OrderService orderService;
 
 	private String message = "Ce message vient du contrôleur";
 
@@ -46,11 +46,11 @@ public class MonPremierFaceBean {
 		order.setClientId(1l);
 		order.setDesignation("commande Web");
 		order.setTypePresta("Bien");
-		orderJpaDao.save(order);
+		Order savedOrder = orderService.save(order);
 		
-		
-		Order order2 = orderJpaDao.load(1l);
-		System.out.println(order2);
+		Order loadedOrder = orderService.load(savedOrder.getId());
+		System.out.println("En base, j'ai un order dont la désignation vaut : " 
+				+ loadedOrder.getDesignation() + " pour l'id : " + loadedOrder.getId());
 	}
 
 }

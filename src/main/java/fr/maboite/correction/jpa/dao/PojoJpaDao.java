@@ -15,8 +15,8 @@ public class PojoJpaDao {
 	@PersistenceContext
 	protected EntityManager entityManager;
 
-	public void save(PojoJpa pojoJpa) {
-		this.entityManager.merge(pojoJpa);
+	public PojoJpa save(PojoJpa pojoJpa) {
+		return this.entityManager.merge(pojoJpa);
 	}
 
 }
