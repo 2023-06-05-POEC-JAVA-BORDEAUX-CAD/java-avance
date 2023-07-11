@@ -65,7 +65,9 @@ public class PojoJpaDaoTest {
 		Assertions.assertNotNull(savedPojoJpa.getId());
 		
 		Assertions.assertNull(savedPojoJpa.getAdresse());
-		Assertions.assertEquals(nomPojo, savedPojoJpa.getNom());
+		
+		Assertions.assertEquals(pojoJpa.getNom(), savedPojoJpa.getNom());
+		Assertions.assertEquals(pojoJpa.getAdresse(), savedPojoJpa.getAdresse());
 	}
 	
 }

@@ -10,19 +10,19 @@ import org.apache.openejb.testing.Configuration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import fr.maboite.correction.jpa.model.Order;
+import fr.maboite.correction.jpa.model.Client;
 import jakarta.ejb.EJB;
 
 @RunWithApplicationComposer
-public class OrderJpaDaoTest {
+public class ClientJpaDaoTest {
 
 	@EJB
-	private OrderJpaDao orderDao;
+	private ClientJpaDao clientDao;
 
 	@org.apache.openejb.testing.Module
 	public EjbJar beans() {
 		EjbJar ejbJar = new EjbJar("my-beans");
-		ejbJar.addEnterpriseBean(new StatelessBean(OrderJpaDao.class));
+		ejbJar.addEnterpriseBean(new StatelessBean(ClientJpaDao.class));
 		return ejbJar;
 	}
 	
@@ -31,7 +31,7 @@ public class OrderJpaDaoTest {
         PersistenceUnit unit = new PersistenceUnit("PersisterPU");
         unit.setJtaDataSource("jtaTestDataSource");
         unit.setNonJtaDataSource("jtaTestDataSourceUnManaged");
-        unit.addClass(Order.class);
+        unit.addClass(Client.class);
         unit.setProperty("openjpa.jdbc.SynchronizeMappings", "buildSchema(ForeignKeys=true)");
         unit.setProperty("openjpa.Log", "DefaultLevel=WARN,Runtime=INFO,Tool=INFO,SQL=TRACE");
         return unit;
@@ -44,7 +44,7 @@ public class OrderJpaDaoTest {
         p.put("jtaTestDataSource.JdbcDriver", "org.h2.Driver");
         p.put("jtaTestDataSource.username", "test");
         p.put("jtaTestDataSource.password", "test");
-        p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:file:C:/dev/h2-data/formation-poe-java-2023-07-12");
+        p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:mem:tests");
         return p;
     }
     
@@ -52,14 +52,14 @@ public class OrderJpaDaoTest {
 	public void testSave() throws Exception {
 		
 		//Arrange
-		Order order = new Order();
+		Client client = new Client();
 		
 		//Act
-		Order savedOrder = this.orderDao.save(order);
+		Client savedClient = this.clientDao.save(client);
 		
 		//Assert
-		Assertions.assertNotNull(savedOrder);
-		Assertions.assertNotNull(savedOrder.getId());
+		Assertions.assertNotNull(savedClient);
+		Assertions.assertNotNull(savedClient.getId());
 		
 	}
     
@@ -67,17 +67,21 @@ public class OrderJpaDaoTest {
 	public void testSaveAndLoad() throws Exception {
 		
 		//Arrange
-		Order order = new Order();
-		order.setDesignation("super désignation");
-		Order savedOrder = this.orderDao.save(order);
+		Client client = new Client();
+		client.setFirstName("Jean");
+		client.setLastName("Dupont");
+		client.setState(Boolean.TRUE);
+		Client savedClient = this.clientDao.save(client);
 		
 		//Act
-		Order loadedOrder = this.orderDao.load(savedOrder.getId());
+		Client loadedClient = this.clientDao.load(savedClient.getId());
 		
 		//Assert
-		Assertions.assertNotNull(loadedOrder);
-		Assertions.assertEquals(savedOrder.getId(), loadedOrder.getId());
-		Assertions.assertEquals(savedOrder.getDesignation(), loadedOrder.getDesignation());
+		Assertions.assertNotNull(loadedClient);
+		Assertions.assertEquals(savedClient.getId(), loadedClient.getId());
+		Assertions.assertEquals(savedClient.getFirstName(), loadedClient.getFirstName());
+		Assertions.assertEquals(savedClient.getLastName(), loadedClient.getLastName());
+		Assertions.assertEquals(savedClient.getState(), loadedClient.getState());
 		
 	}
     
@@ -85,16 +89,16 @@ public class OrderJpaDaoTest {
 	public void testSaveAndRemove() throws Exception {
 		
 		//Arrange
-		Order order = new Order();
-		order.setDesignation("super désignation");
-		Order savedOrder = this.orderDao.save(order);
+		Client client = new Client();
+		client.setAddress("5 rue tabaga");
+		Client savedClient = this.clientDao.save(client);
 		
 		//Act
-		this.orderDao.delete(savedOrder.getId());
+		this.clientDao.delete(savedClient.getId());
 		
 		//Assert
-		Order loadedOrder = this.orderDao.load(savedOrder.getId());
-		Assertions.assertNull(loadedOrder);
+		Client loadedClient = this.clientDao.load(savedClient.getId());
+		Assertions.assertNull(loadedClient);
 	}
 	
 }

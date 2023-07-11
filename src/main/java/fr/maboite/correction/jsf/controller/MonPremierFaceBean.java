@@ -3,8 +3,10 @@ package fr.maboite.correction.jsf.controller;
 import java.time.LocalDateTime;
 
 import fr.maboite.correction.jpa.dao.PojoJpaDao;
+import fr.maboite.correction.jpa.model.Client;
 import fr.maboite.correction.jpa.model.Order;
 import fr.maboite.correction.jpa.model.PojoJpa;
+import fr.maboite.correction.jpa.service.ClientService;
 import fr.maboite.correction.jpa.service.OrderService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -19,6 +21,9 @@ public class MonPremierFaceBean {
 	
 	@Inject
 	private OrderService orderService;
+	
+	@Inject
+	private ClientService clientService;
 
 	private String message = "Ce message vient du contrôleur";
 
@@ -51,6 +56,25 @@ public class MonPremierFaceBean {
 		Order loadedOrder = orderService.load(savedOrder.getId());
 		System.out.println("En base, j'ai un order dont la désignation vaut : " 
 				+ loadedOrder.getDesignation() + " pour l'id : " + loadedOrder.getId());
+	}
+	
+	public void sauvegardeClient() {
+		Client client = new Client();
+		client.setAddress("6 avenue mismate");
+		client.setCity("VilleFaquin");
+		client.setCountry("Le pays où la vie est moins chère");
+		client.setCompanyName("La compagnie créole");
+		client.setEmail("james.bienjpa@lacompagniecreole.org");
+		client.setFirstName("james");
+		client.setLastName("bienjpa");
+		client.setPhone("0102030405");
+		client.setState(Boolean.FALSE);
+		client.setZipCode("12345");
+		Client savedClient = clientService.save(client);
+		
+		Client loadedClient = clientService.load(savedClient.getId());
+		System.out.println("En base, j'ai un client dont l'état vaut : " 
+				+ loadedClient.getState() + " pour l'id : " + loadedClient.getId());
 	}
 
 }

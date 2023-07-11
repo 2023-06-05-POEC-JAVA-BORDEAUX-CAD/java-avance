@@ -1,6 +1,6 @@
 package fr.maboite.correction.jpa.dao;
 
-import fr.maboite.correction.jpa.model.Order;
+import fr.maboite.correction.jpa.model.Client;
 import fr.maboite.correction.jpa.model.PojoJpa;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -11,32 +11,33 @@ import jakarta.persistence.PersistenceContext;
  * référentiel de données des Pojos : ici, on se base sur JPA.
  */
 @Stateless
-public class OrderJpaDao {
+public class ClientJpaDao {
 
 	@PersistenceContext
 	protected EntityManager entityManager;
 
 	/**
 	 * Ceci est une Javadoc de méthode
-	 * @param order
+	 * @param client
 	 * @return
 	 */
-	public Order save(Order order) {
-		return this.entityManager.merge(order);
+	public Client save(Client client) {
+		return this.entityManager.merge(client);
 	}
 	
+	
 	/**
-	 * Récupère un order par id
+	 * Récupère un client par id
 	 * 
 	 * @param id
 	 * @return
 	 */
-	public Order load(Long id) {
-		return this.entityManager.find(Order.class, id);
+	public Client load(Long id) {
+		return this.entityManager.find(Client.class, id);
 	}
 
 	/**
-	 * Supprime order par son id. Ne fait rien si id == null ou si aucun order n'a
+	 * Supprime client par son id. Ne fait rien si id == null ou si aucun client n'a
 	 * l'id en base de données.
 	 * 
 	 * @param id
@@ -46,7 +47,7 @@ public class OrderJpaDao {
 			return;
 		}
 		
-		Order savedEntity = this.entityManager.find(Order.class, id);
+		Client savedEntity = this.entityManager.find(Client.class, id);
 		if (savedEntity == null) {
 			return;
 		}
