@@ -5,13 +5,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 @Table(name="orders")
 public class Order {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Column(name="type_presta")
@@ -20,7 +21,7 @@ public class Order {
 	private String designation;
 	
 	@Column(name="client_id")
-	private Integer clienID;
+	private Integer clientId;
 
 	public Integer getId() {
 		return id;
@@ -34,8 +35,8 @@ public class Order {
 		return designation;
 	}
 
-	public Integer getClienID() {
-		return clienID;
+	public Integer getClientId() {
+		return clientId;
 	}
 
 	public void setId(Integer id) {
@@ -50,8 +51,8 @@ public class Order {
 		this.designation = designation;
 	}
 
-	public void setClienID(Integer clienID) {
-		this.clienID = clienID;
+	public void setClientId(Integer clientId) {
+		this.clientId = clientId;
 	}
 	
 }
