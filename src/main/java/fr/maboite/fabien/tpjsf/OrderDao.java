@@ -7,11 +7,25 @@ import jakarta.persistence.PersistenceContext;
 
 @Stateless
 public class OrderDao {
-	
+
 	@PersistenceContext
 	protected EntityManager entityManager;
 
-	public void save(Order order) {
-		this.entityManager.merge(order);
+	/**
+	 * 
+	 * @param order
+	 * @return
+	 */
+	public Order save(Order order) {
+		return this.entityManager.merge(order);
+	}
+
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public Order load(Long id) {
+		return this.entityManager.find(Order.class, id);
 	}
 }
