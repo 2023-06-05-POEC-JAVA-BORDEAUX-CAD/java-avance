@@ -8,6 +8,8 @@ import org.apache.openejb.jee.jpa.unit.PersistenceUnit;
 import org.apache.openejb.junit5.RunWithApplicationComposer;
 import org.apache.openejb.testing.Configuration;
 
+import fr.maboite.exoJPA.Order.OrderEntity;
+import fr.maboite.exoJPA.Order.OrderJpaDao;
 import jakarta.ejb.EJB;
 
 @RunWithApplicationComposer

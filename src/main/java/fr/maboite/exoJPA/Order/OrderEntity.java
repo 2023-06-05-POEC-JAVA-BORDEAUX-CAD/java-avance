@@ -1,4 +1,4 @@
-package fr.maboite.exoJPA;
+package fr.maboite.exoJPA.Order;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
