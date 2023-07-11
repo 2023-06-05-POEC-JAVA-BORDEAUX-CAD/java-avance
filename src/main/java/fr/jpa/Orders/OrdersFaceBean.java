@@ -1,4 +1,4 @@
-package fr.jpa;
+package fr.jpa.Orders;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -9,17 +9,18 @@ import jakarta.inject.Named;
 public class OrdersFaceBean {
   
   @Inject
-  private OrdersDao ordersDao;
+  private OrdersService ordersService;
 
   public void sauvegarde(){
     Orders orders = new Orders();
-    orders.setTypePresta("Formation");
+    //orders.setTypePresta(typePresta:"Formation");
+    orders.setTypePresta(OrdersEnum.FORMATION);
     orders.setDesignation("React Avancé");
     orders.setClientId(2); 
     orders.setNbDays(3); 
     orders.setUnitPrice(1000);
     orders.setState(2);
-    ordersDao.save(orders);
+    ordersService.save(orders);
   }
   
 }

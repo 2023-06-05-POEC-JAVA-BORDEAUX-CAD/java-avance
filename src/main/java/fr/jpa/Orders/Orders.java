@@ -1,7 +1,9 @@
-package fr.jpa;
+package fr.jpa.Orders;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,8 +17,8 @@ public class Orders {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  @Column (name ="type_presta")
-  private String typePresta;
+ // @Column (name ="type_presta")
+  //private String typePresta;
 
   
   private String designation;
@@ -32,20 +34,10 @@ public class Orders {
 
 
   private int state;
-  
-  public Orders() {
-  }
-  
-  public Orders(Integer id, String typePresta, String designation, int clientId, int nbDays, int unitPrice, int state ) {
-      this.id = id;
-      this.typePresta = typePresta;
-      this.designation = designation;
-      this.clientId = clientId;
-      this.nbDays = nbDays;
-      this.unitPrice = unitPrice;
-      this.state = state;
-  }
 
+  @Enumerated(EnumType.STRING)
+  @Column (name ="type_presta")
+    private OrdersEnum typePresta;  
   
   //Getters
   
@@ -53,9 +45,9 @@ public class Orders {
       return id;
   }
 
-  public String getTypPresta() {
-      return typePresta;
-  }
+  //public String getTypePresta() {
+  //    return typePresta;
+ // }
 
   public String getDesignation() {
       return designation;
@@ -77,7 +69,9 @@ public class Orders {
       return state;
   }
 
-  
+ public OrdersEnum getTypePresta() {
+   return typePresta;
+ }
   
   //SETTERS
   
@@ -85,9 +79,9 @@ public class Orders {
       this.id = id;
   }
   
-  public void setTypePresta(String typePresta) {
-      this.typePresta = typePresta;
-  }
+  //public void setTypePresta(String typePresta) {
+   //   this.typePresta = typePresta;
+ // }
   
   public void setDesignation(String designation) {
       this.designation = designation;
@@ -109,5 +103,7 @@ public class Orders {
       this.state = state;
   }
 
-  
+ public void setTypePresta(OrdersEnum typePresta) {
+   this.typePresta = typePresta;
+ }
 }
