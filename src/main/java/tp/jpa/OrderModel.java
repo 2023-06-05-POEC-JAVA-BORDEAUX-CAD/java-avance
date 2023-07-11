@@ -12,38 +12,27 @@ import jakarta.persistence.GenerationType;
 public class OrderModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Integer id;
+	private Integer id;
 
 	@Column(name = "type_presta")
-	String typePresta;
+	private String typePresta;
 
 	@Column(name = "designation")
-	String designation;
+	private String designation;
 
 	@Column(name = "client_id")
-	Integer clientId;
+	private Integer clientId;
 
 	@Column(name = "nb_days")
-	Integer nbDays;
+	private Integer nbDays;
 
 	@Column(name = "unit_price")
-	Integer unitPrice;
+	private Integer unitPrice;
 
 	@Column(name = "state")
-	Integer state;
+	private Integer state;
 
 	public OrderModel() {
-	}
-
-	public OrderModel(Integer id, String typePresta, String designation, Integer clientId, Integer nbDays,
-			Integer unitPrice, Integer state) {
-		this.id = id;
-		this.typePresta = typePresta;
-		this.designation = designation;
-		this.clientId = clientId;
-		this.nbDays = nbDays;
-		this.unitPrice = unitPrice;
-		this.state = state;
 	}
 
 	public Integer getId() {
