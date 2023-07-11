@@ -202,5 +202,10 @@
 			<version>2.15.2</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.filRouge</groupId>
+			<artifactId>filRouge</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>
