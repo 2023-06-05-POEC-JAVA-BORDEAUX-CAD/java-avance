@@ -1,6 +1,11 @@
-package dev.loicmoreaux.tpjsf.model;
+package dev.loicmoreaux.tpjsf.controllers;
 
-public class Client {
+import dev.loicmoreaux.tpjsf.model.ClientJsf;
+
+public class ClientJsfFormBean {
+	/*
+	 * Attributes of Client
+	 */
 	private Integer id;
 	private String company_name;
 	private String first_name;
@@ -13,10 +18,13 @@ public class Client {
 	private String country;
 	private boolean state;
 	
-	public Client() {};
+	/*
+	 * Constructors
+	 */
+	public ClientJsfFormBean() {};
 	
-	public Client(Integer id, String company_name, String first_name, String last_name, String email, String phone, String address,
-			String zip_code, String city, String country, boolean state) {
+	public ClientJsfFormBean(Integer id, String company_name, String first_name, String last_name, String email,
+			String phone, String address, String zip_code, String city, String country, boolean state) {
 		super();
 		this.id = id;
 		this.company_name = company_name;
@@ -31,6 +39,9 @@ public class Client {
 		this.state = state;
 	}
 	
+	/*
+	 * Getters and Setters
+	 */
 	public Integer getId() {
 		return id;
 	}
@@ -119,4 +130,19 @@ public class Client {
 		this.state = state;
 	}
 	
+	public ClientJsf toClient() {
+		ClientJsf newClient = new ClientJsf();
+		newClient.setId(id);
+		newClient.setCompany_name(company_name);
+		newClient.setFirst_name(first_name);
+		newClient.setLast_name(last_name);
+		newClient.setEmail(email);
+		newClient.setPhone(phone);
+		newClient.setAddress(address);
+		newClient.setZip_code(zip_code);
+		newClient.setCity(city);
+		newClient.setCountry(country);
+		newClient.setState(state);
+		return newClient;
+	}
 }

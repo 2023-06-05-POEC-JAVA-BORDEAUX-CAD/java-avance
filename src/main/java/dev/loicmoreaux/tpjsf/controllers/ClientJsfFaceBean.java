@@ -1,34 +1,34 @@
 package dev.loicmoreaux.tpjsf.controllers;
 
-import dev.loicmoreaux.tpjsf.service.ClientService;
+import dev.loicmoreaux.tpjsf.service.ClientJsfService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 @Named
 @RequestScoped
-public class ClientFaceBean {
+public class ClientJsfFaceBean {
 	/*
 	 * Attributes
 	 */
-	private ClientFormBean client = new ClientFormBean();
+	private ClientJsfFormBean client = new ClientJsfFormBean();
 	
 	@Inject
-	private ClientService clientService;
+	private ClientJsfService clientService;
 	
 	/*
 	 * Constructor
 	 */
-	public ClientFaceBean() {}
+	public ClientJsfFaceBean() {}
 	
 	/*
 	 * Getters and Setters
 	 */
-	public ClientFormBean getClient() {
+	public ClientJsfFormBean getClient() {
 		return client;
 	}
 	
-	public void setClient(ClientFormBean client) {
+	public void setClient(ClientJsfFormBean client) {
 		this.client = client;
 	};
 	

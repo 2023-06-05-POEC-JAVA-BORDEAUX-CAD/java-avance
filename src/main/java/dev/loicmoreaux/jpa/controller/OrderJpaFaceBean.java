@@ -1,4 +1,4 @@
-package dev.loicmoreaux.tpjsf.controllers;
+package dev.loicmoreaux.jpa.controller;
 
 import dev.loicmoreaux.jpa.model.OrderJpa;
 import dev.loicmoreaux.jpa.service.OrderJpaService;
@@ -8,7 +8,7 @@ import jakarta.inject.Named;
 
 @Named
 @RequestScoped
-public class OrderFaceBean {
+public class OrderJpaFaceBean {
 	private OrderJpa order = new OrderJpa();
 	
 	@Inject
@@ -17,7 +17,7 @@ public class OrderFaceBean {
 	/*
 	 * Constructor
 	 */	
-	public OrderFaceBean() {}
+	public OrderJpaFaceBean() {}
 
 	public OrderJpa getOrder() {
 		return order;
