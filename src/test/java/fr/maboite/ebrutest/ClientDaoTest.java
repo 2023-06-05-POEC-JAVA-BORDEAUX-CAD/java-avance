@@ -10,21 +10,20 @@ import org.apache.openejb.testing.Configuration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import fr.maboite.ebru.jpa.entity.OrderJPA;
-import fr.maboite.correction.jpa.model.PojoJpa;
-import fr.maboite.ebru.jpa.entity.OrderDao;
+import fr.maboite.ebru.jpa.entity.ClientJpaDao;
+import fr.maboite.ebru.jpa.entity.ClientJPA;
 import jakarta.ejb.EJB;
 
 @RunWithApplicationComposer
-public class OrderDaoTest {
+public class ClientDaoTest {
 
 	@EJB
-	private OrderDao orderDao;
+	private ClientJpaDao clientDao;
 
 	@org.apache.openejb.testing.Module
 	public EjbJar beans() {
 		EjbJar ejbJar = new EjbJar("my-beans");
-		ejbJar.addEnterpriseBean(new StatelessBean(OrderDao.class));
+		ejbJar.addEnterpriseBean(new StatelessBean(ClientJpaDao.class));
 		return ejbJar;
 	}
 
@@ -33,7 +32,7 @@ public class OrderDaoTest {
 		PersistenceUnit unit = new PersistenceUnit("PersisterPU");
 		unit.setJtaDataSource("jtaTestDataSource");
 		unit.setNonJtaDataSource("jtaTestDataSourceUnManaged");
-		unit.addClass(OrderJPA.class);
+		unit.addClass(ClientJPA.class);
 		unit.setProperty("openjpa.jdbc.SynchronizeMappings", "buildSchema(ForeignKeys=true)");
 		unit.setProperty("openjpa.Log", "DefaultLevel=WARN,Runtime=INFO,Tool=INFO,SQL=TRACE");
 		return unit;
@@ -55,53 +54,39 @@ public class OrderDaoTest {
 
 		// Arrange
 
-		OrderJPA orderJpa = new OrderJPA();
-
-		orderJpa.setType("Formation");
-		orderJpa.setDesignation("Angular init");
-		orderJpa.setClient_id(2);
+		ClientJPA clientJpa = new ClientJPA();
+		
+		clientJpa.setCompanyName("Capgemini");
+		clientJpa.setFirstName("Fabrice");
+		clientJpa.setLastName("Martin");
+		clientJpa.setEmail("martin@mail.com");
+		clientJpa.setPhone("06 56 85 84 33");
+		clientJpa.setAdress("abc");
+		clientJpa.setZipCode("xyz");
+		clientJpa.setCity("Nantes");
+		clientJpa.setCountry("France");
+		clientJpa.setState(false);
 
 		// Act
-		OrderJPA testsaveJpa = orderDao.save(orderJpa);
+		ClientJPA testsaveJpa = clientDao.save(clientJpa);
 
 		// Assert
-		Assertions.assertNotNull(orderJpa);
+		Assertions.assertNotNull(clientJpa);
 		Assertions.assertNotNull(testsaveJpa);
 		Assertions.assertNotNull(testsaveJpa.getId());
 
-		Assertions.assertNotNull(testsaveJpa.getType());
-		Assertions.assertNotNull(testsaveJpa.getDesignation());
-		Assertions.assertNotNull(testsaveJpa.getClient_id());
-
-		Assertions.assertEquals(orderJpa.getType(), testsaveJpa.getType());
-		Assertions.assertEquals(orderJpa.getDesignation(), testsaveJpa.getDesignation());
-		Assertions.assertEquals(orderJpa.getClient_id(), testsaveJpa.getClient_id());
-
-		// on peut mettre directement le nom de type, designation ou client id au lieu
-		// de orderJpa.get...
-
-	}
-
-	@Test
-	public void testLoad() throws Exception {
-
-		// Arrange
-
-		OrderJPA orderJpa = new OrderJPA();
-
-		orderJpa.setType("Formation");
-		orderJpa.setDesignation("Angular init");
-		orderJpa.setClient_id(2);
-		OrderJPA saveorder=orderDao.save(orderJpa);
 		
+		Assertions.assertEquals("Capgemini",testsaveJpa.getCompanyName());
+		Assertions.assertEquals(clientJpa.getFirstName(), testsaveJpa.getFirstName());
+		Assertions.assertEquals("Martin", testsaveJpa.getLastName());
+		Assertions.assertEquals("martin@mail.com", testsaveJpa.getEmail());
+		Assertions.assertEquals("06 56 85 84 33", testsaveJpa.getPhone());
+		Assertions.assertEquals("abc", testsaveJpa.getAdress());
+		Assertions.assertEquals("xyz", testsaveJpa.getZipCode());
+		Assertions.assertEquals("Nantes", testsaveJpa.getCity());
+		Assertions.assertEquals("France", testsaveJpa.getCountry());
+		Assertions.assertEquals(false, testsaveJpa.getState());
 
-		// Act
-		OrderJPA testloadJpa = orderDao.load(saveorder.getId());
-		
-		Assertions.assertNotNull(testloadJpa);
-		Assertions.assertEquals(orderJpa.getType(), testloadJpa.getType());
-		
-		
 	}
 
 }

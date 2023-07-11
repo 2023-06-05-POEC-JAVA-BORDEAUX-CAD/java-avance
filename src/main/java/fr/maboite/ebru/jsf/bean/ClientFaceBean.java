@@ -1,12 +1,14 @@
 package fr.maboite.ebru.jsf.bean;
 
-import fr.maboite.ebru.jpa.entity.OrderDao;
+import fr.maboite.ebru.jpa.entity.ClientJpaDao;
+import fr.maboite.ebru.jpa.entity.ClientJpaService;
+import fr.maboite.ebru.jpa.entity.ClientJPA;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
-
 import fr.maboite.ebru.jpa.entity.OrderJPA;
+import fr.maboite.ebru.jpa.entity.OrderJpaService;
 
 @Named
 @RequestScoped
@@ -20,7 +22,13 @@ public class ClientFaceBean {
 	private ClientsServiceJsf clientService;
 
 	@Inject
-	private OrderDao orderDao;
+	private OrderJpaService orderJpaService;
+	
+	
+	@Inject
+	private ClientJpaService clientJpaService;
+	
+
 
 	public ClientFormBean getClient() {
 		return client;
@@ -60,14 +68,29 @@ public class ClientFaceBean {
 	}
 
 	public void sauvegarde() {
-		
+
 		OrderJPA orderJPA = new OrderJPA();
 		orderJPA.setType("Formation");
 		orderJPA.setDesignation("Angular init");
 		orderJPA.setClient_id(2);
-		orderDao.save(orderJPA);
-		
+		orderJpaService.save(orderJPA);
 
+	}
+
+	public void enregistre() {
+
+		ClientJPA clientJpa = new ClientJPA();
+		clientJpa.setCompanyName("Capgemini");
+		clientJpa.setFirstName("Fabrice");
+		clientJpa.setLastName("Martin");
+		clientJpa.setEmail("martin@mail.com");
+		clientJpa.setPhone("06 56 85 84 33");
+		clientJpa.setAdress("abc");
+		clientJpa.setZipCode("xyz");
+		clientJpa.setCity("Nantes");
+		clientJpa.setCountry("France");
+		clientJpa.setState(false);
+		clientJpaService.save(clientJpa);
 	}
 
 }
