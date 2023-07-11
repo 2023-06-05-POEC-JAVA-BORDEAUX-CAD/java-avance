@@ -5,8 +5,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+/**
+ * Entité : 
+ */
 @Entity
-public class PojoJpa {
+public class PojoJpa  {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +41,11 @@ public class PojoJpa {
 
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return ((PojoJpa)obj).id.equals(this.id);
 	}
 
 }
