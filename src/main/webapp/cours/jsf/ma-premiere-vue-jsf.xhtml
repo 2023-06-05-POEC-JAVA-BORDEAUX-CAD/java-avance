@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" data-theme="dark">
+<h:head>
+	<!-- JSF remplace h:head par <head> et ajoute des caractéristiques à cette balise -->
+	<link rel="stylesheet" href="css/minstyle.io.css" />
+</h:head>
+<h:body>
+	<div>#{msg.welcome}</div>
+	<div>Ça va ? #{monPremierFaceBean.coucou}</div>
+	<div>Section messages</div>
+	<h:form>
+		<div>
+			<h:commandLink action="${messageFaceBean.createNew}">
+			Cliquez ici pour créer un message
+		</h:commandLink>
+		</div>
+		<div>
+		<h:commandLink action="${monPremierFaceBean.sauvegardePojo}">
+			Cliquez ici pour créer un POJO avec JPA
+		</h:commandLink>
+		</div>
+		<div>
+			<h:commandLink action="${monPremierFaceBean.sauvegardeOrder}">
+			Cliquez ici pour créer un Order avec JPA
+		</h:commandLink>
+		</div>
+	</h:form>
+
+	<div>
+		<h:link value="Aller au message avec l'id 3" outcome="message">
+			<f:param name="id" value="3" />
+		</h:link>
+	</div>
+
+	<div>Section clients</div>
+	<h:form>
+		<h:commandLink action="${clientFaceBean.createNew}">
+			Cliquez ici pour créer un client
+		</h:commandLink>
+	</h:form>
+
+	<div>
+		<h:link value="Aller au client avec l'id 3" outcome="client">
+			<f:param name="id" value="3" />
+		</h:link>
+	</div>
+
+</h:body>
+</html>
