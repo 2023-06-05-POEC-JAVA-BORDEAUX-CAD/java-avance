@@ -11,14 +11,28 @@ public class OrderDAO {
 	@PersistenceContext
 	protected EntityManager entityManager;
 	
+	/**
+	 * 
+	 * @param order
+	 * @return
+	 */
 	public Order save(Order order) {
 		return this.entityManager.merge(order);
 	}
 	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
 	public Order load(Integer id) {
 		return this.entityManager.find(Order.class, id);
 	}
 	
+	/**
+	 * 
+	 * @param id
+	 */
 	public void delete(Integer id) {
 		Order order = this.load(id);
 		if(order != null) {
