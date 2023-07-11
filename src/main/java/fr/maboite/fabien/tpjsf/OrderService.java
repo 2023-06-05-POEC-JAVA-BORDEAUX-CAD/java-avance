@@ -1,5 +1,6 @@
 package fr.maboite.fabien.tpjsf;
 
+import fr.maboite.fabien.tpjsf.OrderDao;
 import fr.maboite.fabien.tpjsf.jpamodel.Order;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
@@ -30,7 +31,7 @@ public class OrderService {
 	 * @param id
 	 * @return
 	 */
-	public void deleteById(Integer id) {
+	public void delete(Integer id) {
 		Order orderToDelete = this.orderDao.find(id);
 		this.orderDao.delete(orderToDelete);
 	}

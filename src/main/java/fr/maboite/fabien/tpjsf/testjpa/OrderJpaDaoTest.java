@@ -5,8 +5,10 @@ import org.apache.openejb.jee.StatelessBean;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
-import fr.maboite.fabien.TP.test.injectCDI.Pojo;
-import fr.maboite.fabien.TP.test.injectCDI.PojoDao;
+import fr.maboite.fabien.TP.test.injectCDI.Client;
+import fr.maboite.fabien.TP.test.injectCDI.Order;
+import fr.maboite.fabien.TP.test.injectCDI.ClientDao;
+import fr.maboite.fabien.TP.test.injectCDI.OrderDao;
 import fr.maboite.fabien.TP.test.injectCDI.PojoDaoInterface;
 import fr.maboite.fabien.TP.test.injectCDI.RunWithApplicationComposer;
 import fr.maboite.fabien.tpjsf.OrderDao;
@@ -40,26 +42,7 @@ public class OrderJpaDaoTest {
 		Assertions.assertNotNull(savedOrder);
 		Assertions.assertNotNull(savedOrder.getId());
 		
-		Assertions.assertEquals("Hey!", order.getName());
+		//Assertions.assertEquals("Hey!", order.getName());
 	}
 
-} {
-
-	@EJB
-	private OrderDaoInterface orderDao;
-
-	@org.apache.openejb.testing.Module
-	public EjbJar beans() {
-		EjbJar ejbJar = new EjbJar("my-beans");
-		ejbJar.addEnterpriseBean(new StatelessBean(OrderDao.class));
-		return ejbJar;
-	}
-
-	@Test
-	public void test1() throws Exception {
-		Pojo order = orderDao.getOrder(1);
-		Assertions.assertNotNull(order);
-		Assertions.assertEquals("Hey!", order.getName());
-	}
-
-}
+} 

@@ -3,7 +3,9 @@ package exo_jsf;
 import java.time.LocalDateTime;
 
 import fr.maboite.fabien.tpjsf.OrderDao;
+import fr.maboite.fabien.tpjsf.dao.ClientDao;
 import fr.maboite.fabien.tpjsf.jpamodel.Order;
+import fr.maboite.fabien.tpjsf.jpamodel.Client;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -14,6 +16,8 @@ public class MonPremierFaceBean {
 
 	@Inject
 	private OrderDao orderDao;
+	private ClientDao clientDao;
+	
 
 	private String message = "Ce message vient du contrôleur";
 	
@@ -38,9 +42,29 @@ public class MonPremierFaceBean {
 		order.setDesignation("JavaScript");
 		Order savedOrder= orderDao.save(order);
 
-		Order loadedOrder = OrderDao.load(savedOrder.getId());
+		Order loadedOrder = OrderDao.find(savedOrder.getId());
 		System.out.println("" + loadedOrder.getDesignation());
 
+		public void sauvegardeClient() {
+			Client client = new Client();
+			client.setId(null);
+			client.setCompany_Name("OpenAI");
+			client.setFirst_Name("Bob");
+			client.setEmail("Bob@open.ai");
+			client.setPhone(04);
+			client.setAdress("12 rue du code");
+			client.setZipCode(32400);
+			client.setCity("San Francisco");
+			client.setCountry("USA");
+			client.setState(null);
+			
+			
+			Client savedClient= clientDao.save(client);
+
+			Order loadedClient = ClientDao.find(savedClient.getId());
+			System.out.println("" + loadedClient.getDesignation());	
+		
+		
 	}
 
 }
