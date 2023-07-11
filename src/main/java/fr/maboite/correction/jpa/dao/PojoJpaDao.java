@@ -6,12 +6,12 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
 /**
- * Data Access Object: classe permettant 
- * d'accéder en lecture ou écriture au référentiel 
- * de données des Pojos (ici, une simple Map)
+ * Data Access Object: classe permettant d'accéder en lecture ou écriture au
+ * référentiel de données des Pojos (ici, une simple Map)
  */
 @Stateless
 public class PojoJpaDao {
+
 	
 	@PersistenceContext // on inject objet entitymanager
 	protected EntityManager entityManager;
@@ -20,8 +20,8 @@ public class PojoJpaDao {
 //		System.out.println(entityManager);
 //	}
 	
-	public void save(PojoJpa pojoJpa) {  // charge cet entité en BDD
-		this.entityManager.merge(pojoJpa);
+	public PojoJpa save(PojoJpa pojoJpa) {  // charge cet entité en BDD
+		return this.entityManager.merge(pojoJpa);
 	}
 	
 	
