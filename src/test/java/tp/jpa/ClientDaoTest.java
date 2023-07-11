@@ -2,6 +2,7 @@ package tp.jpa;
 
 import jakarta.ejb.EJB;
 import java.util.Properties;
+import tp.jpa.ClientModel.State;
 import org.junit.jupiter.api.Test;
 import org.apache.openejb.jee.EjbJar;
 import org.apache.openejb.testing.Module;
@@ -58,7 +59,7 @@ public class ClientDaoTest {
 		client.setZipCode("XYZ");
 		client.setCity("VilleTest");
 		client.setCountry("FRANCE");
-		client.setState(0);
+		client.setState(State.CONFIRMED);
 		ClientModel saved = clidao.save(client);
 
 		assertNotNull(client);
@@ -88,7 +89,7 @@ public class ClientDaoTest {
 		client.setZipCode("XYZ");
 		client.setCity("VilleTest");
 		client.setCountry("FRANCE");
-		client.setState(0);
+		client.setState(State.CONFIRMED);
 		client = clidao.save(client);
 
 		ClientModel saved = clidao.load(client.getId());
@@ -110,7 +111,7 @@ public class ClientDaoTest {
 		client.setZipCode("XYZ");
 		client.setCity("VilleTest");
 		client.setCountry("FRANCE");
-		client.setState(0);
+		client.setState(State.CONFIRMED);
 		client = clidao.save(client);
 
 		ClientModel deleted = clidao.delete(client.getId());
