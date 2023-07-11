@@ -6,8 +6,8 @@
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" data-theme="dark">
 <f:metadata>
-	<f:viewParam name="id" value="#{orderController.id}" />
-	<f:viewAction action="#{orderController.onLoad}" />
+	<f:viewParam name="id" value="#{clientController2.id}" />
+	<f:viewAction action="#{clientController2.onLoad}" />
 </f:metadata>
 <h:head>
 	<!-- JSF remplace h:head par <head> et ajoute des caractéristiques à cette balise -->
@@ -48,7 +48,19 @@
     </ui:repeat>
 
 	
+	<h1>Clients</h1>
+	
 	<h2>Client par id</h2>
 	
+	<p>Client N° #{clientController2.client.id}</p>
+	
+	<h2>Tous les clients</h2>
+
+
+	<ui:repeat value="#{clientController2.clients}" var="client">
+			<p>Client N° #{client.id}</p>
+			<p>Client N° #{client.firstName}</p>
+    </ui:repeat>
+
 </h:body>
 </html>

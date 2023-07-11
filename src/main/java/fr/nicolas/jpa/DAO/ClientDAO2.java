@@ -2,32 +2,33 @@ package fr.nicolas.jpa.DAO;
 
 import java.util.List;
 
-import fr.nicolas.jpa.Entity.Order;
+import fr.nicolas.jpa.Entity.Client;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 
 @Stateless
-public class OrderDAO {
+public class ClientDAO2 {
+
 	@PersistenceContext
 	protected EntityManager entityManger;
-
+	
 	/**
 	 * Find an order object by id
 	 * @param id
-	 * @return Order
+	 * @return Client
 	 */
-	public Order find(Integer id) {
-		return this.entityManger.find(Order.class, id);
+	public Client find(Integer id) {
+		return this.entityManger.find(Client.class, id);
 	}
 	
 	/**
 	 * Return all orders
-	 * @return List<Order>
+	 * @return List<Client>
 	 */
-	public List<Order> getAllOrders() {
-		Query query = this.entityManger.createQuery("select o from Order o", Order.class) ;
+	public List<Client> getAllOrders() {
+		Query query = this.entityManger.createQuery("select c from Client c", Client.class) ;
 		return query.getResultList();
 	}
 	
@@ -35,9 +36,9 @@ public class OrderDAO {
 	/**
 	 * Saves a new and or an existent order
 	 * @param order
-	 * @return Order
+	 * @return Client
 	 */
-	public Order save(Order order) {
+	public Client save(Client order) {
 		return this.entityManger.merge(order);
 	}
 	
@@ -46,7 +47,9 @@ public class OrderDAO {
 	 * @param id
 	 */
 	public void delete(Integer id) {
-		Order orderTODelete = this.find(id);
+		Client orderTODelete = this.find(id);
 		this.entityManger.remove(orderTODelete);
 	}
+	
+	
 }

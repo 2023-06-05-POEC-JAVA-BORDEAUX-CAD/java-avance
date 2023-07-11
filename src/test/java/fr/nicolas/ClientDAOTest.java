@@ -10,8 +10,8 @@ import org.apache.openejb.testing.Configuration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import fr.nicolas.jpa.DAO.OrderDAO;
-import fr.nicolas.jpa.Entity.Order;
+import fr.nicolas.jpa.DAO.ClientDAO2;
+import fr.nicolas.jpa.Entity.Client;
 import jakarta.ejb.EJB;
 
 /**
@@ -20,15 +20,15 @@ import jakarta.ejb.EJB;
  *
  */
 @RunWithApplicationComposer
-public class OrderDAOTest {
+public class ClientDAOTest {
 
 	@EJB
-	private OrderDAO orderDAO;
+	private ClientDAO2 clientDAO;
 
 	@org.apache.openejb.testing.Module
 	public EjbJar beans() {
 		EjbJar ejbJar = new EjbJar("my-beans");
-		ejbJar.addEnterpriseBean(new StatelessBean(OrderDAO.class));
+		ejbJar.addEnterpriseBean(new StatelessBean(ClientDAO2.class));
 		return ejbJar;
 	}
 	
@@ -37,7 +37,7 @@ public class OrderDAOTest {
         PersistenceUnit unit = new PersistenceUnit("PersisterPU");
         unit.setJtaDataSource("jtaTestDataSource");
         unit.setNonJtaDataSource("jtaTestDataSourceUnManaged");
-        unit.addClass(Order.class);
+        unit.addClass(Client.class);
         unit.setExcludeUnlistedClasses(true);
         unit.setProperty("openjpa.jdbc.SynchronizeMappings", "buildSchema(ForeignKeys=true)");
         unit.setProperty("openjpa.Log", "DefaultLevel=WARN,Runtime=INFO,Tool=INFO,SQL=TRACE");
@@ -59,41 +59,42 @@ public class OrderDAOTest {
 	public void testSave() throws Exception {
 		
 		//Arrange
-		String designation = "Angular avancé";
+		String designation = "Harribo";
 		
-		Order order = new Order();
-		order.setDesignation(designation);
+		Client client = new Client();
+		client.setCompanyName(designation);
 		
 		//Act
-		Order savedOrder = this.orderDAO.save(order);
+		Client savedOrder = this.clientDAO.save(client);
 		
 		//Assert
 		Assertions.assertNotNull(savedOrder);
 		Assertions.assertNotNull(savedOrder.getId());
 		
-		Assertions.assertNull(savedOrder.getTypePresta());
-		Assertions.assertEquals(designation, savedOrder.getDesignation());
+		Assertions.assertNull(savedOrder.getEmail());
+		Assertions.assertEquals(designation, savedOrder.getCompanyName());
 	}
 	
 	
 	@Test
 	public void testDeleteById() throws Exception {
 		//Arrange
-		Order order = new Order();
-		order.setDesignation("Angular");
+		Client client = new Client();
+		client.setCompanyName("Harribo");
 		
-		Order savedOrder1 = this.orderDAO.save(order);
-		Order savedOrder2 = this.orderDAO.save(order);
+		Client savedOrder1 = this.clientDAO.save(client);
+		Client savedOrder2 = this.clientDAO.save(client);
 		
 		Assertions.assertNotNull(savedOrder1);
 		Assertions.assertNotNull(savedOrder2);
 		
 		//Act
 		
-		this.orderDAO.delete(savedOrder2.getId());
+		this.clientDAO.delete(savedOrder2.getId());
 		
-		Order orderGet = this.orderDAO.find(savedOrder2.getId()); 
-		Assertions.assertNull(orderGet);
+		Client clientGet = this.clientDAO.find(savedOrder2.getId());
+		
+		Assertions.assertNull(clientGet);
 	}
 	
 }
