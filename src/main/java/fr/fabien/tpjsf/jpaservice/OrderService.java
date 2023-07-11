@@ -32,7 +32,6 @@ public class OrderService {
 	 * @return
 	 */
 	public void delete(Long id) {
-		Order orderToDelete = this.orderDao.find(id);
-		this.orderDao.delete(orderToDelete);
+		this.orderDao.delete(id);
 	}
 }

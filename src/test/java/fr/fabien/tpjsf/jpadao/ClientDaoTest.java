@@ -10,10 +10,8 @@ import org.apache.openejb.testing.Configuration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import fr.maboite.fabien.tpjsf.jpadao.ClientDao;
-import fr.maboite.fabien.tpjsf.jpadao.OrderDao;
-import fr.maboite.fabien.tpjsf.jpamodel.Client;
-import fr.maboite.fabien.tpjsf.jpamodel.Order;
+import fr.fabien.tpjsf.jpamodel.Client;
+import fr.fabien.tpjsf.jpamodel.Order;
 import jakarta.ejb.EJB;
 
 @RunWithApplicationComposer
@@ -94,7 +92,7 @@ public class ClientDaoTest {
 		Client savedClient = this.clientDao.save(client);
 		
 		//Act
-		//this.orderDao.delete(savedOrder.getId());
+		this.clientDao.delete(savedClient.getId());
 		
 		//Assert
 		Client loadedClient = this.clientDao.find(savedClient.getId());

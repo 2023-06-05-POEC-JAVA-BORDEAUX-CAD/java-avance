@@ -26,17 +26,18 @@ public class OrderDao {
 
 	/**
 	 * 
-	 * @param orderToDelete
+	 * @param long1
 	 */
-	public void delete(Order orderToDelete) {
-		if (orderToDelete!=null) {
+	public void delete(Long long1) {
+		if (long1==null) {
 			return;
 		}
-		Order savedEntity = this.entityManager.find(Order.class, orderToDelete);
+		Order savedEntity = this.entityManager.find(Order.class, long1);
 		if (savedEntity == null) {
 			return;
 		}
 		this.entityManager.remove(savedEntity);
 	}
+
 	
 }

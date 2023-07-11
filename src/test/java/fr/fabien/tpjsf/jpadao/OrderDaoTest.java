@@ -10,8 +10,8 @@ import org.apache.openejb.testing.Configuration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import fr.maboite.fabien.tpjsf.jpadao.OrderDao;
-import fr.maboite.fabien.tpjsf.jpamodel.Order;
+import fr.fabien.tpjsf.jpadao.OrderDao;
+import fr.fabien.tpjsf.jpamodel.Order;
 import jakarta.ejb.EJB;
 
 @RunWithApplicationComposer
@@ -92,7 +92,7 @@ public class OrderDaoTest {
 		Order savedOrder = this.orderDao.save(order);
 		
 		//Act
-		//this.orderDao.delete(savedOrder.getId());
+		this.orderDao.delete(savedOrder.getId());
 		
 		//Assert
 		Order loadedOrder = this.orderDao.find(savedOrder.getId());

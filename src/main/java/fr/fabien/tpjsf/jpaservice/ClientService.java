@@ -32,7 +32,6 @@ public class ClientService {
 	 * @return
 	 */
 	public void delete(Long id) {
-		Client clientToDelete = this.clientDao.find(id);
-		this.clientDao.delete(clientToDelete);
+		this.clientDao.delete(id);
 	}
 }

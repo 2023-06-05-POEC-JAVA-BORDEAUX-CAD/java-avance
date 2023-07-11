@@ -28,8 +28,8 @@ public class ClientDao {
 	 * 
 	 * @param orderToDelete
 	 */
-	public void delete(Client orderToDelete) {
-		if (orderToDelete!=null) {
+	public void delete(Long orderToDelete) {
+		if (orderToDelete==null) {
 			return;
 		}
 		Client savedEntity = this.entityManager.find(Client.class, orderToDelete);

@@ -16,11 +16,6 @@ import jakarta.inject.Named;
 @RequestScoped
 public class ClientFaceBean2 {
 
-	@Inject
-	private OrderDao orderDao;
-	
-	@Inject
-	private ClientDao clientDao;
 
 	@Inject
 	private ClientService clientService;
@@ -28,32 +23,16 @@ public class ClientFaceBean2 {
 	@Inject 
 	private OrderService orderService;
 
-	
-	private String message = "Ce message vient du contrôleur";
-	
-	
 
-	public String getMessage() {
-		return LocalDateTime.now().toString();
-	}
-
-	public String getCoucou() {
-		return "Salut ! ";
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
 
 	public void sauvegardeOrder() {
 		Order order = new Order();
 		order.setClient_id(1);
 		order.setType_presta("Formation Test");
 		order.setDesignation("JavaScript");
-		Order savedOrder= orderDao.save(order);
+		orderService.save(order);
 
-		Order loadedOrder = orderDao.find(savedOrder.getId());
-		System.out.println("" + loadedOrder.getDesignation());
+		System.out.println("" + order.getDesignation());
 	}
 
 		public void sauvegardeClient() {
@@ -70,9 +49,8 @@ public class ClientFaceBean2 {
 			client.setState(null);
 			
 			
-			Client savedClient= clientDao.save(client);
+			clientService.save(client);
 
-			Client loadedClient = clientDao.find(savedClient.getId());
 			//System.out.println("" + loadedClient.getDesignation());	
 		
 		
