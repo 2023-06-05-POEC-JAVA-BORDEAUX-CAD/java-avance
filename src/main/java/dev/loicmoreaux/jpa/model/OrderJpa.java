@@ -9,28 +9,28 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name ="orders")
-public class Order {
+@Table(name = "orders")
+public class OrderJpa {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "type_presta", nullable=false)
+	@Column(name = "type_presta", nullable = false)
 	private String typePresta;
 	
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private String designation;
 	
-	@Column(name= "client_id", nullable=false)
+	@Column(name = "client_id", nullable = false)
 	private Integer clientId;
 	
 	@Basic(optional = true) // Annotation facultative
-	@Column(name= "nb_days")
+	@Column(name = "nb_days")
 	private Integer nbDays = null;
 	
 	@Basic(optional = true)
-	@Column(name= "unit_price")
+	@Column(name = "unit_price")
 	private Float unitPrice = null;
 	
 	@Basic(optional = true)

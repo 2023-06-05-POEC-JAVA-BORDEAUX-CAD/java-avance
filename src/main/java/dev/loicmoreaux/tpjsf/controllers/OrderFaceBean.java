@@ -1,7 +1,7 @@
 package dev.loicmoreaux.tpjsf.controllers;
 
-import dev.loicmoreaux.jpa.model.Order;
-import dev.loicmoreaux.jpa.service.OrderService;
+import dev.loicmoreaux.jpa.model.OrderJpa;
+import dev.loicmoreaux.jpa.service.OrderJpaService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -9,21 +9,21 @@ import jakarta.inject.Named;
 @Named
 @RequestScoped
 public class OrderFaceBean {
-	private Order order = new Order();
+	private OrderJpa order = new OrderJpa();
 	
 	@Inject
-	private OrderService orderService;
+	private OrderJpaService orderService;
 	
 	/*
 	 * Constructor
 	 */	
 	public OrderFaceBean() {}
 
-	public Order getOrder() {
+	public OrderJpa getOrder() {
 		return order;
 	}
 
-	public void setOrder(Order order) {
+	public void setOrder(OrderJpa order) {
 		this.order = order;
 	};
 	

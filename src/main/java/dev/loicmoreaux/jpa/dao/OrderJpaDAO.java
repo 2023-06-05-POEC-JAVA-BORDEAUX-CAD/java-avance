@@ -1,12 +1,12 @@
 package dev.loicmoreaux.jpa.dao;
 
-import dev.loicmoreaux.jpa.model.Order;
+import dev.loicmoreaux.jpa.model.OrderJpa;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
 @Stateless
-public class OrderDAO {
+public class OrderJpaDAO {
 
 	@PersistenceContext
 	protected EntityManager entityManager;
@@ -16,7 +16,7 @@ public class OrderDAO {
 	 * @param order
 	 * @return
 	 */
-	public Order save(Order order) {
+	public OrderJpa save(OrderJpa order) {
 		return this.entityManager.merge(order);
 	}
 	
@@ -25,8 +25,8 @@ public class OrderDAO {
 	 * @param id
 	 * @return
 	 */
-	public Order load(Integer id) {
-		return this.entityManager.find(Order.class, id);
+	public OrderJpa load(Integer id) {
+		return this.entityManager.find(OrderJpa.class, id);
 	}
 	
 	/**
@@ -34,7 +34,7 @@ public class OrderDAO {
 	 * @param id
 	 */
 	public void delete(Integer id) {
-		Order order = this.load(id);
+		OrderJpa order = this.load(id);
 		if(order != null) {
 			this.entityManager.remove(order);
 		} 			
