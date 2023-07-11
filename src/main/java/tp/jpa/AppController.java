@@ -2,6 +2,7 @@ package tp.jpa;
 
 import jakarta.inject.Named;
 import jakarta.inject.Inject;
+import tp.jpa.ClientModel.State;
 import jakarta.enterprise.context.RequestScoped;
 
 @Named
@@ -24,7 +25,7 @@ public class AppController {
 		client.setZipCode("XYZ");
 		client.setCity("VilleTest");
 		client.setCountry("FRANCE");
-		client.setState(0);
+		client.setState(State.CONFIRMED);
 		cliService.save(client);
 		return "end";
 	}
