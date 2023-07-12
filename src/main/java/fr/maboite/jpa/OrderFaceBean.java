@@ -9,20 +9,21 @@ import jakarta.inject.Named;
 @Named
 @RequestScoped
 public class OrderFaceBean {
-	
+
 	@Inject
 	private OrderDao orderdao;
 	
-	 public String saveOrder() {
-		 OrderJpa orderJpa = new OrderJpa();
-		 
-		 orderJpa.setDesignation("Atos");
-		 orderdao.save(orderJpa);
+
+	public String saveOrder() {
+		OrderJpa orderJpa = new OrderJpa();
+
+		orderJpa.setDesignation("COACHING");
+		orderdao.save(orderJpa);
 		return "succes";
-		
-		 
-		 
-		 
-	 }
+
+	}
+	
+
+
 
 }
