@@ -5,7 +5,10 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
@@ -35,6 +38,10 @@ public class OrderModel {
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "state", nullable = true)
 	private State state;
+
+	@JoinColumn(name = "client_id")
+	@ManyToOne(fetch = FetchType.EAGER)
+	private ClientModel client;
 
 	public OrderModel() {
 	}
@@ -98,5 +105,13 @@ public class OrderModel {
 
 	public void setState(State state) {
 		this.state = state;
+	}
+
+	public ClientModel getClient() {
+		return client;
+	}
+
+	public void setClient(ClientModel client) {
+		this.client = client;
 	}
 }
