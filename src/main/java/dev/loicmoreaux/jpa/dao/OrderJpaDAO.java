@@ -25,7 +25,7 @@ public class OrderJpaDAO {
 	 * @param id
 	 * @return
 	 */
-	public OrderJpa load(Integer id) {
+	public OrderJpa getOrderById(Integer id) {
 		return this.entityManager.find(OrderJpa.class, id);
 	}
 	
@@ -34,7 +34,7 @@ public class OrderJpaDAO {
 	 * @param id
 	 */
 	public void delete(Integer id) {
-		OrderJpa order = this.load(id);
+		OrderJpa order = this.getOrderById(id);
 		if(order != null) {
 			this.entityManager.remove(order);
 		} 			

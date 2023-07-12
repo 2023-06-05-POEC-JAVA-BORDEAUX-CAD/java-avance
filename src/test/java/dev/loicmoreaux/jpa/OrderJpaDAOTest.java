@@ -46,7 +46,8 @@ public class OrderJpaDAOTest {
         p.put("jtaTestDataSource.JdbcDriver", "org.h2.Driver");
         p.put("jtaTestDataSource.username", "test");
         p.put("jtaTestDataSource.password", "test");
-        p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:file:D:/Dev Web/M2i/Java/testOrderDao");
+        p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:mem:tests");
+        //p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:file:D:/Dev Web/M2i/Java/testOrderDao");
         return p;
     }
     
@@ -75,7 +76,7 @@ public class OrderJpaDAOTest {
 	}
 	
 	@Test
-	public void testLoad() throws Exception {
+	public void testGetOrderById() throws Exception {
 		// Arrange
 		String typePrestaOrder = "Formation";
 		String designationOrder = "HTML";
@@ -90,7 +91,7 @@ public class OrderJpaDAOTest {
 		Integer savedOrderId = savedOrder.getId();
 		
 		//Act
-		OrderJpa loadedOrder = this.orderJpaDAO.load(savedOrderId);
+		OrderJpa loadedOrder = this.orderJpaDAO.getOrderById(savedOrderId);
 		
 		//Assert
 		Assertions.assertNotNull(loadedOrder);
@@ -113,7 +114,7 @@ public class OrderJpaDAOTest {
 		
 		//Act
 		this.orderJpaDAO.delete(savedOrderId);
-		OrderJpa deletedOrder = this.orderJpaDAO.load(savedOrderId);
+		OrderJpa deletedOrder = this.orderJpaDAO.getOrderById(savedOrderId);
 		
 		//Assert
 		Assertions.assertNull(deletedOrder);

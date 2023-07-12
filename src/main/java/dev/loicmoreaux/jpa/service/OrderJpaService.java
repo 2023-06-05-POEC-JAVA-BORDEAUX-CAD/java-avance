@@ -30,9 +30,9 @@ public class OrderJpaService {
 	 * @param id
 	 * @return
 	 */
-	public OrderJpa load(Integer id) {
+	public OrderJpa getOrderById(Integer id) {
 		System.out.println("Search order by id = " + id + " into Database");
-		return orderDAO.load(id);
+		return orderDAO.getOrderById(id);
 	}
 	
 	

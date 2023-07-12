@@ -33,7 +33,7 @@ public class OrderJpaFaceBean {
 	}
 	
 	public String load() {
-		String order = orderService.load(1).toString();
+		String order = orderService.getOrderById(1).toString();
 		System.out.println(order);
 		return order;
 	}
