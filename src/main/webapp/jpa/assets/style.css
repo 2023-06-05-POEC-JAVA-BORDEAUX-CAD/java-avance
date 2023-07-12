@@ -17,11 +17,16 @@ body{
 }
 
 main{
-	max-width: 600px;
+	max-width: 1000px;
 	margin: auto;
 	padding: 1rem;
 	border-radius: 0.5rem;
 	box-shadow: 0px 0px 10px #fff;
+}
+
+.form{
+	max-width: 600px;
+	margin: auto;
 }
 
 div{
@@ -56,8 +61,11 @@ div{
 }
 
 input, select{
+	margin-top: 0.3rem;
 	padding: 0.2rem 0.5rem;
 	font-size: 1rem;
+	border: none;
+	border-radius: 5px;
 }
 
 .section-view{

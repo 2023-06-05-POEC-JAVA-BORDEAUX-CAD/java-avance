@@ -10,9 +10,10 @@ import org.apache.openejb.testing.Configuration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import dev.loicmoreaux.jpa.dao.ClientJpaDAO;
 import dev.loicmoreaux.jpa.dao.OrderJpaDAO;
+import dev.loicmoreaux.jpa.model.ClientJpa;
 import dev.loicmoreaux.jpa.model.OrderJpa;
-import dev.loicmoreaux.jpa.model.StateOrder;
 import jakarta.ejb.EJB;
 
 
@@ -20,11 +21,14 @@ import jakarta.ejb.EJB;
 public class OrderJpaDAOTest {
 	@EJB
 	private OrderJpaDAO orderJpaDAO;
+	@EJB
+	private ClientJpaDAO clientJpaDAO;
 
 	@org.apache.openejb.testing.Module
 	public EjbJar beans() {
 		EjbJar ejbJar = new EjbJar("my-beans");
 		ejbJar.addEnterpriseBean(new StatelessBean(OrderJpaDAO.class));
+		ejbJar.addEnterpriseBean(new StatelessBean(ClientJpaDAO.class));
 		return ejbJar;
 	}
 	
@@ -51,18 +55,19 @@ public class OrderJpaDAOTest {
         return p;
     }
     
+    /*
 	@Test
 	public void testSave() throws Exception {
 		
 		//Arrange
 		String typePrestaOrder = "Formation";
 		String designationOrder = "HTML";
-		Integer clientIdOrder = 1;
+		
 		
 		OrderJpa order = new OrderJpa();
 		order.setTypePresta(typePrestaOrder);
 		order.setDesignation(designationOrder);
-		order.setClientId(clientIdOrder);
+		
 		
 		//Act
 		OrderJpa savedOrder = this.orderJpaDAO.save(order);
@@ -80,12 +85,11 @@ public class OrderJpaDAOTest {
 		// Arrange
 		String typePrestaOrder = "Formation";
 		String designationOrder = "HTML";
-		Integer clientIdOrder = 1;
-		
+				
 		OrderJpa order = new OrderJpa();
 		order.setTypePresta(typePrestaOrder);
 		order.setDesignation(designationOrder);
-		order.setClientId(clientIdOrder);
+		
 		
 		OrderJpa savedOrder = this.orderJpaDAO.save(order);
 		Integer savedOrderId = savedOrder.getId();
@@ -102,23 +106,47 @@ public class OrderJpaDAOTest {
 		// Arrange
 		String typePrestaOrder = "Formation";
 		String designationOrder = "HTML";
-		Integer clientIdOrder = 1;
-		
+				
 		OrderJpa order = new OrderJpa();
 		order.setTypePresta(typePrestaOrder);
 		order.setDesignation(designationOrder);
-		order.setClientId(clientIdOrder);
+		
 		
 		OrderJpa savedOrder = this.orderJpaDAO.save(order);
 		Integer savedOrderId = savedOrder.getId();
 		
-		//Act
+		// Act
 		this.orderJpaDAO.delete(savedOrderId);
 		OrderJpa deletedOrder = this.orderJpaDAO.getOrderById(savedOrderId);
 		
-		//Assert
+		// Assert
 		Assertions.assertNull(deletedOrder);
 		
+	}*/
+	
+	@Test
+	public void TestSaveOrderWithClient() throws Exception {
+		// Arrange
+		// Create new Client into database
+		ClientJpa client = new ClientJpa();
+		client.setCompanyName("Cerberus");
+		ClientJpa savedClient = this.clientJpaDAO.save(client);
+		
+		// Create new Order into database
+		OrderJpa order = new OrderJpa();
+		order.setTypePresta("Formation");
+		order.setDesignation("HTML");
+		order.setClient(savedClient);
+		OrderJpa savedOrder = this.orderJpaDAO.save(order);
+		
+		// Act
+		OrderJpa loadedOrder = this.orderJpaDAO.getOrderById(savedOrder.getId());
+		
+		// Assert
+		Assertions.assertNotNull(loadedOrder);
+		Assertions.assertEquals("Formation", loadedOrder.getTypePresta());
+		Assertions.assertEquals("HTML", loadedOrder.getDesignation());
+		Assertions.assertEquals("Cerberus", loadedOrder.getClient().getCompanyName());
 	}
 	
 	

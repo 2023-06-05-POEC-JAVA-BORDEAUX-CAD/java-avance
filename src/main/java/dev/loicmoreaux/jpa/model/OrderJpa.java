@@ -5,9 +5,12 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,8 +27,8 @@ public class OrderJpa {
 	@Column(nullable = false)
 	private String designation;
 	
-	@Column(name = "client_id", nullable = false)
-	private Integer clientId;
+	//@Column(name = "client_id", nullable = false)
+	//private Integer clientId;
 	
 	@Basic(optional = true) // Annotation facultative
 	@Column(name = "nb_days")
@@ -39,6 +42,10 @@ public class OrderJpa {
 	//@Enumerated(EnumType.ORDINAL)
 	//private StateOrder state = null;
 	private Integer state = null;
+	
+	@ManyToOne(fetch = FetchType.EAGER) // EAGER est la valeur par défaut, LAZY la relation n'est pas chargé, EAGER la relation est chargé
+	@JoinColumn(name = "client_id", nullable = false)
+	private ClientJpa client;
 	
 	/*
 	 * Getters and Setters
@@ -67,13 +74,13 @@ public class OrderJpa {
 		this.designation = designation;
 	}
 	
-	public Integer getClientId() {
+	/*public Integer getClientId() {
 		return clientId;
 	}
 	
 	public void setClientId(Integer clientId) {
 		this.clientId = clientId;
-	}
+	}*/
 	
 	public Integer getNbDays() {
 		return nbDays;
@@ -105,5 +112,13 @@ public class OrderJpa {
 	
 	public void setState(Integer state) {
 		this.state = state;
+	}
+
+	public ClientJpa getClient() {
+		return client;
+	}
+
+	public void setClient(ClientJpa client) {
+		this.client = client;
 	}
 }

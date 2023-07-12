@@ -1,5 +1,7 @@
 package dev.loicmoreaux.jpa.service;
 
+import java.util.List;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -35,6 +37,10 @@ public class OrderJpaService {
 		return orderDAO.getOrderById(id);
 	}
 	
+	public List<OrderJpa> getOrders(){
+		return orderDAO.getOrders();
+	}
+	
 	
 	/**
 	 * Method for delete an order
@@ -43,12 +49,5 @@ public class OrderJpaService {
 	public void delete(Integer id) {
 		System.out.println("Delete order by id = " + id);
 		orderDAO.delete(id);
-	}
-	
-	public String toString(OrderJpa order) throws JsonProcessingException{
-		if(order == null) return null;
-		
-		ObjectMapper objectMapper = new ObjectMapper();
-		return objectMapper.writeValueAsString(order);
 	}
 }

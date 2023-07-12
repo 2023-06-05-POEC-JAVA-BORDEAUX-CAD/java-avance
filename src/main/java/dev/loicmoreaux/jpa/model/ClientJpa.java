@@ -1,10 +1,15 @@
 package dev.loicmoreaux.jpa.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -38,6 +43,9 @@ public class ClientJpa {
 	private String country;
 	
 	private Boolean state;
+	
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+	private List<OrderJpa> orders = new ArrayList<>();
 	
 	
 	/**
@@ -129,6 +137,14 @@ public class ClientJpa {
 
 	public void setState(Boolean state) {
 		this.state = state;
+	}
+
+	public List<OrderJpa> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<OrderJpa> orders) {
+		this.orders = orders;
 	}
 	
 }

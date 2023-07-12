@@ -1,9 +1,12 @@
 package dev.loicmoreaux.jpa.dao;
 
+import java.util.List;
+
 import dev.loicmoreaux.jpa.model.OrderJpa;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 
 @Stateless
 public class OrderJpaDAO {
@@ -27,6 +30,15 @@ public class OrderJpaDAO {
 	 */
 	public OrderJpa getOrderById(Integer id) {
 		return this.entityManager.find(OrderJpa.class, id);
+	}
+	
+	/**
+	 * Get all orders into database
+	 * @return List<OrderJpa>
+	 */
+	public List<OrderJpa> getOrders(){
+		Query jpqlQuery = this.entityManager.createQuery("select o from OrderJpa o", OrderJpa.class);
+		return jpqlQuery.getResultList();
 	}
 	
 	/**

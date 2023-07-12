@@ -33,16 +33,19 @@
 					placeholder="Entrer la designation"
 					value="#{orderJpaFaceBean.order.designation}"
 				/>
-			</div>
+			</div>			
+			<!-- 
 			<div class="form-group">
 				<label for="clientId" >Client Id :</label>
 				<h:inputText
 					id="clientId"
 					type="text"
 					placeholder="Entrer l'id client"
-					value="#{orderJpaFaceBean.order.clientId}"
+					value="#{orderJpaFaceBean.getClientOne}"
+					visibility = "hidden" 
 				/>
 			</div>
+			 -->
 			<div class="form-group">
 				<label for="nbDays" >Nombre de jours :</label>
 				<h:inputText
@@ -75,9 +78,8 @@
 		<section class="section-view">
 			<h2>Liste des orders</h2>
 			
-			<p>#{orderJpaFaceBean.getAllOrders()}</p>
+			<p>#{orderJpaFaceBean.getOrders()}</p>
 			
-			<p>#{orderJpaFaceBean.load()}</p>
 		</section>		
 	</main>
 </h:body>
