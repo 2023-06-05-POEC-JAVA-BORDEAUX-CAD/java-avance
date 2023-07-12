@@ -4,8 +4,7 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" data-theme="dark"
->
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" data-theme="dark">
 
 <h:head>
 	<title>Order</title>
@@ -13,62 +12,65 @@
 </h:head>
 <h:body>
 	<main>
-		<h1>Order</h1>				
-		
+		<h1>Order</h1>
+
 		<h:form class="form">
 			<div class="form-group">
-				<label for="typePresta" >Type prestation :</label>
-				<h:inputText
-					id="typePresta"
-					type="text"
+				<label for="typePresta">Type prestation :</label>
+				<h:inputText id="typePresta" type="text"
 					placeholder="Entrer le type de la prestation"
-					value="#{orderJpaFaceBean.order.typePresta}"
-				/>
+					value="#{orderJpaFaceBean.order.typePresta}" />
 			</div>
 			<div class="form-group">
-				<label for="designation" >Désignation :</label>
-				<h:inputText
-					id="designation"
-					type="text"
+				<label for="designation">Désignation :</label>
+				<h:inputText id="designation" type="text"
 					placeholder="Entrer la designation"
-					value="#{orderJpaFaceBean.order.designation}"
-				/>
-			</div>			
+					value="#{orderJpaFaceBean.order.designation}" />
+			</div>
 			<div class="form-group">
-				<label for="nbDays" >Nombre de jours :</label>
-				<h:inputText
-					id="nbDays"
-					type="number"
+				<label for="nbDays">Nombre de jours :</label>
+				<h:inputText id="nbDays" type="number"
 					placeholder="Entrer le nombre de jours"
-					value="#{orderJpaFaceBean.order.nbDays}"
-				/>
+					value="#{orderJpaFaceBean.order.nbDays}" />
 			</div>
 			<div class="form-group">
-				<label for="unitPrice" >Prix unitaire :</label>
-				<h:inputText
-					id="unitPrice"
-					type="number"
+				<label for="unitPrice">Prix unitaire :</label>
+				<h:inputText id="unitPrice" type="number"
 					placeholder="Entrer le prix unitaire"
-					value="#{orderJpaFaceBean.order.unitPrice}"
-				/>
+					value="#{orderJpaFaceBean.order.unitPrice}" />
 			</div>
 			<div class="form-group">
-				<label for="state" >Statut :</label>
-				<h:selectOneMenu value="#{orderJpaFaceBean.order.state}" >
-			        <f:selectItem itemValue="0" itemLabel="Canceled" />
-			        <f:selectItem itemValue="1" itemLabel="Option" />
-			        <f:selectItem itemValue="2" itemLabel="Confirmed" />
-			    </h:selectOneMenu>
+				<label for="state">Statut :</label>
+				<h:selectOneMenu value="#{orderJpaFaceBean.order.state}">
+					<f:selectItem itemValue="0" itemLabel="Canceled" />
+					<f:selectItem itemValue="1" itemLabel="Option" />
+					<f:selectItem itemValue="2" itemLabel="Confirmed" />
+				</h:selectOneMenu>
 			</div>
-			<h:commandButton value="Sauvegarder" action="#{orderJpaFaceBean.save}" class="button"/>
+			<h:commandButton value="Sauvegarder"
+				action="#{orderJpaFaceBean.save}" class="button" />
 		</h:form>
-		
+
 		<section class="section-view">
 			<h2>Liste des orders</h2>
-			
-			
-			
-		</section>		
+
+			<table>
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Type presta</th>
+						<th>Désignation</th>
+						<th>Nbr jours</th>
+						<th>Prix Unit</th>
+						<th>State</th>
+						<th>Client</th>
+					</tr>
+				</thead>
+				<tbody>
+					<h:outputText value="#{orderJpaFaceBean.getOrders()}" escape="false" />		
+				</tbody>
+			</table>
+		</section>
 	</main>
 </h:body>
 </html>

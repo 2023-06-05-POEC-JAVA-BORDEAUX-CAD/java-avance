@@ -44,23 +44,20 @@ public class OrderJpaFaceBean {
 		System.out.println("sauvegarde de order dans la BDD");
 	}
 	
-	public String getOrders() throws JsonProcessingException {
-		//String ul = "<ul>";
+	public String getOrders(){
 		String ul = "";
 		List<OrderJpa> orders = orderService.getOrders();
 		for(OrderJpa order : orders) {
-			//ul += "<li>" + this.toString(order) + "</li>";
-			ul += this.toString(order);
+			ul += "<tr>";
+			ul += "<td>" + order.getId() + "</td>";
+			ul += "<td>" + order.getTypePresta() + "</td>";
+			ul += "<td>" + order.getDesignation() + "</td>";
+			ul += "<td>" + order.getNbDays() + "</td>";
+			ul += "<td>" + order.getUnitPrice() + "€</td>";
+			ul += "<td>" + order.getState() + "</td>";
+			ul += "<td>" + order.getClient().getCompanyName() + "</td>";
+			ul += "</tr>";
 		}
-		
-		//return ul += "</ul>";
 		return ul;
-	}
-	
-	public String toString(OrderJpa order) throws JsonProcessingException{
-		if(order == null) return null;
-		
-		ObjectMapper objectMapper = new ObjectMapper();
-		return objectMapper.writeValueAsString(order);
 	}
 }

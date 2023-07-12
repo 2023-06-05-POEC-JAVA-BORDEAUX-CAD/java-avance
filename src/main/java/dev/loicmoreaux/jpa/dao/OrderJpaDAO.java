@@ -15,18 +15,18 @@ public class OrderJpaDAO {
 	protected EntityManager entityManager;
 	
 	/**
-	 * 
+	 * Create or update order into database
 	 * @param order
-	 * @return
+	 * @return OrderJpa
 	 */
 	public OrderJpa save(OrderJpa order) {
 		return this.entityManager.merge(order);
 	}
 	
 	/**
-	 * 
+	 * Get an order by id into database
 	 * @param id
-	 * @return
+	 * @return OrderJpa
 	 */
 	public OrderJpa getOrderById(Integer id) {
 		return this.entityManager.find(OrderJpa.class, id);
@@ -42,7 +42,7 @@ public class OrderJpaDAO {
 	}
 	
 	/**
-	 * 
+	 * Delete an order into database
 	 * @param id
 	 */
 	public void delete(Integer id) {

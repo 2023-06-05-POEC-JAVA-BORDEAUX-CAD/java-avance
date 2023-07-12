@@ -17,9 +17,9 @@ public class OrderJpaService {
 	private OrderJpaDAO orderDAO;
 	
 	/**
-	 * Method for save order into the database
+	 * Create or update order into database
 	 * @param order
-	 * @return
+	 * @return OrderJpa
 	 */
 	public OrderJpa save(OrderJpa order) {
 		System.out.println("Save Order into Database");
@@ -28,22 +28,25 @@ public class OrderJpaService {
 	
 	
 	/**
-	 * Method for search into the database an order by id
+	 * Get an order by id into database
 	 * @param id
-	 * @return
+	 * @return OrderJpa
 	 */
 	public OrderJpa getOrderById(Integer id) {
 		System.out.println("Search order by id = " + id + " into Database");
 		return orderDAO.getOrderById(id);
 	}
 	
+	/**
+	 * Get all orders into database
+	 * @return List<OrderJpa>
+	 */
 	public List<OrderJpa> getOrders(){
 		return orderDAO.getOrders();
 	}
-	
-	
+		
 	/**
-	 * Method for delete an order
+	 * Delete order into the database
 	 * @param id
 	 */
 	public void delete(Integer id) {

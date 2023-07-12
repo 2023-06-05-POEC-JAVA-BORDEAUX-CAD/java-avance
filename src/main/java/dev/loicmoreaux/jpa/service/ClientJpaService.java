@@ -1,5 +1,7 @@
 package dev.loicmoreaux.jpa.service;
 
+import java.util.List;
+
 import dev.loicmoreaux.jpa.dao.ClientJpaDAO;
 import dev.loicmoreaux.jpa.model.ClientJpa;
 import jakarta.ejb.Stateless;
@@ -12,10 +14,9 @@ public class ClientJpaService {
 	private ClientJpaDAO clientDAO;
 	
 	/**
-	 * 
-	 * Method for save client into the database
+	 * Create or update client into database
 	 * @param client
-	 * @return savedClient
+	 * @return ClientJpa
 	 */
 	public ClientJpa save(ClientJpa client) {
 		System.out.println("Save Client into Database");
@@ -23,10 +24,9 @@ public class ClientJpaService {
 	}
 	
 	/**
-	 * 
-	 * Method for search into the database a client by id
+	 * Get a client by id into database
 	 * @param id
-	 * @return Client
+	 * @return ClientJpa
 	 */
 	public ClientJpa getClientById(Integer id) {
 		System.out.println("Search Client by id = " + id + " into Database");
@@ -34,8 +34,15 @@ public class ClientJpaService {
 	}
 	
 	/**
-	 * 
-	 * Method for delete a client
+	 * Get all clients into database
+	 * @return List<ClientJpa>
+	 */
+	public List<ClientJpa> getClients(){
+		return clientDAO.getClients();
+	}
+	
+	/**
+	 * Delete Client into the database
 	 * @param id
 	 */
 	public void delete(Integer id) {

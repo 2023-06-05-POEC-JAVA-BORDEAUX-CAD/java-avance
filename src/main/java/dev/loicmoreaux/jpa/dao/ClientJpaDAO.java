@@ -15,21 +15,30 @@ public class ClientJpaDAO {
 	protected EntityManager entityManager;
 	
 	/**
-	 * 
+	 * Create or update client into database
 	 * @param client
-	 * @return savedClient
+	 * @return ClientJpa
 	 */
 	public ClientJpa save(ClientJpa client){
 		return this.entityManager.merge(client);
 	}
 	
 	/**
-	 * 
+	 * Get a client by id into database
 	 * @param id
 	 * @return Client
 	 */
 	public ClientJpa getClientById(Integer id) {
 		return this.entityManager.find(ClientJpa.class, id);
+	}
+	
+	/**
+	 * Get all clients into database
+	 * @return List<ClientJpa>
+	 */
+	public List<ClientJpa> getClients(){
+		Query jpqlQuery = this.entityManager.createQuery("select c from ClientJpa c", ClientJpa.class);
+		return jpqlQuery.getResultList();
 	}
 	
 	/**
