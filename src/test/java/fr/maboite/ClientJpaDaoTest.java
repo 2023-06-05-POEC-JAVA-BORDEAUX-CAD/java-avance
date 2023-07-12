@@ -1,17 +1,20 @@
 package fr.maboite;
 
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.openejb.jee.EjbJar;
+/*import jakarta.ejb.embeddable.EJBContainer;*/
 import org.apache.openejb.jee.StatelessBean;
 import org.apache.openejb.jee.jpa.unit.PersistenceUnit;
 import org.apache.openejb.junit5.RunWithApplicationComposer;
 import org.apache.openejb.testing.Configuration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import fr.boite.philippe.ClientJpa;
 import fr.boite.philippe.ClientJpaDao;
+import fr.boite.philippe.OrderJpa;
+import fr.boite.philippe.OrderJpaDao;
 import jakarta.ejb.EJB;
 
 @RunWithApplicationComposer
@@ -20,10 +23,16 @@ public class ClientJpaDaoTest {
 	@EJB
 	private ClientJpaDao clientJpaDao;
 
+	@EJB
+	private OrderJpaDao orderJpaDao;
+	
+	
 	@org.apache.openejb.testing.Module
 	public EjbJar beans() {
 		EjbJar ejbJar = new EjbJar("my-beans");
+		ejbJar.addEnterpriseBean(new StatelessBean(OrderJpaDao.class));
 		ejbJar.addEnterpriseBean(new StatelessBean(ClientJpaDao.class));
+
 		return ejbJar;
 	}
 	
@@ -51,19 +60,61 @@ public class ClientJpaDaoTest {
     
     @Test
 	public void testSave() throws Exception {
-		
-		//Arrange
+    	//Arrange
     	String last_name = "hassan";
-		//String email = "hassan.Philippe@yahoo.com";
+		String email = "hassan.Philippe@yahoo.com";
 		
 		ClientJpa clientJpa = new ClientJpa();
-		clientJpa.setLastName(last_name);
-	//	clientJpa.setEmail(email);
+    	clientJpa.setLastName(last_name);
+    	clientJpa.setEmail(email);
+		
+		//Arrange
+    	//String last_name = "hassan";
+		//String email = "hassan.Philippe@yahoo.com";
+		
+		//ClientJpa clientJpa = new ClientJpa();
+    	//clientJpa.setLastName(last_name);
+    	//clientJpa.setEmail(email);
+		ClientJpa clientJpa1 = new ClientJpa();
+		String companyName = "M2i Formation";
+		clientJpa1.setCompanyName(companyName);
+		clientJpaDao.save(clientJpa1);
 		
 		//Act
-		ClientJpa savedClientJpa = this.clientJpaDao.save(clientJpa);
+		//ClientJpa savedClientJpa = this.clientJpaDao.save(clientJpa);
+		List<ClientJpa> companyNames = this.clientJpaDao.findByCompanyName(companyName);
+
 		
 		//Assert
-		Assertions.assertNotNull(savedClientJpa);
+		//Assertions.assertNotNull(savedClientJpa);
+		Assertions.assertNotNull(companyNames);
+		Assertions.assertEquals(1, companyNames.size());
 	}
+    
+    @Test
+	public void testSaveAndLoadWithOrders() throws Exception {
+    	
+    	//Arrange
+    	ClientJpa clientJpa = new ClientJpa();
+    	clientJpa.setFirstName("philippe");
+    	clientJpa.setLastName("hassan");
+    	ClientJpa savedClientJpa = this.clientJpaDao.save(clientJpa);
+    	
+    	OrderJpa orderJpa = new OrderJpa();
+    	orderJpa.setClientJpa(savedClientJpa);
+    	this.orderJpaDao.save(orderJpa);
+    	
+    	clientJpa.getOrders().add(orderJpa);
+    	
+    	//Act
+    	ClientJpa loadedClientJpa = this.clientJpaDao.load(savedClientJpa.getId());
+    	
+    	//Assert
+		Assertions.assertNotNull(loadedClientJpa);
+		Assertions.assertEquals(savedClientJpa.getId(), loadedClientJpa.getId());
+		Assertions.assertEquals(savedClientJpa.getFirstName(), loadedClientJpa.getFirstName());
+		Assertions.assertEquals(savedClientJpa.getLastName(), loadedClientJpa.getLastName());
+
+	}
+    
 }

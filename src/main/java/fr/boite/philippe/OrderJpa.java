@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,8 +24,21 @@ public class OrderJpa {
 	@Column(name="designation")
 	private String designation;
 	
-	@Column(name="client_id")
+	//@Column(name="client_id")
 	private Integer clientId;
+	
+	@ManyToOne
+	@JoinColumn(name="client_id")
+	private ClientJpa clientJpa;
+	
+
+	public ClientJpa getClientJpa() {
+		return clientJpa;
+	}
+
+	public void setClientJpa(ClientJpa clientJpa) {
+		this.clientJpa = clientJpa;
+	}
 
 	public Integer getId() {
 		return id;

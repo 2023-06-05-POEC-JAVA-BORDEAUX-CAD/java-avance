@@ -27,13 +27,21 @@ public class ClientJpaFaceBean {
 		clientJpa.setZipCode("64000");
 		clientJpa.setCity("Pau");
 		clientJpa.setCountry("France");
-		clientJpa.setState(1);
+		clientJpa.setState(ClientJpa.ClientState.STATE2);
+		/*clientJpaService.save(clientJpa);*/
 		clientJpaDao.save(clientJpa);
-		ClientJpa savedClientJpa = clientJpaService.save(clientJpa);
+		
+	/*	ClientJpa savedClientJpa = clientJpaService.save(clientJpa);
 		
 		ClientJpa loadedClientJpa = clientJpaService.load(savedClientJpa.getId());
 		System.out.println("le mail de client : " 
 			+ loadedClientJpa.getEmail() + " pour l'id : " 
-			+ loadedClientJpa.getId());
+			+ loadedClientJpa.getId());*/
+		
+		Integer savedClientId = clientJpa.getId();
+	    ClientJpa loadedClientJpa = clientJpaService.getClientById(savedClientId);
+	    if (loadedClientJpa != null) {
+	        System.out.println("Email du client : " + loadedClientJpa.getEmail() + " (ID : " + loadedClientJpa.getId() + ")");
+	    }
 	}
 }

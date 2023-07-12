@@ -26,4 +26,15 @@ public class ClientJpaService {
 		}
 		return clientJpa;
 	}
+	
+	public ClientJpa getClientById(Integer id) {
+	    System.out.println("Chargement du client avec l'ID : " + id);
+	    ClientJpa clientJpa = this.clientJpaDao.load(id);
+	    if (clientJpa == null) {
+	        System.out.println("Aucun client trouvé avec l'ID : " + id);
+	    } else {
+	        System.out.println("Client trouvé : " + clientJpa);
+	    }
+	    return clientJpa;
+	}
 }

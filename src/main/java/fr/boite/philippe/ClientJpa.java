@@ -1,15 +1,27 @@
 package fr.boite.philippe;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Clients")
 public class ClientJpa {
+
+	public enum ClientState {
+		STATE2,
+
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,8 +55,30 @@ public class ClientJpa {
 	@Column(name = "country")
 	private String country;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "state")
-	private Integer state;
+	private ClientState state;
+	
+	
+	@OneToMany(mappedBy = "clientJpa", fetch = FetchType.LAZY)
+	private Set<OrderJpa> orders = new HashSet<>();
+	
+
+	public Set<OrderJpa> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<OrderJpa> orders) {
+		this.orders = orders;
+	}
+
+	public ClientState getState() {
+		return state;
+	}
+
+	public void setState(ClientState state) {
+		this.state = state;
+	}
 
 	public Integer getId() {
 		return id;
@@ -126,13 +160,4 @@ public class ClientJpa {
 		this.country = country;
 	}
 
-	public Integer getState() {
-		return state;
-	}
-
-	public void setState(Integer state) {
-		this.state = state;
-	}
-
-	
 }
