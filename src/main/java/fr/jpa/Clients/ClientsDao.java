@@ -1,8 +1,12 @@
 package fr.jpa.Clients;
 
+import java.util.List;
+
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
+
 
 
 /**
@@ -34,4 +38,20 @@ public class ClientsDao {
   return this.entityManager.find(Clients.class, id);
 }
   
+/**
+	 * Renvoie tous les Order dont la désignation vaut designation
+	 * 
+	 * @param argumentDeMethodeCompanyName
+	 * @return
+	 */
+	public List<Clients> findByCompanyName(String argumentDeMethodeCompanyName) {
+		TypedQuery<Clients> jpqlQuery = this.entityManager.createQuery(
+				"select c "
+				+ " from Clients c "
+				+ " where c.companyName = :parametreDeRequeteCompanyName", Clients.class);
+		jpqlQuery.setParameter("parametreDeRequeteCompanyName", argumentDeMethodeCompanyName);
+		return jpqlQuery.getResultList();
+	}
+
+
 }

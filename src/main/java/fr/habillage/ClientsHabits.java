@@ -1,6 +1,6 @@
 package fr.habillage;
 
-public class Clients {
+public class ClientsHabits {
 
   public void parle(){
     Chemises chemise = new Chemises();
@@ -20,7 +20,7 @@ public class Clients {
   }
 
  public static void main(String[] args) {
- Clients client = new Clients();
+ ClientsHabits client = new ClientsHabits();
  client.parle();
   
  }} 

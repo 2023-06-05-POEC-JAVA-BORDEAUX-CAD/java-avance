@@ -1,5 +1,8 @@
 package fr;
 
+
+
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.openejb.jee.EjbJar;
@@ -53,10 +56,10 @@ public class ClientsDaoTest {
 	public void testSave() throws Exception {
 		
 		//Arrange
-		String nomClients = "Company Name Test";
+		String nomClients = "Last Name Test";
 		
 		Clients clients = new Clients();
-		clients.setCompanyName(nomClients);
+		clients.setLastName(nomClients);
 		
 		//Act
 		Clients savedClients = this.clientsDao.save(clients);
@@ -66,7 +69,27 @@ public class ClientsDaoTest {
 		Assertions.assertNotNull(savedClients.getId());
 		
 		Assertions.assertNull(savedClients.getEmail());
-		Assertions.assertEquals(nomClients, savedClients.getCompanyName());
+		Assertions.assertEquals(nomClients, savedClients.getLastName());
 	}
+
+    @Test
+	public void testSave2OrdersAndFindByCompanyName() throws Exception {
+		
+		//Arrange
+		Clients client1 = new Clients();
+		String companyName = "super company name";
+		client1.setCompanyName(companyName);
+		Clients savedClient1 = this.clientsDao.save(client1);
+		Clients client2 = new Clients();
+		client2.setCompanyName(companyName);
+		Clients savedClient2 = this.clientsDao.save(client2);
+		
+		//Act
+		List<Clients> companyNames = this.clientsDao.findByCompanyName(companyName);
+		
+		//Assert
+		Assertions.assertNotNull(companyNames);
+		Assertions.assertEquals(2, companyNames.size());
+	}  
   
 }

@@ -13,8 +13,8 @@ public class OrdersFaceBean {
 
   public void sauvegarde(){
     Orders orders = new Orders();
-    //orders.setTypePresta(typePresta:"Formation");
-    orders.setTypePresta(OrdersEnum.FORMATION);
+    orders.setTypePresta("Formation");
+    //orders.setTypePresta(OrdersEnum.FORMATION);
     orders.setDesignation("React Avancé");
     orders.setClientId(2); 
     orders.setNbDays(3); 

@@ -1,5 +1,8 @@
 package fr;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import java.util.Properties;
 
 import org.apache.openejb.jee.EjbJar;
@@ -10,6 +13,8 @@ import org.apache.openejb.testing.Configuration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import fr.jpa.Clients.Clients;
+import fr.jpa.Clients.ClientsDao;
 import fr.jpa.Orders.Orders;
 import fr.jpa.Orders.OrdersDao;
 import jakarta.ejb.EJB;
@@ -19,6 +24,7 @@ public class OrdersDaoTest {
 
 	@EJB
 	private OrdersDao ordersDao;
+    private ClientsDao clientsDao;
 
 	@org.apache.openejb.testing.Module
 	public EjbJar beans() {
@@ -68,5 +74,32 @@ public class OrdersDaoTest {
 		Assertions.assertNull(savedOrders.getTypePresta());
 		Assertions.assertEquals(nomOrders, savedOrders.getDesignation());
 	}
+
+     @Test
+    public void testSaveOrderWithClient() {
+        // Créer un nouveau client
+        Clients client = new Clients();
+        client.setFirstName("John Doe");
+        
+        // Sauvegarder le client
+        Clients savedClient = this.clientsDao.save(client);
+        
+        // Créer un nouvel order
+        Orders order = new Orders();
+        order.setDesignation("Formation");
+        order.setTypePresta("Bowling");
+        order.setClient(savedClient);
+        
+        // Sauvegarder l'order
+        Orders savedOrder = this.ordersDao.save(order);
+        
+        // Charger l'order depuis la base de données
+        Orders loadedOrder = ordersDao.load(savedOrder.getId());
+        
+        // Vérifier que la relation a été sauvegardée
+        assertNotNull(loadedOrder);
+        assertNotNull(loadedOrder.getClient());
+        assertEquals(client.getId(), loadedOrder.getClient().getId());
+    }
   
 }

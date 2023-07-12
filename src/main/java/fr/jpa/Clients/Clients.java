@@ -1,12 +1,16 @@
 package fr.jpa.Clients;
 
+import java.util.List;
+import fr.jpa.Orders.Orders;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+// import jakarta.persistence.EnumType;
+// import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,12 +21,12 @@ public class Clients {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  //@Column (name = "company_name")
-  //private String companyName;
-
-  @Enumerated (EnumType.ORDINAL)
   @Column (name = "company_name")
-  private ClientsEnum companyName;
+  private String companyName;
+
+  //@Enumerated (EnumType.ORDINAL)
+  //@Column (name = "company_name")
+  //private ClientsEnum companyName;
 
   @Column (name = "first_name")
   private String firstName;
@@ -45,6 +49,8 @@ public class Clients {
 
   private Integer state;
 
+  @OneToMany(mappedBy = "clients", fetch = FetchType.LAZY)
+  private List<Orders> orders;
   
   public Integer getId() {
     return id;
@@ -54,21 +60,22 @@ public class Clients {
     this.id = id;
   }
 
- // public String getCompanyName() {
-  //  return companyName;
-  //}
+  public String getCompanyName() {
+   return companyName;
+  }
+  
 
- // public void setCompanyName(String companyName) {
-  //  this.companyName = companyName;
- // }
+  public void setCompanyName(String companyName) {
+    this.companyName = companyName;
+  }
 
-public ClientsEnum getCompanyName() {
-  return companyName;
-}
+// public ClientsEnum getCompanyName() {
+//   return companyName;
+// }
 
-public void setCompanyName(ClientsEnum companyName) {
-  this.companyName = companyName;
-}
+// public void setCompanyName(ClientsEnum companyName) {
+//   this.companyName = companyName;
+// }
 
   public String getFirstName() {
     return firstName;
@@ -142,13 +149,12 @@ public void setCompanyName(ClientsEnum companyName) {
     this.state = state;
   }
 
+public List<Orders> getOrders() {
+  return orders;
+}
 
-
-  //getters
-
-
-
-  //Setters
-
+public void setOrders(List<Orders> orders) {
+  this.orders = orders;
+}
   
 }

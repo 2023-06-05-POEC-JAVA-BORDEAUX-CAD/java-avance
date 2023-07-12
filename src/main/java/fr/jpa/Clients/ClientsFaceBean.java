@@ -13,8 +13,8 @@ public class ClientsFaceBean {
 
   public void sauvegarde(){
     Clients clients = new Clients();    
-    //clients;setCompanyName(companyName : "M2i Formation");
-    clients.setCompanyName(ClientsEnum.M2I_FORMATION);
+    clients.setCompanyName("M2i Formation");
+    //clients.setCompanyName(ClientsEnum.M2I_FORMATION);
     clients.setFirstName("Francois");
     clients.setLastName("Caremoli");
     clients.setEmail("FrancoisCaremoli@gmail.com");
