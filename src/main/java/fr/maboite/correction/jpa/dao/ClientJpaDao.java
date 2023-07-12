@@ -3,8 +3,6 @@ package fr.maboite.correction.jpa.dao;
 import java.util.List;
 
 import fr.maboite.correction.jpa.model.Client;
-import fr.maboite.correction.jpa.model.Order;
-import fr.maboite.correction.jpa.model.PojoJpa;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -73,6 +71,7 @@ public class ClientJpaDao {
 		jpqlQuery.setParameter("companyName", companyName);
 		return jpqlQuery.getResultList();
 	}
+	
 
 	/**
 	 * Renvoie tous les Client à partir de leur id
@@ -88,6 +87,24 @@ public class ClientJpaDao {
 				Client.class);
 		jpqlQuery.setParameter("id", id);
 		return jpqlQuery.getSingleResult();
+	}
+
+	/**
+	 * Renvoie tous les clients à partir de leur id,
+	 * avec les orders associés
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public List<Client> findByIdWithOrders(Long id) {
+		TypedQuery<Client> jpqlQuery = this.entityManager.createQuery(
+				"select c "
+				+ " from Client c "
+				+ " left outer join fetch c.orders o "
+				+ " where c.id = :id ",
+				Client.class);
+		jpqlQuery.setParameter("id",id );
+		return jpqlQuery.getResultList();
 	}
 
 }

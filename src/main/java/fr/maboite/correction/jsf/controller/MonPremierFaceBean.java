@@ -1,7 +1,9 @@
 package fr.maboite.correction.jsf.controller;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import fr.maboite.correction.jpa.dao.ClientJpaDao;
 import fr.maboite.correction.jpa.dao.PojoJpaDao;
 import fr.maboite.correction.jpa.model.Client;
 import fr.maboite.correction.jpa.model.Order;
@@ -18,6 +20,9 @@ public class MonPremierFaceBean {
 	
 	@Inject
 	private PojoJpaDao pojoJpaDao;
+	
+	@Inject
+	private ClientJpaDao clientJpaDao;
 	
 	@Inject
 	private OrderService orderService;
@@ -43,12 +48,19 @@ public class MonPremierFaceBean {
 		PojoJpa pojoJpa = new PojoJpa();
 		pojoJpa.setNom("Salut");
 		pojoJpa.setAdresse(message);
-		pojoJpaDao.save(pojoJpa);
+		//pojoJpaDao.save(pojoJpa);
+		
+		List<Client> coucou = clientJpaDao.findByIdWithOrders(1l);
+		for (Client client : coucou) {
+			for(Order o : client.getOrders()) {
+				System.out.println(o.getDesignation());
+			}
+		}
+		
 	}
 	
 	public void sauvegardeOrder() {
 		Order order = new Order();
-		order.setClientId(1l);
 		order.setDesignation("commande Web");
 		order.setTypePresta("Bien");
 		Order savedOrder = orderService.save(order);

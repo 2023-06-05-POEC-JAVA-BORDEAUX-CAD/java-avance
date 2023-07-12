@@ -1,10 +1,15 @@
 package fr.maboite.correction.jpa.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -29,6 +34,9 @@ public class Client {
 	private String city;
 	private String country;
 	private Boolean state;
+	
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+	private Set<Order> orders = new HashSet<>();
 	
 	public Long getId() {
 		return id;
@@ -117,5 +125,15 @@ public class Client {
 	public void setState(Boolean state) {
 		this.state = state;
 	}
+
+	public Set<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
+	}
+	
+	
 
 }

@@ -8,10 +8,12 @@ import org.apache.openejb.jee.StatelessBean;
 import org.apache.openejb.jee.jpa.unit.PersistenceUnit;
 import org.apache.openejb.junit5.RunWithApplicationComposer;
 import org.apache.openejb.testing.Configuration;
+import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import fr.maboite.correction.jpa.model.Client;
+import fr.maboite.correction.jpa.model.Order;
 import jakarta.ejb.EJB;
 
 @RunWithApplicationComposer
@@ -20,19 +22,26 @@ public class ClientJpaDaoTest {
 	@EJB
 	private ClientJpaDao clientDao;
 
+	@EJB
+	private OrderJpaDao orderDao;
+
 	@org.apache.openejb.testing.Module
 	public EjbJar beans() {
 		EjbJar ejbJar = new EjbJar("my-beans");
 		ejbJar.addEnterpriseBean(new StatelessBean(ClientJpaDao.class));
+		ejbJar.addEnterpriseBean(new StatelessBean(OrderJpaDao.class));
 		return ejbJar;
 	}
 	
     @org.apache.openejb.testing.Module
     public PersistenceUnit persistence() {
         PersistenceUnit unit = new PersistenceUnit("PersisterPU");
+        unit.setProvider(HibernatePersistenceProvider.class);
         unit.setJtaDataSource("jtaTestDataSource");
         unit.setNonJtaDataSource("jtaTestDataSourceUnManaged");
         unit.addClass(Client.class);
+        unit.addClass(Order.class);
+        unit.setProperty("javax.persistence.schema-generation.database.action","drop-and-create");
         unit.setProperty("openjpa.jdbc.SynchronizeMappings", "buildSchema(ForeignKeys=true)");
         unit.setProperty("openjpa.Log", "DefaultLevel=WARN,Runtime=INFO,Tool=INFO,SQL=TRACE");
         return unit;
@@ -120,6 +129,36 @@ public class ClientJpaDaoTest {
 		
 		//Assert
 		Assertions.assertEquals(2, clients.size());
+	}
+	
+
+    
+	@Test
+	public void testSaveAndLoadWithOrders() throws Exception {
+		
+		//Arrange
+		Client client = new Client();
+		client.setFirstName("Jean");
+		client.setLastName("Dupont");
+		client.setState(Boolean.TRUE);
+		Client savedClient = this.clientDao.save(client);
+		
+		Order order = new Order();
+		order.setDesignation("Commande du client");
+		order.setClient(savedClient);
+		this.orderDao.save(order);
+		
+		client.getOrders().add(order);
+		 
+		//Act
+		List<Client> clients = this.clientDao.findByIdWithOrders(savedClient.getId());
+		
+		//Assert
+		Assertions.assertNotNull(clients);
+		Assertions.assertEquals(1, clients.size());
+		Assertions.assertNotNull(clients.get(0).getOrders());
+		Assertions.assertEquals(1, clients.get(0).getOrders().size());
+		
 	}
 	
 }

@@ -19,7 +19,7 @@
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
 		<sonar.language>java</sonar.language>
-		<openejb.version>9.1.0</openejb.version>
+		<openejb.version>9.0.0</openejb.version>
 	</properties>
 	<build>
 		<!-- Ici sont définis les plugins : les différentes 'petites mains' de 
@@ -203,6 +203,12 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>2.1.214</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.orm</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>6.1.7.Final</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
