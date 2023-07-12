@@ -17,10 +17,14 @@ public class OrderDaoTest {
 	@EJB
 	private OrderDao ordao;
 
+	@EJB
+	private ClientDao clidao;
+
 	@Module
 	public EjbJar beans() {
 		EjbJar ejb = new EjbJar("ordao");
 		ejb.addEnterpriseBean(new StatelessBean(OrderDao.class));
+		ejb.addEnterpriseBean(new StatelessBean(ClientDao.class));
 		return ejb;
 	}
 
@@ -90,5 +94,28 @@ public class OrderDaoTest {
 		assertNotNull(order);
 		assertNotNull(deleted);
 		assertEquals(order.getId(), deleted.getId());
+	}
+
+	@Test
+	public void manytoone() {
+		ClientModel client = ClientDaoTest.clientGenerator();
+		client = clidao.save(client);
+
+		OrderModel order = new OrderModel();
+		order.setTypePresta("testdata");
+		order.setDesignation("testdata");
+		order.setClient(client);
+		order = ordao.save(order);
+
+		OrderModel loaded = ordao.load(order.getId());
+
+		assertNotNull(order);
+		assertNotNull(client);
+		assertNotNull(loaded);
+		assertNotNull(order.getClient());
+		assertNotNull(loaded.getClient());
+
+		assertEquals(loaded.getId(), order.getId());
+		assertEquals(loaded.getClient().getId(), client.getId());
 	}
 }
