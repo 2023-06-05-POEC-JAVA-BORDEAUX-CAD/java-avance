@@ -2,8 +2,8 @@ package fr.maboite;
 
 import org.apache.openejb.jee.EjbJar;
 import org.apache.openejb.jee.StatelessBean;
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import fr.maboite.fabien.TP.test.injectCDI.Pojo;
 import fr.maboite.fabien.TP.test.injectCDI.PojoDao;
