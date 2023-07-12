@@ -1,30 +1,35 @@
 package Florian.TP_entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "clients")
 public class ClientEntity {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	/*@Enumerated(EnumType.ORDINAL)
-	@Column(name = "company_name")
-	private ClientEnum companyName;
-	*/
-	
+	/*
+	 * @Enumerated(EnumType.ORDINAL)
+	 * 
+	 * @Column(name = "company_name") private ClientEnum companyName;
+	 */
+
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+	private List<OrderEntity> orders;
+
 	@Column(name = "company_name")
 	private String companyName;
-	 
 
 	@Column(name = "first_name")
 	private String firstName;
@@ -37,24 +42,24 @@ public class ClientEntity {
 
 	@Column
 	private String phone;
-	
+
 	@Column
 	private String adress;
-	
+
 	@Column(name = "zip_code")
 	private String zipCode;
-	
+
 	@Column
 	private String city;
-	
+
 	@Column
 	private String country;
-	
+
 	@Column
 	private Integer state;
 
-	//Getter setters
-	
+	// Getter setters
+
 	public Integer getId() {
 		return id;
 	}
@@ -62,16 +67,22 @@ public class ClientEntity {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	/*public ClientEnum getCompanyName() {
-		return companyName;
+
+	/*
+	 * public ClientEnum getCompanyName() { return companyName; }
+	 * 
+	 * public void setCompanyName(ClientEnum companyName) { this.companyName =
+	 * companyName; }
+	 */
+
+	public List<OrderEntity> getOrders() {
+		return orders;
 	}
 
-	public void setCompanyName(ClientEnum companyName) {
-		this.companyName = companyName;
-	}*/
-	
-	
+	public void setOrders(List<OrderEntity> orders) {
+		this.orders = orders;
+	}
+
 	public String getCompanyName() {
 		return companyName;
 	}
@@ -79,8 +90,7 @@ public class ClientEntity {
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
-	
-	
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -151,5 +161,5 @@ public class ClientEntity {
 
 	public void setState(Integer state) {
 		this.state = state;
-	}		
+	}
 }

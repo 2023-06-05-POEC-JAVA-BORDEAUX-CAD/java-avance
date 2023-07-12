@@ -2,11 +2,12 @@ package Florian.TP_entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,20 +17,26 @@ public class OrderEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	/*@Enumerated(EnumType.STRING)
-	@Column(name = "type_presta")
-	private OrderEnum typePresta;
-	*/
-	
+
+	/*
+	 * @Enumerated(EnumType.STRING)
+	 * 
+	 * @Column(name = "type_presta") private OrderEnum typePresta;
+	 */
+
 	@Column(name = "type_presta", length = 40, nullable = false)
-	private String typePresta;	
+	private String typePresta;
 
 	@Column(length = 90, nullable = false)
 	private String designation;
 
-	@Column(name = "client_id", nullable = false)
-	private Integer clientId;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "client_id")
+	private ClientEntity client;
+
+	/*
+	 * @Column(name = "client_id", nullable = false) private Integer clientId;
+	 */
 
 	@Column(name = "nb_days")
 	private Integer nbDays;
@@ -48,15 +55,14 @@ public class OrderEntity {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	/*public OrderEnum getTypePresta() {
-		return typePresta;
-	}
 
-	public void setTypePresta(OrderEnum typePresta) {
-		this.typePresta = typePresta;
-	}*/
-	
+	/*
+	 * public OrderEnum getTypePresta() { return typePresta; }
+	 * 
+	 * public void setTypePresta(OrderEnum typePresta) { this.typePresta =
+	 * typePresta; }
+	 */
+
 	public String getTypePresta() {
 		return typePresta;
 	}
@@ -73,13 +79,19 @@ public class OrderEntity {
 		this.designation = designation;
 	}
 
-	public Integer getClientId() {
-		return clientId;
+	public ClientEntity getClient() {
+		return client;
 	}
 
-	public void setClientId(Integer clientId) {
-		this.clientId = clientId;
+	public void setClient(ClientEntity client) {
+		this.client = client;
 	}
+
+	/*
+	 * public Integer getClientId() { return clientId; }
+	 * 
+	 * public void setClientId(Integer clientId) { this.clientId = clientId; }
+	 */
 
 	public Integer getNbDays() {
 		return nbDays;

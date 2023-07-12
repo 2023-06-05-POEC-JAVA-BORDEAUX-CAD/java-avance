@@ -2,10 +2,8 @@ package Florian;
 
 import Florian.TP_entity.ClientEntity;
 import Florian.TP_entity.OrderEntity;
-import Florian.TP_entity.OrderEnum;
 import Florian.TP_entity.OrderService;
 import Florian.TP_entity.ClientEntityService;
-import Florian.TP_entity.ClientEnum;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -73,7 +71,8 @@ public class ClientFaceBean {
 		//order.setTypePresta(OrderEnum.FORMATION);
 		order.setTypePresta("Formation");
 		order.setDesignation("test");
-		order.setClientId(1);
+		//order.setClient(null);
+		//order.setClientId(1);
 		OrderEntity savedOrder = orderService.save(order);
 		
 		OrderEntity loadedOrder = orderService.load(savedOrder.getId());
