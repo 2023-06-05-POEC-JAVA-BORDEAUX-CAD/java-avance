@@ -1,6 +1,7 @@
 package fr.noellie.jsf.controller;
 
 import fr.noellie.jpa.dao.OrderJPADao;
+import fr.noellie.jpa.model.ClientJPA;
 import fr.noellie.jpa.model.EtatCommande;
 import fr.noellie.jpa.model.OrderJPA;
 import jakarta.enterprise.context.RequestScoped;
@@ -13,6 +14,7 @@ public class MonPremierFaceBean {
 
 	@Inject
 	private OrderJPADao orderJPADao;
+	private ClientJPA client;
 
 	private String message = "Ce message vient du controller MonPremierFaceBean";
 
@@ -24,7 +26,7 @@ public class MonPremierFaceBean {
 		OrderJPA orderJPA = new OrderJPA();
 		orderJPA.setTypePresta("Test Enum");
 		orderJPA.setDesignation("Test Enum");
-		orderJPA.setClientId(3);
+		orderJPA.setClient(client);
 		orderJPA.setState(EtatCommande.CANCELLED);
 		OrderJPA savedOrder = orderJPADao.save(orderJPA);
 
