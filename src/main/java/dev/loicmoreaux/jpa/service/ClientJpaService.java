@@ -28,9 +28,9 @@ public class ClientJpaService {
 	 * @param id
 	 * @return Client
 	 */
-	public ClientJpa load(Integer id) {
+	public ClientJpa getClientById(Integer id) {
 		System.out.println("Search Client by id = " + id + " into Database");
-		return clientDAO.load(id);
+		return clientDAO.getClientById(id);
 	}
 	
 	/**

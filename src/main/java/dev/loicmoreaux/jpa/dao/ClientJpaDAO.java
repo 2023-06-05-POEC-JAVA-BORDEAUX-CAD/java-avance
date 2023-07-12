@@ -25,12 +25,12 @@ public class ClientJpaDAO {
 	 * @param id
 	 * @return Client
 	 */
-	public ClientJpa load(Integer id) {
+	public ClientJpa getClientById(Integer id) {
 		return this.entityManager.find(ClientJpa.class, id);
 	}
 	
 	public void delete(Integer id) {
-		ClientJpa client = this.load(id);
+		ClientJpa client = this.getClientById(id);
 		if(client != null) {
 			this.entityManager.remove(client);
 		}

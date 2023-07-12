@@ -9,7 +9,7 @@
 
 <h:head>
 	<title>Order</title>
-	<link rel="stylesheet" href="assets/style-tpjsf.css" />
+	<link rel="stylesheet" href="assets/style.css" />
 </h:head>
 <h:body>
 	<main>
@@ -70,7 +70,15 @@
 			    </h:selectOneMenu>
 			</div>
 			<h:commandButton value="Sauvegarder" action="#{orderJpaFaceBean.save}" class="button"/>
-		</h:form>		
+		</h:form>
+		
+		<section class="section-view">
+			<h2>Liste des orders</h2>
+			
+			<p>#{orderJpaFaceBean.getAllOrders()}</p>
+			
+			<p>#{orderJpaFaceBean.load()}</p>
+		</section>		
 	</main>
 </h:body>
 </html>

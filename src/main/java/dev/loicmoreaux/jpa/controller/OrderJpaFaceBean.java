@@ -32,8 +32,13 @@ public class OrderJpaFaceBean {
 		System.out.println("sauvegarde de order dans la BDD");
 	}
 	
-	public void load() {
+	public String load() {
 		String order = orderService.load(1).toString();
-		System.out.println(order);		
+		System.out.println(order);
+		return order;
+	}
+	
+	public String getAllOrders() {
+		return "";
 	}
 }

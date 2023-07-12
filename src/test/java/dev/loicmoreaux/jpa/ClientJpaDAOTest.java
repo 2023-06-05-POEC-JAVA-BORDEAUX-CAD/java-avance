@@ -80,7 +80,7 @@ public class ClientJpaDAOTest {
 		Integer savedClientId = savedClient.getId();
 		
 		//Act
-		ClientJpa loadedClient = this.clientJpaDAO.load(savedClientId);
+		ClientJpa loadedClient = this.clientJpaDAO.getClientById(savedClientId);
 		
 		//Assert
 		Assertions.assertNotNull(loadedClient);
@@ -99,7 +99,7 @@ public class ClientJpaDAOTest {
 		
 		//Act
 		this.clientJpaDAO.delete(savedClientId);
-		ClientJpa deletedClient = this.clientJpaDAO.load(savedClientId);
+		ClientJpa deletedClient = this.clientJpaDAO.getClientById(savedClientId);
 		
 		//Assert
 		Assertions.assertNull(deletedClient);
