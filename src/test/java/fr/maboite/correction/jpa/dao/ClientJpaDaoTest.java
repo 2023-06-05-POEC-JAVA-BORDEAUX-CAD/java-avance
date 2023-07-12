@@ -1,5 +1,6 @@
 package fr.maboite.correction.jpa.dao;
 
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.openejb.jee.EjbJar;
@@ -99,6 +100,26 @@ public class ClientJpaDaoTest {
 		//Assert
 		Client loadedClient = this.clientDao.load(savedClient.getId());
 		Assertions.assertNull(loadedClient);
+	}
+    
+	@Test
+	public void testSave2ClientsAndFindByCompanyName() throws Exception {
+		
+		//Arrange
+		Client client1 = new Client();
+		String companyName = "World Company";
+		client1.setCompanyName(companyName);
+		this.clientDao.save(client1);
+		
+		Client client2 = new Client();
+		client2.setCompanyName(companyName);
+		this.clientDao.save(client2);
+		
+		//Act
+		List<Client> clients = this.clientDao.findByCompanyName(companyName);
+		
+		//Assert
+		Assertions.assertEquals(2, clients.size());
 	}
 	
 }

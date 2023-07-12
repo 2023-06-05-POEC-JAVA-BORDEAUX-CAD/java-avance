@@ -6,6 +6,7 @@ import fr.maboite.correction.jpa.model.Order;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 /**
@@ -54,9 +55,19 @@ public class OrderJpaDao {
 		}
 		this.entityManager.remove(savedEntity);
 	}
+	
+	public void deleteJpql(Long id) {
+		Query jpqlQuery = this.entityManager.createQuery(
+				"delete o "
+				+ " from Order o "
+				+ " where o.id = :id");
+		jpqlQuery.setParameter("id", id);
+		jpqlQuery.executeUpdate();
+	}
 
 	/**
-	 * Renvoie tous les Order dont la désignation vaut designation
+	 * Renvoie tous les Order dont la désignation vaut designation. Inutile
+	 * car this.entityManager.find(...) propose déjà cette fonctionnalité.
 	 * 
 	 * @param argumentDeMethodedesignation
 	 * @return
@@ -65,7 +76,7 @@ public class OrderJpaDao {
 		TypedQuery<Order> jpqlQuery = this.entityManager.createQuery(
 				"select o "
 				+ " from Order o "
-				+ " where o.designation = :parametreDeRequeteDesignation", Order.class);
+				+ " where o.designation = :parametreDeRequeteDesignation ", Order.class);
 		jpqlQuery.setParameter("parametreDeRequeteDesignation", argumentDeMethodedesignation);
 		return jpqlQuery.getResultList();
 	}

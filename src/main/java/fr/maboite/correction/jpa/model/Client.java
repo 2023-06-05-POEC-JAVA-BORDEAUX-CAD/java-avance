@@ -29,7 +29,7 @@ public class Client {
 	private String city;
 	private String country;
 	private Boolean state;
-
+	
 	public Long getId() {
 		return id;
 	}

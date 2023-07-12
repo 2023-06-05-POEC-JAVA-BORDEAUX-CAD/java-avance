@@ -205,12 +205,5 @@
 			<version>2.1.214</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- Implémentation de JPA pour les tests-->
-		<dependency>
-			<groupId>org.apache.openjpa</groupId>
-			<artifactId>openjpa</artifactId>
-			<version>3.2.2</version>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 </project>
