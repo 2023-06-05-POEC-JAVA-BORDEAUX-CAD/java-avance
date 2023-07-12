@@ -26,7 +26,7 @@ public class ClientDaoTest {
 		return ejb;
 	}
 
-	public ClientModel clientGenerator() {
+	static public ClientModel clientGenerator() {
 		String[] compname = { "Axa", "Total", "BNP", "Carrefour", "EDF" };
 		String[] firstname = { "Marie", "Julie", "Joris", "Olaf", "Dolfi" };
 		String[] lastname = { "Radolf", "Guerric", "Dionisio", "Kesari" };
@@ -75,7 +75,7 @@ public class ClientDaoTest {
 
 	@Test
 	public void save() {
-		ClientModel client = clientGenerator();
+		ClientModel client = ClientDaoTest.clientGenerator();
 		ClientModel saved = clidao.save(client);
 
 		assertNotNull(client);
@@ -95,7 +95,7 @@ public class ClientDaoTest {
 
 	@Test
 	public void load() {
-		ClientModel client = clientGenerator();
+		ClientModel client = ClientDaoTest.clientGenerator();
 		client = clidao.save(client);
 
 		ClientModel saved = clidao.load(client.getId());
@@ -107,7 +107,7 @@ public class ClientDaoTest {
 
 	@Test
 	public void delete() {
-		ClientModel client = clientGenerator();
+		ClientModel client = ClientDaoTest.clientGenerator();
 		client = clidao.save(client);
 
 		ClientModel deleted = clidao.delete(client.getId());
@@ -120,7 +120,7 @@ public class ClientDaoTest {
 	@Test
 	public void getAllByCompanyNameTest() {
 		for (int i = 0; i < 5; i++) {
-			ClientModel client = clientGenerator();
+			ClientModel client = ClientDaoTest.clientGenerator();
 			if (i < 3) {
 				client.setCompanyName("CUSTOM NAME");
 			}
