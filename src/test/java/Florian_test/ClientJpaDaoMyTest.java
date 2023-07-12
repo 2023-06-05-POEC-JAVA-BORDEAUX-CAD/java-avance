@@ -11,8 +11,8 @@ import org.apache.openejb.testing.Configuration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import Florian.TP_entity.ClientEntityDao;
 import Florian.TP_entity.ClientEntity;
+import Florian.TP_entity.ClientEntityDao;
 import jakarta.ejb.EJB;
 
 @RunWithApplicationComposer
