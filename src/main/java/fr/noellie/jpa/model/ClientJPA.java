@@ -2,6 +2,8 @@ package fr.noellie.jpa.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,7 +38,8 @@ public class ClientJPA {
 
 	private String country;
 
-	private Integer state;
+	@Enumerated(EnumType.STRING)
+	private EtatClient state;
 
 	public Long getId() {
 		return Id;
@@ -78,7 +81,7 @@ public class ClientJPA {
 		return country;
 	}
 
-	public Integer getState() {
+	public EtatClient getState() {
 		return state;
 	}
 
@@ -122,7 +125,7 @@ public class ClientJPA {
 		this.country = country;
 	}
 
-	public void setState(Integer state) {
+	public void setState(EtatClient state) {
 		this.state = state;
 	}
 

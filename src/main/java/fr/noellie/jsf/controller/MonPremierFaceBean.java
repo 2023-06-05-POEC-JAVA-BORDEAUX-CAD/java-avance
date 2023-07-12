@@ -22,15 +22,15 @@ public class MonPremierFaceBean {
 
 	public void sauvegardeOrderJPA() {
 		OrderJPA orderJPA = new OrderJPA();
-		orderJPA.setTypePresta("Conférence");
-		orderJPA.setDesignation("IA & avenir du développement");
-		orderJPA.setClientId(1);
-		orderJPA.setState(EtatCommande.CONFIRMED);
+		orderJPA.setTypePresta("Test Enum");
+		orderJPA.setDesignation("Test Enum");
+		orderJPA.setClientId(3);
+		orderJPA.setState(EtatCommande.CANCELLED);
 		OrderJPA savedOrder = orderJPADao.save(orderJPA);
 
 		OrderJPA loadedOrder = orderJPADao.load(savedOrder.getId());
 		System.out.println("En base, j'ai un order dont l'id est " + loadedOrder.getId() + " et la désignation : "
-				+ loadedOrder.getDesignation());
+				+ loadedOrder.getDesignation() + " et dont le statut est " + loadedOrder.getState().toString());
 	}
 
 }

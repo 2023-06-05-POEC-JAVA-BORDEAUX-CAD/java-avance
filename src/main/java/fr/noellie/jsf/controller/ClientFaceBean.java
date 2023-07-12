@@ -2,6 +2,7 @@ package fr.noellie.jsf.controller;
 
 import fr.noellie.jpa.dao.ClientJPADao;
 import fr.noellie.jpa.model.ClientJPA;
+import fr.noellie.jpa.model.EtatClient;
 import fr.noellie.jsf.service.ClientServiceTPJSF;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -61,16 +62,16 @@ public class ClientFaceBean {
 	
 	public void sauvegardeClientJPA() {
 		ClientJPA clientJPA = new ClientJPA();
-		clientJPA.setCompanyName("Sopra Steria");
-		clientJPA.setFirstName("Michel");
-		clientJPA.setLastName("Drücker");
-		clientJPA.setEmail("michel.drucker@mail.fr");
+		clientJPA.setCompanyName("France Télévisions");
+		clientJPA.setFirstName("Faustine");
+		clientJPA.setLastName("Bollaërt");
+		clientJPA.setEmail("faustine.bollaert@mail.fr");
 		clientJPA.setPhone("06 06 06 06 06");
-		clientJPA.setAdress("123 Rue des Lilas");
-		clientJPA.setZipCode("75002");
-		clientJPA.setCity("Paris");
+		clientJPA.setAdress("150 Rue des Roses");
+		clientJPA.setZipCode("06000");
+		clientJPA.setCity("Nice");
 		clientJPA.setCountry("France");
-		clientJPA.setState(0);
+		clientJPA.setState(EtatClient.ACTIVE);
 		ClientJPA savedClient = clientJPADao.save(clientJPA);
 		
 		ClientJPA loadedClient = clientJPADao.load(savedClient.getId());

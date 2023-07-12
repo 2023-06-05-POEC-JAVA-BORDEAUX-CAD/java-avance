@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import fr.noellie.jpa.dao.ClientJPADao;
 import fr.noellie.jpa.model.ClientJPA;
+import fr.noellie.jpa.model.EtatClient;
 import jakarta.ejb.EJB;
 
 @RunWithApplicationComposer
@@ -65,7 +66,7 @@ public class ClientJPADaoTest {
 		clientJPA.setZipCode("75002");
 		clientJPA.setCity("Paris");
 		clientJPA.setCountry("France");
-		clientJPA.setState(0);
+		clientJPA.setState(EtatClient.INACTIVE);
 		
 		// Act
 		ClientJPA savedClient = clientJPADao.save(clientJPA);
@@ -93,7 +94,7 @@ public class ClientJPADaoTest {
 		clientJPA.setZipCode("64100");
 		clientJPA.setCity("Bayonne");
 		clientJPA.setCountry("France");
-		clientJPA.setState(1);
+		clientJPA.setState(EtatClient.ACTIVE);
 
 		// Act
 		ClientJPA savedClient = clientJPADao.save(clientJPA);
