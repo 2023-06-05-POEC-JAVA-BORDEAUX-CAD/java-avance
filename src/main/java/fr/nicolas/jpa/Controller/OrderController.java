@@ -42,22 +42,11 @@ public class OrderController {
 		} else {
 			try {
 				
-				Order nOrder = new Order();
-				nOrder.setDesignation("Angular");
-				nOrder.setTypePresta("Formation");
-				nOrder.setClientId(1);
-				
-				this.orderService.save(nOrder);
-				
 				this.orders = this.orderService.getAllOrders();
 				for(Order order: this.orders) {
 					String sId = String.valueOf(order.getId());
 					this.ordersIds.put("Command N° : " + sId,"1");
-				}
-				
-				Integer orderTODeleteID = this.orders.get(1).getId();
-				this.orderService.deleteById(orderTODeleteID);
-				
+				}		
 				
 			} catch(NullPointerException e) {
 				System.out.println("Null object in controller layer at orders " + e.getMessage());

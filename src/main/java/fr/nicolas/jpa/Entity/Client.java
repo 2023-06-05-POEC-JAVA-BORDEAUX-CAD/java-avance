@@ -1,6 +1,5 @@
 package fr.nicolas.jpa.Entity;
 
-import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

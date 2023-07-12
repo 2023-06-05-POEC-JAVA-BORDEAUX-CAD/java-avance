@@ -88,6 +88,7 @@ public class ClientDAOTest {
 		
 		Assertions.assertNotNull(savedClient.getOrders());
 		Assertions.assertEquals(designation, savedClient.getCompanyName());
+		Assertions.assertEquals(1,savedClient.getId());
 		Assertions.assertEquals(1, savedClient.getOrders().size());
 	}
 	

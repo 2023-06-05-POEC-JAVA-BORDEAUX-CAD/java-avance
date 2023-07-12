@@ -49,23 +49,11 @@ public class ClientController2 {
 		} else {
 			try {
 				
-				Client nclient = new Client();
-				nclient.setCompanyName("EDF");
-				nclient.setFirstName("Julien");
-				nclient.setLastName("Leperse");
-				nclient.setEmail("julien.leperse@edf.com");
-				
-				this.clientService.save(nclient);
-				
 				this.clients = this.clientService.getAllClients();
 				for(Client client: this.clients) {
 					String sId = String.valueOf(client.getId());
 					this.clientsIds.put("Command N° : " + sId,"1");
-				}
-				
-				Integer clientTODeleteID = this.clients.get(1).getId();
-				this.clientService.deleteById(clientTODeleteID);
-				
+				}				
 				
 			} catch(NullPointerException e) {
 				System.out.println("Null object in controller layer at clients " + e.getMessage());

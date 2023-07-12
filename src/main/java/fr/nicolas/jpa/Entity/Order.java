@@ -29,9 +29,6 @@ public class Order {
 	private String typePresta;
 	
 	private String designation;
-	
-	@Column(name="client_id")
-	private Integer clientId;	
 
 	@Enumerated(EnumType.STRING)
     private Status status;
@@ -48,10 +45,6 @@ public class Order {
 		return designation;
 	}
 
-	public Integer getClientId() {
-		return clientId;
-	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -62,10 +55,6 @@ public class Order {
 
 	public void setDesignation(String designation) {
 		this.designation = designation;
-	}
-
-	public void setClientId(Integer clientId) {
-		this.clientId = clientId;
 	}
 
 	public Status getStatus() {
