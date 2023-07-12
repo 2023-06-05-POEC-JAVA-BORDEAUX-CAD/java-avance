@@ -6,6 +6,7 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 
 @Stateless
 public class ClientEntityDao {
@@ -42,11 +43,11 @@ public class ClientEntityDao {
 	 * @return
 	 */
 	public List<ClientEntity> findByCompanyName(String companyName) {
-		Query jpqlQuery = this.entityManager.createQuery(
+		TypedQuery<ClientEntity> jpqlQuery = this.entityManager.createQuery(
 				"select c "
 				+ " from ClientEntity c "
-				+ " where c.companyName = : M2i Formation", ClientEntity.class);
-		jpqlQuery.setParameter("M2i Formation", companyName);
+				+ " where c.companyName = :companyName", ClientEntity.class);
+		jpqlQuery.setParameter("companyName", companyName);
 		return jpqlQuery.getResultList();
 	}
 }
