@@ -17,30 +17,30 @@
 		
 		<h:form class="form">
 			<div class="form-group">
-				<label for="company_name" >Nom de l'entreprise :</label>
+				<label for="companyName" >Nom de l'entreprise :</label>
 				<h:inputText
-					id="company_name"
+					id="companyName"
 					type="text"
 					placeholder="Entrer le nom de l'entreprise"
-					value="#{clientJpaFaceBean.client.company_name}"
+					value="#{clientJpaFaceBean.client.companyName}"
 				/>
 			</div>
 			<div class="form-group">
-				<label for="first_name" >Prénom :</label>
+				<label for="firstName" >Prénom :</label>
 				<h:inputText
-					id="first_name"
+					id="firstName"
 					type="text"
 					placeholder="Entrer le prénom"
-					value="#{clientJpaFaceBean.client.first_name}"
+					value="#{clientJpaFaceBean.client.firstName}"
 				/>
 			</div>
 			<div class="form-group">
-				<label for="last_name" >Nom :</label>
+				<label for="lastName" >Nom :</label>
 				<h:inputText
-					id="last_name"
+					id="lastName"
 					type="text"
 					placeholder="Entrer le nom"
-					value="#{clientJpaFaceBean.client.last_name}"
+					value="#{clientJpaFaceBean.client.lastName}"
 				/>
 			</div>
 			<div class="form-group">
@@ -71,12 +71,12 @@
 				/>
 			</div>
 			<div class="form-group">
-				<label for="zip_code" >Code postal :</label>
+				<label for="zipCode" >Code postal :</label>
 				<h:inputText
-					id="zip_code"
+					id="zipCode"
 					type="text"
 					placeholder="Entrer le code postal"
-					value="#{clientJpaFaceBean.client.zip_code}"
+					value="#{clientJpaFaceBean.client.zipCode}"
 				/>
 			</div>
 			<div class="form-group">
@@ -110,7 +110,22 @@
 		<section class="section-view">
 			<h2>Liste des clients</h2>
 			
-			<p>#{clientJpaFaceBean.getAllClients()}</p>
+			<table>
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Nom Entreprise</th>
+						<th>Prénom</th>
+						<th>Nom</th>
+						<th>Téléphone</th>
+						<th>Ville</th>
+						<th>Statut</th>
+					</tr>
+				</thead>
+				<tbody>
+					<h:outputText value="#{clientJpaFaceBean.getClients()}" escape="false" />		
+				</tbody>
+			</table>
 		</section>
 				
 	</main>
