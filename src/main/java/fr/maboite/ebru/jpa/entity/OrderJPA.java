@@ -4,9 +4,12 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,10 +25,20 @@ public class OrderJPA {
 
 	@Column(name = "designation")
 	private String designation;
-
-	@Column(name = "client_id")
-	private Integer client_id;
 	
+	@JoinColumn(name="client_id")
+	@ManyToOne(fetch=FetchType.EAGER)
+	private ClientJPA client;
+
+	
+	public ClientJPA getClient() {
+		return client;
+	}
+
+	public void setClient(ClientJPA client) {
+		this.client = client;
+	}
+
 	@Column(name="state")
 	@Enumerated(EnumType.ORDINAL) // ici on choisit ORDINAL car on veut recuperer un Integer recupere l index des options: ici: 0 , 1 ou 2
 	private EtatCommande etat; // EtatCommande est un primitif
@@ -45,7 +58,9 @@ public class OrderJPA {
 
 	public void setId(Integer id) {
 		this.id = id;
+	
 	}
+
 
 	public String getType() {
 		return type_presta;
@@ -63,12 +78,6 @@ public class OrderJPA {
 		this.designation = designation;
 	}
 
-	public Integer getClient_id() {
-		return client_id;
-	}
-
-	public void setClient_id(Integer client_id) {
-		this.client_id = client_id;
-	}
+	
 
 }

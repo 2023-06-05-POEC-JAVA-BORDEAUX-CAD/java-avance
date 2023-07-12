@@ -1,12 +1,16 @@
 package fr.maboite.ebru.jpa.entity;
 
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -52,6 +56,17 @@ public class ClientJPA {
 
 	@Column(name = "country")
 	private String country;
+	
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+	private Set<OrderJPA> orders; 
+
+	public Set<OrderJPA> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<OrderJPA> orders) {
+		this.orders = orders;
+	}
 
 	@Column(name = "state")
 	@Enumerated(EnumType.STRING) //  recupere la valeur qui est en String

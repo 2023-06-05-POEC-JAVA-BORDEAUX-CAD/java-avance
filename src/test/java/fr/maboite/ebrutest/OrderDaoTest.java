@@ -11,9 +11,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import fr.maboite.ebru.jpa.entity.OrderJPA;
-import fr.maboite.correction.jpa.model.PojoJpa;
+
+import fr.maboite.ebru.jpa.entity.ClientJpaDao;
 import fr.maboite.ebru.jpa.entity.OrderDao;
 import jakarta.ejb.EJB;
+import fr.maboite.ebru.jpa.entity.ClientJPA;
 
 @RunWithApplicationComposer
 public class OrderDaoTest {
@@ -21,10 +23,14 @@ public class OrderDaoTest {
 	@EJB
 	private OrderDao orderDao;
 
+	@EJB
+	private ClientJpaDao clientDao;
+
 	@org.apache.openejb.testing.Module
 	public EjbJar beans() {
 		EjbJar ejbJar = new EjbJar("my-beans");
 		ejbJar.addEnterpriseBean(new StatelessBean(OrderDao.class));
+		ejbJar.addEnterpriseBean(new StatelessBean(ClientJpaDao.class));
 		return ejbJar;
 	}
 
@@ -59,7 +65,7 @@ public class OrderDaoTest {
 
 		orderJpa.setType("Formation");
 		orderJpa.setDesignation("Angular init");
-		orderJpa.setClient_id(2);
+		// orderJpa.setClient_id(2);
 
 		// Act
 		OrderJPA testsaveJpa = orderDao.save(orderJpa);
@@ -71,11 +77,11 @@ public class OrderDaoTest {
 
 		Assertions.assertNotNull(testsaveJpa.getType());
 		Assertions.assertNotNull(testsaveJpa.getDesignation());
-		Assertions.assertNotNull(testsaveJpa.getClient_id());
+		// Assertions.assertNotNull(testsaveJpa.getClient_id());
 
 		Assertions.assertEquals(orderJpa.getType(), testsaveJpa.getType());
 		Assertions.assertEquals(orderJpa.getDesignation(), testsaveJpa.getDesignation());
-		Assertions.assertEquals(orderJpa.getClient_id(), testsaveJpa.getClient_id());
+		// Assertions.assertEquals(orderJpa.getClient_id(), testsaveJpa.getClient_id());
 
 		// on peut mettre directement le nom de type, designation ou client id au lieu
 		// de orderJpa.get...
@@ -91,17 +97,43 @@ public class OrderDaoTest {
 
 		orderJpa.setType("Formation");
 		orderJpa.setDesignation("Angular init");
-		orderJpa.setClient_id(2);
-		OrderJPA saveorder=orderDao.save(orderJpa);
-		
+		// orderJpa.setClient_id(2);
+		OrderJPA saveorder = orderDao.save(orderJpa);
 
 		// Act
 		OrderJPA testloadJpa = orderDao.load(saveorder.getId());
-		
+
 		Assertions.assertNotNull(testloadJpa);
 		Assertions.assertEquals(orderJpa.getType(), testloadJpa.getType());
-		
-		
+
+	}
+
+	@Test
+	public void testSaveAndLoad() throws Exception {
+
+		// Arrange
+
+		// on sauvegarde client
+		ClientJPA client = new ClientJPA();
+		ClientJPA savedClient = this.clientDao.save(client);
+
+		// on rattache à un order le client sauvegardé
+
+		OrderJPA orderJpa = new OrderJPA();
+
+		orderJpa.setClient(savedClient);
+
+		// sauvegarder
+
+		OrderJPA savedOrder = this.orderDao.save(orderJpa);
+
+		// Act
+		OrderJPA loadedOrder = orderDao.load(savedOrder.getId());
+
+		//Assert
+		Assertions.assertNotNull(loadedOrder);
+		Assertions.assertNotNull(savedOrder.getClient());
+
 	}
 
 }
