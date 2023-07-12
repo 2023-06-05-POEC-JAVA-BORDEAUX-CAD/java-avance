@@ -1,14 +1,12 @@
 package fr.maboite.correction.jpa.dao;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import fr.maboite.correction.jpa.model.Order;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 
 /**
  * Data Access Object: classe permettant d'accéder en lecture ou écriture au
@@ -64,7 +62,7 @@ public class OrderJpaDao {
 	 * @return
 	 */
 	public List<Order> findByDesignation(String argumentDeMethodedesignation) {
-		Query jpqlQuery = this.entityManager.createQuery(
+		TypedQuery<Order> jpqlQuery = this.entityManager.createQuery(
 				"select o "
 				+ " from Order o "
 				+ " where o.designation = :parametreDeRequeteDesignation", Order.class);
