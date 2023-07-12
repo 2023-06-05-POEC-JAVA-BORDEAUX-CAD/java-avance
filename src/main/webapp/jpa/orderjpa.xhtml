@@ -22,7 +22,7 @@
 					id="typePresta"
 					type="text"
 					placeholder="Entrer le type de la prestation"
-					value="#{orderFaceBean.order.typePresta}"
+					value="#{orderJpaFaceBean.order.typePresta}"
 				/>
 			</div>
 			<div class="form-group">
@@ -31,7 +31,7 @@
 					id="designation"
 					type="text"
 					placeholder="Entrer la designation"
-					value="#{orderFaceBean.order.designation}"
+					value="#{orderJpaFaceBean.order.designation}"
 				/>
 			</div>
 			<div class="form-group">
@@ -40,7 +40,7 @@
 					id="clientId"
 					type="text"
 					placeholder="Entrer l'id client"
-					value="#{orderFaceBean.order.clientId}"
+					value="#{orderJpaFaceBean.order.clientId}"
 				/>
 			</div>
 			<div class="form-group">
@@ -49,7 +49,7 @@
 					id="nbDays"
 					type="number"
 					placeholder="Entrer le nombre de jours"
-					value="#{orderFaceBean.order.nbDays}"
+					value="#{orderJpaFaceBean.order.nbDays}"
 				/>
 			</div>
 			<div class="form-group">
@@ -58,18 +58,18 @@
 					id="unitPrice"
 					type="number"
 					placeholder="Entrer le prix unitaire"
-					value="#{orderFaceBean.order.unitPrice}"
+					value="#{orderJpaFaceBean.order.unitPrice}"
 				/>
 			</div>
 			<div class="form-group">
 				<label for="state" >Statut :</label>
-				<h:selectOneMenu value="#{orderFaceBean.order.state}" >
-			        <f:selectItem itemValue="#{dev.loicmoreaux.jpa.model.StateOrder.CANCELED}" itemLabel="Canceled" />
-			        <f:selectItem itemValue="#{dev.loicmoreaux.jpa.model.StateOrder.OPTION}" itemLabel="Option" />
-			        <f:selectItem itemValue="#{dev.loicmoreaux.jpa.model.StateOrder.CONFIRMED}" itemLabel="Confirmed" />
+				<h:selectOneMenu value="#{orderJpaFaceBean.order.state}" >
+			        <f:selectItem itemValue="0" itemLabel="Canceled" />
+			        <f:selectItem itemValue="1" itemLabel="Option" />
+			        <f:selectItem itemValue="2" itemLabel="Confirmed" />
 			    </h:selectOneMenu>
 			</div>
-			<h:commandButton value="Sauvegarder" action="#{orderFaceBean.save}" class="button"/>
+			<h:commandButton value="Sauvegarder" action="#{orderJpaFaceBean.save}" class="button"/>
 		</h:form>		
 	</main>
 </h:body>

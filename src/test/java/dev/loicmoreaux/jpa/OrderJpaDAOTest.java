@@ -62,7 +62,6 @@ public class OrderJpaDAOTest {
 		order.setTypePresta(typePrestaOrder);
 		order.setDesignation(designationOrder);
 		order.setClientId(clientIdOrder);
-		order.setState(StateOrder.CONFIRMED);
 		
 		//Act
 		OrderJpa savedOrder = this.orderJpaDAO.save(order);

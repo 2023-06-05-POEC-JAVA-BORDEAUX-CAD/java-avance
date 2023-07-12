@@ -36,9 +36,9 @@ public class OrderJpa {
 	private Float unitPrice = null;
 	
 	@Basic(optional = true)
-	@Enumerated(EnumType.ORDINAL)
-	private StateOrder state = null;
-	//private Integer state = null;
+	//@Enumerated(EnumType.ORDINAL)
+	//private StateOrder state = null;
+	private Integer state = null;
 	
 	/*
 	 * Getters and Setters
@@ -91,19 +91,19 @@ public class OrderJpa {
 		this.unitPrice = unitPrice;
 	}
 
-	public StateOrder getState() {
+	/*public StateOrder getState() {
 		return state;
 	}
 
 	public void setState(StateOrder state) {
 		this.state = state;
-	}
+	}*/
 	
-	/*public Integer getState() {
+	public Integer getState() {
 		return state;
 	}
 	
 	public void setState(Integer state) {
 		this.state = state;
-	}*/
+	}
 }
