@@ -7,6 +7,7 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 
 @Stateless
 public class ClientJPADao {
@@ -33,7 +34,7 @@ public class ClientJPADao {
 	public ClientJPA load(Long id) {
 		return this.entityManager.find(ClientJPA.class, id);
 	}
-	
+
 	/**
 	 * Supprime client par son id. Ne fait rien si id == null ou si aucun client n'a
 	 * l'id en base de données.
@@ -59,10 +60,8 @@ public class ClientJPADao {
 	 * @return
 	 */
 	public List<ClientJPA> findByCompanyName(String companyName) {
-		Query createQuery = this.entityManager.createQuery(
-				"select c " 
-				+ "from ClientJPA c " 
-				+ "where c.companyName = :company_name");
+		TypedQuery<ClientJPA> createQuery = this.entityManager.createQuery(
+				"select c " + "from ClientJPA c " + "where c.companyName = :company_name", ClientJPA.class);
 		createQuery.setParameter("company_name", companyName);
 		return createQuery.getResultList();
 	}

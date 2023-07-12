@@ -7,6 +7,7 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 
 /**
  * Data Access Object: classe permettant d'accéder en lecture ou écriture au
@@ -63,8 +64,8 @@ public class OrderJPADao {
 	 * @return
 	 */
 	public List<OrderJPA> findByDesignation(String designation) {
-		Query createQuery = this.entityManager
-				.createQuery("select o " + "from OrderJPA o " + "where o.designation = :designation");
+		TypedQuery<OrderJPA> createQuery = this.entityManager
+				.createQuery("select o " + "from OrderJPA o " + "where o.designation = :designation", OrderJPA.class);
 		createQuery.setParameter("designation", designation);
 		return createQuery.getResultList();
 	}
