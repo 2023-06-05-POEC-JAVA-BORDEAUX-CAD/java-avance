@@ -17,13 +17,14 @@ public class ClientEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Enumerated(EnumType.ORDINAL)
+	/*@Enumerated(EnumType.ORDINAL)
 	@Column(name = "company_name")
 	private ClientEnum companyName;
+	*/
 	
-	/*@Column(name = "company_name")
+	@Column(name = "company_name")
 	private String companyName;
-	*/ 
+	 
 
 	@Column(name = "first_name")
 	private String firstName;
@@ -62,14 +63,15 @@ public class ClientEntity {
 		this.id = id;
 	}
 	
-	public ClientEnum getCompanyName() {
+	/*public ClientEnum getCompanyName() {
 		return companyName;
 	}
 
 	public void setCompanyName(ClientEnum companyName) {
 		this.companyName = companyName;
-	}
-	/*
+	}*/
+	
+	
 	public String getCompanyName() {
 		return companyName;
 	}
@@ -77,7 +79,7 @@ public class ClientEntity {
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
-	*/
+	
 	
 	public String getFirstName() {
 		return firstName;

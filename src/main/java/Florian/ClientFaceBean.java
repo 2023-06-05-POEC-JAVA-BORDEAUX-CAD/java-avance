@@ -70,8 +70,8 @@ public class ClientFaceBean {
 
 	public void sauvegardeOrder() {
 		OrderEntity order = new OrderEntity();
-		order.setTypePresta(OrderEnum.FORMATION);
-		//order.setTypePresta("Formation");
+		//order.setTypePresta(OrderEnum.FORMATION);
+		order.setTypePresta("Formation");
 		order.setDesignation("test");
 		order.setClientId(1);
 		OrderEntity savedOrder = orderService.save(order);
@@ -83,8 +83,8 @@ public class ClientFaceBean {
 	
 	public void sauvegardeClient() {
 		ClientEntity client = new ClientEntity();
-		client.setCompanyName(ClientEnum.M2iFORMATION);
-		//client.setCompanyName("M2i Formation");
+		//client.setCompanyName(ClientEnum.M2iFORMATION);
+		client.setCompanyName("M2i Formation");
 		client.setFirstName("Francois");
 		client.setLastName("Caremoli");
 		client.setEmail("FrancoisCaremoli@gmail.com");

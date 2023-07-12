@@ -1,5 +1,6 @@
 package Florian_test;
 
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.openejb.jee.EjbJar;
@@ -53,10 +54,9 @@ public class ClientJpaDaoMyTest {
 	public void testSave() throws Exception {
 		
 		//Arrange
-		String lastNameClient = "coucou";
-		
+		String lastNameClient = "Test";	
 		ClientEntity client = new ClientEntity();
-		client.setCompanyName("Test");
+		client.setLastName(lastNameClient);
 		
 		//Act
 		ClientEntity savedClientEntity = this.clientEntityDao.save(client);
@@ -64,9 +64,24 @@ public class ClientJpaDaoMyTest {
 		//Assert
 		Assertions.assertNotNull(savedClientEntity);
 		Assertions.assertNotNull(savedClientEntity.getId());
-		
-		Assertions.assertNull(savedClientEntity.getPhone());
 		Assertions.assertEquals(lastNameClient, savedClientEntity.getLastName());
 	}
-
+	
+	@Test
+	public void findByCompanyName() throws Exception{
+		
+		//Arrange
+		String testCompany = "Entreprise test";
+		ClientEntity client = new ClientEntity();
+		client.setCompanyName(testCompany);
+		ClientEntity savedClient = this.clientEntityDao.save(client);
+		
+		//Act
+		String companyToFind = savedClient.getCompanyName();
+		List<ClientEntity> foundByNameClient = this.clientEntityDao.findByCompanyName(companyToFind);
+		
+		//Assert
+		Assertions.assertNotNull(foundByNameClient);
+		Assertions.assertEquals(testCompany, foundByNameClient.get(0).getCompanyName());	
+	}
 }

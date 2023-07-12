@@ -17,12 +17,13 @@ public class OrderEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Enumerated(EnumType.STRING)
+	/*@Enumerated(EnumType.STRING)
 	@Column(name = "type_presta")
 	private OrderEnum typePresta;
+	*/
 	
-	//@Column(name = "type_presta", length = 40, nullable = false)
-	//private String typePresta;	
+	@Column(name = "type_presta", length = 40, nullable = false)
+	private String typePresta;	
 
 	@Column(length = 90, nullable = false)
 	private String designation;
@@ -48,21 +49,21 @@ public class OrderEntity {
 		this.id = id;
 	}
 	
-	public OrderEnum getTypePresta() {
+	/*public OrderEnum getTypePresta() {
 		return typePresta;
 	}
 
 	public void setTypePresta(OrderEnum typePresta) {
 		this.typePresta = typePresta;
-	}
+	}*/
 	
-	/*public String getTypePresta() {
+	public String getTypePresta() {
 		return typePresta;
 	}
 
 	public void setTypePresta(String typePresta) {
 		this.typePresta = typePresta;
-	}*/
+	}
 
 	public String getDesignation() {
 		return designation;
