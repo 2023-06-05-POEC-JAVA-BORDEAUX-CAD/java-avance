@@ -20,6 +20,8 @@ public class OrderJpaFaceBean {
 	
 	@Inject
 	private OrderJpaService orderService;
+	
+	@Inject
 	private ClientJpaService clientService;
 	
 	/*
@@ -36,7 +38,8 @@ public class OrderJpaFaceBean {
 	};
 	
 	public void save() {
-		order.setClient(getClientOne());
+		ClientJpa clientOne = clientService.getClientById(1);
+		order.setClient(clientOne);
 		orderService.save(order);
 		System.out.println("sauvegarde de order dans la BDD");
 	}
@@ -59,9 +62,5 @@ public class OrderJpaFaceBean {
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		return objectMapper.writeValueAsString(order);
-	}
-	
-	public ClientJpa getClientOne() {
-		return clientService.getClientById(1);
 	}
 }
