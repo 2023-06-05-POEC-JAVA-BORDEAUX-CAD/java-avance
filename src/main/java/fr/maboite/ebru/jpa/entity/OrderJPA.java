@@ -27,8 +27,8 @@ public class OrderJPA {
 	private String designation;
 	
 	@JoinColumn(name="client_id")
-	@ManyToOne(fetch=FetchType.EAGER)
-	private ClientJPA client;
+	@ManyToOne(fetch=FetchType.EAGER) // par defaut c est deja EAGER
+	private ClientJPA client; // personne qui a passé la commande
 
 	
 	public ClientJPA getClient() {
