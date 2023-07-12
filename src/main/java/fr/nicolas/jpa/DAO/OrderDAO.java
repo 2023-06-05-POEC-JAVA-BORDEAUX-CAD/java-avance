@@ -7,6 +7,7 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 
 @Stateless
 public class OrderDAO {
@@ -27,7 +28,7 @@ public class OrderDAO {
 	 * @return List<Order>
 	 */
 	public List<Order> getAllOrders() {
-		Query query = this.entityManger.createQuery("select o from Order o", Order.class) ;
+		TypedQuery<Order> query = this.entityManger.createQuery("select o from Order o", Order.class) ;
 		return query.getResultList();
 	}
 	

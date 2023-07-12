@@ -1,16 +1,21 @@
 package fr.nicolas.jpa.Entity;
 
+import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.Set;
+import java.util.HashSet;
 
 @Entity
 @Table(name="clients")
 public class Client {
-
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
@@ -36,6 +41,9 @@ public class Client {
 	
 	String country;
 
+	@OneToMany(mappedBy="client", fetch = FetchType.LAZY)
+	private Set<Order> orders = new HashSet<>();
+	
 	public Integer getId() {
 		return id;
 	}
@@ -114,6 +122,14 @@ public class Client {
 
 	public void setCountry(String country) {
 		this.country = country;
+	}
+
+	public Set<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
 	}
 	
 }

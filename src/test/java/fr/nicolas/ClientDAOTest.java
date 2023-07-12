@@ -1,5 +1,6 @@
 package fr.nicolas;
 
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.openejb.jee.EjbJar;
@@ -11,7 +12,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import fr.nicolas.jpa.DAO.ClientDAO2;
+import fr.nicolas.jpa.DAO.OrderDAO;
 import fr.nicolas.jpa.Entity.Client;
+import fr.nicolas.jpa.Entity.Order;
 import jakarta.ejb.EJB;
 
 /**
@@ -24,11 +27,15 @@ public class ClientDAOTest {
 
 	@EJB
 	private ClientDAO2 clientDAO;
+	
+	@EJB
+	private OrderDAO orderDAO;
 
 	@org.apache.openejb.testing.Module
 	public EjbJar beans() {
 		EjbJar ejbJar = new EjbJar("my-beans");
 		ejbJar.addEnterpriseBean(new StatelessBean(ClientDAO2.class));
+		ejbJar.addEnterpriseBean(new StatelessBean(OrderDAO.class));
 		return ejbJar;
 	}
 	
@@ -38,6 +45,7 @@ public class ClientDAOTest {
         unit.setJtaDataSource("jtaTestDataSource");
         unit.setNonJtaDataSource("jtaTestDataSourceUnManaged");
         unit.addClass(Client.class);
+        unit.addClass(Order.class);
         unit.setExcludeUnlistedClasses(true);
         unit.setProperty("openjpa.jdbc.SynchronizeMappings", "buildSchema(ForeignKeys=true)");
         unit.setProperty("openjpa.Log", "DefaultLevel=WARN,Runtime=INFO,Tool=INFO,SQL=TRACE");
@@ -61,26 +69,35 @@ public class ClientDAOTest {
 		//Arrange
 		String designation = "Harribo";
 		
-		Client client = new Client();
-		client.setCompanyName(designation);
 		
 		//Act
-		Client savedOrder = this.clientDAO.save(client);
+		
+		Client client = new Client();
+		client.setCompanyName(designation);
+		Client savedClient = this.clientDAO.save(client);
+		
+		Order order = new Order();
+		order.setClient(savedClient);
+		
+		Order savedOrder = this.orderDAO.save(order);
+		
 		
 		//Assert
+		Assertions.assertNotNull(savedClient);
 		Assertions.assertNotNull(savedOrder);
-		Assertions.assertNotNull(savedOrder.getId());
 		
-		Assertions.assertNull(savedOrder.getEmail());
-		Assertions.assertEquals(designation, savedOrder.getCompanyName());
+		Assertions.assertNotNull(savedClient.getOrders());
+		Assertions.assertEquals(designation, savedClient.getCompanyName());
+		Assertions.assertEquals(1, savedClient.getOrders().size());
 	}
 	
 	
 	@Test
 	public void testDeleteById() throws Exception {
 		//Arrange
+		String compName = "Harribo";
 		Client client = new Client();
-		client.setCompanyName("Harribo");
+		client.setCompanyName(compName);
 		
 		Client savedOrder1 = this.clientDAO.save(client);
 		Client savedOrder2 = this.clientDAO.save(client);
@@ -95,6 +112,30 @@ public class ClientDAOTest {
 		Client clientGet = this.clientDAO.find(savedOrder2.getId());
 		
 		Assertions.assertNull(clientGet);
+	}
+	
+	@Test
+	public void getClientByCompanyName() throws Exception {
+		//Arrange
+		Client client = new Client();
+		String compName = "Harribo";
+		client.setCompanyName(compName);
+		
+		Client savedOrder1 = this.clientDAO.save(client);
+		
+		
+		//Act 
+		
+		List<Client> clients = this.clientDAO.getClientByCompName(compName);
+		
+		for(Client cli: clients) {
+			System.out.println(cli.getCompanyName());
+		}
+		
+		Assertions.assertNotNull(clients);
+		
+		Assertions.assertNotEquals(1, clients.size());
+		
 	}
 	
 }

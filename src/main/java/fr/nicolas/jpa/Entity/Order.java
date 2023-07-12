@@ -5,15 +5,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import fr.nicolas.jpa.Enum.Status;
 
 @Entity
 @Table(name="orders")
 public class Order {
 
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="client_id")
+	private Client client;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
@@ -67,6 +74,14 @@ public class Order {
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 	
 }

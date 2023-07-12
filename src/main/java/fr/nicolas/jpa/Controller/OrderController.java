@@ -32,7 +32,6 @@ public class OrderController {
 			try {
 				Integer id = Integer.valueOf(this.id);
 				this.order = this.orderService.getOrderById(id);
-				
 			}
 			catch(NumberFormatException e) {
 				

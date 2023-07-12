@@ -4,8 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.openjpa.persistence.InvalidStateException;
+
+import java.util.ArrayList;
+
 import fr.nicolas.jpa.Service.ClientService2;
 import fr.nicolas.jpa.Entity.Client;
+import fr.nicolas.jpa.Entity.Order;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -32,13 +37,14 @@ public class ClientController2 {
 			try {
 				Integer id = Integer.valueOf(this.id);
 				this.client = this.clientService.getClientById(id);
-				
-			}
+ 			}
 			catch(NumberFormatException e) {
 				
 			}
 			catch(NullPointerException e) {
 				System.out.println("Client invalide avec cet id : " + this.id +"");
+			}catch(InvalidStateException e) {
+				System.out.println("Ivalid state exception : " + e.getMessage());
 			}
 		} else {
 			try {
