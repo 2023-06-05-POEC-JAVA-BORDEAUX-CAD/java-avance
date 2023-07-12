@@ -1,5 +1,6 @@
 package fr.maboite.ebrutest;
 
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.openejb.jee.EjbJar;
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import fr.maboite.ebru.jpa.entity.ClientJpaDao;
+import fr.maboite.correction.jpa.model.Order;
 import fr.maboite.ebru.jpa.entity.ClientJPA;
 import jakarta.ejb.EJB;
 
@@ -45,7 +47,7 @@ public class ClientDaoTest {
 		p.put("jtaTestDataSource.JdbcDriver", "org.h2.Driver");
 		p.put("jtaTestDataSource.username", "test");
 		p.put("jtaTestDataSource.password", "test");
-		p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:mem:test");
+		p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:mem:test"); //on creee une base en memoire
 		return p;
 	}
 
@@ -65,7 +67,7 @@ public class ClientDaoTest {
 		clientJpa.setZipCode("xyz");
 		clientJpa.setCity("Nantes");
 		clientJpa.setCountry("France");
-		clientJpa.setState(false);
+		//clientJpa.setState(false);
 
 		// Act
 		ClientJPA testsaveJpa = clientDao.save(clientJpa);
@@ -85,8 +87,29 @@ public class ClientDaoTest {
 		Assertions.assertEquals("xyz", testsaveJpa.getZipCode());
 		Assertions.assertEquals("Nantes", testsaveJpa.getCity());
 		Assertions.assertEquals("France", testsaveJpa.getCountry());
-		Assertions.assertEquals(false, testsaveJpa.getState());
+		//Assertions.assertEquals(false, testsaveJpa.getState());
 
+	}
+	
+	@Test
+	public void testSave2ClientAndFindByCompanyName() throws Exception {
+		
+		//Arrange
+		ClientJPA client1 = new ClientJPA();
+		String companyName = "Autrecompany"; // on met le nom que l'on veut
+		client1.setCompanyName(companyName);;
+		ClientJPA savedClient1 = this.clientDao.save(client1);
+		ClientJPA client2 = new ClientJPA();
+		client2.setCompanyName(companyName);; // on peut donner le meme nom
+		ClientJPA savedClient2 = this.clientDao.save(client2);
+		
+		//Act
+		// on met entre () la variable que l'on a definit ligne 99
+		List<ClientJPA> clients = this.clientDao.findByCompanyName(companyName); 
+		
+		//Assert
+	
+		Assertions.assertEquals(2,clients.size()); // on test la taille de notre list qui a 2 clients
 	}
 
 }

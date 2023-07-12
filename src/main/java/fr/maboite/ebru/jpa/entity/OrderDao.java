@@ -38,7 +38,7 @@ public class OrderDao {
 		jpqlQuery.setParameter("parametreDeRequetedesignation", argumentDeMethodedesignation);
 		
 		
-		// o.designation = o.getdesignation, o est un alias, designation=nom de column
+		// o.designation = o.getdesignation, o est un alias, designation= attribut
 		// setParameter, comme dans map a une clé (String) et une valeur objet(argument)
 		
 		return jpqlQuery.getResultList();
