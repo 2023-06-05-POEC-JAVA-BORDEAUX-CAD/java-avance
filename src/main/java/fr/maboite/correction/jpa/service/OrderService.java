@@ -37,5 +37,18 @@ public class OrderService {
 		}
 		return order;
 	}
+	
+	/**
+	 * Supprime order. Ne fait rien
+	 * si order == null ou si aucune ligne
+	 * ayant la même clé primaire n'existe en base de données.
+	 * @param order
+	 */
+	public void delete(Order order) {
+		if(order == null) {
+			return;
+		}
+		this.orderJpaDao.delete(order.getId());
+	}
 
 }

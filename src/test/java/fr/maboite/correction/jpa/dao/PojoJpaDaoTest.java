@@ -44,7 +44,10 @@ public class PojoJpaDaoTest {
         p.put("jtaTestDataSource.JdbcDriver", "org.h2.Driver");
         p.put("jtaTestDataSource.username", "test");
         p.put("jtaTestDataSource.password", "test");
-        p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:file:C:/dev/h2-data/formation-poe-java-2023-07-11");
+        p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:mem:tests");
+        //Ci-dessous une URL pour que h2 crée une base sur le disque dur : prend de la place sur 
+        //le disque mais permet de consulter sa base après les tests
+        //p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:file:C:/dev/h2-data/formation-poe-java-2023-07-11");
         return p;
     }
     
@@ -65,7 +68,9 @@ public class PojoJpaDaoTest {
 		Assertions.assertNotNull(savedPojoJpa.getId());
 		
 		Assertions.assertNull(savedPojoJpa.getAdresse());
-		Assertions.assertEquals(nomPojo, savedPojoJpa.getNom());
+		
+		Assertions.assertEquals(pojoJpa.getNom(), savedPojoJpa.getNom());
+		Assertions.assertEquals(pojoJpa.getAdresse(), savedPojoJpa.getAdresse());
 	}
 	
 }

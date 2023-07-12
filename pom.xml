@@ -147,6 +147,7 @@
 			<groupId>org.jacoco</groupId>
 			<artifactId>jacoco-maven-plugin</artifactId>
 			<version>0.8.6</version>
+			<scope>test</scope>
 		</dependency>
 
 		<!-- Cette dépendance est provided : nous en avons besoin pour la
