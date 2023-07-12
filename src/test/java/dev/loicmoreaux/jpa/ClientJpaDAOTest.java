@@ -1,5 +1,6 @@
 package dev.loicmoreaux.jpa;
 
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.openejb.jee.EjbJar;
@@ -44,7 +45,8 @@ public class ClientJpaDAOTest {
         p.put("jtaTestDataSource.JdbcDriver", "org.h2.Driver");
         p.put("jtaTestDataSource.username", "test");
         p.put("jtaTestDataSource.password", "test");
-        p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:file:D:/Dev Web/M2i/Java/testClientDao");
+        p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:mem:tests");
+        //p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:file:D:/Dev Web/M2i/Java/testClientDao");
         return p;
     }
     
@@ -104,5 +106,62 @@ public class ClientJpaDAOTest {
 		//Assert
 		Assertions.assertNull(deletedClient);
 		
+	}
+	
+	@Test
+	public void testGetClientByCompagnyName() throws Exception{
+		// Arrange
+		String companyName = "Cerberus";
+		ClientJpa client1 = new ClientJpa();
+		client1.setCompanyName(companyName);
+		this.clientJpaDAO.save(client1);
+		
+		ClientJpa client2 = new ClientJpa();
+		client2.setCompanyName(companyName);
+		this.clientJpaDAO.save(client2);
+		
+		String companyName2 = "SSC";
+		ClientJpa client3 = new ClientJpa();
+		client3.setCompanyName(companyName2);
+		this.clientJpaDAO.save(client3);
+		
+		// Act
+		List<ClientJpa> clientsByCompanyName = clientJpaDAO.getClientByCompagnyName(companyName);
+		
+		// Assert
+		Assertions.assertNotNull(clientsByCompanyName);
+		Assertions.assertEquals(2, clientsByCompanyName.size());
+		Assertions.assertNotEquals(3, clientsByCompanyName.size());
+	}
+	
+	@Test
+	public void testGetClientByCompagnyNameAndCity() throws Exception{
+		// Arrange
+		String companyName = "Cerberus";
+		String city = "Zhu's Hope";
+		ClientJpa client1 = new ClientJpa();
+		client1.setCompanyName(companyName);
+		client1.setCity(city);
+		this.clientJpaDAO.save(client1);
+		
+		String city2 = "Citadelle";
+		ClientJpa client2 = new ClientJpa();
+		client2.setCompanyName(companyName);
+		client2.setCity(city2);
+		this.clientJpaDAO.save(client2);
+		
+		String companyName2 = "SSC";
+		ClientJpa client3 = new ClientJpa();
+		client3.setCompanyName(companyName2);
+		client3.setCity(city2);
+		this.clientJpaDAO.save(client3);
+		
+		// Act
+		List<ClientJpa> clientsByCompanyNameAndCity = clientJpaDAO.getClientByCompagnyNameAndCity(companyName, city);
+		
+		// Assert
+		Assertions.assertNotNull(clientsByCompanyNameAndCity);
+		Assertions.assertEquals(1, clientsByCompanyNameAndCity.size());
+		Assertions.assertNotEquals(3, clientsByCompanyNameAndCity.size());
 	}
 }
