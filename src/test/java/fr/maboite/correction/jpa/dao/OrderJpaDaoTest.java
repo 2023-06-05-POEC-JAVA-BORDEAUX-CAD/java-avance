@@ -1,5 +1,6 @@
 package fr.maboite.correction.jpa.dao;
 
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.openejb.jee.EjbJar;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import fr.maboite.correction.jpa.model.Order;
 import jakarta.ejb.EJB;
+import junit.framework.Assert;
 
 @RunWithApplicationComposer
 public class OrderJpaDaoTest {
@@ -95,6 +97,26 @@ public class OrderJpaDaoTest {
 		//Assert
 		Order loadedOrder = this.orderDao.load(savedOrder.getId());
 		Assertions.assertNull(loadedOrder);
+	}
+    
+	@Test
+	public void testSave2OrdersAndFindByDesignation() throws Exception {
+		
+		//Arrange
+		Order order1 = new Order();
+		String designation = "super désignation";
+		order1.setDesignation(designation);
+		Order savedOrder1 = this.orderDao.save(order1);
+		Order order2 = new Order();
+		order2.setDesignation(designation);
+		Order savedOrder2 = this.orderDao.save(order2);
+		
+		//Act
+		List<Order> designations = this.orderDao.findByDesignation(designation);
+		
+		//Assert
+		Assertions.assertNotNull(designations);
+		Assertions.assertEquals(2, designations.size());
 	}
 	
 }
