@@ -2,6 +2,8 @@ package fr.maboite.ebru.jpa.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -52,9 +54,17 @@ public class ClientJPA {
 	private String country;
 
 	@Column(name = "state")
-	private Boolean state;
+	@Enumerated(EnumType.STRING) //  recupere la valeur qui est en String
+	private EtatClient etat; 
 	
+	
+	public EtatClient getEtat() {
+		return etat;
+	}
 
+	public void setEtat(EtatClient etat) {
+		this.etat = etat;
+	}
 
 	public String getLastName() {
 		return lastName;
@@ -96,13 +106,6 @@ public class ClientJPA {
 		this.country = country;
 	}
 
-	public Boolean getState() {
-		return state;
-	}
-
-	public void setState(Boolean state) {
-		this.state = state;
-	}
 
 	public Integer getId() {
 		return id;

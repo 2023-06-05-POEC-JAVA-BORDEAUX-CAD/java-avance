@@ -2,6 +2,8 @@ package fr.maboite.ebru.jpa.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,9 +25,22 @@ public class OrderJPA {
 
 	@Column(name = "client_id")
 	private Integer client_id;
+	
+	@Column(name="state")
+	@Enumerated(EnumType.ORDINAL) // ici on choisit ORDINAL car on veut recuperer un Integer recupere l index des options: ici: 0 , 1 ou 2
+	private EtatCommande etat; // EtatCommande est un primitif
+	
 
 	public Integer getId() {
 		return id;
+	}
+
+	public EtatCommande getEtat() {
+		return etat;
+	}
+
+	public void setEtat(EtatCommande etat) {
+		this.etat = etat;
 	}
 
 	public void setId(Integer id) {

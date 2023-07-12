@@ -2,6 +2,8 @@ package fr.maboite.ebru.jsf.bean;
 
 import fr.maboite.ebru.jpa.entity.ClientJpaDao;
 import fr.maboite.ebru.jpa.entity.ClientJpaService;
+import fr.maboite.ebru.jpa.entity.EtatClient;
+import fr.maboite.ebru.jpa.entity.EtatCommande;
 import fr.maboite.ebru.jpa.entity.ClientJPA;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -23,12 +25,9 @@ public class ClientFaceBean {
 
 	@Inject
 	private OrderJpaService orderJpaService;
-	
-	
+
 	@Inject
 	private ClientJpaService clientJpaService;
-	
-
 
 	public ClientFormBean getClient() {
 		return client;
@@ -73,6 +72,7 @@ public class ClientFaceBean {
 		orderJPA.setType("Formation");
 		orderJPA.setDesignation("Angular init");
 		orderJPA.setClient_id(2);
+		orderJPA.setEtat(EtatCommande.CANCELLED);
 		orderJpaService.save(orderJPA);
 
 	}
@@ -89,7 +89,7 @@ public class ClientFaceBean {
 		clientJpa.setZipCode("xyz");
 		clientJpa.setCity("Nantes");
 		clientJpa.setCountry("France");
-		clientJpa.setState(false);
+		clientJpa.setEtat(EtatClient.ACTIVE);
 		clientJpaService.save(clientJpa);
 	}
 
