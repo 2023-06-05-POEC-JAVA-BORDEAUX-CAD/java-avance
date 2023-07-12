@@ -1,5 +1,6 @@
 package fr.fabien.tpjsf.jpadao;
 
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.openejb.jee.EjbJar;
@@ -98,5 +99,26 @@ public class ClientDaoTest {
 		Client loadedClient = this.clientDao.find(savedClient.getId());
 		Assertions.assertNull(loadedClient);
 	}
+	
+	@Test
+	public void findByCompanyName() throws Exception {
+		
+		//Arrange
+		String companyX = "OpenAi"; // creation d'un nom de company
+		Client client = new Client(); // creation d'un nouveau client
+		client.setCompany_Name(companyX); // definir le nom du client
+		Client savedClient = this.clientDao.save(client);
+		
+		//Act
+		String companyToFind = savedClient.getCompany_Name();  // récupération du Company_Name du nouveau client
+		List<Client> clientFindByName = this.clientDao.findByCompanyName(companyToFind); // récupère le result de findByName
+		
+		//Assert
+		Assertions.assertNotNull(clientFindByName);  // check si l'assert n'est pas null
+		Assertions.assertEquals(companyX, clientFindByName.get(1).getCompany_Name()); //Check si client sauvegardé est dans la liste
+		//Assertions.assertEquals(1, companyName.size());
+	}
+	
+	
 	
 }

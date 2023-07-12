@@ -10,7 +10,7 @@ import org.apache.openejb.testing.Configuration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import fr.fabien.tpjsf.jpadao.OrderDao;
+import fr.fabien.tpjsf.jpamodel.Client;
 import fr.fabien.tpjsf.jpamodel.Order;
 import jakarta.ejb.EJB;
 
@@ -19,11 +19,15 @@ public class OrderDaoTest {
 
 	@EJB
 	private OrderDao orderDao;
+	
+	@EJB
+	private ClientDao clientDao;
 
 	@org.apache.openejb.testing.Module
 	public EjbJar beans() {
 		EjbJar ejbJar = new EjbJar("my-beans");
 		ejbJar.addEnterpriseBean(new StatelessBean(OrderDao.class));
+		ejbJar.addEnterpriseBean(new StatelessBean(ClientDao.class));	
 		return ejbJar;
 	}
 	
@@ -97,6 +101,29 @@ public class OrderDaoTest {
 		//Assert
 		Order loadedOrder = this.orderDao.find(savedOrder.getId());
 		Assertions.assertNull(loadedOrder);
+	}
+	
+	@Test
+	public void testSaveOrderWithClient() throws Exception {
+		
+		//Arrange
+		Client client = new Client(); // creer un nouveau client
+        client.setFirst_Name("Billy");
+        client.setLast_Name("Boy");
+        Client savedClient = this.clientDao.save(client); // 
+        
+		Order order = new Order(); // creer une nouvelle commande
+		order.setClient(savedClient);
+		
+		Order savedOrder = this.orderDao.save(order);
+		
+		//Act
+		Order loadedOrder = orderDao.find(savedOrder.getId());
+
+
+		//Assert
+		Assertions.assertNotNull(loadedOrder);
+		Assertions.assertNotNull(savedOrder.getClient());
 	}
 	
 }

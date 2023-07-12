@@ -1,9 +1,14 @@
 package fr.fabien.tpjsf.jpadao;
 
+import java.util.List;
+
+import fr.fabien.tpjsf.jpamodel.Client;
 import fr.fabien.tpjsf.jpamodel.Order;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 
 @Stateless
 public class OrderDao {
@@ -38,6 +43,16 @@ public class OrderDao {
 		}
 		this.entityManager.remove(savedEntity);
 	}
+	
+	public List<Order> findByDesignation(String argumentDeMethodedesignation) {
+		TypedQuery<Order> jpqlQuery = this.entityManager.createQuery(
+				"select o "
+				+ " from Order o "
+				+ " where o.designation = :parametreDeRequeteDesignation", Order.class);
+		jpqlQuery.setParameter("parametreDeRequeteDesignation", argumentDeMethodedesignation);
+		return jpqlQuery.getResultList();
+	}
+
 
 	
 }

@@ -1,5 +1,7 @@
 package fr.fabien.tpjsf.jpamodel;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,11 +24,9 @@ public class Client {
 	@Column(name = "first_name")
 	private String firstName;
 
-// manque lastName	
-	
 	@Column(name = "last_name")
 	private String lastName;
-
+	
 	private String email;
 
 	private Integer phone;
@@ -53,6 +53,9 @@ public class Client {
 
 	public String getFirst_Name() {
 		return firstName;
+	}
+	public String getLast_Name() {
+		return lastName;
 	}
 
 	public String getEmail() {
@@ -96,6 +99,10 @@ public class Client {
 		this.firstName = first_Name;
 	}
 
+	public void setLast_Name(String first_Name) {
+		this.lastName = first_Name;
+	}
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -123,4 +130,10 @@ public class Client {
 	public void setState(Byte state) {
 		this.state = state;
 	}
+
+	public List<Client> getOrders() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

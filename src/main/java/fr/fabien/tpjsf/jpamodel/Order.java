@@ -2,9 +2,11 @@ package fr.fabien.tpjsf.jpamodel;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,10 +29,57 @@ public class Order {
 	@Column(name = "nb_days")
 	private Integer nbDays;
 	
+	public String getTypePresta() {
+		return typePresta;
+	}
+
+	public void setTypePresta(String typePresta) {
+		this.typePresta = typePresta;
+	}
+
+	public Integer getClientId() {
+		return clientId;
+	}
+
+	public void setClientId(Integer clientId) {
+		this.clientId = clientId;
+	}
+
+	public Integer getNbDays() {
+		return nbDays;
+	}
+
+	public void setNbDays(Integer nbDays) {
+		this.nbDays = nbDays;
+	}
+
+	public Integer getUnitPrice() {
+		return unitPrice;
+	}
+
+	public void setUnitPrice(Integer unitPrice) {
+		this.unitPrice = unitPrice;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
 	@Column(name = "unit_price")
 	private Integer unitPrice;
 
 	private Byte state;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@Column(name = "client_id")
+	private Client client;
+	
+	
+	// Getter / Setter
 
 	public Long getId() {
 		return id;
