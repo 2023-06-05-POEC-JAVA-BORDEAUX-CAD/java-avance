@@ -1,5 +1,6 @@
 package fr.noellie.jpa;
 
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.openejb.jee.EjbJar;
@@ -84,5 +85,25 @@ public class OrderJPADaoTest {
 
 		// Assert
 		Assertions.assertNotEquals(jpaId, loadedOrder.getId());
+	}
+	
+	@Test
+	public void testSave2OrdersAndFindByDesignation() throws Exception {
+		
+		//Arrange
+		OrderJPA order1 = new OrderJPA();
+		String designation = "super désignation";
+		order1.setDesignation(designation);
+		OrderJPA savedOrder1 = this.orderJPADao.save(order1);
+		OrderJPA order2 = new OrderJPA();
+		order2.setDesignation(designation);
+		OrderJPA savedOrder2 = this.orderJPADao.save(order2);
+		
+		//Act
+		List<OrderJPA> designations = this.orderJPADao.findByDesignation(designation);
+		
+		//Assert
+		Assertions.assertNotNull(designations);
+		Assertions.assertEquals(2, designations.size());
 	}
 }

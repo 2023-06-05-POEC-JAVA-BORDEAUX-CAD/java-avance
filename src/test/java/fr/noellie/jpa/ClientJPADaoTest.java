@@ -1,5 +1,6 @@
 package fr.noellie.jpa;
 
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.openejb.jee.EjbJar;
@@ -14,6 +15,7 @@ import org.junit.jupiter.api.Test;
 import fr.noellie.jpa.dao.ClientJPADao;
 import fr.noellie.jpa.model.ClientJPA;
 import fr.noellie.jpa.model.EtatClient;
+import fr.noellie.jpa.model.OrderJPA;
 import jakarta.ejb.EJB;
 
 @RunWithApplicationComposer
@@ -107,5 +109,26 @@ public class ClientJPADaoTest {
 		Assertions.assertEquals(lastName, loadedClient.getLastName());
 		Assertions.assertEquals(email, loadedClient.getEmail());
 		Assertions.assertEquals(phone, loadedClient.getPhone());
+	}
+	
+	@Test
+	public void testSave2ClientsAndFindByCompanyName() throws Exception {
+		
+		//Arrange
+		ClientJPA client1 = new ClientJPA();
+		String companyName = "super entreprise";
+		client1.setCompanyName(companyName);
+		ClientJPA savedClient1 = this.clientJPADao.save(client1);
+		
+		ClientJPA client2 = new ClientJPA();
+		client2.setCompanyName(companyName);
+		ClientJPA savedClient2 = this.clientJPADao.save(client2);
+		
+		//Act
+		List<ClientJPA> companyNames = this.clientJPADao.findByCompanyName(companyName);
+		
+		//Assert
+		Assertions.assertNotNull(companyNames);
+		Assertions.assertEquals(2, companyNames.size());
 	}
 }
