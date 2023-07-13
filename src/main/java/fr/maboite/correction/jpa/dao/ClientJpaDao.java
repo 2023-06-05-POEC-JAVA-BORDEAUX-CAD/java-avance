@@ -140,6 +140,8 @@ public class ClientJpaDao {
 				+ " left outer join fetch c.orders o "
 				+ " where c.id = :id ",
 				Client.class);
+		// on a utilisé fetch ici car on a choisi de garder FetchType.Lazy pour ne pas comliquer la tache..
+		
 		jpqlQuery.setParameter("id",id );
 		return jpqlQuery.getResultList();
 	}

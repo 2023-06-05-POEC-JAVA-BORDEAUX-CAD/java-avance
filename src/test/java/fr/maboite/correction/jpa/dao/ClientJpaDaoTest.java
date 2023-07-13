@@ -195,14 +195,17 @@ public class ClientJpaDaoTest {
 		client.getOrders().add(order);
 
 		// Act
-		List<Client> clients = this.clientDao.findByIdWithOrders(savedClient.getId());
-
+		List<Client> clients = this.clientDao.findByIdWithOrders(savedClient.getId()); 
+		// recupere le client et ses commandes
+		
 		// Assert
 		Assertions.assertNotNull(clients);
 		Assertions.assertEquals(1, clients.size());
-		Assertions.assertNotNull(clients.get(0).getOrders());
+		Assertions.assertNotNull(clients.get(0).getOrders()); // c'est l'indice 0 car ici c ets une List
 		Assertions.assertEquals(1, clients.get(0).getOrders().size());
 
 	}
+	
+	//
 
 }
