@@ -1,5 +1,7 @@
 package tp.jpa;
 
+import java.util.List;
+import java.util.ArrayList;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
@@ -7,6 +9,15 @@ import jakarta.inject.Inject;
 public class ClientJpaService {
 	@Inject
 	private ClientDao clidao;
+
+	/**
+	 * Load all ClientModel
+	 * 
+	 * @return List<ClientModel>
+	 */
+	public List<ClientModel> getAll() {
+		return clidao.getAll();
+	}
 
 	/**
 	 * Load a ClientModel by this identifier
@@ -27,7 +38,7 @@ public class ClientJpaService {
 	public ClientModel save(ClientModel client) {
 		return clidao.save(client);
 	}
-	
+
 	/**
 	 * Delete a ClientModel by this identifier
 	 * 
