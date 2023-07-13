@@ -5,6 +5,14 @@ public class ExoPremierRestDto {
 	private Integer id;
 	private String name;
 	
+	public ExoPremierRestDto() {}
+	
+	public ExoPremierRestDto(Integer id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
 	public Integer getId() {
 		return id;
 	}
