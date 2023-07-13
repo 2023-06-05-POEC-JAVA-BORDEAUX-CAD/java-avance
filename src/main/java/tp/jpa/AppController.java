@@ -9,10 +9,10 @@ import jakarta.enterprise.context.RequestScoped;
 @RequestScoped
 public class AppController {
 	@Inject
-	private JpaClientService cliService;
+	private ClientJpaService cliService;
 
 	@Inject
-	private TpJpaOrderService ordService;
+	private OrderJpaService ordService;
 
 	public String saveClient() {
 		ClientModel client = new ClientModel();
