@@ -39,7 +39,7 @@ public class OrderModel {
 	@Column(name = "state", nullable = true)
 	private State state;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "client_id", nullable = false)
 	private ClientModel client;
 
