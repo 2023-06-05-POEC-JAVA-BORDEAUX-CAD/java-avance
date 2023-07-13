@@ -1,6 +1,7 @@
 package tp.jpa;
 
 import java.util.List;
+import java.util.ArrayList;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.EntityManager;
@@ -10,6 +11,17 @@ import jakarta.persistence.PersistenceContext;
 public class ClientDao {
 	@PersistenceContext
 	protected EntityManager entityManager;
+
+	/**
+	 * Load all ClientModel
+	 * 
+	 * @return List<ClientModel>
+	 */
+	public List<ClientModel> getAll() {
+		String QLS = "select o from ClientModel o";
+		TypedQuery<ClientModel> request = this.entityManager.createQuery(QLS, ClientModel.class);
+		return request.getResultList();
+	}
 
 	/**
 	 * Load a ClientModel by this identifier
