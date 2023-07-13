@@ -2,8 +2,8 @@ package dev.loicmoreaux.exorest.dto;
 
 public class ExoPremierRestDto {
 	
-	public Integer id;
-	public String name;
+	private Integer id;
+	private String name;
 	
 	public Integer getId() {
 		return id;
