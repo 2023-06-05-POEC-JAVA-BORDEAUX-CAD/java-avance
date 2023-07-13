@@ -6,6 +6,7 @@ import fr.maboite.correction.jpa.model.Client;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 /**
@@ -55,6 +56,22 @@ public class ClientJpaDao {
 		}
 		this.entityManager.remove(savedEntity);
 	}
+	
+	/**
+	 * Supprime client par son id. Ne fait rien si id == null ou si aucun client n'a
+	 * l'id en base de données. Utilise JPQL pour ce faire
+	 * 
+	 * @param id
+	 */
+	public void deleteJpql(Long id) {
+		if (id == null) {
+			return;
+		}
+		Query query = this.entityManager.createQuery(
+				"delete Client c where c.id = :id ");
+		query.setParameter("id", id);
+		query.executeUpdate();
+	}
 
 	/**
 	 * Renvoie tous les Client à partir de leur companyName
@@ -87,6 +104,26 @@ public class ClientJpaDao {
 				Client.class);
 		jpqlQuery.setParameter("id", id);
 		return jpqlQuery.getSingleResult();
+	}
+	
+
+	/**
+	 * Renvoie tous les Client ayant firstName et lastName
+	 * 
+	 * @param firstName
+	 * @param lastName
+	 * @return
+	 */
+	public List<Client> findByFirstNameAndLastName(String firstName, String lastName) {
+		TypedQuery<Client> jpqlQuery = this.entityManager.createQuery(
+				"select c "
+						+ " from Client c "
+						+ " where c.firstName = :firstName "
+						+ " and c.lastName = :lastName ",
+				Client.class);
+		jpqlQuery.setParameter("firstName", firstName);
+		jpqlQuery.setParameter("lastName", lastName);
+		return jpqlQuery.getResultList();
 	}
 
 	/**

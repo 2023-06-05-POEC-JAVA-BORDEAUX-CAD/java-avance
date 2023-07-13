@@ -84,7 +84,7 @@ public class MonPremierFaceBean {
 		client.setZipCode("12345");
 		Client savedClient = clientService.save(client);
 		
-		Client loadedClient = clientService.load(savedClient.getId());
+		Client loadedClient = clientService.getById(savedClient.getId());
 		System.out.println("En base, j'ai un client dont l'état vaut : " 
 				+ loadedClient.getState() + " pour l'id : " + loadedClient.getId());
 	}

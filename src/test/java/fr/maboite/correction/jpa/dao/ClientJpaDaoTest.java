@@ -32,133 +32,177 @@ public class ClientJpaDaoTest {
 		ejbJar.addEnterpriseBean(new StatelessBean(OrderJpaDao.class));
 		return ejbJar;
 	}
-	
-    @org.apache.openejb.testing.Module
-    public PersistenceUnit persistence() {
-        PersistenceUnit unit = new PersistenceUnit("PersisterPU");
-        unit.setProvider(HibernatePersistenceProvider.class);
-        unit.setJtaDataSource("jtaTestDataSource");
-        unit.setNonJtaDataSource("jtaTestDataSourceUnManaged");
-        unit.addClass(Client.class);
-        unit.addClass(Order.class);
-        unit.setProperty("javax.persistence.schema-generation.database.action","drop-and-create");
-        unit.setProperty("openjpa.jdbc.SynchronizeMappings", "buildSchema(ForeignKeys=true)");
-        unit.setProperty("openjpa.Log", "DefaultLevel=WARN,Runtime=INFO,Tool=INFO,SQL=TRACE");
-        return unit;
-    }
-    
-    @Configuration
-    public Properties config() throws Exception {
-        Properties p = new Properties();
-        p.put("jtaTestDataSource", "new://Resource?type=DataSource");
-        p.put("jtaTestDataSource.JdbcDriver", "org.h2.Driver");
-        p.put("jtaTestDataSource.username", "test");
-        p.put("jtaTestDataSource.password", "test");
-        p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:mem:tests");
-        return p;
-    }
-    
+
+	@org.apache.openejb.testing.Module
+	public PersistenceUnit persistence() {
+		PersistenceUnit unit = new PersistenceUnit("PersisterPU");
+		unit.setProvider(HibernatePersistenceProvider.class);
+		unit.setJtaDataSource("jtaTestDataSource");
+		unit.setNonJtaDataSource("jtaTestDataSourceUnManaged");
+		unit.addClass(Client.class);
+		unit.addClass(Order.class);
+		unit.setProperty("javax.persistence.schema-generation.database.action", "drop-and-create");
+		unit.setProperty("openjpa.jdbc.SynchronizeMappings", "buildSchema(ForeignKeys=true)");
+		unit.setProperty("openjpa.Log", "DefaultLevel=WARN,Runtime=INFO,Tool=INFO,SQL=TRACE");
+		return unit;
+	}
+
+	@Configuration
+	public Properties config() throws Exception {
+		Properties p = new Properties();
+		p.put("jtaTestDataSource", "new://Resource?type=DataSource");
+		p.put("jtaTestDataSource.JdbcDriver", "org.h2.Driver");
+		p.put("jtaTestDataSource.username", "test");
+		p.put("jtaTestDataSource.password", "test");
+		p.put("jtaTestDataSource.JdbcUrl", "jdbc:h2:mem:tests");
+		return p;
+	}
+
 	@Test
 	public void testSave() throws Exception {
-		
-		//Arrange
+
+		// Arrange
 		Client client = new Client();
-		
-		//Act
+
+		// Act
 		Client savedClient = this.clientDao.save(client);
-		
-		//Assert
+
+		// Assert
 		Assertions.assertNotNull(savedClient);
 		Assertions.assertNotNull(savedClient.getId());
-		
+
 	}
-    
+
 	@Test
 	public void testSaveAndLoad() throws Exception {
-		
-		//Arrange
+
+		// Arrange
 		Client client = new Client();
 		client.setFirstName("Jean");
 		client.setLastName("Dupont");
 		client.setState(Boolean.TRUE);
 		Client savedClient = this.clientDao.save(client);
-		
-		//Act
+
+		// Act
 		Client loadedClient = this.clientDao.load(savedClient.getId());
-		
-		//Assert
+
+		// Assert
 		Assertions.assertNotNull(loadedClient);
 		Assertions.assertEquals(savedClient.getId(), loadedClient.getId());
 		Assertions.assertEquals(savedClient.getFirstName(), loadedClient.getFirstName());
 		Assertions.assertEquals(savedClient.getLastName(), loadedClient.getLastName());
 		Assertions.assertEquals(savedClient.getState(), loadedClient.getState());
-		
+
 	}
-    
+
 	@Test
 	public void testSaveAndRemove() throws Exception {
-		
-		//Arrange
+
+		// Arrange
 		Client client = new Client();
 		client.setAddress("5 rue tabaga");
 		Client savedClient = this.clientDao.save(client);
-		
-		//Act
+
+		// Act
 		this.clientDao.delete(savedClient.getId());
-		
-		//Assert
+
+		// Assert
 		Client loadedClient = this.clientDao.load(savedClient.getId());
 		Assertions.assertNull(loadedClient);
 	}
-    
+
+	@Test
+	public void testSaveAndRemoveJpql() throws Exception {
+
+		// Arrange
+		Client client = new Client();
+		client.setAddress("5 rue tabaga");
+		Client savedClient = this.clientDao.save(client);
+
+		// Act
+		this.clientDao.deleteJpql(savedClient.getId());
+
+		// Assert
+		Client loadedClient = this.clientDao.load(savedClient.getId());
+		Assertions.assertNull(loadedClient);
+	}
+
 	@Test
 	public void testSave2ClientsAndFindByCompanyName() throws Exception {
-		
-		//Arrange
+
+		// Arrange
 		Client client1 = new Client();
 		String companyName = "World Company";
 		client1.setCompanyName(companyName);
 		this.clientDao.save(client1);
-		
+
 		Client client2 = new Client();
 		client2.setCompanyName(companyName);
 		this.clientDao.save(client2);
-		
-		//Act
+
+		// Act
 		List<Client> clients = this.clientDao.findByCompanyName(companyName);
-		
-		//Assert
+
+		// Assert
 		Assertions.assertEquals(2, clients.size());
 	}
-	
 
-    
+	@Test
+	public void testFindByFirstNameLastName() throws Exception {
+
+		// Arrange
+		Client client1 = new Client();
+		String companyName = "World Company";
+		client1.setFirstName("Jean");
+		client1.setLastName("Dupont");
+		client1.setCompanyName(companyName);
+		this.clientDao.save(client1);
+
+		// Act - Assert
+		List<Client> clients = this.clientDao.findByFirstNameAndLastName("Jean", "Dupont");
+		Assertions.assertEquals(1, clients.size());
+		Assertions.assertEquals("Jean", clients.get(0).getFirstName());
+		Assertions.assertEquals("Dupont", clients.get(0).getLastName());
+
+		// Act - Assert
+		clients = this.clientDao.findByFirstNameAndLastName("Jeanne", "Dupont");
+		Assertions.assertEquals(0, clients.size());
+		
+		// Act - Assert
+		clients = this.clientDao.findByFirstNameAndLastName("Jean", "Durand");
+		Assertions.assertEquals(0, clients.size());
+		
+		// Act - Assert
+		clients = this.clientDao.findByFirstNameAndLastName("Jeanne", "Durand");
+		Assertions.assertEquals(0, clients.size());
+	}
+
 	@Test
 	public void testSaveAndLoadWithOrders() throws Exception {
-		
-		//Arrange
+
+		// Arrange
 		Client client = new Client();
 		client.setFirstName("Jean");
 		client.setLastName("Dupont");
 		client.setState(Boolean.TRUE);
 		Client savedClient = this.clientDao.save(client);
-		
+
 		Order order = new Order();
 		order.setDesignation("Commande du client");
 		order.setClient(savedClient);
 		this.orderDao.save(order);
-		
+
 		client.getOrders().add(order);
-		 
-		//Act
+
+		// Act
 		List<Client> clients = this.clientDao.findByIdWithOrders(savedClient.getId());
-		
-		//Assert
+
+		// Assert
 		Assertions.assertNotNull(clients);
 		Assertions.assertEquals(1, clients.size());
 		Assertions.assertNotNull(clients.get(0).getOrders());
 		Assertions.assertEquals(1, clients.get(0).getOrders().size());
-		
+
 	}
-	
+
 }
