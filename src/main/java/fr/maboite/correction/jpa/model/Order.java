@@ -2,9 +2,14 @@ package fr.maboite.correction.jpa.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,9 +24,10 @@ public class Order {
 	private String typePresta;
 
 	private String designation;
-
-	@Column(name="CLIENT_ID")
-	private Long clientId;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="CLIENT_ID")
+	private Client client;
 
 	public Long getId() {
 		return id;
@@ -47,12 +53,14 @@ public class Order {
 		this.designation = designation;
 	}
 
-	public Long getClientId() {
-		return clientId;
+	public Client getClient() {
+		return client;
 	}
 
-	public void setClientId(Long clientId) {
-		this.clientId = clientId;
+	public void setClient(Client client) {
+		this.client = client;
 	}
-
+	
+	
+	
 }

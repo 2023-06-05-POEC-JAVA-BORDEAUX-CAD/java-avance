@@ -19,7 +19,7 @@
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
 		<sonar.language>java</sonar.language>
-		<openejb.version>9.1.0</openejb.version>
+		<openejb.version>9.0.0</openejb.version>
 	</properties>
 	<build>
 		<!-- Ici sont définis les plugins : les différentes 'petites mains' de 
@@ -147,6 +147,7 @@
 			<groupId>org.jacoco</groupId>
 			<artifactId>jacoco-maven-plugin</artifactId>
 			<version>0.8.6</version>
+			<scope>test</scope>
 		</dependency>
 
 
@@ -209,12 +210,10 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Implémentation de JPA pour les tests-->
 		<dependency>
-			<groupId>org.apache.openjpa</groupId>
-			<artifactId>openjpa</artifactId>
-			<version>3.2.2</version>
-			<scope>test</scope>
+			<groupId>org.hibernate.orm</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>6.1.7.Final</version>
 		</dependency>
 
 	</dependencies>
