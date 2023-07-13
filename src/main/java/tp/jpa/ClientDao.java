@@ -1,7 +1,6 @@
 package tp.jpa;
 
 import java.util.List;
-import java.util.ArrayList;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.EntityManager;
