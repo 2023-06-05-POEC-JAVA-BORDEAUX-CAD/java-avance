@@ -6,7 +6,7 @@ import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
 @Stateless
-public class OrderService {
+public class OrderFrancoisService {
 	
 	@Inject
 	private OrderJpaDao orderJpaDao;

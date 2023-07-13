@@ -9,7 +9,7 @@ import fr.maboite.correction.jpa.model.Client;
 import fr.maboite.correction.jpa.model.Order;
 import fr.maboite.correction.jpa.model.PojoJpa;
 import fr.maboite.correction.jpa.service.ClientService;
-import fr.maboite.correction.jpa.service.OrderService;
+import fr.maboite.correction.jpa.service.OrderFrancoisService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -25,7 +25,7 @@ public class MonPremierFaceBean {
 	private ClientJpaDao clientJpaDao;
 	
 	@Inject
-	private OrderService orderService;
+	private OrderFrancoisService orderFrancoisService;
 	
 	@Inject
 	private ClientService clientService;
@@ -63,9 +63,9 @@ public class MonPremierFaceBean {
 		Order order = new Order();
 		order.setDesignation("commande Web");
 		order.setTypePresta("Bien");
-		Order savedOrder = orderService.save(order);
+		Order savedOrder = orderFrancoisService.save(order);
 		
-		Order loadedOrder = orderService.load(savedOrder.getId());
+		Order loadedOrder = orderFrancoisService.load(savedOrder.getId());
 		System.out.println("En base, j'ai un order dont la désignation vaut : " 
 				+ loadedOrder.getDesignation() + " pour l'id : " + loadedOrder.getId());
 	}
