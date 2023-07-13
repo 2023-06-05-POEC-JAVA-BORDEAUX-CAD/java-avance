@@ -1,5 +1,6 @@
 package tp.jpa;
 
+import java.util.List;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
@@ -7,6 +8,15 @@ import jakarta.inject.Inject;
 public class OrderJpaService {
 	@Inject
 	private OrderDao ordao;
+
+	/**
+	 * Load all OrderModel
+	 * 
+	 * @return List<OrderModel>
+	 */
+	public List<OrderModel> getAll() {
+		return ordao.getAll();
+	}
 
 	/**
 	 * Load a OrderModel by this identifier
