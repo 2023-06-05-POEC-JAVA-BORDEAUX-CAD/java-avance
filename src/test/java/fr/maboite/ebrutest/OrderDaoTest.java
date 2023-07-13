@@ -129,7 +129,7 @@ public class OrderDaoTest {
 
 		// Act
 		OrderJPA loadedOrder = orderDao.load(savedOrder.getId());
-		// par id de order on recupere une commande qui a aussi lié à un client
+		// par id de order on recupere une commande qui est lié à un client
 
 		//Assert
 		Assertions.assertNotNull(loadedOrder);
