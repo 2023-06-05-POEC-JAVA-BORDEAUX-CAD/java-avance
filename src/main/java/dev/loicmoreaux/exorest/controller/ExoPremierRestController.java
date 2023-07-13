@@ -6,6 +6,7 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
 
 @Stateless
 @Path("/clients")
@@ -33,11 +34,13 @@ public class ExoPremierRestController {
 	}
 	
 	@GET
-	@Path("/text")
-	@Produces("text/plain")
-	public String getTextPlain () {
-		System.out.println("GET Text/Plain in progress...");
-		
-		return "C'est du text plain";
+	@Path("/{id}")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String getPremierRestDtoTextPlain (@PathParam("id") Integer id) {
+		System.out.println("GET text/plain in progress...");
+		ExoPremierRestDto premierRestDto = new ExoPremierRestDto();
+		premierRestDto.setId(id);
+		premierRestDto.setName("C'est du text plain");
+		return premierRestDto.toString();
 	}
 }
