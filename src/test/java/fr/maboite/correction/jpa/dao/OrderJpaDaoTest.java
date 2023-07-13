@@ -11,9 +11,9 @@ import org.apache.openejb.testing.Configuration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import fr.maboite.correction.jpa.model.Client;
 import fr.maboite.correction.jpa.model.Order;
 import jakarta.ejb.EJB;
-import junit.framework.Assert;
 
 @RunWithApplicationComposer
 public class OrderJpaDaoTest {
@@ -21,10 +21,14 @@ public class OrderJpaDaoTest {
 	@EJB
 	private OrderJpaDao orderDao;
 
+	@EJB
+	private ClientJpaDao clientDao;
+
 	@org.apache.openejb.testing.Module
 	public EjbJar beans() {
 		EjbJar ejbJar = new EjbJar("my-beans");
 		ejbJar.addEnterpriseBean(new StatelessBean(OrderJpaDao.class));
+		ejbJar.addEnterpriseBean(new StatelessBean(ClientJpaDao.class));
 		return ejbJar;
 	}
 	
@@ -117,6 +121,33 @@ public class OrderJpaDaoTest {
 		//Assert
 		Assertions.assertNotNull(designations);
 		Assertions.assertEquals(2, designations.size());
+	}
+	
+
+    
+	@Test
+	public void testSaveAndLoadWithClient() throws Exception {
+		
+		//Arrange
+		Order order = new Order();
+		order.setDesignation("Salut ! ");
+		
+		Client client = new Client();
+		client.setFirstName("Jean");
+		Client savedClient = this.clientDao.save(client);
+		
+		order.setClient(savedClient);
+		Order savedOrder = this.orderDao.save(order);
+		
+		//Act
+		Order loadedOrder = this.orderDao.load(savedOrder.getId());
+		
+		//Assert
+		Assertions.assertNotNull(loadedOrder);
+		Assertions.assertEquals(savedOrder.getId(), loadedOrder.getId());
+		Assertions.assertNotNull(loadedOrder.getClient());
+		Assertions.assertEquals("Jean", loadedOrder.getClient().getFirstName());
+		
 	}
 	
 }

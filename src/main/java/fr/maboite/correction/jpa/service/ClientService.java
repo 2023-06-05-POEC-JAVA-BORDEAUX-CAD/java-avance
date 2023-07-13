@@ -27,7 +27,7 @@ public class ClientService {
 	 * @param id
 	 * @return
 	 */
-	public Client load(Long id) {
+	public Client getById(Long id) {
 		System.out.println("Chargement de client avec id : " + id);
 		Client client = this.clientJpaDao.load(id);
 		if(client == null) {

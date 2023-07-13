@@ -1,45 +1,41 @@
-package fr.maboite.correction.jpa.model;
+package fr.maboite.correction.rest.controller;
 
-import java.util.HashSet;
-import java.util.Set;
+import fr.maboite.correction.jpa.model.Client;
+import jakarta.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "CLIENTS")
-public class Client {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+/**
+ * Dto de présentation des Clients par REST
+ */
+public class ClientRestDto {
 	private Long id;
-
-	@Column(name = "COMPANY_NAME")
 	private String companyName;
-	@Column(name = "FIRST_NAME")
 	private String firstName;
-	@Column(name = "LAST_NAME")
 	private String lastName;
 	private String email;
 	private String phone;
 	private String address;
-	@Column(name = "ZIP_CODE")
 	private String zipCode;
 	private String city;
 	private String country;
 	private Boolean state;
 	
-	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
-	private Set<Order> orders = new HashSet<>();
-	
+	public ClientRestDto() {
+		
+	}
+
+	public ClientRestDto(Client client) {
+		this.id = client.getId();
+		this.address = client.getAddress();
+		this.city = client.getCity();
+		this.companyName = client.getCompanyName();
+		this.country = client.getCountry();
+		this.email = client.getEmail();
+		this.firstName = client.getFirstName();
+		this.lastName = client.getLastName();
+		this.phone = client.getPhone();
+		this.zipCode = client.getZipCode();
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -128,14 +124,20 @@ public class Client {
 		this.state = state;
 	}
 
-	public Set<Order> getOrders() {
-		return orders;
+	public Client toEntity() {
+		Client entity = new Client();
+		entity.setId(this.id);
+		entity.setAddress(this.address);
+		entity.setCity(this.city);
+		entity.setCompanyName(this.companyName);
+		entity.setCountry(this.country);
+		entity.setEmail(this.email);
+		entity.setFirstName(this.firstName);
+		entity.setLastName(this.lastName);
+		entity.setPhone(this.phone);
+		entity.setState(this.state);
+		entity.setZipCode(this.zipCode);
+		return entity;
 	}
-
-	public void setOrders(Set<Order> orders) {
-		this.orders = orders;
-	}
-	
-	
 
 }

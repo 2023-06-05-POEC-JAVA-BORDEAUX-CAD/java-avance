@@ -1,13 +1,15 @@
 package fr.maboite.correction.jsf.controller;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import fr.maboite.correction.jpa.dao.ClientJpaDao;
 import fr.maboite.correction.jpa.dao.PojoJpaDao;
 import fr.maboite.correction.jpa.model.Client;
 import fr.maboite.correction.jpa.model.Order;
 import fr.maboite.correction.jpa.model.PojoJpa;
 import fr.maboite.correction.jpa.service.ClientService;
-import fr.maboite.correction.jpa.service.OrderService;
+import fr.maboite.correction.jpa.service.OrderFrancoisService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -20,7 +22,10 @@ public class MonPremierFaceBean {
 	private PojoJpaDao pojoJpaDao;
 	
 	@Inject
-	private OrderService orderService;
+	private ClientJpaDao clientJpaDao;
+	
+	@Inject
+	private OrderFrancoisService orderFrancoisService;
 	
 	@Inject
 	private ClientService clientService;
@@ -43,17 +48,24 @@ public class MonPremierFaceBean {
 		PojoJpa pojoJpa = new PojoJpa();
 		pojoJpa.setNom("Salut");
 		pojoJpa.setAdresse(message);
-		pojoJpaDao.save(pojoJpa);
+		//pojoJpaDao.save(pojoJpa);
+		
+		List<Client> coucou = clientJpaDao.findByIdWithOrders(1l);
+		for (Client client : coucou) {
+			for(Order o : client.getOrders()) {
+				System.out.println(o.getDesignation());
+			}
+		}
+		
 	}
 	
 	public void sauvegardeOrder() {
 		Order order = new Order();
-		order.setClientId(1l);
 		order.setDesignation("commande Web");
 		order.setTypePresta("Bien");
-		Order savedOrder = orderService.save(order);
+		Order savedOrder = orderFrancoisService.save(order);
 		
-		Order loadedOrder = orderService.load(savedOrder.getId());
+		Order loadedOrder = orderFrancoisService.load(savedOrder.getId());
 		System.out.println("En base, j'ai un order dont la désignation vaut : " 
 				+ loadedOrder.getDesignation() + " pour l'id : " + loadedOrder.getId());
 	}
@@ -72,7 +84,7 @@ public class MonPremierFaceBean {
 		client.setZipCode("12345");
 		Client savedClient = clientService.save(client);
 		
-		Client loadedClient = clientService.load(savedClient.getId());
+		Client loadedClient = clientService.getById(savedClient.getId());
 		System.out.println("En base, j'ai un client dont l'état vaut : " 
 				+ loadedClient.getState() + " pour l'id : " + loadedClient.getId());
 	}
