@@ -1,4 +1,4 @@
-package fr.exoJUnit;
+package fr.maboite.exoJPA;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import fr.maboite.exoJPA.Client.ClientEntity;
 import fr.maboite.exoJPA.Client.ClientJpaDao;
 
-public class MonTest {
+public class ClientJpaTest {
 	
 ClientJpaDao clientDao = new ClientJpaDao();
 	
@@ -31,8 +31,6 @@ ClientJpaDao clientDao = new ClientJpaDao();
 		//Assert
 		Assertions.assertNotNull(companyNames);
 		Assertions.assertEquals(2, companyNames.size());
-	
-
 	}
-	
+
 }

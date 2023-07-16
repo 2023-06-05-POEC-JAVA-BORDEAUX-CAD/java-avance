@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 import fr.maboite.exoJPA.Client.ClientEntity;
 import fr.maboite.exoJPA.Client.ClientJpaDao;
 
-public class MonTest {
+public class ClientTest {
 	
-ClientJpaDao clientDao = new ClientJpaDao();
+	ClientJpaDao clientDao = new ClientJpaDao();
 	
 	@Test
 	public void testFindByCompanyName() throws Exception {
@@ -31,8 +31,6 @@ ClientJpaDao clientDao = new ClientJpaDao();
 		//Assert
 		Assertions.assertNotNull(companyNames);
 		Assertions.assertEquals(2, companyNames.size());
-	
-
 	}
-	
+
 }
