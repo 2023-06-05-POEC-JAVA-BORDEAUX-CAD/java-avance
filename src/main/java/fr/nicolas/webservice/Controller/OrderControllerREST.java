@@ -2,6 +2,7 @@ package fr.nicolas.webservice.Controller;
 
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -12,9 +13,12 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 import fr.nicolas.jpa.Entity.Order;
 import fr.nicolas.jpa.Service.OrderService;
 import fr.nicolas.webservice.DAOMoke.EntityDAOMoke;
+import fr.nicolas.webservice.DAOMoke.Error;
+import fr.nicolas.webservice.DTO.OrderDTO;
 import jakarta.ws.rs.core.Application;
 
 @Stateless
@@ -29,46 +33,39 @@ public class OrderControllerREST extends Application{
 	
 	@GET
 	@Path("/{id}")
-	public EntityDAOMoke getOrderById(@PathParam("id") Integer id) {
-		EntityDAOMoke entityDAOMoke = new EntityDAOMoke(1,"LOL");
-		return entityDAOMoke;
-	}
-	
-	
-	@GET
-	@Path("/{id}")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String getOrderByIdPlain(@PathParam("id") Integer id) {
-		EntityDAOMoke entityDAOMoke = new EntityDAOMoke(1,"LOL");
-		return entityDAOMoke.toString();
-	}
-	
-	@GET
-	@Path("db/{id}")
-	public Order getOrderByIdDb(@PathParam("id") Integer id) {
+	public Response getOrderById(@PathParam("id") Integer id) {
+		Order order = this.orderService.getOrderById(id);
 		
-		//return Response.ok().build();
-		Order fetchedOrder = this.orderService.getOrderById(id);
-		System.out.println(fetchedOrder.getClient().getAddress()); 
-		return fetchedOrder;
+		if(id<1 || order == null) {
+			Error err = new Error("404", "Nothin found here");
+			return Response.status(Status.NOT_FOUND).entity(err).build();
+		}
+		OrderDTO orderDTO = new OrderDTO().entityTODTO(order);
+		return Response.ok(orderDTO).header("Response", "entity sent").build();
 	}
-	
+
 	
 	@POST
 	@Path("/")
-	public EntityDAOMoke post(EntityDAOMoke entityDAOMoke) {
-		return entityDAOMoke;
+	public Response post(@Valid OrderDTO orderDTO) {	
+		
+		Order order = orderDTO.DtoToEntity(orderDTO);
+		Order savedOrder = this.orderService.save(order);
+		return Response.ok(savedOrder).header("Response", "entity recorded").build();
 	}
 	
 	@PUT
 	@Path("/")
-	public EntityDAOMoke put(EntityDAOMoke entityDAOMoke) {
-		return entityDAOMoke;
+	public Response put(@Valid OrderDTO orderDTO) {
+		Order order = orderDTO.DtoToEntity(orderDTO);
+		Order savedOrder = this.orderService.save(order);
+		return Response.ok(savedOrder).header("Response", "entity recorded").build();
 	}
 	
 	@DELETE
 	@Path("/{id}")
 	public Response delete(@PathParam("id") Integer id) {
+		this.orderService.deleteById(id);
 		return Response.ok().build();
 	}
 	

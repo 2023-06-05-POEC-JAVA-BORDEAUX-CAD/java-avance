@@ -23,8 +23,8 @@ public class OrderService {
 		return this.orderDAO.getAllOrders();
 	}
 	
-	public void save(Order order) {
-		this.orderDAO.save(order);
+	public Order save(Order order) {
+		return this.orderDAO.save(order);
 	}
 	
 	public void deleteById(Integer id) {

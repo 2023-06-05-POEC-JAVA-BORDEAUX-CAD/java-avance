@@ -1,8 +1,15 @@
 package fr.nicolas.webservice.DAOMoke;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+
 public class EntityDAOMoke {
 
+	
 	private Integer id;
+	
+	@NotEmpty
+	@Size(min=4, max=12)
 	private String name;
 	
 	

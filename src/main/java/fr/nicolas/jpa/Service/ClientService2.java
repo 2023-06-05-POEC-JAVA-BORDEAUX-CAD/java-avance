@@ -23,8 +23,8 @@ public class ClientService2 {
 		return this.clientDAO.getAllOrders();
 	}
 	
-	public void save(Client order) {
-		this.clientDAO.save(order);
+	public Client save(Client order) {
+		return this.clientDAO.save(order);
 	}
 	
 	public void deleteById(Integer id) {

@@ -11,6 +11,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
+
+
 import fr.nicolas.jpa.Enum.Status;
 
 @Entity
