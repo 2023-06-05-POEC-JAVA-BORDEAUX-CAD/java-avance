@@ -26,7 +26,6 @@ public class RestClientController {
 	@Inject
 	private ClientJpaService cliserv;
 
-	private CustomResponse success = new CustomResponse(200, "OK");
 	private CustomResponse not_found = new CustomResponse(404, "Client not found");
 
 	@GET
@@ -39,17 +38,15 @@ public class RestClientController {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response setClient(@Valid ClientModel client) throws SQLException {
-		// ClientModel saved = cliserv.save(client);
-		// return Response.ok(saved).build();
-		return Response.ok(success).build();
+		ClientModel saved = cliserv.save(client);
+		return Response.ok(saved).build();
 	}
 
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response replaceClient(@Valid ClientModel client) throws SQLException {
-		// ClientModel saved = cliserv.save(client);
-		// return Response.ok(saved).build();
-		return Response.ok(success).build();
+		ClientModel saved = cliserv.save(client);
+		return Response.ok(saved).build();
 	}
 
 	@GET
