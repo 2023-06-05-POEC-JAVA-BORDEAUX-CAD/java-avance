@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import fr.maboite.correction.jpa.dao.PojoJpaDao;
 import fr.maboite.correction.jpa.model.Order;
 import fr.maboite.correction.jpa.model.PojoJpa;
-import fr.maboite.correction.jpa.service.OrderService;
+import fr.maboite.correction.jpa.service.OrderServiceJpa;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -18,7 +18,7 @@ public class MonPremierFaceBean {
 	private PojoJpaDao pojoJpaDao;
 	
 	@Inject
-	private OrderService orderService;
+	private OrderServiceJpa orderService;
 
 	private String message = "Ce message vient du contrôleur";
 
