@@ -70,7 +70,7 @@ public class CalculateurAireTest {
 	public void testAireCercleRayonNegatif() {
 
 		CalculateurAire calculateurAire = new CalculateurAire();
-		System.out.println("Bien le bonjour de BeforeEach");
+		// System.out.println("Bien le bonjour de BeforeEach");
 		Assertions.assertThrows(IllegalArgumentException.class, () -> calculateurAire.aireCercle(-1));
 	}
 	
