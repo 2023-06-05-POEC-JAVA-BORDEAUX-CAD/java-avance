@@ -79,11 +79,11 @@ public class OrderEntity {
 		this.designation = designation;
 	}
 
-	public ClientEntity getClient() {
+	public ClientEntity getClientId() {
 		return client;
 	}
 
-	public void setClient(ClientEntity client) {
+	public void setClientId(ClientEntity client) {
 		this.client = client;
 	}
 

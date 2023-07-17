@@ -25,8 +25,8 @@ public class ClientEntity {
 	 * @Column(name = "company_name") private ClientEnum companyName;
 	 */
 
-	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
-	private List<OrderEntity> orders;
+	/*@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+	private List<OrderEntity> orders;*/
 
 	@Column(name = "company_name")
 	private String companyName;
@@ -75,13 +75,13 @@ public class ClientEntity {
 	 * companyName; }
 	 */
 
-	public List<OrderEntity> getOrders() {
+	/*public List<OrderEntity> getOrders() {
 		return orders;
 	}
 
 	public void setOrders(List<OrderEntity> orders) {
 		this.orders = orders;
-	}
+	}*/
 
 	public String getCompanyName() {
 		return companyName;

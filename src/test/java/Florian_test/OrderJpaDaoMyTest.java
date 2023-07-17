@@ -86,7 +86,7 @@ public class OrderJpaDaoMyTest {
 		OrderEntity order = new OrderEntity();
 		order.setDesignation("Formation");
 		order.setTypePresta("Jesaispas");
-		order.setClient(savedClient);
+		order.setClientId(savedClient);
 
 		// Sauvegarder l'order
 		OrderEntity savedOrder = this.ordersEntityDao.save(order);
@@ -96,8 +96,8 @@ public class OrderJpaDaoMyTest {
 
 		// Vérifier que la relation a été sauvegardée
 		Assertions.assertNotNull(loadedOrder);
-		Assertions.assertNotNull(loadedOrder.getClient());
-		Assertions.assertEquals(savedOrder.getId(), loadedOrder.getClient().getId());
+		Assertions.assertNotNull(loadedOrder.getClientId());
+		Assertions.assertEquals(savedOrder.getId(), loadedOrder.getClientId().getId());
 	}
 
 }
