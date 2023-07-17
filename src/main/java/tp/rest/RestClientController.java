@@ -24,7 +24,7 @@ class Success {
 }
 
 @Stateless
-@Path("/rest/v1/clients")
+@Path("/clients")
 @Produces("application/json")
 public class RestClientController {
 	@Inject
