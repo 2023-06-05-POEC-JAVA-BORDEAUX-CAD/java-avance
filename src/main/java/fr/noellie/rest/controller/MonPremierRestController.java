@@ -2,8 +2,7 @@ package fr.noellie.rest.controller;
 
 import fr.noellie.rest.dto.MonPremierRestDto;
 import jakarta.ejb.Stateless;
-import jakarta.inject.Inject;
-import jakarta.ws.rs.DELETE;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
@@ -11,13 +10,32 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 
 @Stateless
 @Path("/clients") // le nom de la ressource est très souvent au pluriel
 @Produces(MediaType.APPLICATION_JSON) // format incontournable en REST
 public class MonPremierRestController {
-	@Inject
-	MonPremierRestDto monPremierRestDtoFull;
+	
+	@GET
+	@Path("/{id}")
+	public Response getMonPremierRestBean(@PathParam("id") Long id) {
+		System.out.println("La méthode de récupération a été appelée avec l'id " + id);
+		
+		if(id < 0) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+		
+		MonPremierRestDto monPremierRestDto = new MonPremierRestDto();
+		monPremierRestDto.setId(id);
+		monPremierRestDto.setName("Hello");
+		
+		return Response.ok(monPremierRestDto)
+						.header("Bonjour !", "Comment ça va?")
+						.header("Le lundi", "c'est vachement dur !")
+						.build();
+	}
 
 	@GET
 //	@Path("/json/{id}") // l'URL finale sera de format class+methode
@@ -43,7 +61,7 @@ public class MonPremierRestController {
 	
 	@POST
 	@Path("/")
-	public MonPremierRestDto post(MonPremierRestDto monPremierRestDto) {
+	public MonPremierRestDto post(@Valid MonPremierRestDto monPremierRestDto) {
 		System.out.println("J'ai récupéré un DTO avec l'id : " 
 			+ monPremierRestDto.getId() 
 			+ " et le nom " + monPremierRestDto.getName());
@@ -60,12 +78,5 @@ public class MonPremierRestController {
 		
 		return monPremierRestDto;
 	}
-	
-//	@DELETE
-//	@Path("/{id}")
-//	public void deleteById(@PathParam("id") String id) {
-//		monPremierRestDtoFull.deleteById(id);
-//		System.out.println("Le DTO a bien été supprimé");
-//	}
 
 }

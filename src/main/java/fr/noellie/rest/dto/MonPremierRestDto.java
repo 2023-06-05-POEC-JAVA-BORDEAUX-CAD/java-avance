@@ -1,9 +1,14 @@
 package fr.noellie.rest.dto;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 public class MonPremierRestDto {
 
 	private Long id;
 
+	@NotNull
+	@Size(min=3)
 	private String name;
 	
 	public MonPremierRestDto() {
