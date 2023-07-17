@@ -127,4 +127,29 @@ public class ExpectedClient {
 	public void setState(Integer state) {
 		this.state = state;
 	}
+
+	public ClientModel toClientModel() {
+		ClientModel client = new ClientModel();
+		client.setCompanyName(companyName);
+		client.setFirstName(firstName);
+		client.setLastName(lastName);
+		client.setEmail(email);
+		client.setPhone(phone);
+		client.setAdress(adress);
+		client.setZipCode(zipCode);
+		client.setCity(city);
+		client.setCountry(country);
+		switch (state) {
+			case 0:
+				client.setState(ClientModel.State.CANCELED);
+				break;
+			case 1:
+				client.setState(ClientModel.State.OPTION);
+				break;
+			case 2:
+				client.setState(ClientModel.State.CONFIRMED);
+				break;
+		}
+		return client;
+	}
 }
