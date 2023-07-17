@@ -13,9 +13,15 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.PathParam;
 import tp.jpa.ClientJpaService;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response.Status;
+
+class Success {
+	public int code = 200;
+	public String reason = "OK";
+}
 
 @Stateless
 @Path("/rest/v1/clients")
@@ -33,9 +39,10 @@ public class RestClientController {
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response setClient(ClientModel client) throws SQLException {
-		ClientModel saved = cliserv.save(client);
-		return Response.ok(saved).build();
+	public Response setClient(@Valid ClientModel client) throws SQLException {
+		// ClientModel saved = cliserv.save(client);
+		// return Response.ok(saved).build();
+		return Response.ok(new Success()).build();
 	}
 
 	@PUT
