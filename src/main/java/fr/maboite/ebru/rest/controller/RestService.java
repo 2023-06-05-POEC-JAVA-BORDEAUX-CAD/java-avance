@@ -3,6 +3,7 @@ package fr.maboite.ebru.rest.controller;
 import fr.maboite.ebru.rest.dto.RestPojoDto;
 import jakarta.ejb.Stateless;
 import jakarta.validation.Valid;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
@@ -17,36 +18,36 @@ import jakarta.ws.rs.core.Response.Status;
 @Produces("application/json") // format incontournable
 public class RestService {
 
-//	@GET // (recupere l'id
-//	@Path("/{id}/{name}") // l'url finale sera classe + methode
-//	public RestPojoDto getRestServiceBean(@PathParam("id") Integer id, @PathParam("name") String name) { // correspond à
-//																											// {id}
-//
-//		System.out.println(" la methode de recuparation a été appeleée avec l'id " + id + " et name " + name);
-//		RestPojoDto restPojoDto = new RestPojoDto();
-//		restPojoDto.setId(34);
-//		restPojoDto.setName("salut");
-//
-//		return restPojoDto;
-//
-//	}
-
 	@GET // (recupere l'id
-	@Path("/{id}")
-	public Response getRestServiceBean(@PathParam("id") Integer id) {
-		
-		System.out.println(" la methode de recuparation a été appeleée avec l'id " + id);
+	@Path("/{id}/{name}") // l'url finale sera classe + methode
+	public RestPojoDto getRestServiceBean(@PathParam("id") Integer id, @PathParam("name") String name) { // correspond à
+																											// {id}
 
-		if (id < 0) {
-			return Response.status(Status.NOT_FOUND).build();
-			
-		}
-			
-			RestPojoDto restPojoDto = new RestPojoDto();
-			restPojoDto.setId(34);
-			restPojoDto.setName("salut");
-			return Response.ok(restPojoDto).header("au-fait", "ca va").build();
-		}
+		System.out.println(" la methode de recuparation a été appeleée avec l'id " + id + " et name " + name);
+		RestPojoDto restPojoDto = new RestPojoDto();
+		restPojoDto.setId(34);
+		restPojoDto.setName("salut");
+
+		return restPojoDto;
+
+	}
+
+//	@GET // (recupere l'id
+//	@Path("/{id}")
+//	public Response getRestServiceBean(@PathParam("id") Integer id) {
+//		
+//		System.out.println(" la methode de recuparation a été appeleée avec l'id " + id);
+//
+//		if (id < 0) {
+//			return Response.status(Status.NOT_FOUND).build();
+//			
+//		}
+//			
+//			RestPojoDto restPojoDto = new RestPojoDto();
+//			restPojoDto.setId(34);
+//			restPojoDto.setName("salut");
+//			return Response.ok(restPojoDto).header("au-fait", "ca va").build();
+//		}
 
 	
 
@@ -67,4 +68,14 @@ public class RestService {
 		return restPojoDto;
 	}
 
+	
+	@DELETE
+	@Path("/{id}")
+	public void delete (@PathParam("id") Integer id) { 
+
+		System.out.println("j'ai supprimé l'id : " + id);
+
+	
+	}
+	
 }

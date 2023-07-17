@@ -30,6 +30,10 @@ public class OrderJPA {
 	@ManyToOne(fetch=FetchType.EAGER) // par defaut c est deja EAGER
 	private ClientJPA client; // personne qui a passé la commande
 
+
+	@Column(name="state")
+	@Enumerated(EnumType.ORDINAL) // ici on choisit ORDINAL car on veut recuperer un Integer recupere l index des options: ici: 0 , 1 ou 2
+	private EtatCommande etat; // EtatCommande est un primitif
 	
 	public ClientJPA getClient() {
 		return client;
@@ -38,11 +42,6 @@ public class OrderJPA {
 	public void setClient(ClientJPA client) {
 		this.client = client;
 	}
-
-	@Column(name="state")
-	@Enumerated(EnumType.ORDINAL) // ici on choisit ORDINAL car on veut recuperer un Integer recupere l index des options: ici: 0 , 1 ou 2
-	private EtatCommande etat; // EtatCommande est un primitif
-	
 
 	public Integer getId() {
 		return id;
