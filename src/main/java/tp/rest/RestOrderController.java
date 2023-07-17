@@ -1,19 +1,23 @@
 package tp.rest;
 
+import tp.jpa.OrderModel;
+import tp.jpa.OrderJpaService;
+
 import java.util.List;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
-import tp.jpa.OrderModel;
 import jakarta.ws.rs.DELETE;
 import java.sql.SQLException;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
-import tp.jpa.OrderJpaService;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.PathParam;
+import jakarta.validation.Valid;
+import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response.Status;
 
 @Stateless
 @Path("/orders")
@@ -22,35 +26,51 @@ public class RestOrderController {
 	@Inject
 	private OrderJpaService ordserv;
 
+	private CustomResponse success = new CustomResponse(200, "OK");
+	private CustomResponse not_found = new CustomResponse(404, "Order not found");
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<OrderModel> getClients() throws SQLException {
-		return ordserv.getAll();
+	public Response getClients() throws SQLException {
+		List<OrderModel> orders = ordserv.getAll();
+		return Response.ok(orders).build();
 	}
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	public OrderModel setClient(OrderModel client) throws SQLException {
-		return ordserv.save(client);
+	public Response setClient(@Valid OrderModel client) throws SQLException {
+		// Order saved = ordserv.save(client);
+		// return Response.ok(saved).build();
+		return Response.ok(success).build();
 	}
 
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
-	public OrderModel replaceClient(OrderModel client) throws SQLException {
-		return ordserv.save(client);
+	public Response replaceClient(@Valid OrderModel client) throws SQLException {
+		// Order saved = ordserv.save(client);
+		// return Response.ok(saved).build();
+		return Response.ok(success).build();
 	}
 
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public OrderModel getClient(@PathParam("id") Integer id) throws SQLException {
-		return ordserv.load(id);
+	public Response getClient(@PathParam("id") Integer id) throws SQLException {
+		OrderModel loaded = ordserv.load(id);
+		if (loaded == null) {
+			return Response.status(Status.NOT_FOUND).entity(not_found).build();
+		}
+		return Response.ok(loaded).build();
 	}
 
 	@DELETE
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public OrderModel deleteClient(@PathParam("id") Integer id) throws SQLException {
-		return ordserv.delete(id);
+	public Response deleteClient(@PathParam("id") Integer id) throws SQLException {
+		OrderModel deleted = ordserv.delete(id);
+		if (deleted == null) {
+			return Response.status(Status.NOT_FOUND).entity(not_found).build();
+		}
+		return Response.ok(deleted).build();
 	}
 }
