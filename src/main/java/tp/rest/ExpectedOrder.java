@@ -1,8 +1,8 @@
 package tp.rest;
 
+import tp.jpa.OrderModel;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
-import tp.jpa.OrderModel;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
