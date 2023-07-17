@@ -13,7 +13,9 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.PathParam;
 import tp.jpa.ClientJpaService;
+import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response.Status;
 
 @Stateless
 @Path("/rest/v1/clients")
@@ -24,33 +26,41 @@ public class RestClientController {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<ClientModel> getClients() throws SQLException {
-		return cliserv.getAll();
+	public Response getClients() throws SQLException {
+		List<ClientModel> clients = cliserv.getAll();
+		return Response.ok(clients).build();
 	}
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	public ClientModel setClient(ClientModel client) throws SQLException {
-		return cliserv.save(client);
+	public Response setClient(ClientModel client) throws SQLException {
+		ClientModel saved = cliserv.save(client);
+		if (saved.getId() == 1) { // comme j'ai pas d'id < 0
+			return Response.status(Status.BAD_REQUEST).entity(new BadRequest()).build();
+		}
+		return Response.ok(saved).header("Secure-key", "f1a49b3").build();
 	}
 
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
-	public ClientModel replaceClient(ClientModel client) throws SQLException {
-		return cliserv.save(client);
+	public Response replaceClient(ClientModel client) throws SQLException {
+		ClientModel saved = cliserv.save(client);
+		return Response.ok(saved).build();
 	}
 
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ClientModel getClient(@PathParam("id") Integer id) throws SQLException {
-		return cliserv.load(id);
+	public Response getClient(@PathParam("id") Integer id) throws SQLException {
+		ClientModel loaded = cliserv.load(id);
+		return Response.ok(loaded).build();
 	}
 
 	@DELETE
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ClientModel deleteClient(@PathParam("id") Integer id) throws SQLException {
-		return cliserv.delete(id);
+	public Response deleteClient(@PathParam("id") Integer id) throws SQLException {
+		ClientModel deleted = cliserv.delete(id);
+		return Response.ok(deleted).build();
 	}
 }
