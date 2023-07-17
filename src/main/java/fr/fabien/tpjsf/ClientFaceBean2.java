@@ -1,9 +1,5 @@
 package fr.fabien.tpjsf;
 
-import java.time.LocalDateTime;
-
-import fr.fabien.tpjsf.jpadao.ClientDao;
-import fr.fabien.tpjsf.jpadao.OrderDao;
 import fr.fabien.tpjsf.jpamodel.Client;
 import fr.fabien.tpjsf.jpamodel.Order;
 import fr.fabien.tpjsf.jpaservice.ClientService;
@@ -27,7 +23,7 @@ public class ClientFaceBean2 {
 
 	public void sauvegardeOrder() {
 		Order order = new Order();
-		order.setClient_id(1);
+		//order.setClientId(1);
 		order.setType_presta("Formation Test");
 		order.setDesignation("JavaScript");
 		orderService.save(order);

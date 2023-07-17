@@ -1,4 +1,4 @@
-package fr.fabien.rest.tpfilrouge;
+package fr.fabien.rest.tpfilrouge.dto;
 
 public class ClientRestDto {
 

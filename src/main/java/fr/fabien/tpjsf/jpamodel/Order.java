@@ -15,71 +15,28 @@ import jakarta.persistence.Table;
 public class Order {
 
 	@Id
+	@ManyToOne(fetch = FetchType.LAZY)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "type_presta")
 	private String typePresta;
-	
+
 	private String designation;
-	
+
 	@Column(name = "client_id")
-	private Integer clientId;
-	
+	private Long clientId;
+
+	// @Column(name = "client_id")
+	// private Client client;
+
 	@Column(name = "nb_days")
 	private Integer nbDays;
-	
-	public String getTypePresta() {
-		return typePresta;
-	}
-
-	public void setTypePresta(String typePresta) {
-		this.typePresta = typePresta;
-	}
-
-	public Integer getClientId() {
-		return clientId;
-	}
-
-	public void setClientId(Integer clientId) {
-		this.clientId = clientId;
-	}
-
-	public Integer getNbDays() {
-		return nbDays;
-	}
-
-	public void setNbDays(Integer nbDays) {
-		this.nbDays = nbDays;
-	}
-
-	public Integer getUnitPrice() {
-		return unitPrice;
-	}
-
-	public void setUnitPrice(Integer unitPrice) {
-		this.unitPrice = unitPrice;
-	}
-
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
 
 	@Column(name = "unit_price")
 	private Integer unitPrice;
 
 	private Byte state;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@Column(name = "client_id")
-	private Client client;
-	
-	
-	// Getter / Setter
 
 	public Long getId() {
 		return id;
@@ -105,12 +62,12 @@ public class Order {
 		this.designation = designation;
 	}
 
-	public Integer getClient_id() {
+	public Long getClientId() {
 		return clientId;
 	}
 
-	public void setClient_id(Integer client_id) {
-		this.clientId = client_id;
+	public void setClientId(Long clientId) {
+		this.clientId = clientId;
 	}
 
 	public Integer getNb_days() {
@@ -129,6 +86,11 @@ public class Order {
 		this.unitPrice = unit_price;
 	}
 
+	// public Client getClient() {return client;}
+
+	// public void setClient(Client client) {
+	// this.client = client;}
+
 	public Byte getState() {
 		return state;
 	}
@@ -136,6 +98,5 @@ public class Order {
 	public void setState(Byte state) {
 		this.state = state;
 	}
-
 
 }

@@ -55,4 +55,10 @@ public class Order {
 		this.clientId = clientId;
 	}
 
+	
+	public void setNbDays(Integer nbDays) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
