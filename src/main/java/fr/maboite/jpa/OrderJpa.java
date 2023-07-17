@@ -28,8 +28,7 @@ public class OrderJpa {
 	//@Column(name = "client_Id")
 	//private Integer clientId;
 	
-	@Column(name="company_name")
-	private String companyName;
+	
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="client_id")
@@ -38,14 +37,7 @@ public class OrderJpa {
 		
 	
 
-	public String getCompanyName() {
-		return companyName;
-	}
-
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
-
+	
 	public Integer getId() {
 		return id;
 	}
