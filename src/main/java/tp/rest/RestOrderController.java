@@ -26,7 +26,6 @@ public class RestOrderController {
 	@Inject
 	private OrderJpaService ordserv;
 
-	private CustomResponse success = new CustomResponse(200, "OK");
 	private CustomResponse not_found = new CustomResponse(404, "Order not found");
 
 	@GET
@@ -39,17 +38,15 @@ public class RestOrderController {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response setClient(@Valid OrderModel client) throws SQLException {
-		// Order saved = ordserv.save(client);
-		// return Response.ok(saved).build();
-		return Response.ok(success).build();
+		OrderModel saved = ordserv.save(client);
+		return Response.ok(saved).build();
 	}
 
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response replaceClient(@Valid OrderModel client) throws SQLException {
-		// Order saved = ordserv.save(client);
-		// return Response.ok(saved).build();
-		return Response.ok(success).build();
+		OrderModel saved = ordserv.save(client);
+		return Response.ok(saved).build();
 	}
 
 	@GET
