@@ -3,6 +3,7 @@ package tp.rest;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
+import tp.jpa.OrderModel;
 import jakarta.validation.constraints.NotNull;
 
 public class ExpectedOrder {
@@ -74,5 +75,23 @@ public class ExpectedOrder {
 
 	public void setState(Integer state) {
 		this.state = state;
+	}
+
+	public OrderModel tOrderModel() {
+		OrderModel order = new OrderModel();
+		order.setTypePresta(typePresta);
+		order.setDesignation(designation);
+		order.setClientId(clientId);
+		order.setNbDays(nbDays);
+		order.setUnitPrice(unitPrice);
+		switch (state) {
+			case 0:
+				order.setState(OrderModel.State.ACTIVE);
+				break;
+			case 1:
+				order.setState(OrderModel.State.INACTIVE);
+				break;
+		}
+		return order;
 	}
 }
