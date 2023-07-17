@@ -1,7 +1,9 @@
 package dev.loicmoreaux.exorest.controller;
 
+import dev.loicmoreaux.exorest.dto.ExoErrorRestDto;
 import dev.loicmoreaux.exorest.dto.ExoPremierRestDto;
 import jakarta.ejb.Stateless;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -11,6 +13,7 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 
 
 @Stateless
@@ -29,13 +32,20 @@ public class ExoPremierRestController {
 	
 	@GET
 	@Path("/{id}")
-	public ExoPremierRestDto getPremierRestDtoById (@PathParam("id") Integer id) {
+	public Response getPremierRestDtoById (@PathParam("id") Integer id) {
+		if(id < 0) {
+			ExoErrorRestDto errorRestDto = new ExoErrorRestDto();
+			errorRestDto.setMessage("il ne peut pas exister d'id inférieur a zéro");
+			
+			return Response.status(Status.BAD_REQUEST).header("erreur", "id improbable").entity(errorRestDto).build();
+		}
+		
 		System.out.println("GET in progress...");
 		ExoPremierRestDto premierRestDto = new ExoPremierRestDto();
 		premierRestDto.setId(id);
 		premierRestDto.setName("Coucou!");
 		System.out.println("création du pojo id : " + id);
-		return premierRestDto;
+		return Response.ok(premierRestDto).header("user-id", "1234").header("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXV").build();
 	}
 	
 	@GET
@@ -50,7 +60,7 @@ public class ExoPremierRestController {
 	}
 	
 	@POST
-	public ExoPremierRestDto post(ExoPremierRestDto premierRestDto) {
+	public ExoPremierRestDto post(@Valid ExoPremierRestDto premierRestDto) {
 		System.out.println("J'ai récupéré un DTO avec id : " + premierRestDto.getId()
 				+ ", nom : " + premierRestDto.getName());
 		return premierRestDto;
