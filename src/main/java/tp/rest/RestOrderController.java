@@ -16,7 +16,7 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.MediaType;
 
 @Stateless
-@Path("/rest/v1/orders")
+@Path("/orders")
 @Produces("application/json")
 public class RestOrderController {
 	@Inject
