@@ -3,9 +3,6 @@ package tp.jpa;
 import java.util.Set;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Digits;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -23,48 +20,30 @@ public class ClientModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
 
-	@NotNull
-	@Size(min = 3, max = 40)
 	@Column(name = "company_name", nullable = false, length = 40)
 	private String companyName;
 
-	@NotNull
-	@Size(min = 3, max = 40)
 	@Column(name = "first_name", nullable = false, length = 40)
 	private String firstName;
 
-	@NotNull
-	@Size(min = 3, max = 40)
 	@Column(name = "last_name", nullable = false, length = 40)
 	private String lastName;
 
-	@NotNull
-	@Size(min = 3, max = 90)
 	@Column(name = "email", nullable = false, length = 90)
 	private String email;
 
-	@NotNull
-	@Size(min = 10, max = 10)
 	@Column(name = "phone", nullable = false, length = 10)
 	private String phone;
 
-	@NotNull
-	@Size(min = 3, max = 255)
 	@Column(name = "address", nullable = false, length = 255)
 	private String adress;
 
-	@NotNull
-	@Size(min = 3, max = 10)
 	@Column(name = "zip_code", nullable = false, length = 10)
 	private String zipCode;
 
-	@NotNull
-	@Size(min = 3, max = 40)
 	@Column(name = "city", nullable = false, length = 40)
 	private String city;
 
-	@NotNull
-	@Size(min = 3, max = 60)
 	@Column(name = "country", nullable = false, length = 60)
 	private String country;
 
