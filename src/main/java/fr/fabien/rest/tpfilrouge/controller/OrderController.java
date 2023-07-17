@@ -37,8 +37,12 @@ public class OrderController {
 		Order order = this.orderService.getOrderById(id);
 		OrderDto OrderDto = new OrderDto();
 		OrderDto.setId(order.getId());
-
-		OrderDto.setDesignation("Salut!");
+		OrderDto.setTypePresta(order.getType_presta());
+		OrderDto.setClientId();
+		OrderDto.setDesignation(order.getDesignation());
+		OrderDto.setNbDays(order.getNb_days());
+		OrderDto.setUnitPrice(order.getUnit_price());
+		//OrderDto.setState(order.getState());	
 
 		return Response.ok(OrderDto).header("coucou", "test").build();
 	}
