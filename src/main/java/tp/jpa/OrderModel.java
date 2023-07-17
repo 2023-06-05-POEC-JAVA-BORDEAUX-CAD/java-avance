@@ -11,6 +11,9 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "orders")
@@ -20,18 +23,26 @@ public class OrderModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@NotNull
+	@Size(min = 3, max = 90)
 	@Column(name = "type_presta", nullable = false, length = 40)
 	private String typePresta;
 
+	@NotNull
+	@Size(min = 3, max = 90)
 	@Column(name = "designation", nullable = false, length = 90)
 	private String designation;
 
+	@NotNull
+	@Digits(integer = 100, fraction = 0)
 	@Column(name = "client_id", nullable = false)
 	private Integer clientId;
 
+	@Digits(integer = 100, fraction = 0)
 	@Column(name = "nb_days", nullable = true)
 	private Integer nbDays;
 
+	@Digits(integer = 100, fraction = 0)
 	@Column(name = "unit_price", nullable = true)
 	private Integer unitPrice;
 
