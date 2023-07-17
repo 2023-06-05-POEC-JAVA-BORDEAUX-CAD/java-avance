@@ -5,7 +5,7 @@ import fr.maboite.correction.jpa.model.Client;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
-@Stateless
+@Stateless (name="mainClientService")
 public class ClientService {
 	
 	@Inject

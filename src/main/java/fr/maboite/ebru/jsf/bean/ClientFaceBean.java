@@ -21,7 +21,7 @@ public class ClientFaceBean {
 	private ClientFormBean client = new ClientFormBean();
 
 	@Inject
-	private ClientsServiceJsf clientService;
+	private ClientsServiceJsf clientServiceJsf;
 
 	@Inject
 	private OrderJpaService orderJpaService;
@@ -56,12 +56,12 @@ public class ClientFaceBean {
 		int idint = Integer.parseInt(loadId);
 		this.client.setId(idint);
 		this.client.setCompanyName("le nom de la company: " + loadId);
-		this.clientService.load(idint);
+		this.clientServiceJsf.load(idint);
 	}
 
 	public String save() {
 		System.out.println("je sauvegarde client");
-		this.clientService.save(client);
+		this.clientServiceJsf.save(client);
 		return null;
 
 	}
@@ -71,7 +71,7 @@ public class ClientFaceBean {
 		OrderJPA orderJPA = new OrderJPA();
 		orderJPA.setType("Formation");
 		orderJPA.setDesignation("Angular init");
-		orderJPA.setClient_id(2);
+		//orderJPA.setClient_id(2);
 		orderJPA.setEtat(EtatCommande.CANCELLED);
 		orderJpaService.save(orderJPA);
 

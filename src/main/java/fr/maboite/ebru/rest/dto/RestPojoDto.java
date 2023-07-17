@@ -1,9 +1,14 @@
 package fr.maboite.ebru.rest.dto;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+
 public class RestPojoDto {
 	
 	private Integer id;
 	
+	@NotEmpty
+	@Size(min=4, max=12)
 	private String name;
 
 	public Integer getId() {

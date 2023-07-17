@@ -13,7 +13,7 @@ import jakarta.persistence.TypedQuery;
  * Data Access Object: classe permettant d'accéder en lecture ou écriture au
  * référentiel de données des Pojos : ici, on se base sur JPA.
  */
-@Stateless
+@Stateless (name="mainClientDao)")
 public class ClientJpaDao {
 
 	@PersistenceContext
