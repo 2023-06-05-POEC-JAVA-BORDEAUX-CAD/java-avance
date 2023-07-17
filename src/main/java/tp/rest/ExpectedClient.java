@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
 import tp.jpa.ClientModel;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 public class ExpectedClient {
 	@NotNull
@@ -44,9 +45,8 @@ public class ExpectedClient {
 	private String country;
 
 	@NotNull
-	@Min(0)
-	@Max(2)
-	private Integer state;
+	@Pattern(regexp = "(CANCELED|OPTION|CONFIRMED)", message = "unknown value for ClientModel.State enum (CANCELED, OPTION or CONFIRMED)")
+	private String state;
 
 	public String getCompanyName() {
 		return companyName;
@@ -120,11 +120,11 @@ public class ExpectedClient {
 		this.country = country;
 	}
 
-	public Integer getState() {
+	public String getState() {
 		return state;
 	}
 
-	public void setState(Integer state) {
+	public void setState(String state) {
 		this.state = state;
 	}
 
@@ -140,13 +140,13 @@ public class ExpectedClient {
 		client.setCity(city);
 		client.setCountry(country);
 		switch (state) {
-			case 0:
+			case "CANCELED":
 				client.setState(ClientModel.State.CANCELED);
 				break;
-			case 1:
+			case "OPTION":
 				client.setState(ClientModel.State.OPTION);
 				break;
-			case 2:
+			case "CONFIRMED":
 				client.setState(ClientModel.State.CONFIRMED);
 				break;
 		}
