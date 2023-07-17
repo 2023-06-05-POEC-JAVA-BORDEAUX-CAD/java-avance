@@ -2,6 +2,7 @@ package fr.fabien.rest;
 
 import fr.fabien.rest.MonPremierRestDto;
 import jakarta.ejb.Stateless;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
@@ -38,11 +39,11 @@ public class MonPremierRestController {
 
 	@POST
 	@Path("/")
-	public MonPremierRestDto postMonPremierRestDto(MonPremierRestDto monPremierRestDto) {
+	public Response postMonPremierRestDto(@Valid MonPremierRestDto monPremierRestDto) {
 		
 		System.out.println("ID du client : " + monPremierRestDto.getId());
 		System.out.println("name is : " + monPremierRestDto.getName());
-		return monPremierRestDto;
+		return Response.ok().build();
 	}
 
 }
