@@ -37,15 +37,15 @@ public class RestClientController {
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response setClient(@Valid ClientModel client) throws SQLException {
-		ClientModel saved = cliserv.save(client);
+	public Response setClient(@Valid ExpectedClient client) throws SQLException {
+		ClientModel saved = cliserv.save(client.toClientModel());
 		return Response.ok(saved).build();
 	}
 
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response replaceClient(@Valid ClientModel client) throws SQLException {
-		ClientModel saved = cliserv.save(client);
+	public Response replaceClient(@Valid ExpectedClient client) throws SQLException {
+		ClientModel saved = cliserv.save(client.toClientModel());
 		return Response.ok(saved).build();
 	}
 
