@@ -1,6 +1,7 @@
 package fr.jpa.Orders;
 
 import fr.jpa.Clients.Clients;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 // import jakarta.persistence.EnumType;
@@ -13,6 +14,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+@Stateless
 @Entity
 @Table (name = "orders")
 public class Orders {
@@ -27,8 +29,8 @@ public class Orders {
   
   private String designation;
 
-  @Column (name ="client_id")
-  private int clientId;
+  //@Column (name ="client_id")
+  //private int clientId;
 
   @Column (name ="nb_days")
   private int nbDays;
@@ -37,7 +39,7 @@ public class Orders {
   private int unitPrice;
 
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "CLIENTS_ID")
+  @JoinColumn(name = "client_id")
   private Clients client;
 
   private int state;
@@ -48,7 +50,7 @@ public class Orders {
   
   //Getters
   
-  public int getId() {
+  public Integer getId() {
       return id;
   }
 
@@ -60,9 +62,9 @@ public class Orders {
       return designation;
   }
 
-  public int getClientId() {
-      return clientId;
-  }
+//   public int getClientId() {
+//       return clientId;
+//   }
 
   public int getNbDays() {
       return nbDays;
@@ -86,7 +88,7 @@ public class Orders {
   
   //SETTERS
   
-  public void setId(int id) {
+  public void setId(Integer id) {
       this.id = id;
   }
   
@@ -98,9 +100,9 @@ public void setTypePresta(String typePresta) {
       this.designation = designation;
   }
   
-  public void setClientId(int clientId) {
-      this.clientId = clientId;
-  }
+//   public void setClientId(int clientId) {
+//       this.clientId = clientId;
+//   }
   
   public void setNbDays(int nbDays) {
       this.nbDays = nbDays;

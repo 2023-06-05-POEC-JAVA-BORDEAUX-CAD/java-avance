@@ -16,7 +16,7 @@ public class OrdersFaceBean {
     orders.setTypePresta("Formation");
     //orders.setTypePresta(OrdersEnum.FORMATION);
     orders.setDesignation("React Avancé");
-    orders.setClientId(2); 
+    //orders.setClientId(2); 
     orders.setNbDays(3); 
     orders.setUnitPrice(1000);
     orders.setState(2);

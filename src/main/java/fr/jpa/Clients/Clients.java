@@ -1,16 +1,16 @@
 package fr.jpa.Clients;
 
-import java.util.List;
-import fr.jpa.Orders.Orders;
+//import java.util.List;
+//import fr.jpa.Orders.Orders;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
+//import jakarta.persistence.FetchType;
 // import jakarta.persistence.EnumType;
 // import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+//import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -49,8 +49,8 @@ public class Clients {
 
   private Integer state;
 
-  @OneToMany(mappedBy = "clients", fetch = FetchType.LAZY)
-  private List<Orders> orders;
+  //@OneToMany(mappedBy = "clients", fetch = FetchType.LAZY)
+  //private List<Orders> orders;
   
   public Integer getId() {
     return id;
@@ -149,12 +149,12 @@ public class Clients {
     this.state = state;
   }
 
-public List<Orders> getOrders() {
-  return orders;
-}
+// public List<Orders> getOrders() {
+//   return orders;
+// }
 
-public void setOrders(List<Orders> orders) {
-  this.orders = orders;
-}
+// public void setOrders(List<Orders> orders) {
+//   this.orders = orders;
+// }
   
 }
