@@ -18,11 +18,6 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response.Status;
 
-class Success {
-	public int code = 200;
-	public String reason = "OK";
-}
-
 @Stateless
 @Path("/clients")
 @Produces("application/json")
@@ -42,14 +37,15 @@ public class RestClientController {
 	public Response setClient(@Valid ClientModel client) throws SQLException {
 		// ClientModel saved = cliserv.save(client);
 		// return Response.ok(saved).build();
-		return Response.ok(new Success()).build();
+		return Response.ok(new CustomResponse(200, "OK")).build();
 	}
 
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response replaceClient(ClientModel client) throws SQLException {
-		ClientModel saved = cliserv.save(client);
-		return Response.ok(saved).build();
+	public Response replaceClient(@Valid ClientModel client) throws SQLException {
+		// ClientModel saved = cliserv.save(client);
+		// return Response.ok(saved).build();
+		return Response.ok(new CustomResponse(200, "OK")).build();
 	}
 
 	@GET
@@ -57,10 +53,10 @@ public class RestClientController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getClient(@PathParam("id") Integer id) throws SQLException {
 		ClientModel loaded = cliserv.load(id);
-		if (loaded.getId() == 1) {
-			return Response.status(Status.BAD_REQUEST).entity(new BadRequest()).build();
+		if (loaded == null) {
+			return Response.status(Status.NOT_FOUND).entity(new CustomResponse(404, "Client not found")).build();
 		}
-		return Response.ok(loaded).header("Secure-key", "f1a49b3").build();
+		return Response.ok(loaded).build();
 	}
 
 	@DELETE
@@ -68,6 +64,9 @@ public class RestClientController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response deleteClient(@PathParam("id") Integer id) throws SQLException {
 		ClientModel deleted = cliserv.delete(id);
+		if (deleted == null) {
+			return Response.status(Status.NOT_FOUND).entity(new CustomResponse(404, "Client not found")).build();
+		}
 		return Response.ok(deleted).build();
 	}
 }
