@@ -23,17 +23,17 @@ public class OrderRestDto {
 
 	@PositiveOrZero
 	private Integer unitPrice;
-	
+
 	private Boolean state;
-	
+
 	public OrderRestDto() {
-		
+
 	}
-	
+
 	public OrderRestDto(Order order) {
 		this.id = order.getId();
 		this.designation = order.getDesignation();
-		this.clientId = order.getClient()!=null?order.getClient().getId():null;
+		this.clientId = order.getClient() != null ? order.getClient().getId() : null;
 		this.nbDays = order.getNbDays();
 		this.unitPrice = order.getUnitPrice();
 		this.state = order.getState();
@@ -109,8 +109,8 @@ public class OrderRestDto {
 		order.setState(this.state);
 		order.setTypePresta(this.typePresta);
 		order.setUnitPrice(this.unitPrice);
-		
+
 		return order;
 	}
-	
+
 }

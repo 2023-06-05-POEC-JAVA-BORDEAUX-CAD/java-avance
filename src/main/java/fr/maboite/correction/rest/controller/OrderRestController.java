@@ -53,7 +53,11 @@ public class OrderRestController {
 	@Path("/{id}")
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response getPlain(@PathParam("id") Long id) {
+		
+		
 		Order order = this.orderFrancoisService.load(id);
+		
+		
 		if (order == null) {
 			return Response
 					.status(Status.NOT_FOUND)
@@ -70,9 +74,11 @@ public class OrderRestController {
 	@POST
 	@Path("/")
 	public Response post(@Valid OrderRestDto orderRestDto) {
+		
 		if (orderRestDto == null) {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
+		
 		Order order = orderRestDto.toEntity();
 
 		if (orderRestDto.getClientId() != null) {
@@ -90,6 +96,7 @@ public class OrderRestController {
 		}
 
 		Order savedOrder = this.orderFrancoisService.save(order);
+		
 		return Response.ok(new OrderRestDto(savedOrder))
 				.build();
 	}
