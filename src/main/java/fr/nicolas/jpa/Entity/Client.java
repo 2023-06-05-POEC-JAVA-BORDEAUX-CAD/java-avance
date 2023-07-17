@@ -9,6 +9,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.json.bind.annotation.JsonbTransient;
 
 
@@ -43,8 +46,9 @@ public class Client {
 	
 	String country;
 
-	//@OneToMany(mappedBy="client") la cause de mon plantage liée àl'erreur InvalidStateException. Désactivé par défaut
-	@JsonbTransient
+//	la cause de mon plantage liée àl'erreur InvalidStateException. Désactivé par défaut
+//	@OneToMany(mappedBy="client", fetch = FetchType.EAGER) 
+//	@JsonIgnoreProperties("client")
 	private Set<Order> orders = new HashSet<>();
 	
 	public Integer getId() {
@@ -127,12 +131,10 @@ public class Client {
 		this.country = country;
 	}
 
-	@JsonbTransient
 	public Set<Order> getOrders() {
 		return orders;
 	}
 
-	@JsonbTransient
 	public void setOrders(Set<Order> orders) {
 		this.orders = orders;
 	}

@@ -51,6 +51,10 @@ public class ClientControllerRest  extends Application{
 	public Response post(@Valid ClientDTO clientDTO) {
 		Client client = clientDTO.DtoToEntity(clientDTO);
 		Client savedClient = this.clientService.save(client);
+		if(savedClient == null) {
+			Error err = new Error("500", "Internal server error");
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity(err).build();
+		}
 		return Response.ok(savedClient).header("Response", "entity recorded").build();
 	}
 	
@@ -60,6 +64,10 @@ public class ClientControllerRest  extends Application{
 		
 		Client client = clientDTO.DtoToEntity(clientDTO);
 		Client savedClient = this.clientService.save(client);
+		if(savedClient == null) {
+			Error err = new Error("500", "Internal server error");
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity(err).build();
+		}
 		return Response.ok(savedClient).header("Response", "entity recorded").build();
 	}
 	

@@ -51,6 +51,12 @@ public class OrderControllerREST extends Application{
 		
 		Order order = orderDTO.DtoToEntity(orderDTO);
 		Order savedOrder = this.orderService.save(order);
+		
+		if(savedOrder == null) {
+			Error err = new Error("500", "Internal server error");
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity(err).build();
+		}
+		
 		return Response.ok(savedOrder).header("Response", "entity recorded").build();
 	}
 	
@@ -59,6 +65,11 @@ public class OrderControllerREST extends Application{
 	public Response put(@Valid OrderDTO orderDTO) {
 		Order order = orderDTO.DtoToEntity(orderDTO);
 		Order savedOrder = this.orderService.save(order);
+		
+		if(savedOrder == null) {
+			Error err = new Error("500", "Internal server error");
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity(err).build();
+		}
 		return Response.ok(savedOrder).header("Response", "entity recorded").build();
 	}
 	

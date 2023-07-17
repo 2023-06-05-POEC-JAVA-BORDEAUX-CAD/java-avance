@@ -12,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import fr.nicolas.jpa.Enum.Status;
 
@@ -21,6 +22,7 @@ public class Order {
 
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="client_id")
+	@JsonIgnoreProperties("orders")
 	private Client client;
 	
 	@Id
