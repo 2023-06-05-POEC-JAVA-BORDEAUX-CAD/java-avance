@@ -9,8 +9,10 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
 
 @Stateless
 @Path("/clients") // Le nom de la ressource est très généralement au pluriel
@@ -45,5 +47,19 @@ public class MonPremierRestController {
 		System.out.println("name is : " + monPremierRestDto.getName());
 		return Response.ok().build();
 	}
+	
+	@PUT
+	@Path("/{id}")
+	public void putMonPremierRestBean(@PathParam("id") Integer id) {
+		
+		System.out.println("ID du client : " + id);
+	}
 
+	@DELETE
+	@Path("/{id}")
+	public void deleteMonPremierRestBean(@PathParam("id") Integer id) {
+		
+		System.out.println("ID du client : " + id);
+	}
+	
 }

@@ -1,11 +1,13 @@
 package fr.fabien.rest;
 
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 public class MonPremierRestDto {
 	@NotNull(message = "Id ne peut pas etre null")
 	private Integer id;
 	@NotNull(message = "Le nom ne peut pas etre Null")
+	@NotEmpty
 	private String name;
 
 	public MonPremierRestDto(Integer id, String name) {
