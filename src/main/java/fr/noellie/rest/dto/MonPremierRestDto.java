@@ -8,9 +8,9 @@ public class MonPremierRestDto {
 	private Long id;
 
 	@NotNull
-	@Size(min=3)
+	@Size(min = 3)
 	private String name;
-	
+
 	public MonPremierRestDto() {
 	}
 
