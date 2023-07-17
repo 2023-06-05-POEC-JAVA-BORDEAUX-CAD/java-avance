@@ -29,6 +29,38 @@ public class Order {
 	@JoinColumn(name="CLIENT_ID")
 	private Client client;
 
+	@Column(name="NB_DAYS")
+	private Integer nbDays;
+
+	@Column(name="UNIT_PRICE")
+	private Integer unitPrice;
+	
+	private Boolean state;
+
+	public Integer getNbDays() {
+		return nbDays;
+	}
+
+	public void setNbDays(Integer nbDays) {
+		this.nbDays = nbDays;
+	}
+
+	public Integer getUnitPrice() {
+		return unitPrice;
+	}
+
+	public void setUnitPrice(Integer unitPrice) {
+		this.unitPrice = unitPrice;
+	}
+
+	public Boolean getState() {
+		return state;
+	}
+
+	public void setState(Boolean state) {
+		this.state = state;
+	}
+
 	public Long getId() {
 		return id;
 	}

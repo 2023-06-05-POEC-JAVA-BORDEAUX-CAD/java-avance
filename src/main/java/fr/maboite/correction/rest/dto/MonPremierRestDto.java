@@ -1,9 +1,15 @@
 package fr.maboite.correction.rest.dto;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 public class MonPremierRestDto {
-	
+
 	private Long id;
 
+	@NotNull
+	@Size(min = 5, max = 20)
 	private String name;
 
 	public Long getId() {
@@ -26,6 +32,5 @@ public class MonPremierRestDto {
 	public String toString() {
 		return "MonPremierRestDto [id=" + id + ", name=" + name + "]";
 	}
-
 
 }

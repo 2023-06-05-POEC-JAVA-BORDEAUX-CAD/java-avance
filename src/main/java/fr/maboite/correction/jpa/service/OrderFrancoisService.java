@@ -50,5 +50,18 @@ public class OrderFrancoisService {
 		}
 		this.orderJpaDao.delete(order.getId());
 	}
+	
+	/**
+	 * Supprime order par son id.
+	 * si order == null ou si aucune ligne
+	 * ayant la même clé primaire n'existe en base de données.
+	 * @param order
+	 */
+	public void delete(Long id) {
+		if(id == null) {
+			return;
+		}
+		this.orderJpaDao.deleteJpql(id);
+	}
 
 }

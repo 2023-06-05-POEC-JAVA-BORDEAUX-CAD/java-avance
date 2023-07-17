@@ -58,7 +58,7 @@ public class OrderJpaDao {
 	
 	public void deleteJpql(Long id) {
 		Query jpqlQuery = this.entityManager.createQuery(
-				"delete o "
+				"delete "
 				+ " from Order o "
 				+ " where o.id = :id");
 		jpqlQuery.setParameter("id", id);

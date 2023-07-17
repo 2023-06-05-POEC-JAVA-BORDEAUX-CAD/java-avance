@@ -1,12 +1,12 @@
-package fr.maboite.correction.rest.controller;
+package fr.maboite.correction.rest.dto;
 
 import fr.maboite.correction.jpa.model.Client;
-import jakarta.validation.constraints.Size;
 
 /**
  * Dto de présentation des Clients par REST
  */
 public class ClientRestDto {
+	
 	private Long id;
 	private String companyName;
 	private String firstName;
