@@ -1,5 +1,6 @@
 package fr.maboite.ebru.jpa.entity;
 
+import fr.maboite.ebru.rest.dto.OrdersDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -20,21 +21,21 @@ public class OrderJPA {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(name="type_presta")
+	@Column(name = "type_presta")
 	private String type_presta;
 
 	@Column(name = "designation")
 	private String designation;
-	
-	@JoinColumn(name="client_id")
-	@ManyToOne(fetch=FetchType.EAGER) // par defaut c est deja EAGER
+
+	@JoinColumn(name = "client_id")
+	@ManyToOne(fetch = FetchType.EAGER) // par defaut c est deja EAGER
 	private ClientJPA client; // personne qui a passé la commande
 
-
-	@Column(name="state")
-	@Enumerated(EnumType.ORDINAL) // ici on choisit ORDINAL car on veut recuperer un Integer recupere l index des options: ici: 0 , 1 ou 2
+	@Column(name = "state")
+	@Enumerated(EnumType.ORDINAL) // ici on choisit ORDINAL car on veut recuperer un Integer recupere l index des
+									// options: ici: 0 , 1 ou 2
 	private EtatCommande etat; // EtatCommande est un primitif
-	
+
 	public ClientJPA getClient() {
 		return client;
 	}
@@ -57,9 +58,8 @@ public class OrderJPA {
 
 	public void setId(Integer id) {
 		this.id = id;
-	
-	}
 
+	}
 
 	public String getType() {
 		return type_presta;
@@ -77,6 +77,14 @@ public class OrderJPA {
 		this.designation = designation;
 	}
 
-	
+	public OrdersDto toOrdersDto(OrderJPA orderJpa) {
+
+		OrdersDto orderDto = new OrdersDto();
+		orderDto.setTypePresta(orderJpa.getType());
+		orderDto.setDesignation(orderJpa.getDesignation());
+		orderDto.setEtat(EtatCommande.CANCELLED);
+
+		return orderDto;
+	}
 
 }

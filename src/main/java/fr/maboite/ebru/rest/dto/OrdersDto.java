@@ -1,10 +1,16 @@
 package fr.maboite.ebru.rest.dto;
 
 import fr.maboite.ebru.jpa.entity.EtatCommande;
+import fr.maboite.ebru.jpa.entity.OrderJPA;
+import fr.maboite.ebru.jpa.entity.OrderJpaService;
+import jakarta.ejb.Stateless;
+import jakarta.inject.Inject;
 import jakarta.validation.constraints.NotEmpty;
 
-
+@Stateless
 public class OrdersDto {
+	
+	
 
 	private Integer id;
 	
@@ -59,5 +65,15 @@ public class OrdersDto {
 		this.etat = etat;
 	} 
 	
+
+	public OrderJPA toOrderJPA(OrdersDto dto) {
+		OrderJPA order = new OrderJPA();
+		order.setType(dto.getTypePresta());
+		order.setDesignation(dto.getDesignation());
+//		order.setClient(dto.GET);
+		order.setEtat(EtatCommande.CANCELLED);
+		
+		return order;
+	} 
 	
 }
