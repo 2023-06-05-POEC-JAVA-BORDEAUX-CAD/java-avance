@@ -1,10 +1,10 @@
 package tp.rest;
 
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
 import tp.jpa.OrderModel;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 public class ExpectedOrder {
 	@NotNull
@@ -25,9 +25,8 @@ public class ExpectedOrder {
 	@Min(0)
 	private Integer unitPrice;
 
-	@Min(0)
-	@Max(1)
-	private Integer state;
+	@Pattern(regexp = "(ACTIVE|INACTIVE)", message = "unknown value for OrderModel.State enum (ACTIVE or INACTIVE)")
+	private String state;
 
 	public String getTypePresta() {
 		return typePresta;
@@ -69,11 +68,11 @@ public class ExpectedOrder {
 		this.unitPrice = unitPrice;
 	}
 
-	public Integer getState() {
+	public String getState() {
 		return state;
 	}
 
-	public void setState(Integer state) {
+	public void setState(String state) {
 		this.state = state;
 	}
 
@@ -85,10 +84,10 @@ public class ExpectedOrder {
 		order.setNbDays(nbDays);
 		order.setUnitPrice(unitPrice);
 		switch (state) {
-			case 0:
+			case "ACTIVE":
 				order.setState(OrderModel.State.ACTIVE);
 				break;
-			case 1:
+			case "INACTIVE":
 				order.setState(OrderModel.State.INACTIVE);
 				break;
 		}
