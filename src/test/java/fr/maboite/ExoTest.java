@@ -25,23 +25,23 @@ class VoidClass {
 public class ExoTest {
     @BeforeAll
     public static void beforeAll() {
-        System.out.println("before all");
+        // System.out.println("before all");
     }
 
     @BeforeEach
     public void beforeEach(TestInfo test) {
-        System.out.println("    before each");
-        System.out.println("        execution de " + test.getDisplayName());
+        // System.out.println("    before each");
+        // System.out.println("        execution de " + test.getDisplayName());
     }
 
     @AfterEach
     public void afterEach() {
-        System.out.println("    after each");
+        // System.out.println("    after each");
     }
 
     @AfterAll
     public static void afterAll() {
-        System.out.println("after all");
+        // System.out.println("after all");
     }
 
     @Test
@@ -72,7 +72,7 @@ public class ExoTest {
     public void toujoursThrows() {
         assertThrows(ArithmeticException.class, () -> {
             int x = 2 / 0;
-            System.out.println("        x: " + x);
+            // System.out.println("        x: " + x);
         });
     }
 }
