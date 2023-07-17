@@ -35,10 +35,7 @@ public class RestClientController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response setClient(ClientModel client) throws SQLException {
 		ClientModel saved = cliserv.save(client);
-		if (saved.getId() == 1) { // comme j'ai pas d'id < 0
-			return Response.status(Status.BAD_REQUEST).entity(new BadRequest()).build();
-		}
-		return Response.ok(saved).header("Secure-key", "f1a49b3").build();
+		return Response.ok(saved).build();
 	}
 
 	@PUT
@@ -53,7 +50,10 @@ public class RestClientController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getClient(@PathParam("id") Integer id) throws SQLException {
 		ClientModel loaded = cliserv.load(id);
-		return Response.ok(loaded).build();
+		if (loaded.getId() == 1) {
+			return Response.status(Status.BAD_REQUEST).entity(new BadRequest()).build();
+		}
+		return Response.ok(loaded).header("Secure-key", "f1a49b3").build();
 	}
 
 	@DELETE
