@@ -1,6 +1,7 @@
 package fr.maboite.correction.rest.dto;
 
 public class MonPremierRestDto {
+	
 	private Long id;
 
 	private String name;
