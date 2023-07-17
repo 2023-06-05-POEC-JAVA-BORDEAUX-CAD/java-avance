@@ -3,6 +3,8 @@ package tp.jpa;
 import java.util.Set;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -20,6 +22,8 @@ public class ClientModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
 
+	@NotNull
+	@Size(min = 3, max = 40)
 	@Column(name = "company_name", nullable = false, length = 40)
 	private String companyName;
 
