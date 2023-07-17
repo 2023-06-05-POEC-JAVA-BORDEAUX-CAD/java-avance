@@ -18,24 +18,24 @@ public class CalculateurAireAvecBeforeAfter {
 	
 	@BeforeAll
 	public static void methodeLanceeAvantTousLesTests() {
-		System.out.println("Bien le bonjour de BeforeAll");
+		// System.out.println("Bien le bonjour de BeforeAll");
 	}
 	
 	@AfterAll
 	public static void methodeLanceeApresTousLesTests() {
-		System.out.println("Bien le bonjour de AfterAll");
+		// System.out.println("Bien le bonjour de AfterAll");
 	}
 	
 	@BeforeEach
 	public void methodeLanceeAvantChaqueTest() {
 		// Arrange
-		System.out.println("Bien le bonjour de BeforeEach");
+		// System.out.println("Bien le bonjour de BeforeEach");
 		calculateurAire = new CalculateurAire();
 	}
 	
 	@AfterEach
 	public void methodeLanceeApresChaqueTest() {
-		System.out.println("Bien le bonjour de After each");
+		// System.out.println("Bien le bonjour de After each");
 	}
 
 	@Test
