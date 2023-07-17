@@ -18,5 +18,16 @@ public class OrderJpaDao {
 	public OrderEntity load(Integer integer) {
 		return this.entityManager.find(OrderEntity.class, integer);
 	}
+	
+	public void delete(Integer integer) {
+		if (integer == null) {
+			return;
+		}
+		OrderEntity savedEntity = this.entityManager.find(OrderEntity.class, integer);
+		if (savedEntity == null) {
+			return;
+		}
+		this.entityManager.remove(savedEntity);
+	}
 
 }

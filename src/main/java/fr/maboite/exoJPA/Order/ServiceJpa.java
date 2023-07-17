@@ -26,5 +26,12 @@ public class ServiceJpa {
 		}
 		return order;
 	}
+	
+	public void delete(OrderEntity order) {
+		if(order == null) {
+			return;
+		}
+		this.orderJpaDao.delete(order.getId());
+	}
 
 }
