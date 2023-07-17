@@ -30,29 +30,29 @@ public class RestOrderController {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getClients() throws SQLException {
+	public Response getOrders() throws SQLException {
 		List<OrderModel> orders = ordserv.getAll();
 		return Response.ok(orders).build();
 	}
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response setClient(@Valid OrderModel client) throws SQLException {
-		OrderModel saved = ordserv.save(client);
+	public Response setOrder(@Valid ExpectedOrder order) throws SQLException {
+		OrderModel saved = ordserv.save(order.tOrderModel());
 		return Response.ok(saved).build();
 	}
 
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response replaceClient(@Valid OrderModel client) throws SQLException {
-		OrderModel saved = ordserv.save(client);
+	public Response replaceOrder(@Valid ExpectedOrder order) throws SQLException {
+		OrderModel saved = ordserv.save(order.tOrderModel());
 		return Response.ok(saved).build();
 	}
 
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getClient(@PathParam("id") Integer id) throws SQLException {
+	public Response getOrder(@PathParam("id") Integer id) throws SQLException {
 		OrderModel loaded = ordserv.load(id);
 		if (loaded == null) {
 			return Response.status(Status.NOT_FOUND).entity(not_found).build();
@@ -63,7 +63,7 @@ public class RestOrderController {
 	@DELETE
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response deleteClient(@PathParam("id") Integer id) throws SQLException {
+	public Response deleteOrder(@PathParam("id") Integer id) throws SQLException {
 		OrderModel deleted = ordserv.delete(id);
 		if (deleted == null) {
 			return Response.status(Status.NOT_FOUND).entity(not_found).build();
