@@ -1,5 +1,6 @@
 package fr.groupe2.api;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import org.apache.openejb.jee.EjbJar;
@@ -80,6 +81,23 @@ public class ClientDAOTest {
 		Assertions.assertEquals(designation, savedClient.getCompanyName());
 	}
 
+	
+	@Test
+	public void getClients() throws Exception {
+		
+		//Act
+		List<Client> clients = this.clientDao.getAllClients();
+		
+		//Assert
+		Assertions.assertNotNull(clients);
+		Assertions.assertNotNull(clients.get(0));
+	}
+	
+	@Test public void getClient() throws Exception {
+		Client client = this.clientDao.find(1);
+		
+		Assertions.assertNotNull(client);
+	}
 	
 	
 	

@@ -1,5 +1,7 @@
 package fr.groupe2.api;
 import java.util.Properties;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.openejb.jee.EjbJar;
 import org.apache.openejb.jee.StatelessBean;
@@ -114,24 +116,42 @@ public class OrderDAOTest {
 	}
 	
 	
-//	@Test
-//	public void testDeleteById() throws Exception {
-//		//Arrange
-//		Order order = new Order();
-//		order.setDesignation("Angular");
-//		
-//		Order savedOrder1 = this.orderDao.save(order);
-//		Order savedOrder2 = this.orderDao.save(order);
-//		
-//		Assertions.assertNotNull(savedOrder1);
-//		Assertions.assertNotNull(savedOrder2);
-//		
-//		//Act
-//		
-//		this.orderDao.delete(savedOrder2.getId());
-//		
-//		Order orderGet = this.orderDao.find(savedOrder2.getId()); 
-//		Assertions.assertNull(orderGet);
-//	}
+	@Test 
+	public void getOrders() throws Exception {
+		
+		List<Order> orders = this.orderDao.getAllOrders();
+		
+		Assertions.assertNotNull(orders);
+		Assertions.assertNotNull(orders.get(0));
+		
+	}
+	
+	@Test
+	public void getOrderById() throws Exception  {
+		Order order = this.orderDao.find(1);
+		
+		Assertions.assertNotNull(order);
+	}
+	
+	
+	@Test
+	public void testDeleteById() throws Exception {
+		//Arrange
+		Order order = new Order();
+		order.setDesignation("Angular");
+		
+		Order savedOrder1 = this.orderDao.save(order);
+		Order savedOrder2 = this.orderDao.save(order);
+		
+		Assertions.assertNotNull(savedOrder1);
+		Assertions.assertNotNull(savedOrder2);
+		
+		//Act
+		
+		this.orderDao.delete(savedOrder2.getId());
+		
+		Order orderGet = this.orderDao.find(savedOrder2.getId()); 
+		Assertions.assertNull(orderGet);
+	}
 	
 }
