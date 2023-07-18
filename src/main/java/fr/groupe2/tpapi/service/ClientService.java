@@ -22,8 +22,8 @@ public class ClientService {
 		return this.clientDao.getAllClients();
 	}
 	
-	public Client save(Client order) {
-		return this.clientDao.save(order);
+	public Client save(Client client) {
+		return this.clientDao.save(client);
 	}
 	
 	public void deleteById(Integer id) {
