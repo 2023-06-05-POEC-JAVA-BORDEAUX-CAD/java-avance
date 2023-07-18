@@ -5,7 +5,6 @@ import java.util.List;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 
@@ -48,10 +47,10 @@ public class OrdersDao {
 	 */
 		
 	public void deleteJpql(Integer id) {
-		Query jpqlQuery = this.entityManager.createQuery(
+		TypedQuery<Orders> jpqlQuery = this.entityManager.createQuery(
 				"delete "
-				+ " from Order o "
-				+ " where o.id = :id");
+				+ " from Orders o "
+				+ " where o.id = :id", Orders.class);
 		jpqlQuery.setParameter("id", id);
 		jpqlQuery.executeUpdate();
 	}

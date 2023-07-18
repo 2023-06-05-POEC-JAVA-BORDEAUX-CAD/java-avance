@@ -6,7 +6,7 @@ public class OrdersDto {
  
   private String typePresta;  
   private String designation;
-  private Integer clientId;
+  private Long clientId;
   private Integer nbDays;
   private Integer unitPrice;
   private Integer state;
@@ -14,7 +14,7 @@ public class OrdersDto {
   public OrdersDto(Orders order) {
     this.id = order.getId();
 		this.designation = order.getDesignation();
-		this.clientId = order.getClient() != null ? order.getClient().getId() : null;
+		this.clientId = order.getClient() != null ? order.getClient().getId() :null;
 		this.nbDays = order.getNbDays();
 		this.unitPrice = order.getUnitPrice();
 		this.typePresta = order.getTypePresta();
@@ -34,7 +34,7 @@ public OrdersDto(){}
   public String getDesignation() {
     return designation;
   }
- public Integer getClientId() {
+ public Long getClientId() {
    return clientId;
  }
   public Integer getNbDays() {
@@ -59,7 +59,7 @@ public OrdersDto(){}
     this.designation = designation;
   }
   
- public void setClientId(Integer clientId) {
+ public void setClientId(Long clientId) {
    this.clientId = clientId;
  }
 
@@ -83,6 +83,7 @@ public OrdersDto(){}
     orderEntity.setNbDays(this.nbDays);
     orderEntity.setUnitPrice(this.unitPrice);
     orderEntity.setState(this.state);
+    //orderEntity.setClientId(this.clientId);
     return orderEntity;
 
   }

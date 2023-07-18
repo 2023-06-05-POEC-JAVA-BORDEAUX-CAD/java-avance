@@ -34,4 +34,15 @@ public class ClientService {
 		
 	}
 
+	public Client getById(Long id) {
+		System.out.println("Chargement de client avec id : " + id);
+		Client client = this.clientDao.load(id);
+		if(client == null) {
+				System.out.println("Aucun client trouvé");
+		}else {
+				System.out.println("Le client trouvé est : " + client);
+		}
+		return client;
+}
+
 }

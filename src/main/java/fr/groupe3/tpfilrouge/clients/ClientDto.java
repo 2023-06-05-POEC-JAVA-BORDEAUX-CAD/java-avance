@@ -44,7 +44,8 @@ public class ClientDto {
 	private String country;
 
 	@NotNull
-	private EtatClient state;
+	private Integer state;
+	//private EtatClient state;
 
 	public ClientDto() {
 
@@ -143,14 +144,23 @@ public class ClientDto {
 		this.country = country;
 	}
 
-	public EtatClient getState() {
+	/*public EtatClient getState() {
 		return state;
 	}
 
 	public void setState(EtatClient state) {
 		this.state = state;
 	}
+	*/
+	public Integer getState() {
+		return state;
+	}
 
+	public void setState(Integer state) {
+		this.state = state;
+	}
+	
+	
 	public Client toEntity() {
 		Client entity = new Client();
 		entity.setId(this.id);

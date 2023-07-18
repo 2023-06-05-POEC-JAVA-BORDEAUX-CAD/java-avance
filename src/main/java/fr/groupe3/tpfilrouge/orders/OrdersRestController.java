@@ -2,6 +2,8 @@ package fr.groupe3.tpfilrouge.orders;
 
 import java.util.List;
 
+import fr.groupe3.tpfilrouge.clients.Client;
+import fr.groupe3.tpfilrouge.clients.ClientService;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
@@ -22,6 +24,7 @@ import jakarta.ws.rs.core.Response.Status;
 public class OrdersRestController {
 @Inject
 private OrdersService orderService;
+@Inject
 private ClientService clientService;
 
 
@@ -65,7 +68,7 @@ public Response post(@Valid OrdersDto orderDto) {
 		
 		Orders order = orderDto.toEntity();
 
-		if (orderDto.getClientId() != null) {
+		if (orderDto.getClientId() != null) {      
 			Client client = clientService.getById(orderDto.getClientId());
 			if (client == null) {
 				return Response
