@@ -5,8 +5,12 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Positive;
 
 public class ExpectedOrder {
+	@Positive
+	private Integer id;
+
 	@NotNull
 	@Size(min = 3, max = 40)
 	private String typePresta;
@@ -27,6 +31,14 @@ public class ExpectedOrder {
 
 	@Pattern(regexp = "(ACTIVE|INACTIVE)", message = "unknown value for OrderModel.State enum (ACTIVE or INACTIVE)")
 	private String state;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getTypePresta() {
 		return typePresta;
@@ -78,6 +90,9 @@ public class ExpectedOrder {
 
 	public OrderModel tOrderModel() {
 		OrderModel order = new OrderModel();
+		if (id != null) {
+			order.setId(id);
+		}
 		order.setTypePresta(typePresta);
 		order.setDesignation(designation);
 		order.setClientId(clientId);
