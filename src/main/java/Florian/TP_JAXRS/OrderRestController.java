@@ -51,7 +51,7 @@ public class OrderRestController {
 		return orderRestDto;
 	}
 
-	@POST
+/*	@POST
 	@Path("/")
 	public void post(OrderRestDto orderRestDto) {
 		
@@ -64,7 +64,7 @@ public class OrderRestController {
 		OrderRestDto orderToSave = orderRestDto.toEntity();
 		orderToSave.setId(orderRestDto.getId());
 		orderService.save(orderToSave);
-	}
+	} */
 	
 	@DELETE
 	  @Path("/{id}")
