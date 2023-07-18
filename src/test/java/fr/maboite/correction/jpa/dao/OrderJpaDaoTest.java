@@ -8,11 +8,13 @@ import org.apache.openejb.jee.StatelessBean;
 import org.apache.openejb.jee.jpa.unit.PersistenceUnit;
 import org.apache.openejb.junit5.RunWithApplicationComposer;
 import org.apache.openejb.testing.Configuration;
+import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import fr.maboite.correction.jpa.model.Client;
 import fr.maboite.correction.jpa.model.Order;
+import fr.maboite.correction.jpa.model.Product;
 import jakarta.ejb.EJB;
 
 @RunWithApplicationComposer
@@ -24,23 +26,31 @@ public class OrderJpaDaoTest {
 	@EJB
 	private ClientJpaDao clientDao;
 
+	@EJB
+	private ProductJpaDao productDao;
+
 	@org.apache.openejb.testing.Module
 	public EjbJar beans() {
 		EjbJar ejbJar = new EjbJar("my-beans");
 		ejbJar.addEnterpriseBean(new StatelessBean(OrderJpaDao.class));
 		ejbJar.addEnterpriseBean(new StatelessBean(ClientJpaDao.class));
+		ejbJar.addEnterpriseBean(new StatelessBean(ProductJpaDao.class));
 		return ejbJar;
 	}
 	
     @org.apache.openejb.testing.Module
     public PersistenceUnit persistence() {
-        PersistenceUnit unit = new PersistenceUnit("PersisterPU");
-        unit.setJtaDataSource("jtaTestDataSource");
-        unit.setNonJtaDataSource("jtaTestDataSourceUnManaged");
-        unit.addClass(Order.class);
-        unit.setProperty("openjpa.jdbc.SynchronizeMappings", "buildSchema(ForeignKeys=true)");
-        unit.setProperty("openjpa.Log", "DefaultLevel=WARN,Runtime=INFO,Tool=INFO,SQL=TRACE");
-        return unit;
+    	PersistenceUnit unit = new PersistenceUnit("PersisterPU");
+		unit.setProvider(HibernatePersistenceProvider.class);
+		unit.setJtaDataSource("jtaTestDataSource");
+		unit.setNonJtaDataSource("jtaTestDataSourceUnManaged");
+		unit.addClass(Client.class);
+		unit.addClass(Order.class);
+		unit.addClass(Product.class);
+		unit.setProperty("javax.persistence.schema-generation.database.action", "drop-and-create");
+		unit.setProperty("openjpa.jdbc.SynchronizeMappings", "buildSchema(ForeignKeys=true)");
+		unit.setProperty("openjpa.Log", "DefaultLevel=WARN,Runtime=INFO,Tool=INFO,SQL=TRACE");
+		return unit;
     }
     
     @Configuration
@@ -140,13 +150,35 @@ public class OrderJpaDaoTest {
 		Order savedOrder = this.orderDao.save(order);
 		
 		//Act
-		Order loadedOrder = this.orderDao.load(savedOrder.getId());
+		Order loadedOrder = this.orderDao.findWithClientAndProducts(savedOrder.getId());
 		
 		//Assert
 		Assertions.assertNotNull(loadedOrder);
 		Assertions.assertEquals(savedOrder.getId(), loadedOrder.getId());
 		Assertions.assertNotNull(loadedOrder.getClient());
 		Assertions.assertEquals("Jean", loadedOrder.getClient().getFirstName());
+		
+	}@Test
+	public void testSaveAndLoadWithProduct() throws Exception {
+		
+		//Arrange
+		Order order = new Order();
+		order.setDesignation("Salut ! ");
+		
+		Product product = new Product();
+		product.setName("super produit");
+		Product savedProduct = this.productDao.save(product);
+		
+		order.getProducts().add(savedProduct);
+		Order savedOrder = this.orderDao.save(order);
+		
+		//Act
+		Order loadedOrder = this.orderDao.findWithClientAndProducts(savedOrder.getId());
+		
+		//Assert
+		Assertions.assertNotNull(loadedOrder);
+		Assertions.assertFalse(loadedOrder.getProducts().isEmpty());
+		Assertions.assertEquals(product.getName(), loadedOrder.getProducts().iterator().next().getName());
 		
 	}
 	

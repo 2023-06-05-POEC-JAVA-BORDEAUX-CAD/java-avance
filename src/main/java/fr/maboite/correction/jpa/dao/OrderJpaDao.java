@@ -81,4 +81,24 @@ public class OrderJpaDao {
 		return jpqlQuery.getResultList();
 	}
 
+	/**
+	 * Récupère order et son client et ses produits associés
+	 * @param id
+	 * @return
+	 */
+	public Order findWithClientAndProducts(Long id) {
+		List<Order> results = this.entityManager.createQuery(
+				"select o "
+				+ " from Order o "
+				+ " left join fetch o.client c "
+				+ " left join fetch o.products p "
+				+ " where o.id = :id ", Order.class)
+				.setParameter("id", id)
+				.getResultList();
+		if(results.isEmpty()) {
+			return null;
+		}
+		return results.get(0);
+	}
+
 }

@@ -29,6 +29,23 @@ CREATE TABLE `orders` (
   CONSTRAINT `fk_orders_clients` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+CREATE TABLE PRODUCT	 (
+  ID int NOT NULL AUTO_INCREMENT,
+  NAME varchar(40) NOT NULL,
+  PRICE int NOT NULL,
+  PRIMARY KEY (ID)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+CREATE TABLE ORDER_PRODUCT (
+  ORDER_ID int NOT NULL,
+  PRODUCT_ID int NOT NULL,
+  PRIMARY KEY (ORDER_ID, PRODUCT_ID),
+  CONSTRAINT `FK_CART_ORDERS` FOREIGN KEY (ORDER_ID) REFERENCES ORDERS(ID),
+  CONSTRAINT `FK_CART_PRODUCT` FOREIGN KEY (PRODUCT_ID) REFERENCES PRODUCT(ID)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 INSERT INTO `clients` (`id`, `company_name`, `first_name`, `last_name`, `email`, `phone`, `address`, `zip_code`, `city`, `country`, `state`) VALUES
 (1, 'Capgemini', 'Fabrice', 'Martin', 'martin@mail.com', '0656858433', 'ABC', 'XYZ', 'Nantes', 'France', 0);
 INSERT INTO `clients` (`id`, `company_name`, `first_name`, `last_name`, `email`, `phone`, `address`, `zip_code`, `city`, `country`, `state`) VALUES

@@ -1,6 +1,10 @@
 package fr.maboite.correction.rest.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.maboite.correction.jpa.model.Order;
+import fr.maboite.correction.jpa.model.Product;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -26,6 +30,8 @@ public class OrderRestDto {
 
 	private Boolean state;
 
+	private List<Long> productIds = new ArrayList<>();
+
 	public OrderRestDto() {
 
 	}
@@ -38,6 +44,9 @@ public class OrderRestDto {
 		this.unitPrice = order.getUnitPrice();
 		this.typePresta = order.getTypePresta();
 		this.state = order.getState();
+		for(Product product : order.getProducts()) {
+			this.productIds.add(product.getId());
+		}
 	}
 
 	public Long getId() {
@@ -94,6 +103,14 @@ public class OrderRestDto {
 
 	public void setState(Boolean state) {
 		this.state = state;
+	}
+
+	public List<Long> getProductIds() {
+		return productIds;
+	}
+
+	public void setProductIds(List<Long> productIds) {
+		this.productIds = productIds;
 	}
 
 	@Override
