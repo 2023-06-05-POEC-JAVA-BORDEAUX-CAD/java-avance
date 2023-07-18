@@ -1,5 +1,6 @@
 package fr.groupe3.tpfilrouge.clients;
 
+
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 

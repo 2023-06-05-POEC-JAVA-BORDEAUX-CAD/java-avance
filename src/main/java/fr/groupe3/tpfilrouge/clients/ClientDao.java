@@ -1,11 +1,11 @@
 package fr.groupe3.tpfilrouge.clients;
 
+
 import java.util.List;
 
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 @Stateless
