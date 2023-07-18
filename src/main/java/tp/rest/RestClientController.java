@@ -10,7 +10,6 @@ import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.DELETE;
-import java.sql.SQLException;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Produces;
@@ -31,21 +30,21 @@ public class RestClientController {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getClients() throws SQLException {
+	public Response getClients() {
 		List<ClientModel> clients = cliserv.getAll();
 		return Response.ok(clients).build();
 	}
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response setClient(@Valid ExpectedClient client) throws SQLException {
+	public Response setClient(@Valid ExpectedClient client) {
 		ClientModel saved = cliserv.save(client.toClientModel());
 		return Response.ok(saved).build();
 	}
 
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response replaceClient(@Valid ExpectedClient client) throws SQLException {
+	public Response replaceClient(@Valid ExpectedClient client) {
 		ClientModel saved = cliserv.save(client.toClientModel());
 		return Response.ok(saved).build();
 	}
@@ -53,7 +52,7 @@ public class RestClientController {
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getClient(@PathParam("id") Integer id) throws SQLException {
+	public Response getClient(@PathParam("id") Integer id) {
 		ClientModel loaded = cliserv.load(id);
 		if (loaded == null) {
 			return Response.status(Status.NOT_FOUND).entity(not_found).build();
@@ -64,7 +63,7 @@ public class RestClientController {
 	@DELETE
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response deleteClient(@PathParam("id") Integer id) throws SQLException {
+	public Response deleteClient(@PathParam("id") Integer id) {
 		ClientModel deleted = cliserv.delete(id);
 		if (deleted == null) {
 			return Response.status(Status.NOT_FOUND).entity(not_found).build();
