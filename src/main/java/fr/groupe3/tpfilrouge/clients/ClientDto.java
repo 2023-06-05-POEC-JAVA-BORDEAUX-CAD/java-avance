@@ -1,71 +1,66 @@
 package fr.groupe3.tpfilrouge.clients;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
-@Entity
-@Table(name="clients")
-public class Client {
+public class ClientDto {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	/**
+	 * Dto de prÃ©sentation des Clients par REST
+	 */
+
+	@NotNull
 	private Long id;
-	
-	@Column(name="company_name")
-	private String companyName;
-	
-	@Column(name = "first_name")
-	private String firstName;
-	
-	@Column(name = "last_name")
-	private String lastName;
-	
-	
-	private String email;
-	
-	
-	private String phone;
-	
 
+	@Size(min = 3)
+	private String companyName;
+
+	@NotNull
+	@Size(min = 3)
+	private String firstName;
+
+	@NotNull
+	@Size(min = 3)
+	private String lastName;
+
+	@NotNull
+	@Email
+	private String email;
+
+	@NotNull
+	private String phone;
+
+	@NotNull
 	private String adress;
-	
-	@Column(name = "zip_code")
+
+	@NotNull
 	private String zipCode;
-	
-	
+
+	@NotNull
 	private String city;
-	
-	
+
+	@Size(min = 3)
 	private String country;
-	
-	@Column(name = "state")
-	@Enumerated(EnumType.STRING)
+
+	@NotNull
 	private EtatClient state;
 
-	public Client() {
+	public ClientDto() {
 
 	}
 
-	public Client(Long id, String companyName, String firstName, String lastName, String email, String phone,
-			String adress, String zipCode, String city, String country, EtatClient state) {
-
-		this.id = id;
-		this.companyName = companyName;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.phone = phone;
-		this.adress = adress;
-		this.zipCode = zipCode;
-		this.city = city;
-		this.country = country;
-		this.state = state;
+	public ClientDto(Client client) {
+		this.id = client.getId();
+		this.adress = client.getAdress();
+		this.city = client.getCity();
+		this.companyName = client.getCompanyName();
+		this.country = client.getCountry();
+		this.email = client.getEmail();
+		this.firstName = client.getFirstName();
+		this.lastName = client.getLastName();
+		this.phone = client.getPhone();
+		this.zipCode = client.getZipCode();
 	}
 
 	public Long getId() {
@@ -154,6 +149,22 @@ public class Client {
 
 	public void setState(EtatClient state) {
 		this.state = state;
+	}
+
+	public Client toEntity() {
+		Client entity = new Client();
+		entity.setId(this.id);
+		entity.setAdress(this.adress);
+		entity.setCity(this.city);
+		entity.setCompanyName(this.companyName);
+		entity.setCountry(this.country);
+		entity.setEmail(this.email);
+		entity.setFirstName(this.firstName);
+		entity.setLastName(this.lastName);
+		entity.setPhone(this.phone);
+		entity.setState(this.state);
+		entity.setZipCode(this.zipCode);
+		return entity;
 	}
 
 }

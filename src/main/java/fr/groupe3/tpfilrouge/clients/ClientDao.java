@@ -7,17 +7,18 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import jakarta.ejb.Stateless;
+import jakarta.persistence.EnumType;
 
 @Stateless
 public class ClientDao {
 
 	// ensemble d'objet come une List
-	private Map<Integer, Client> clients = new HashMap<>();
+	private Map<Long, Client> clients = new HashMap<>();
 
 	public ClientDao() {
 
 		Client Fabrice = new Client();
-		Fabrice.setId(1); // on initialise
+		Fabrice.setId((long)1); // on initialise
 		Fabrice.setCompanyName("Capgemini");
 		Fabrice.setFirstName("Fabrice");
 		Fabrice.setLastName("Martin");
@@ -27,13 +28,13 @@ public class ClientDao {
 		Fabrice.setZipCode("xyz");
 		Fabrice.setCity("Nantes");
 		Fabrice.setCountry("France");
-		Fabrice.setState(0);
+		Fabrice.setState(EtatClient.ACTIVE);
 
 		// Fabrice qu'on vient de creer on l ajoute à notre Map clients
 		this.clients.put(Fabrice.getId(), Fabrice);
 
 		Client Julien = new Client();
-		Julien.setId(2); // on initialise
+		Julien.setId((long)2); // on initialise
 		Julien.setCompanyName("M2i Formation");
 		Julien.setFirstName("Julien");
 		Julien.setLastName("Lamard");
@@ -43,17 +44,17 @@ public class ClientDao {
 		Julien.setZipCode("xyz");
 		Julien.setCity("Paris");
 		Julien.setCountry("France");
-		Julien.setState(1);
+		Julien.setState(EtatClient.INACTIVE);
 
 		this.clients.put(Julien.getId(), Julien);
 
 	}
 
-	public Client getClient(Integer id) {
+	public Client getClient(Long id) {
 		return this.clients.get(id);
 	}
 
-	public Map<Integer, Client> getAllClient() {
+	public Map<Long, Client> getAllClient() {
 
 		return clients;
 
