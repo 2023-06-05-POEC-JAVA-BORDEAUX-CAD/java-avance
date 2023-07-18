@@ -1,9 +1,7 @@
 package fr.groupe3.archives.tpfilrouge.clients;
 
-
 import java.util.HashMap;
 import java.util.Map;
-
 
 import jakarta.ejb.Stateless;
 
