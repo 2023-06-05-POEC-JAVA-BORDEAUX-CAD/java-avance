@@ -5,6 +5,7 @@ import java.util.List;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 @Stateless
@@ -41,7 +42,7 @@ public class ClientDao {
 		if (id==null) {
 			return ;
 		}
-		 TypedQuery<Client> jpqlQuery = this.entityManager.createQuery("delete c " + " from Client c " + " where c.id = :id", Client.class);
+		 Query jpqlQuery = this.entityManager.createQuery("delete" + " from Client c " + " where c.id = :id");
 		//Query=Requete // creation: on ecrit la requete mais elle ne se relance pas
 		
 		
