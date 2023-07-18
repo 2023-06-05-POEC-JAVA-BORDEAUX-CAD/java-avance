@@ -1,6 +1,9 @@
 package fr.fabien.rest.tpfilrouge.controller;
 
+import fr.fabien.rest.tpfilrouge.dto.ExpectedClient;
+import fr.fabien.rest.tpfilrouge.dto.ExpectedOrder;
 import jakarta.ejb.Stateless;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -15,32 +18,35 @@ import jakarta.ws.rs.core.MediaType;
 public class ClientController {
 
 	@GET
-	public String getAllClients()  {
+	public String getAllClients() {
 		return "pathAllClients";
 	}
+
 	@GET
-	@Path("/{id}") // 
+	@Path("/{id}") //
 	public String getClientById(@PathParam("id") Integer id) {
+		System.out.println("ID du client : " + id);
 		return "pathClientById";
 	}
-	
+
 	@GET
-	@Path("/{id}") // 
+	@Path("/{id}/orders") //
 	public String getClientOrders(@PathParam("id") Integer id) {
+		System.out.println("liste des commandes du client : " + id);
 		return "pathClientOrders";
 	}
+
 	@POST
-	public String saveClient() { // POST
+	public String saveClient(@Valid ExpectedClient expectedClient) { // POST
+		System.out.println("ID de la commande : " + expectedClient);
 		return "pathSaveClient";
 	}
-	
+
 	@DELETE
-	@Path("/{id}") // 
+	@Path("/{id}") //
 	public String deleteClientById(@PathParam("id") Integer id) { // DELETE
-		return "";
+		System.out.println();
+		return "PathDeleteClient";
 	}
-	
-	
-	
-	
+
 }
