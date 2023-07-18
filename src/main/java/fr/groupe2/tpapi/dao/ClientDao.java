@@ -24,10 +24,10 @@ public class ClientDao {
 	}
 	
 	/**
-	 * Return all orders
+	 * Return all clients
 	 * @return List<Client>
 	 */
-	public List<Client> getAllOrders() {
+	public List<Client> getAllClients() {
 		TypedQuery<Client> query = this.entityManager.createQuery("select c from Client c", Client.class) ;
 		return query.getResultList();
 	}
@@ -47,10 +47,10 @@ public class ClientDao {
 	 * @param id
 	 */
 	public void delete(Integer id) {
-		Client orderToDelete = this.find(id);
+		Client clientToDelete = this.find(id);
 		
-		if(orderToDelete != null) {
-			this.entityManager.remove(orderToDelete);
+		if(clientToDelete != null) {
+			this.entityManager.remove(clientToDelete);
 		}
 	}
 	

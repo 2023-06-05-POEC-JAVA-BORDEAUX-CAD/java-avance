@@ -19,7 +19,7 @@ public class ClientService {
 	}
 	
 	public List<Client> getAllOrders() {
-		return this.clientDao.getAllOrders();
+		return this.clientDao.getAllClients();
 	}
 	
 	public Client save(Client order) {

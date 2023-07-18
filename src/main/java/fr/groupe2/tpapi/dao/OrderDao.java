@@ -25,7 +25,7 @@ public class OrderDao {
 	
 	/**
 	 * Return all orders
-	 * @return List<Client>
+	 * @return List<Order>
 	 */
 	public List<Order> getAllOrders() {
 		TypedQuery<Order> query = this.entityManager.createQuery("select o from Order o", Order.class) ;
