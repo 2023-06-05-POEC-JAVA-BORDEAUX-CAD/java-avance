@@ -14,11 +14,11 @@ public class ClientService {
 	ClientDao clientDao;
 	
 
-	public Client getOrderById(Integer id) {
+	public Client getClientById(Integer id) {
 		return this.clientDao.find(id);
 	}
 	
-	public List<Client> getAllOrders() {
+	public List<Client> getAllClients() {
 		return this.clientDao.getAllClients();
 	}
 	
