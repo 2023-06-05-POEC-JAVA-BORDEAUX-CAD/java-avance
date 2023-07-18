@@ -21,9 +21,7 @@ public class ClientController {
 
 	@Inject
 	private ClientService clientService;
-
-	@Inject
-	private ClientDto clientDto;
+	
 
 	@GET // récupère un client par son identifiant
 	@Path("/{id}")
