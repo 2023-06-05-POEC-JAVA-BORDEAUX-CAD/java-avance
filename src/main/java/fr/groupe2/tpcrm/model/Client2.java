@@ -1,6 +1,6 @@
 package fr.groupe2.tpcrm.model;
 
-public class Client {
+public class Client2 {
 	private Integer id;
 	private String company_name;
 	private String first_name;
@@ -13,9 +13,9 @@ public class Client {
 	private String country;
 	private boolean state;
 	
-	public Client() {};
+	public Client2() {};
 	
-	public Client(Integer id, String company_name, String first_name, String last_name, String email, String phone, String address,
+	public Client2(Integer id, String company_name, String first_name, String last_name, String email, String phone, String address,
 			String zip_code, String city, String country, boolean state) {
 		super();
 		this.id = id;

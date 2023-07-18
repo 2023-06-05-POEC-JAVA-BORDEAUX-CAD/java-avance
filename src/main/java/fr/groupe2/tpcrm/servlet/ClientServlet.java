@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import fr.groupe2.tpcrm.service.ClientService;
+import fr.groupe2.tpcrm.service.ClientService2;
 import jakarta.inject.Inject;
 
 /**
@@ -24,7 +24,7 @@ public class ClientServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	@Inject
-	private ClientService clientService;
+	private ClientService2 clientService;
 	
     /**
      * @see HttpServlet#HttpServlet()

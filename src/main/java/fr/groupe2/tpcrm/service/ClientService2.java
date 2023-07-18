@@ -4,21 +4,21 @@ import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.groupe2.tpcrm.dao.ClientDAO;
-import fr.groupe2.tpcrm.model.Client;
+import fr.groupe2.tpcrm.dao.ClientDAO2;
+import fr.groupe2.tpcrm.model.Client2;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
 @Stateless
-public class ClientService {
+public class ClientService2 {
 
 	@Inject
-	private ClientDAO clientDAO;
+	private ClientDAO2 clientDAO;
 	
 	public String getClientByIdToString(Integer id) throws JsonProcessingException {
 		
 		ObjectMapper objectMapper = new ObjectMapper();
-		Client client = this.clientDAO.getClientById(id);
+		Client2 client = this.clientDAO.getClientById(id);
 		if(client == null) return null;
 		return objectMapper.writeValueAsString(client);
 	}
@@ -26,7 +26,7 @@ public class ClientService {
 	public String getClientsToString() throws JsonProcessingException {
 		
 		ObjectMapper objectMapper = new ObjectMapper();
-		Map<Integer, Client> clients = this.clientDAO.getClients();
+		Map<Integer, Client2> clients = this.clientDAO.getClients();
 		if(clients == null || clients.isEmpty()) return null;
 		return objectMapper.writeValueAsString(clients);
 	}

@@ -1,6 +1,6 @@
 package fr.groupe2.tpcrm.model;
 
-public class Order {
+public class Order2 {
 	private Integer id;
 	private String type_presta;
 	private String designation;
@@ -9,7 +9,7 @@ public class Order {
 	private Integer unit_price;
 	private Integer state;
 
-	public Order(Integer id, String type_presta, String designation, Integer client_id,Integer nb_days, Integer unit_price,
+	public Order2(Integer id, String type_presta, String designation, Integer client_id,Integer nb_days, Integer unit_price,
 			Integer state) {
 		super();
 		this.id = id;
@@ -21,7 +21,7 @@ public class Order {
 		this.state = state;
 	}
 
-	public Order() {
+	public Order2() {
 
 	};
 
