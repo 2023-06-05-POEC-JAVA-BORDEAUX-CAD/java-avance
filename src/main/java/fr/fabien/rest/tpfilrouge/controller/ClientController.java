@@ -53,7 +53,6 @@ public class ClientController {
 			c.setClient(null);
 		}
 		return Response.ok(clientOrders).build();
-
 	}
 
 	@POST
