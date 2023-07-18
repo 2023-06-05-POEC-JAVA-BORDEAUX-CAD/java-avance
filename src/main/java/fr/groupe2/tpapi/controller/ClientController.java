@@ -1,7 +1,12 @@
 package fr.groupe2.tpapi.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.groupe2.tpapi.dto.ClientDto;
+import fr.groupe2.tpapi.dto.OrderDto;
 import fr.groupe2.tpapi.model.Client;
+import fr.groupe2.tpapi.model.Order;
 import fr.groupe2.tpapi.service.ClientService;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
@@ -34,6 +39,17 @@ public class ClientController {
 		}
 		// client!=null
 		return Response.ok(new ClientDto(client)).build();
+	}
+	
+	@GET
+	@Path("/")
+	public Response getClients() {
+		List<Client> clients = this.clientService.getAllClients();
+		List<ClientDto> clientsDto = new ArrayList<>();
+		for(Client client : clients) {
+			clientsDto.add(new ClientDto(client));
+		}
+		return Response.ok(clientsDto).build();
 	}
 
 	@POST

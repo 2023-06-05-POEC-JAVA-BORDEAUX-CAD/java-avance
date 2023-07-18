@@ -1,5 +1,8 @@
 package fr.groupe2.tpapi.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.groupe2.tpapi.dto.OrderDto;
 import fr.groupe2.tpapi.model.Client;
 import fr.groupe2.tpapi.model.Order;
@@ -39,6 +42,17 @@ public class OrderController {
 		}
 		// order!=null
 		return Response.ok(new OrderDto(order)).build();
+	}
+	
+	@GET
+	@Path("/")
+	public Response getOrders() {
+		List<Order> orders = this.orderService.getAllOrders();
+		List<OrderDto> ordersDto = new ArrayList<>();
+		for(Order order : orders) {
+			ordersDto.add(new OrderDto(order));
+		}
+		return Response.ok(ordersDto).build();
 	}
 
 	@POST
