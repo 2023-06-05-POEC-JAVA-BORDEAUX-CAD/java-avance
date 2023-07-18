@@ -1,37 +1,53 @@
 package fr.fabien.tpjsf.jpaservice;
 
+import java.util.List;
+
 import fr.fabien.tpjsf.jpadao.OrderDao;
-import fr.fabien.tpjsf.jpamodel.Order;
+import fr.fabien.tpjsf.jpamodel.OrderModel;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
 @Stateless
 public class OrderService {
-
 	@Inject
-	private OrderDao orderDao;
+	private OrderDao ordao;
 
 	/**
+	 * Load all OrderModel
 	 * 
-	 * @param order
-	 * @return
+	 * @return List<OrderModel>
 	 */
-
-	public Order getOrderById(Long id) {
-		return this.orderDao.find(id);
-	}
-
-	public void save(Order order) {
-		System.out.println("Sauvegarde de : " + order);
-		this.orderDao.save(order);
+	public List<OrderModel> getAll() {
+		return ordao.getAll();
 	}
 
 	/**
+	 * Load a OrderModel by this identifier
 	 * 
-	 * @param id
-	 * @return
+	 * @param id the OrderModel identifier
+	 * @return OrderModel
 	 */
-	public void delete(Long id) {
-		this.orderDao.delete(id);
+	public OrderModel load(Integer id) {
+		return ordao.load(id);
+	}
+
+	/**
+	 * Save or update a OrderModel
+	 * 
+	 * @param order the OrderModel instance
+	 * @return OrderModel
+	 */
+	public OrderModel save(OrderModel order) {
+		return ordao.save(order);
+	}
+
+	/**
+	 * Delete a OrderModel by this identifier
+	 * 
+	 * @param id the OrderModel identifier
+	 * @return OrderModel
+	 */
+	public OrderModel delete(Integer id) {
+		return ordao.delete(id);
 	}
 }

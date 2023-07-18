@@ -1,7 +1,7 @@
 package fr.fabien.tpjsf;
 
-import fr.fabien.tpjsf.jpamodel.Client;
-import fr.fabien.tpjsf.jpamodel.Order;
+import fr.fabien.tpjsf.jpamodel.ClientModel;
+import fr.fabien.tpjsf.jpamodel.OrderModel;
 import fr.fabien.tpjsf.jpaservice.ClientService;
 import fr.fabien.tpjsf.jpaservice.OrderService;
 import jakarta.enterprise.context.RequestScoped;
@@ -22,9 +22,9 @@ public class ClientFaceBean2 {
 
 
 	public void sauvegardeOrder() {
-		Order order = new Order();
+		OrderModel order = new OrderModel();
 		//order.setClientId(1);
-		order.setType_presta("Formation Test");
+		order.setTypePresta("Formation Test");
 		order.setDesignation("JavaScript");
 		orderService.save(order);
 
@@ -32,17 +32,17 @@ public class ClientFaceBean2 {
 	}
 
 		public void sauvegardeClient() {
-			Client client = new Client();
+			ClientModel client = new ClientModel();
 			client.setId(null);
-			client.setCompany_Name("OpenAI");
-			client.setFirst_Name("Bob");
+			client.setCompanyName("OpenAI");
+			client.setFirstName("Bob");
 			client.setEmail("Bob@open.ai");
-			client.setPhone(04);
+			client.setPhone("0123456789");
 			client.setAdress("12 rue du code");
-			client.setZipCode(32400);
+			client.setZipCode("32400");
 			client.setCity("San Francisco");
 			client.setCountry("USA");
-			client.setState(null);
+			client.setState(ClientModel.State.CONFIRMED);
 			
 			
 			clientService.save(client);

@@ -15,7 +15,7 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 
 @Stateless
-@Path("/clients") // Le nom de la ressource est très généralement au pluriel
+@Path("/oldclient") // Le nom de la ressource est très généralement au pluriel
 @Produces(MediaType.APPLICATION_JSON) // Format incontournable en REST
 public class MonPremierRestController {
 

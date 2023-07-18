@@ -1,37 +1,52 @@
 package fr.fabien.tpjsf.jpaservice;
 
 import fr.fabien.tpjsf.jpadao.ClientDao;
-import fr.fabien.tpjsf.jpamodel.Client;
+import fr.fabien.tpjsf.jpamodel.ClientModel;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
+import java.util.List;
 
 @Stateless
 public class ClientService {
-	
 	@Inject
-	private ClientDao clientDao;
+	private ClientDao clidao;
 
 	/**
+	 * Load all ClientModel
 	 * 
-	 * @param order
-	 * @return
+	 * @return List<ClientModel>
 	 */
-
-	public Client getOrderById(Long id) {
-		return this.clientDao.find(id);
-	}
-
-	public void save(Client order) {
-		System.out.println("Sauvegarde de : " + order);
-		this.clientDao.save(order);
+	public List<ClientModel> getAll() {
+		return clidao.getAll();
 	}
 
 	/**
+	 * Load a ClientModel by this identifier
 	 * 
-	 * @param id
-	 * @return
+	 * @param id the ClientModel identifier
+	 * @return ClientModel
 	 */
-	public void delete(Long id) {
-		this.clientDao.delete(id);
+	public ClientModel load(Integer id) {
+		return clidao.load(id);
+	}
+
+	/**
+	 * Save or update a ClientModel
+	 * 
+	 * @param client the ClientModel instance
+	 * @return ClientModel
+	 */
+	public ClientModel save(ClientModel client) {
+		return clidao.save(client);
+	}
+
+	/**
+	 * Delete a ClientModel by this identifier
+	 * 
+	 * @param id the ClientModel identifier
+	 * @return ClientModel
+	 */
+	public ClientModel delete(Integer id) {
+		return clidao.delete(id);
 	}
 }

@@ -2,57 +2,60 @@ package fr.fabien.tpjsf.jpadao;
 
 import java.util.List;
 
-import fr.fabien.tpjsf.jpamodel.Client;
-import fr.fabien.tpjsf.jpamodel.Order;
+import fr.fabien.tpjsf.jpamodel.OrderModel;
 import jakarta.ejb.Stateless;
+import jakarta.persistence.TypedQuery;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
-import jakarta.persistence.TypedQuery;
 
 @Stateless
 public class OrderDao {
-
 	@PersistenceContext
 	protected EntityManager entityManager;
-	
-	public Order find (Long id) {
-		return this.entityManager.find(Order.class, id);
+
+	/**
+	 * Load all OrderModel
+	 * 
+	 * @return List<OrderModel>
+	 */
+	public List<OrderModel> getAll() {
+		String QLS = "select o from OrderModel o";
+		TypedQuery<OrderModel> request = this.entityManager.createQuery(QLS, OrderModel.class);
+		return request.getResultList();
 	}
 
 	/**
+	 * Load a OrderModel by this identifier
 	 * 
-	 * @param order
-	 * @return
+	 * @param id the OrderModel identifier
+	 * @return OrderModel
 	 */
-	public Order save(Order order) { // charge cette entité en BDD
+	public OrderModel load(Integer id) {
+		return this.entityManager.find(OrderModel.class, id);
+	}
+
+	/**
+	 * Save or update a OrderModel
+	 * 
+	 * @param order the OrderModel instance
+	 * @return OrderModel
+	 */
+	public OrderModel save(OrderModel order) {
 		return this.entityManager.merge(order);
 	}
 
 	/**
+	 * Delete a OrderModel by this identifier
 	 * 
-	 * @param long1
+	 * @param id the OrderModel identifier
+	 * @return OrderModel
 	 */
-	public void delete(Long long1) {
-		if (long1==null) {
-			return;
+	public OrderModel delete(Integer id) {
+		OrderModel order = load(id);
+		order.setClient(null);
+		if (order != null) {
+			this.entityManager.remove(order);
 		}
-		Order savedEntity = this.entityManager.find(Order.class, long1);
-		if (savedEntity == null) {
-			return;
-		}
-		this.entityManager.remove(savedEntity);
+		return order;
 	}
-	
-	public List<Order> findByDesignation(String argumentDeMethodedesignation) {
-		TypedQuery<Order> jpqlQuery = this.entityManager.createQuery(
-				"select o "
-				+ " from Order o "
-				+ " where o.designation = :parametreDeRequeteDesignation", Order.class);
-		jpqlQuery.setParameter("parametreDeRequeteDesignation", argumentDeMethodedesignation);
-		return jpqlQuery.getResultList();
-	}
-
-
-	
 }

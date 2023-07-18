@@ -2,56 +2,66 @@ package fr.fabien.tpjsf.jpadao;
 
 import java.util.List;
 
-import fr.fabien.tpjsf.jpamodel.Client;
-import fr.fabien.tpjsf.jpamodel.Order;
+import fr.fabien.tpjsf.jpamodel.ClientModel;
 import jakarta.ejb.Stateless;
+import jakarta.persistence.TypedQuery;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
-import jakarta.persistence.TypedQuery;
 
 @Stateless
 public class ClientDao {
-
 	@PersistenceContext
 	protected EntityManager entityManager;
 
-	public Client find(Long id) {
-		return this.entityManager.find(Client.class, id);
+	/**
+	 * Load all ClientModel
+	 * 
+	 * @return List<ClientModel>
+	 */
+	public List<ClientModel> getAll() {
+		String QLS = "select o from ClientModel o";
+		TypedQuery<ClientModel> request = this.entityManager.createQuery(QLS, ClientModel.class);
+		return request.getResultList();
 	}
 
 	/**
+	 * Load a ClientModel by this identifier
 	 * 
-	 * @param order
-	 * @return
+	 * @param id the ClientModel identifier
+	 * @return ClientModel
 	 */
-	public Client save(Client client) { // charge cette entité en BDD
+	public ClientModel load(Integer id) {
+		return this.entityManager.find(ClientModel.class, id);
+	}
+
+	public List<ClientModel> getAllByCompanyName(String name) {
+		String QLS = "select o from ClientModel o where o.companyName = :name";
+		TypedQuery<ClientModel> request = this.entityManager.createQuery(QLS, ClientModel.class);
+		request.setParameter("name", name);
+		return request.getResultList();
+	}
+
+	/**
+	 * Save or update a ClientModel
+	 * 
+	 * @param client the ClientModel instance
+	 * @return ClientModel
+	 */
+	public ClientModel save(ClientModel client) {
 		return this.entityManager.merge(client);
 	}
 
 	/**
+	 * Delete a ClientModel by this identifier
 	 * 
-	 * @param orderToDelete
+	 * @param id the ClientModel identifier
+	 * @return ClientModel
 	 */
-	public void delete(Long orderToDelete) {
-		if (orderToDelete == null) {
-			return;
+	public ClientModel delete(Integer id) {
+		ClientModel client = load(id);
+		if (client != null) {
+			this.entityManager.remove(client);
 		}
-		Client savedEntity = this.entityManager.find(Client.class, orderToDelete);
-		if (savedEntity == null) {
-			return;
-		}
-		this.entityManager.remove(savedEntity);
+		return client;
 	}
-
-	public List<Client> findByCompanyName(String companyName) {
-		TypedQuery<Client> jpqlQuery = this.entityManager
-				.createQuery(
-						"select o " 
-						+ " from Client o " 
-						+ " where o.companyName = :companyName", Client.class);
-		jpqlQuery.setParameter("companyName", companyName);
-		return jpqlQuery.getResultList();
-	}
-
 }

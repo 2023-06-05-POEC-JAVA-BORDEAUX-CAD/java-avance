@@ -1,7 +1,8 @@
 package fr.fabien.rest.tpfilrouge.controller;
 
-import fr.fabien.rest.tpfilrouge.dto.OrderDto;
-import fr.fabien.tpjsf.jpamodel.Order;
+import fr.fabien.rest.tpfilrouge.dto.ExpectedOrder;
+//import fr.fabien.rest.tpfilrouge.dto.OrderDto;
+//import fr.fabien.tpjsf.jpamodel.Order;
 import fr.fabien.tpjsf.jpaservice.OrderService;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
@@ -34,22 +35,22 @@ public class OrderController {
 			return Response.status(Status.NOT_FOUND).build();
 		}
 
-		Order order = this.orderService.getOrderById(id);
-		OrderDto orderDto = new OrderDto();
-		orderDto.setId(order.getId());
-		orderDto.setTypePresta(order.getType_presta());
-		//orderDto.setClientId();
-		orderDto.setDesignation(order.getDesignation());
-		orderDto.setNbDays(order.getNb_days());
-		orderDto.setUnitPrice(order.getUnit_price());
-		//orderDto.setState(order.getState());	
-
-		return Response.ok(orderDto).header("coucou", "test").build();
+//		Order order = this.orderService.getOrderById(id);
+//		OrderDto orderDto = new OrderDto();
+//		orderDto.setId(order.getId());
+//		orderDto.setTypePresta(order.getType_presta());
+//		//orderDto.setClientId();
+//		orderDto.setDesignation(order.getDesignation());
+//		orderDto.setNbDays(order.getNb_days());
+//		orderDto.setUnitPrice(order.getUnit_price());
+//		//orderDto.setState(order.getState());	
+//
+//		return Response.ok(orderDto).header("coucou", "test").build();
+		return Response.ok().build();
 	}
 
 	@POST
-	@Path("/")
-	public Response postOrderDto(@Valid OrderDto orderDto) {
+	public Response postOrderDto(@Valid ExpectedOrder orderDto) {
 
 		System.out.println("ID de la commande : " + orderDto.getId());
 		System.out.println("la commande est : " + orderDto.getTypePresta());
