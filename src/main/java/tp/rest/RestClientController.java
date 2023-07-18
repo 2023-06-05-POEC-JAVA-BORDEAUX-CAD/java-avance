@@ -1,6 +1,7 @@
 package tp.rest;
 
 import tp.jpa.ClientModel;
+import tp.jpa.OrderModel;
 import tp.jpa.ClientJpaService;
 
 import java.util.List;
@@ -69,5 +70,19 @@ public class RestClientController {
 			return Response.status(Status.NOT_FOUND).entity(not_found).build();
 		}
 		return Response.ok(deleted).build();
+	}
+
+	@GET
+	@Path("/{id}/orders")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getClientOrders(@PathParam("id") Integer id) {
+		ClientModel loaded = cliserv.load(id);
+		if (loaded == null) {
+			return Response.status(Status.NOT_FOUND).entity(not_found).build();
+		}
+		for (OrderModel order : loaded.getOrders()) {
+			order.setClient(null);
+		}
+		return Response.ok(loaded).build();
 	}
 }
