@@ -68,6 +68,7 @@ public class RestOrderController {
 		if (deleted == null) {
 			return Response.status(Status.NOT_FOUND).entity(not_found).build();
 		}
+		deleted.setClient(null);
 		return Response.ok(deleted).build();
 	}
 }
