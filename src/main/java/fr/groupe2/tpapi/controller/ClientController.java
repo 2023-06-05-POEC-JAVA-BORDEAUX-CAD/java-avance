@@ -1,6 +1,7 @@
 package fr.groupe2.tpapi.controller;
 
 import fr.groupe2.tpapi.dto.ClientDto;
+import fr.groupe2.tpapi.dto.OrderDto;
 import fr.groupe2.tpapi.model.Client;
 import fr.groupe2.tpapi.model.Order;
 import fr.groupe2.tpapi.service.ClientService;
@@ -29,7 +30,7 @@ public class ClientController {
 	@Path("/{id}")
 	public Response getClientById(@PathParam("id") Integer id) {
 		// Appel du service pour récupérer
-		Client client = this.clientService.load(id);
+		Client client = this.clientService.getClientById(id);
 		if (client == null) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
@@ -45,9 +46,24 @@ public class ClientController {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
 
+
+		Client client = clientDto.toEntity();
+		if (clientDto.getClientId() != null) {
+			Order order = orderService.getById(clientDto.getClientId());
+
+			if (client == null) {
+				return Response.status(Status.BAD_REQUEST).build();
+			}
+			// le client correspond à un vrai client en base
+			client.setOrder(order);
+		}
+		
+		
+		
 		Client savedClientr = this.clientService.save(client);
 
-		return Response.ok(new OrderDto(savedClient)).build();
+		return Response.ok(new ClientDto(savedClient)).build();
+
 	}
 	
 	
@@ -58,7 +74,7 @@ public class ClientController {
 		if (client == null) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
-		this.clientService.delete(id);
+		this.clientService.deleteById(id);
 		return Response.status(Status.OK).build();
 	}
 
