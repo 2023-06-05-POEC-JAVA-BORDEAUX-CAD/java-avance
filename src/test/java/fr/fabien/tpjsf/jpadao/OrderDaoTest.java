@@ -113,7 +113,7 @@ public class OrderDaoTest {
         Client savedClient = this.clientDao.save(client); // 
         
 		Order order = new Order(); // creer une nouvelle commande
-		order.setClient(savedClient);
+		order.setClientId(savedClient);
 		
 		Order savedOrder = this.orderDao.save(order);
 		
@@ -123,7 +123,7 @@ public class OrderDaoTest {
 
 		//Assert
 		Assertions.assertNotNull(loadedOrder);
-		Assertions.assertNotNull(savedOrder.getClient());
+		Assertions.assertNotNull(savedOrder.getClientId());
 	}
 	
 }

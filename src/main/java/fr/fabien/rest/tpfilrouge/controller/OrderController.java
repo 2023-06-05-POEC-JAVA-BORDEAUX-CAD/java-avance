@@ -38,13 +38,13 @@ public class OrderController {
 		OrderDto orderDto = new OrderDto();
 		orderDto.setId(order.getId());
 		orderDto.setTypePresta(order.getType_presta());
-		orderDto.setClientId();
+		//orderDto.setClientId();
 		orderDto.setDesignation(order.getDesignation());
 		orderDto.setNbDays(order.getNb_days());
 		orderDto.setUnitPrice(order.getUnit_price());
 		//orderDto.setState(order.getState());	
 
-		return Response.ok(OrderDto).header("coucou", "test").build();
+		return Response.ok(orderDto).header("coucou", "test").build();
 	}
 
 	@POST
