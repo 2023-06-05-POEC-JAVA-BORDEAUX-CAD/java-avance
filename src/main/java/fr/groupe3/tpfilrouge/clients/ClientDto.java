@@ -64,6 +64,7 @@ public class ClientDto {
 		this.lastName = client.getLastName();
 		this.phone = client.getPhone();
 		this.zipCode = client.getZipCode();
+		this.state = client.getState();
 	}
 
 	public Long getId() {
