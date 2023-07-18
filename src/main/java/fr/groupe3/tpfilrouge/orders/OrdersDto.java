@@ -14,7 +14,7 @@ private Integer id;
   public OrdersDto(Orders order) {
     this.id = order.getId();
 		this.designation = order.getDesignation();
-		this.clientId = order.getClient() != null ? order.getClient().getId() : null;
+		this.clientId = order.getClient() != null ? order.getClient().getId() :null;
 		this.nbDays = order.getNbDays();
 		this.unitPrice = order.getUnitPrice();
 		this.typePresta = order.getTypePresta();
@@ -83,6 +83,7 @@ public OrdersDto(){}
     orderEntity.setNbDays(this.nbDays);
     orderEntity.setUnitPrice(this.unitPrice);
     orderEntity.setState(this.state);
+    //orderEntity.setClientId(this.clientId);
     return orderEntity;
 
   }

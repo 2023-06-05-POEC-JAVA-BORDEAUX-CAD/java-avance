@@ -69,7 +69,7 @@ public Response post(@Valid OrdersDto orderDto) {
 		
 		Orders order = orderDto.toEntity();
 
-		if (orderDto.getClientId() != null) {
+		if (orderDto.getClientId() != null) {      
 			Client client = clientService.getById(orderDto.getClientId());
 			if (client == null) {
 				return Response

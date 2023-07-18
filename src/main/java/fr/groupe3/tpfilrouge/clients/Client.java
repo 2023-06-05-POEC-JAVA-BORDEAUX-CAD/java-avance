@@ -2,8 +2,8 @@ package fr.groupe3.tpfilrouge.clients;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+// import jakarta.persistence.EnumType;
+// import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -44,16 +44,18 @@ public class Client {
 	
 	private String country;
 	
-	@Column(name = "state")
-	@Enumerated(EnumType.STRING)
-	private EtatClient state;
+	// @Column(name = "state")
+	// @Enumerated(EnumType.STRING)
+	// private EtatClient state;
+
+	private Integer state;
 
 	public Client() {
 
 	}
 
 	public Client(Long id, String companyName, String firstName, String lastName, String email, String phone,
-			String adress, String zipCode, String city, String country, EtatClient state) {
+			String adress, String zipCode, String city, String country, Integer state) {
 
 		this.id = id;
 		this.companyName = companyName;
@@ -148,11 +150,19 @@ public class Client {
 		this.country = country;
 	}
 
-	public EtatClient getState() {
+	// public EtatClient getState() {
+	// 	return state;
+	// }
+
+	// public void setState(EtatClient state) {
+	// 	this.state = state;
+	// }
+
+	public Integer getState() {
 		return state;
 	}
 
-	public void setState(EtatClient state) {
+	public void setState(Integer state) {
 		this.state = state;
 	}
 
