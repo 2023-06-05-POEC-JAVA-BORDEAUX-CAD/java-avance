@@ -6,22 +6,21 @@ import fr.groupe2.tpapi.model.*;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 @Stateless
 public class ClientDao {
 
 	@PersistenceContext
-	protected EntityManager entityManger;
+	protected EntityManager entityManager;
 	
 	/**
-	 * Find an order object by id
+	 * Find an client object by id
 	 * @param id
 	 * @return Client
 	 */
 	public Client find(Integer id) {
-		return this.entityManger.find(Client.class, id);
+		return this.entityManager.find(Client.class, id);
 	}
 	
 	/**
@@ -29,27 +28,30 @@ public class ClientDao {
 	 * @return List<Client>
 	 */
 	public List<Client> getAllOrders() {
-		TypedQuery<Client> query = this.entityManger.createQuery("select c from Client c", Client.class) ;
+		TypedQuery<Client> query = this.entityManager.createQuery("select c from Client c", Client.class) ;
 		return query.getResultList();
 	}
 	
 	
 	/**
-	 * Saves a new and or an existent order
-	 * @param order
+	 * Saves a new and or an existent client
+	 * @param client
 	 * @return Client
 	 */
-	public Client save(Client order) {
-		return this.entityManger.merge(order);
+	public Client save(Client client) {
+		return this.entityManager.merge(client);
 	}
 	
 	/**
-	 * Destroys an order
+	 * Destroys an client
 	 * @param id
 	 */
 	public void delete(Integer id) {
-		Client orderTODelete = this.find(id);
-		this.entityManger.remove(orderTODelete);
+		Client orderToDelete = this.find(id);
+		
+		if(orderToDelete != null) {
+			this.entityManager.remove(orderToDelete);
+		}
 	}
 	
 	
