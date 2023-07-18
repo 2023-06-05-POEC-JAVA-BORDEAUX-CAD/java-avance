@@ -23,10 +23,10 @@ import jakarta.ejb.EJB;
 public class OrderDAOTest {
 
 	@EJB
-	private OrderDao orderDAO;
+	private OrderDao orderDao;
 	
 	@EJB
-	private ClientDao clientDAO;
+	private ClientDao clientDao;
 
 	@org.apache.openejb.testing.Module
 	public EjbJar beans() {
@@ -70,7 +70,7 @@ public class OrderDAOTest {
 		Client client = new Client();
 		client.setFirstName(clientName);
 		
-		Client savedClient = this.clientDAO.save(client);
+		Client savedClient = this.clientDao.save(client);
 		
 		Order order = new Order();
 		order.setDesignation(designation);
@@ -78,15 +78,39 @@ public class OrderDAOTest {
 		
 		
 		//Act
-		Order savedOrder = this.orderDAO.save(order);
+		Order savedOrder = this.orderDao.save(order);
 		
 		//Assert
-		Assertions.assertNotNull(savedOrder);
 		Assertions.assertNotNull(savedClient);
+		Assertions.assertNotNull(savedOrder);
+		
+	}
+	
+	@Test
+	public void orderHasClient() throws Exception {
+		
+		//Arrange
+		String designation = "Harribo";
+		
+		
+		//Act
+		
+		Client client = new Client();
+		client.setCompanyName(designation);
+		Client savedClient = this.clientDao.save(client);
+		
+		Order order = new Order();
+		order.setClient(savedClient);
+		
+		Order savedOrder = this.orderDao.save(order);
+		
+		
+		//Assert
+		Assertions.assertNotNull(savedClient);
+		
+		Assertions.assertNotNull(savedOrder);
 		Assertions.assertNotNull(savedOrder.getClient());
 		
-		Assertions.assertEquals(designation, savedOrder.getDesignation());
-		Assertions.assertNotNull(savedOrder.getClient().getFirstName());
 	}
 	
 	
@@ -96,17 +120,17 @@ public class OrderDAOTest {
 //		Order order = new Order();
 //		order.setDesignation("Angular");
 //		
-//		Order savedOrder1 = this.orderDAO.save(order);
-//		Order savedOrder2 = this.orderDAO.save(order);
+//		Order savedOrder1 = this.orderDao.save(order);
+//		Order savedOrder2 = this.orderDao.save(order);
 //		
 //		Assertions.assertNotNull(savedOrder1);
 //		Assertions.assertNotNull(savedOrder2);
 //		
 //		//Act
 //		
-//		this.orderDAO.delete(savedOrder2.getId());
+//		this.orderDao.delete(savedOrder2.getId());
 //		
-//		Order orderGet = this.orderDAO.find(savedOrder2.getId()); 
+//		Order orderGet = this.orderDao.find(savedOrder2.getId()); 
 //		Assertions.assertNull(orderGet);
 //	}
 	

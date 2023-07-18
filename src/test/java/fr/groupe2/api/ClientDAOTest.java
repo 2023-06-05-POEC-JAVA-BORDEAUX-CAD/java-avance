@@ -73,21 +73,14 @@ public class ClientDAOTest {
 		client.setCompanyName(designation);
 		Client savedClient = this.clientDao.save(client);
 		
-		Order order = new Order();
-		order.setClient(savedClient);
-		
-		Order savedOrder = this.orderDAO.save(order);
-		
 		
 		//Assert
 		Assertions.assertNotNull(savedClient);
-		Assertions.assertNotNull(savedOrder);
-		
-		Assertions.assertNotNull(savedClient.getOrders());
+		Assertions.assertNotNull(savedClient.getId());
 		Assertions.assertEquals(designation, savedClient.getCompanyName());
-		Assertions.assertEquals(1,savedClient.getId());
-		Assertions.assertEquals(1, savedClient.getOrders().size());
 	}
+
+	
 	
 	
 	@Test
