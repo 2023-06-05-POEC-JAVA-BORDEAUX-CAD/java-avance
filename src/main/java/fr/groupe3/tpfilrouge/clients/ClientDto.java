@@ -1,9 +1,11 @@
 package fr.groupe3.tpfilrouge.clients;
 
+import jakarta.ejb.Stateless;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+@Stateless
 public class ClientDto {
 
 	/**

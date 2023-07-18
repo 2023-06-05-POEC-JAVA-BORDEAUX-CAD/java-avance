@@ -2,11 +2,11 @@ package fr.groupe3.tpfilrouge.orders;
 
 public class OrdersDto {
   
- private Integer id;
+private Integer id;
  
   private String typePresta;  
   private String designation;
-  private Integer clientId;
+  private Long clientId;
   private Integer nbDays;
   private Integer unitPrice;
   private Integer state;
@@ -34,7 +34,7 @@ public OrdersDto(){}
   public String getDesignation() {
     return designation;
   }
- public Integer getClientId() {
+ public Long getClientId() {
    return clientId;
  }
   public Integer getNbDays() {
@@ -59,7 +59,7 @@ public OrdersDto(){}
     this.designation = designation;
   }
   
- public void setClientId(Integer clientId) {
+ public void setClientId(Long clientId) {
    this.clientId = clientId;
  }
 

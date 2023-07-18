@@ -1,6 +1,6 @@
 package fr.groupe3.archives.tpfilrouge.clients;
 
-public class Client {
+public class ClientArchive {
 
 	private int id;
 	private String companyName;
@@ -14,11 +14,11 @@ public class Client {
 	private String country;
 	private Integer state;
 
-	public Client() {
+	public ClientArchive() {
 
 	}
 
-	public Client(int id, String companyName, String firstName, String lastName, String email, String phone,
+	public ClientArchive(int id, String companyName, String firstName, String lastName, String email, String phone,
 			String adress, String zipCode, String city, String country, Integer state) {
 
 		this.id = id;

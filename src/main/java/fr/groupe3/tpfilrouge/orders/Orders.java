@@ -1,6 +1,7 @@
 package fr.groupe3.tpfilrouge.orders;
 
 
+import fr.groupe3.tpfilrouge.clients.Client;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

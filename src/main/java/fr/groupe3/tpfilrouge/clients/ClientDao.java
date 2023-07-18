@@ -35,6 +35,21 @@ public class ClientDao {
 		return jpqlQuery.getResultList();
 		
 	}
+	
+	public void delete(Long id) {
+		
+		if (id==null) {
+			return ;
+		}
+		 TypedQuery<Client> jpqlQuery = this.entityManager.createQuery("delete c " + " from Client c " + " where c.id = :id", Client.class);
+		//Query=Requete // creation: on ecrit la requete mais elle ne se relance pas
+		
+		
+		jpqlQuery.setParameter("id", id);
+		
+		jpqlQuery.executeUpdate(); // met à jour la variable
+		
+	}
 
 //	public List<Client> findByCompanyName(String companyName) {
 //

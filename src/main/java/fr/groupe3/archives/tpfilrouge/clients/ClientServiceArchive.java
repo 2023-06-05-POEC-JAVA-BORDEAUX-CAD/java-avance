@@ -9,27 +9,27 @@ import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
 @Stateless
-public class ClientService {
+public class ClientServiceArchive {
 
 	@Inject
-	private ClientDao clientDao;
+	private ClientDaoArchive clientDao;
 
 	// methodes individuel
-	public Client get(Integer id) {
+	public ClientArchive get(Integer id) {
 
-		Client client = clientDao.getClient(id);
+		ClientArchive client = clientDao.getClient(id);
 
 		return client;
 
 	}
 
-	public String toJson(Client client) throws JsonProcessingException {
+	public String toJson(ClientArchive client) throws JsonProcessingException {
 		return new ObjectMapper().writeValueAsString(client);
 	}
 
 	// methode pour List tous les clients
 
-	public String mapToJson(Map<Integer, Client> clients) throws JsonProcessingException {
+	public String mapToJson(Map<Integer, ClientArchive> clients) throws JsonProcessingException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		String jsonData = objectMapper.writeValueAsString(clients.values());
 

@@ -19,10 +19,10 @@ public class ClientServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@EJB
-	private ClientService clientService;
+	private ClientServiceArchive clientService;
 
 	@Inject
-	private ClientDao clientMap;
+	private ClientDaoArchive clientMap;
 
 	@SuppressWarnings("unused")
 	@Override
@@ -44,7 +44,7 @@ public class ClientServlet extends HttpServlet {
 				// creation variable de type printwriter qui affiche la reponse
 				try (PrintWriter noe = response.getWriter()) {
 
-					Client client = clientService.get(idclient);
+					ClientArchive client = clientService.get(idclient);
 
 					if (client != null) {
 
@@ -60,7 +60,7 @@ public class ClientServlet extends HttpServlet {
 		}
 		// action si id dans getparemetre est nul (comme s'il n existe pas)
 		else {
-			Map<Integer, Client> mapEntiere = clientMap.getAllClient();
+			Map<Integer, ClientArchive> mapEntiere = clientMap.getAllClient();
 
 			// creation d objet printMap pour transformer en Json la ListdesClients
 			String printMap = clientService.mapToJson(mapEntiere);

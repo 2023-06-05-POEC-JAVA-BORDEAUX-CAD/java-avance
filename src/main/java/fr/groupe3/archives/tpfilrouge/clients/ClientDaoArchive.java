@@ -6,14 +6,14 @@ import java.util.Map;
 import jakarta.ejb.Stateless;
 
 @Stateless
-public class ClientDao {
+public class ClientDaoArchive {
 
 	// ensemble d'objet come une List
-	private Map<Integer, Client> clients = new HashMap<>();
+	private Map<Integer, ClientArchive> clients = new HashMap<>();
 
-	public ClientDao() {
+	public ClientDaoArchive() {
 
-		Client Fabrice = new Client();
+		ClientArchive Fabrice = new ClientArchive();
 		Fabrice.setId(1); // on initialise
 		Fabrice.setCompanyName("Capgemini");
 		Fabrice.setFirstName("Fabrice");
@@ -29,7 +29,7 @@ public class ClientDao {
 		// Fabrice qu'on vient de creer on l ajoute à notre Map clients
 		this.clients.put(Fabrice.getId(), Fabrice);
 
-		Client Julien = new Client();
+		ClientArchive Julien = new ClientArchive();
 		Julien.setId(2); // on initialise
 		Julien.setCompanyName("M2i Formation");
 		Julien.setFirstName("Julien");
@@ -46,11 +46,11 @@ public class ClientDao {
 
 	}
 
-	public Client getClient(Integer id) {
+	public ClientArchive getClient(Integer id) {
 		return this.clients.get(id);
 	}
 
-	public Map<Integer, Client> getAllClient() {
+	public Map<Integer, ClientArchive> getAllClient() {
 
 		return clients;
 
