@@ -1,4 +1,4 @@
-package fr.groupe3.tpfilrouge.clients;
+package fr.groupe3.archives.tpfilrouge.clients;
 
 public class Client {
 
