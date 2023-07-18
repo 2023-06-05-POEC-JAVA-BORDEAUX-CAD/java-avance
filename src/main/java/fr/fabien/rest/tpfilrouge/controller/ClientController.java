@@ -1,9 +1,11 @@
 package fr.fabien.rest.tpfilrouge.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.fabien.rest.tpfilrouge.dto.ExpectedClient;
 import fr.fabien.tpjsf.jpamodel.ClientModel;
+import fr.fabien.tpjsf.jpamodel.OrderModel;
 import fr.fabien.tpjsf.jpaservice.ClientService;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
@@ -28,21 +30,30 @@ public class ClientController {
 	@GET
 	public Response getAllClients() {
 		List<ClientModel> allClients = this.clientService.getAll();
-		return Response.ok(allClients).build();
+		List<ExpectedClient> aClients = new ArrayList<>();
+		for (ClientModel c : allClients) {
+			aClients.add(ExpectedClient.fromClientModel(c));
+		}
+		return Response.ok(aClients).build();
 	}
 
 	@GET
 	@Path("/{id}") //
-	public String getClientById(@PathParam("id") Integer id) {
-		System.out.println("ID du client : " + id);
-		return "pathClientById";
+	public Response getClientById(@PathParam("id") Integer id) {
+		ExpectedClient eClient = ExpectedClient.fromClientModel(this.clientService.load(id));
+		return Response.ok(eClient).build();
 	}
 
 	@GET
 	@Path("/{id}/orders") //
-	public String getClientOrders(@PathParam("id") Integer id) {
-		System.out.println("liste des commandes du client : " + id);
-		return "pathClientOrders";
+	public Response getClientOrders(@PathParam("id") Integer id) {
+		ClientModel clientOrders = this.clientService.load(id);
+		System.out.println(clientOrders.getOrders());
+		for (OrderModel c : clientOrders.getOrders()) {
+			c.setClient(null);
+		}
+		return Response.ok(clientOrders).build();
+
 	}
 
 	@POST

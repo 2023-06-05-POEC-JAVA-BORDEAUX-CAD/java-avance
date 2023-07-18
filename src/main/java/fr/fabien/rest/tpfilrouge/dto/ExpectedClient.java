@@ -192,7 +192,6 @@ public class ExpectedClient {
 		eClient.setCity(cModel.getCity());
 		eClient.setCountry(cModel.getCountry());
 		eClient.setState(cModel.getState().name());
-		
 		return eClient;
 	}
 }
