@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.groupe2.tpapi.dto.ClientDto;
-import fr.groupe2.tpapi.dto.OrderDto;
 import fr.groupe2.tpapi.model.Client;
-import fr.groupe2.tpapi.model.Order;
 import fr.groupe2.tpapi.service.ClientService;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
