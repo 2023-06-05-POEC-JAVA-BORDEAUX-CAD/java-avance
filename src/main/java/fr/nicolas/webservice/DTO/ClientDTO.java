@@ -59,7 +59,7 @@ public class ClientDTO {
 		return cliDTO;
 	}
 	
-	public Client DtoToEntity(ClientDTO cliDTO) {
+	public Client dtoToEntity(ClientDTO cliDTO) {
 		Client client = new Client();
 		client.setId(cliDTO.getId());
 		client.setCompanyName(cliDTO.getCompanyName());

@@ -49,7 +49,7 @@ public class OrderControllerREST extends Application{
 	@Path("/")
 	public Response post(@Valid OrderDTO orderDTO) {	
 		
-		Order order = orderDTO.DtoToEntity(orderDTO);
+		Order order = orderDTO.dtoToEntity(orderDTO);
 		Order savedOrder = this.orderService.save(order);
 		
 		if(savedOrder == null) {
@@ -63,7 +63,7 @@ public class OrderControllerREST extends Application{
 	@PUT
 	@Path("/")
 	public Response put(@Valid OrderDTO orderDTO) {
-		Order order = orderDTO.DtoToEntity(orderDTO);
+		Order order = orderDTO.dtoToEntity(orderDTO);
 		Order savedOrder = this.orderService.save(order);
 		
 		if(savedOrder == null) {
@@ -76,8 +76,15 @@ public class OrderControllerREST extends Application{
 	@DELETE
 	@Path("/{id}")
 	public Response delete(@PathParam("id") Integer id) {
-		this.orderService.deleteById(id);
-		return Response.ok().build();
+		Order order = this.orderService.getOrderById(id);
+		
+		if(order == null) {
+			Error err = new Error("500", "Internal server error");
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity(err).build();
+		} else {
+			this.orderService.deleteById(id);
+			return Response.ok(new OrderDTO().entityTODTO(order)).build();
+		}
 	}
 	
 }

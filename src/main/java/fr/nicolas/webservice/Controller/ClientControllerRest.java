@@ -49,7 +49,7 @@ public class ClientControllerRest  extends Application{
 	@POST
 	@Path("/")
 	public Response post(@Valid ClientDTO clientDTO) {
-		Client client = clientDTO.DtoToEntity(clientDTO);
+		Client client = clientDTO.dtoToEntity(clientDTO);
 		Client savedClient = this.clientService.save(client);
 		if(savedClient == null) {
 			Error err = new Error("500", "Internal server error");
@@ -62,7 +62,7 @@ public class ClientControllerRest  extends Application{
 	@Path("/")
 	public Response put(@Valid ClientDTO clientDTO) {
 		
-		Client client = clientDTO.DtoToEntity(clientDTO);
+		Client client = clientDTO.dtoToEntity(clientDTO);
 		Client savedClient = this.clientService.save(client);
 		if(savedClient == null) {
 			Error err = new Error("500", "Internal server error");

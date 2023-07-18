@@ -33,7 +33,7 @@ public class OrderDTO {
     }
     
     
-    public Order DtoToEntity(OrderDTO orderDTO) {
+    public Order dtoToEntity(OrderDTO orderDTO) {
     	Order order = new Order();
     	order.setClient(orderDTO.getClient());
     	order.setId(orderDTO.getId());
