@@ -1,5 +1,6 @@
 package fr.fabien.tpjsf.jpamodel;
 
+import java.util.HashSet;
 import java.util.Set;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -52,7 +53,7 @@ public class ClientModel {
 	private State state;
 
 	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
-	private Set<OrderModel> orders;
+	private Set<OrderModel> orders = new HashSet<>();
 
 	public ClientModel() {
 	}

@@ -180,4 +180,19 @@ public class ExpectedClient {
 		}
 		return client;
 	}
+
+	public static ExpectedClient fromClientModel(ClientModel cModel) {
+		ExpectedClient eClient = new ExpectedClient();
+		eClient.setId(cModel.getId());
+		eClient.setName(cModel.getFirstName() + " " + cModel.getLastName());
+		eClient.setEmail(cModel.getEmail());
+		eClient.setPhone(cModel.getPhone());
+		eClient.setAdress(cModel.getAdress());
+		eClient.setZipCode(cModel.getZipCode());
+		eClient.setCity(cModel.getCity());
+		eClient.setCountry(cModel.getCountry());
+		eClient.setState(cModel.getState().name());
+		
+		return eClient;
+	}
 }
