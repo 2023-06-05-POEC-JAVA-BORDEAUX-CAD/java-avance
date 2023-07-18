@@ -1,6 +1,10 @@
 package fr.groupe2.tpapi.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.groupe2.tpapi.model.Client;
+import fr.groupe2.tpapi.model.Order;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 
@@ -18,6 +22,7 @@ public class ClientDto {
 	private String city;
 	private String country;
 	private Boolean state;
+	private List<OrderDto> orders = new ArrayList<>();
 	
 	/**
 	 * Constructors
@@ -51,6 +56,7 @@ public class ClientDto {
 		this.city = client.getCity();
 		this.country = client.getCountry();
 		this.state = client.getState();
+		this.orders = this.orderToOrderDto(client.getOrders());
 	}
 	
 	/**
@@ -123,6 +129,14 @@ public class ClientDto {
 		this.state = state;
 	}
 	
+	public List<OrderDto> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<OrderDto> orders) {
+		this.orders = orders;
+	}
+
 	// Methods
 	public Client toEntity() {
 		Client entity = new Client();
@@ -137,5 +151,13 @@ public class ClientDto {
 		entity.setCountry(this.getCountry());
 		entity.setState(this.getState());
 		return entity;
+	}
+	
+	public List<OrderDto> orderToOrderDto(List<Order> orders){
+		List<OrderDto> ordersDto = new ArrayList<>();
+		for(Order order : orders) {
+			ordersDto.add(new OrderDto(order));
+		}
+		return ordersDto;
 	}
 }

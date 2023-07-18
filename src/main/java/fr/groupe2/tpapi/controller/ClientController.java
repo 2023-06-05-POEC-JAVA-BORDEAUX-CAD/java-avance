@@ -51,6 +51,18 @@ public class ClientController {
 		}
 		return Response.ok(clientsDto).build();
 	}
+	
+	@GET
+	@Path("/{id}/orders")
+	public Response getOrderByClientId(@PathParam("id") Integer id) {
+		// Appel du service pour récupérer
+		Client client = this.clientService.getClientById(id);
+		if (client == null) {
+			return Response.status(Status.NOT_FOUND).build();
+		}
+		// client!=null
+		return Response.ok(new ClientDto(client).getOrders()).build();
+	}
 
 	@POST
 	@Path("/")
