@@ -41,10 +41,12 @@ public class OrderRestController {
 	@GET
 	@Path("/{id}")
 	public Response getJson(@PathParam("id") Long id) {
+		//Appel du service pour récupérer
 		Order order = this.orderFrancoisService.load(id);
 		if (order == null) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
+		//order!=null
 		return Response.ok(new OrderRestDto(order))
 				.build();
 	}
@@ -53,10 +55,7 @@ public class OrderRestController {
 	@Path("/{id}")
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response getPlain(@PathParam("id") Long id) {
-		
-		
 		Order order = this.orderFrancoisService.load(id);
-		
 		
 		if (order == null) {
 			return Response
@@ -92,6 +91,7 @@ public class OrderRestController {
 										"clientId : " + orderRestDto.getClientId() + " ne correpond à aucun client."))
 						.build();
 			}
+			//le client correspond à un vrai client en base
 			order.setClient(client);
 		}
 
@@ -108,6 +108,7 @@ public class OrderRestController {
 		if(order == null) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
+		this.orderFrancoisService.delete(id);
 		return Response.status(Status.OK).build();
 	}
 

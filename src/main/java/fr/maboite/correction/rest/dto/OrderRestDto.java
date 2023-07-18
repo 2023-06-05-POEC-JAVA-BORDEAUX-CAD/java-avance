@@ -36,6 +36,7 @@ public class OrderRestDto {
 		this.clientId = order.getClient() != null ? order.getClient().getId() : null;
 		this.nbDays = order.getNbDays();
 		this.unitPrice = order.getUnitPrice();
+		this.typePresta = order.getTypePresta();
 		this.state = order.getState();
 	}
 
@@ -109,7 +110,6 @@ public class OrderRestDto {
 		order.setState(this.state);
 		order.setTypePresta(this.typePresta);
 		order.setUnitPrice(this.unitPrice);
-
 		return order;
 	}
 
