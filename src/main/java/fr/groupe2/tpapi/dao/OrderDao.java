@@ -38,7 +38,7 @@ public class OrderDao {
 	 * @param order
 	 * @return Client
 	 */
-	public Client save(Client order) {
+	public Order save(Order order) {
 		return this.entityManger.merge(order);
 	}
 	
