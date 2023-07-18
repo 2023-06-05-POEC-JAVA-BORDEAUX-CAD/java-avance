@@ -1,25 +1,59 @@
 package fr.groupe3.tpfilrouge.clients;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="clients")
 public class Client {
 
-	private int id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
+	
+	@Column(name="company_name")
 	private String companyName;
+	
+	@Column(name = "first_name")
 	private String firstName;
+	
+	@Column(name = "last_name")
 	private String lastName;
+	
+	
 	private String email;
+	
+	
 	private String phone;
+	
+
 	private String adress;
+	
+	@Column(name = "zip_code")
 	private String zipCode;
+	
+	
 	private String city;
+	
+	
 	private String country;
-	private Integer state;
+	
+	@Column(name = "state")
+	@Enumerated(EnumType.STRING)
+	private EtatClient state;
 
 	public Client() {
 
 	}
 
-	public Client(int id, String companyName, String firstName, String lastName, String email, String phone,
-			String adress, String zipCode, String city, String country, Integer state) {
+	public Client(Integer id, String companyName, String firstName, String lastName, String email, String phone,
+			String adress, String zipCode, String city, String country, EtatClient state) {
 
 		this.id = id;
 		this.companyName = companyName;
@@ -34,11 +68,11 @@ public class Client {
 		this.state = state;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -114,11 +148,11 @@ public class Client {
 		this.country = country;
 	}
 
-	public Integer getState() {
+	public EtatClient getState() {
 		return state;
 	}
 
-	public void setState(Integer state) {
+	public void setState(EtatClient state) {
 		this.state = state;
 	}
 
