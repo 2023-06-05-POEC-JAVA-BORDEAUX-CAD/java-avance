@@ -61,20 +61,17 @@ public class OrderJpaRestController {
 	public Response createOrder(OrderJpaDto order) {
 		
 		ClientJpa client = this.clientService.getClientById(order.getClientId());
-		System.out.println("client");
-		System.out.println(client);
+		
 		if(client == null) {
 			return Response.status(Status.BAD_REQUEST).entity(new MessageRestJpa("le clientId ne correspond à aucun client")).build();
 		}
 		
 		OrderJpa orderEntity = order.toEntity();
 		orderEntity.setClient(client);
-		orderService.save(orderEntity);
 		
-		return Response.ok(new MessageRestJpa("Order créé avec succès")).build();
-		//OrderJpa createdOrder = orderService.save(orderEntity);
+		OrderJpa createdOrder = orderService.save(orderEntity);
 		
-		//return Response.ok(createdOrder).build();
+		return Response.ok(new OrderJpaDto(createdOrder)).build();
 	}
 	
 	@DELETE
