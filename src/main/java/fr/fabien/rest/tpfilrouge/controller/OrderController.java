@@ -35,14 +35,14 @@ public class OrderController {
 		}
 
 		Order order = this.orderService.getOrderById(id);
-		OrderDto OrderDto = new OrderDto();
-		OrderDto.setId(order.getId());
-		OrderDto.setTypePresta(order.getType_presta());
-		OrderDto.setClientId();
-		OrderDto.setDesignation(order.getDesignation());
-		OrderDto.setNbDays(order.getNb_days());
-		OrderDto.setUnitPrice(order.getUnit_price());
-		//OrderDto.setState(order.getState());	
+		OrderDto orderDto = new OrderDto();
+		orderDto.setId(order.getId());
+		orderDto.setTypePresta(order.getType_presta());
+		orderDto.setClientId();
+		orderDto.setDesignation(order.getDesignation());
+		orderDto.setNbDays(order.getNb_days());
+		orderDto.setUnitPrice(order.getUnit_price());
+		//orderDto.setState(order.getState());	
 
 		return Response.ok(OrderDto).header("coucou", "test").build();
 	}
