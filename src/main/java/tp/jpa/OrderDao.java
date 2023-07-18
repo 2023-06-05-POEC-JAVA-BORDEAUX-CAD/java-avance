@@ -50,6 +50,7 @@ public class OrderDao {
 	 */
 	public OrderModel delete(Integer id) {
 		OrderModel order = load(id);
+		order.setClient(null);
 		if (order != null) {
 			this.entityManager.remove(order);
 		}
