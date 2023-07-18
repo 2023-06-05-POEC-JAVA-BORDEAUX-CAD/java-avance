@@ -9,7 +9,6 @@ import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.DELETE;
-import java.sql.SQLException;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Produces;
@@ -30,21 +29,21 @@ public class RestOrderController {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getOrders() throws SQLException {
+	public Response getOrders() {
 		List<OrderModel> orders = ordserv.getAll();
 		return Response.ok(orders).build();
 	}
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response setOrder(@Valid ExpectedOrder order) throws SQLException {
+	public Response setOrder(@Valid ExpectedOrder order) {
 		OrderModel saved = ordserv.save(order.tOrderModel());
 		return Response.ok(saved).build();
 	}
 
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response replaceOrder(@Valid ExpectedOrder order) throws SQLException {
+	public Response replaceOrder(@Valid ExpectedOrder order) {
 		OrderModel saved = ordserv.save(order.tOrderModel());
 		return Response.ok(saved).build();
 	}
@@ -52,7 +51,7 @@ public class RestOrderController {
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getOrder(@PathParam("id") Integer id) throws SQLException {
+	public Response getOrder(@PathParam("id") Integer id) {
 		OrderModel loaded = ordserv.load(id);
 		if (loaded == null) {
 			return Response.status(Status.NOT_FOUND).entity(not_found).build();
@@ -63,7 +62,7 @@ public class RestOrderController {
 	@DELETE
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response deleteOrder(@PathParam("id") Integer id) throws SQLException {
+	public Response deleteOrder(@PathParam("id") Integer id) {
 		OrderModel deleted = ordserv.delete(id);
 		if (deleted == null) {
 			return Response.status(Status.NOT_FOUND).entity(not_found).build();
