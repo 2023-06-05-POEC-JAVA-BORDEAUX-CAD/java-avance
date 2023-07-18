@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 public class ClientDto {
 
 	/**
-	 * Dto de prÃ©sentation des Clients par REST
+	 * Dto de présentation des Clients par REST
 	 */
 
 	@NotNull

@@ -1,6 +1,5 @@
 package fr.groupe3.tpfilrouge.clients;
 
-
 import java.util.List;
 
 import jakarta.ejb.Stateless;
@@ -11,29 +10,31 @@ import jakarta.persistence.TypedQuery;
 @Stateless
 public class ClientDao {
 
-	@PersistenceContext // on inject objet entitymanager
+	@PersistenceContext // on injecte l'objet EntityManager
 	protected EntityManager entityManager;
 
-	// on sauvegarde (insert ou update)
-
+	// pour sauvegarder le client
 	public Client save(Client client) {
+		
 		return this.entityManager.merge(client);
+		
 	}
 
-	// on retourne une instance par son id
+	// pour récupérer un client par son Id
 	public Client load(Long id) {
 
 		return this.entityManager.find(Client.class, id);
-	}
-	
-	
-	public List<Client> findAll() {
 		
-		 TypedQuery<Client> jpqlQuery = this.entityManager.createQuery("select c " + " from Client c ", Client.class) ; 
-		 
-		 return jpqlQuery.getResultList();
 	}
 
+	// pour récupérer tous les clients
+	public List<Client> findAll() {
+
+		TypedQuery<Client> jpqlQuery = this.entityManager.createQuery("select c " + " from Client c ", Client.class);
+
+		return jpqlQuery.getResultList();
+		
+	}
 
 //	public List<Client> findByCompanyName(String companyName) {
 //
@@ -49,5 +50,4 @@ public class ClientDao {
 //		return jpqlQuery.getResultList();
 //	}
 
-	
 }
