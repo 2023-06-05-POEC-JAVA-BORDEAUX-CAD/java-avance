@@ -1,8 +1,11 @@
 package fr.noellie.rest.controller;
 
 import fr.noellie.jpa.model.EtatCommande;
+import fr.noellie.jpa.model.OrderJPA;
 import fr.noellie.rest.dto.OrderRestDto;
+import fr.noellie.rest.service.OrderRestService;
 import jakarta.ejb.Stateless;
+import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -19,21 +22,26 @@ import jakarta.ws.rs.core.Response.Status;
 @Path("/orders") // le nom de la ressource est très souvent au pluriel
 @Produces(MediaType.APPLICATION_JSON) // format incontournable en REST
 public class OrderRestController {
+	@Inject
+	OrderRestService orderService;
 
 	@GET
 	@Path("/{id}")
 	public Response getOrderRestBean(@PathParam("id") Long id) {
+		
+		OrderRestDto orderRestDto = new OrderRestDto();
+		
 		System.out.println("La méthode de récupération de l'order a été appelée avec l'id " + id);
 
 		if (id < 0) {
 			return Response.status(Status.BAD_REQUEST).build();
 		}
-
-		OrderRestDto orderRestDto = new OrderRestDto();
-		orderRestDto.setId(id);
-		orderRestDto.setTypePresta("Hello");
-		orderRestDto.setDesignation("");
-		orderRestDto.setState(EtatCommande.OPTION);
+		
+		OrderJPA entity = orderService.load(id);
+		entity.setTypePresta(entity.getTypePresta());
+		entity.setDesignation(entity.getDesignation());
+		entity.setClient(entity.getClient().getId());
+		
 
 		return Response.ok(orderRestDto).header("Bonjour !", "Comment ça va?")
 				.header("Le lundi", "c'est vachement dur !").build();
