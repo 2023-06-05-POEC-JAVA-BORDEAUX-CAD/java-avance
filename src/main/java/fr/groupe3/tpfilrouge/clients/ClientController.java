@@ -1,5 +1,7 @@
 package fr.groupe3.tpfilrouge.clients;
 
+import java.util.List;
+
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
@@ -39,21 +41,19 @@ public class ClientController {
 
 	}
 	
-//	@GET // récupère un client par son identifiant
-//	@Path("/")
-//	public Response getAllClients( ) { // si je mets en URL clients alors tu recupere tous les clients
-//
-//		Client client = clientService.findAll();
-//		if (client == null) {
-//
-//			return Response.status(Status.NOT_FOUND).build();
-//		}
-//
-//		System.out.println(" la methode de recuparation a été appeleée avec l'id " + id);
-//
-//		return Response.ok(new ClientDto(client)).build();
-//
-//	}
+	@GET // pour recuperer toute la liste des clients
+	@Path("/")
+	public Response getAllClients( ) { // si je mets en URL clients alors tu recupere tous les clients
+
+		List<Client> clientList = clientService.findAll();
+		if (clientList == null) {
+
+			return Response.status(Status.NOT_FOUND).build();
+		}
+
+		return Response.ok(clientList).build();
+
+	}
 	
 
 	@POST // envoyer en BDD
@@ -70,6 +70,9 @@ public class ClientController {
 		return Response.ok(new ClientDto(savedClient)).build();
 
 	}
+	
+	
+	
 
 	@DELETE
 	@Path("/{id}")
