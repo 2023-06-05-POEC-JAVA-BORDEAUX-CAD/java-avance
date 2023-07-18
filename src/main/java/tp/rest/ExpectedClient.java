@@ -2,10 +2,15 @@ package tp.rest;
 
 import tp.jpa.ClientModel;
 import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Positive;
 
 public class ExpectedClient {
+	@Positive
+	private Integer id;
+
 	@NotNull
 	@Size(min = 3, max = 40)
 	private String companyName;
@@ -19,6 +24,7 @@ public class ExpectedClient {
 	private String lastName;
 
 	@NotNull
+	@Email
 	@Size(min = 3, max = 90)
 	private String email;
 
@@ -45,6 +51,14 @@ public class ExpectedClient {
 	@NotNull
 	@Pattern(regexp = "(CANCELED|OPTION|CONFIRMED)", message = "unknown value for ClientModel.State enum (CANCELED, OPTION or CONFIRMED)")
 	private String state;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getCompanyName() {
 		return companyName;
@@ -128,6 +142,9 @@ public class ExpectedClient {
 
 	public ClientModel toClientModel() {
 		ClientModel client = new ClientModel();
+		if (id != null) {
+			client.setId(id);
+		}
 		client.setCompanyName(companyName);
 		client.setFirstName(firstName);
 		client.setLastName(lastName);
